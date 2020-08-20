@@ -1,0 +1,15 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,CAAC,CAAA;EACG,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EACV,UAAU,EAAE,UAAU;CACzB",
+    "sources": [
+        "styles.scss",
+        "mobil-styles/_footer-mobil-styles.scss",
+        "mobil-styles/_header-mobil-styles.scss",
+        "mobil-styles/_main-mobil-styles.scss",
+        "desktop-styles/_footer-desktop-styles.scss",
+        "desktop-styles/_header-desktop-styles.scss",
+        "desktop-styles/_main-desktop-styles.scss"
+    ],
+    "names": [],
+    "file": "styles.css"
+}

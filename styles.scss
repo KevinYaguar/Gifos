@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@media (max-width: 800px){
+    @import "./mobil-styles/_footer-mobil-styles";
+    @import "./mobil-styles/_header-mobil-styles";
+    @import "./mobil-styles/_main-mobil-styles";
+    
+}
+
+@media (min-width: 801px) {
+    @import "./desktop-styles/_footer-desktop-styles";
+    @import "./desktop-styles/_header-desktop-styles";
+    @import "./desktop-styles/_main-desktop-styles";
+    
+}
