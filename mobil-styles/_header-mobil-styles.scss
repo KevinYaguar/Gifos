@@ -1,0 +1,38 @@
+header {
+    color: #572EE5;
+    .top-line {
+        height: 5px;
+        width: 100%;
+        background-color: #572EE5;
+    }
+
+    .inheader {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 29px 26px 17.2px 22px;
+        #btn-plus {
+            display: none;
+        }
+
+        .logo-box {
+            width: 48.8px;
+            height: 48.8px;
+        }
+
+        nav {
+            input {
+                display: none;
+            }
+
+            .fa-times {
+                display: none;
+            }
+
+            .menu {
+                display: none;
+            }
+        }
+    }
+
+}

@@ -4,4 +4,42 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+
+@media (max-width: 800px) {
+  header {
+    color: #572EE5;
+  }
+  header .top-line {
+    height: 5px;
+    width: 100%;
+    background-color: #572EE5;
+  }
+  header .inheader {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 29px 26px 17.2px 22px;
+  }
+  header .inheader #btn-plus {
+    display: none;
+  }
+  header .inheader .logo-box {
+    width: 48.8px;
+    height: 48.8px;
+  }
+  header .inheader nav input {
+    display: none;
+  }
+  header .inheader nav .fa-times {
+    display: none;
+  }
+  header .inheader nav .menu {
+    display: none;
+  }
+}
 /*# sourceMappingURL=styles.css.map */
