@@ -31,6 +31,14 @@
   header .inheader .logo-box {
     width: 48.8px;
     height: 48.8px;
+    background-color: #5ED7C6;
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0% 0%, 0% 0%, 0% 0%);
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0% 0%, 0% 0%, 0% 0%);
+  }
+  header .inheader .logo-box .background {
+    -webkit-clip-path: polygon(10% 10%, 10% 90%, 90% 90%, 90% 10%, 90% 30%, 70% 30%, 70% 10%);
+            clip-path: polygon(10% 10%, 10% 90%, 90% 90%, 90% 10%, 90% 30%, 70% 30%, 70% 10%);
+    background-color: #fff;
   }
   header .inheader nav input {
     display: none;
