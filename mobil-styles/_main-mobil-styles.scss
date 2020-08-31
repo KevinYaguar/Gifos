@@ -1,0 +1,43 @@
+main{
+    .one{
+        display: flex;
+            flex-direction: column;
+            align-items: center;
+        .one-tittle{
+            width: 286px;
+            height: 99px;
+            text-align: center;
+            margin-bottom: 31px;
+            span{
+                font-weight: 700;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 25px;
+                line-height: 33px;
+                color: #572EE5;
+                .gifos-word{
+                    color: #5ED7C6;
+                }
+            }
+        }
+        img{
+            width: 273px;
+            height: 130px;
+        }
+        .searcher{
+            border: 1px solid #572EE5;
+            border-radius: 27px;
+            padding: 13.8px 20px 13px 55px;
+            width: 334px;
+            height: 50px;
+            input{
+                border: 0;
+            }
+        }
+    }
+
+
+
+
+
+    
+}
