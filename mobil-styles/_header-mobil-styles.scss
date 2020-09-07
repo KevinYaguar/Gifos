@@ -11,6 +11,7 @@ header {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        align-items: center;
         padding: 29px 26px 17.2px 22px;
 
         #btn-plus {
@@ -26,6 +27,10 @@ header {
                 margin-top: -26.4px;
                 margin-left: 8px;
                 background: white;
+                span{
+                    font-weight: 900;
+                    font-family: 'Roboto', sans-serif;
+                }
             }
         }
 

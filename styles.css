@@ -23,6 +23,9 @@
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     padding: 29px 26px 17.2px 22px;
   }
   header .inheader #btn-plus {
@@ -36,6 +39,10 @@
     margin-top: -26.4px;
     margin-left: 8px;
     background: white;
+  }
+  header .inheader .big-box .logo-text span {
+    font-weight: 900;
+    font-family: 'Roboto', sans-serif;
   }
   header .inheader .logo-box {
     width: 48.8px;
@@ -58,6 +65,9 @@
   header .inheader nav .menu {
     display: none;
   }
+  main {
+    margin-top: 7px;
+  }
   main .one {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -69,6 +79,7 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    margin-bottom: 45px;
   }
   main .one .one-tittle {
     width: 286px;
@@ -81,7 +92,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 25px;
     line-height: 33px;
-    color: #572EE5;
+    color: #7555e7;
   }
   main .one .one-tittle span .gifos-word {
     color: #5ED7C6;
@@ -92,13 +103,88 @@
   }
   main .one .searcher {
     border: 1px solid #572EE5;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     border-radius: 27px;
     padding: 13.8px 20px 13px 55px;
     width: 334px;
     height: 50px;
   }
+  main .one .searcher .fa-search {
+    color: #7555e7;
+  }
   main .one .searcher input {
     border: 0;
+  }
+  main .one .trending {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 31px;
+  }
+  main .one .trending .trending-tt {
+    width: 236px;
+    height: 25px;
+    line-height: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #572EE5;
+  }
+  main .one .trending .trending-text {
+    width: 225px;
+    height: 50px;
+    line-height: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #572EE5;
+  }
+  main .two {
+    background-color: #F3F5F8;
+  }
+  main .two .two-tittle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  main .two .two-tittle .tendring-gifos-tittle {
+    margin-bottom: 7px;
+    line-height: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #572EE5;
+  }
+  main .two .two-tittle .tendring-gifos-subtt {
+    width: 333px;
+    height: 46px;
+    margin-bottom: 32px;
+    line-height: 23px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
   }
 }
 /*# sourceMappingURL=styles.css.map */

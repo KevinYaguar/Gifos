@@ -1,36 +1,106 @@
-main{
-    .one{
+main {
+    margin-top: 7px;
+
+    .one {
         display: flex;
-            flex-direction: column;
-            align-items: center;
-        .one-tittle{
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 45px;
+
+        .one-tittle {
             width: 286px;
             height: 99px;
             text-align: center;
             margin-bottom: 31px;
-            span{
+
+            span {
                 font-weight: 700;
                 font-family: 'Montserrat', sans-serif;
                 font-size: 25px;
                 line-height: 33px;
-                color: #572EE5;
-                .gifos-word{
+                color: #7555e7;
+
+                .gifos-word {
                     color: #5ED7C6;
                 }
             }
         }
-        img{
+
+        img {
             width: 273px;
             height: 130px;
         }
-        .searcher{
+
+        .searcher {
             border: 1px solid #572EE5;
+            display: flex;
+            justify-content: space-between;
             border-radius: 27px;
             padding: 13.8px 20px 13px 55px;
             width: 334px;
             height: 50px;
-            input{
+
+            .fa-search {
+                color: #7555e7;
+            }
+
+            input {
                 border: 0;
+            }
+        }
+
+        .trending {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            margin-top: 31px;
+
+            .trending-tt {
+                width: 236px;
+                height: 25px;
+                line-height: 25px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
+                font-size: 16px;
+                color: #572EE5;
+            }
+
+            .trending-text {
+                width: 225px;
+                height: 50px;
+                line-height: 25px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 500;
+                font-size: 14px;
+                color: #572EE5;
+            }
+        }
+    }
+    .two{
+        background-color: #F3F5F8;
+        .two-tittle{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            .tendring-gifos-tittle{
+                margin-bottom: 7px;
+                line-height: 30px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
+                font-size: 20px;
+                color: #572EE5;
+            }
+            .tendring-gifos-subtt{
+                width: 333px;
+                height: 46px;
+                margin-bottom: 32px;
+                line-height: 23px;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                color: #000000;
             }
         }
     }
@@ -39,5 +109,4 @@ main{
 
 
 
-    
 }
