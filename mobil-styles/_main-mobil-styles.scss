@@ -95,12 +95,24 @@ main {
             .tendring-gifos-subtt{
                 width: 333px;
                 height: 46px;
+                margin: auto;
                 margin-bottom: 32px;
                 line-height: 23px;
                 font-family: 'Roboto', sans-serif;
                 font-weight: 400;
                 font-size: 16px;
                 color: #000000;
+                span{
+                    display: block;
+                }
+            }
+        }
+        .galery{
+            display: flex;
+            overflow: hidden;
+            padding-bottom: 82px;
+            img{
+                margin-left: 22px;
             }
         }
     }

@@ -13,24 +13,21 @@
 </head>
 
 <body>
+    <div class="line"></div>
     <header>
-        <div class="top-line"></div>
-        <div class="inheader">
-            <div class="big-box">
-                <div class="logo-box">
-                    <div class="logo-box background">
-                    </div>
+        <div class="big-box">
+            <div class="logo-box">
+                <div class="logo-box background">
+                </div>
 
-                </div>
-                <div class="logo-text">
-                    <span class="logo">GIFOS</span>
-                </div>
             </div>
-
+            <div class="logo-text">
+                <span class="logo">GIFOS</span>
+            </div>
+        </div>
+        <div class="right-side">
             <nav>
-                <input type="checkbox" name="btn-menu" id="btn-menu">
-                <label for="btn-menu"><i class="fas fa-bars"></i></label>
-                <label for="btn-menu"><i class="fas fa-times"></i></label>
+                <i class="fas fa-bars" id="fa-bars"></i>
                 <ul class="menu">
                     <li><a href="">modo nocturno</a></li>
                     <li><a href="">favoritos</a></li>
@@ -39,6 +36,7 @@
             </nav>
             <input type="button" value="+" id="btn-plus">
         </div>
+        
     </header>
     <main>
         <section class="one">
@@ -58,10 +56,14 @@
         <section class="two">
             <div class="two-tittle">
                 <span class="tendring-gifos-tittle">Trending GIFOS</span>
-                <span class="tendring-gifos-subtt">Mira los últimos GIFOS de nuestra comunidad.</span>
+                <div class="tendring-gifos-subtt">
+                    <span class="first-sentence">Mira los últimos </span> <span class="second-sentence">GIFOS de nuestra
+                        comunidad.</span>
+                </div>
+
+
             </div>
             <div class="galery">
-                <img src="https://via.placeholder.com/243x187" alt="">
                 <img src="https://via.placeholder.com/243x187" alt="">
                 <img src="https://via.placeholder.com/243x187" alt="">
             </div>
@@ -69,7 +71,7 @@
     </main>
     <footer>
         <div class="share">
-            <span class="comparte"></span>
+            <span id="comparte">Compartir en:</span>
             <ul class="social-list">
                 <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
                 <li><a href=""><i class="fab fa-twitter"></i></a></li>
@@ -79,7 +81,10 @@
         <div class="rights">
             <span class="rights-reserved">© GIFOS 2020 All Rights Reserved.</span>
         </div>
+
     </footer>
+    <div class="line"></div>
+    <script src="gifos.js"></script>
 </body>
 
 </html>

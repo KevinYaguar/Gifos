@@ -1,0 +1,39 @@
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 47px 76px 23px 83px;
+    .share{
+        #comparte{
+            font-family: 'Roboto', sans-serif;
+            color: #000000;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 18px;
+            
+        }
+        .social-list{
+            margin-top: 24px;
+            margin-bottom: 47.8px;
+            list-style: none;
+            display: flex;
+            li{
+                padding: 10px;
+                
+            }
+            .fab{
+                color: #CDD6E0;
+            }
+        }
+    }
+    .rights{
+        text-align: center;
+        span{
+            font-family: 'Roboto', sans-serif;
+            color: #000000;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+}
