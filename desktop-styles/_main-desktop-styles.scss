@@ -1,0 +1,128 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .one {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 45px;
+
+        .one-tittle {
+            width: 934px;
+            height: 100px;
+            text-align: center;
+            margin-bottom: 31px;
+
+            span {
+                font-weight: 700;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 35px;
+                line-height: 50px;
+                color: #572EE5;
+                text-align: center;
+                .gifos-word {
+                    color: #5ED7C6;
+                    font-size: 35px;
+                }
+            }
+        }
+
+        img {
+            width: 399px;
+            height: 190px;
+        }
+        
+        .searcher {
+            border: 1px solid #572EE5;
+            
+            display: flex;
+            justify-content: space-between;
+            border-radius: 27px;
+            padding: 13.8px 20px 13px 55px;
+            width: 551px;
+            height: 50px;
+
+            .fa-search {
+                color: #7555e7;
+            }
+
+            input {
+                border: 0;
+                color: #9CAFC3;
+                font-size: 16px;
+            }
+        }
+
+        .trending {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            margin-top: 73px;
+
+            .trending-tt {
+                width: 236px;
+                height: 25px;
+                line-height: 25px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
+                font-size: 18px;
+                color: #572EE5;
+            }
+
+            .trending-text {
+                width: 402px;
+                height: 25px;
+                line-height: 25px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 500;
+                font-size: 14px;
+                color: #572EE5;
+            }
+        }
+        
+    }
+    .two{
+        background-color: #F3F5F8;
+        width: 100%;
+        .two-tittle{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            .tendring-gifos-tittle{
+                margin-top: 67px;
+                margin-bottom: 7px;
+                line-height: 30px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
+                font-size: 25px;
+                color: #572EE5;
+            }
+            .tendring-gifos-subtt{
+                width: 360px;
+                height: 21px;
+                margin: auto;
+                margin-bottom: 32px;
+                line-height: 21px;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+                font-size: 17px;
+                color: #000000;
+                span{
+                    display: inline;
+                   }
+            }
+        }
+        .galery{
+            display: flex;
+            overflow: hidden;
+            padding-bottom: 82px;
+            img{
+                margin-left: 22px;
+            }
+        }
+    }
+    
+}

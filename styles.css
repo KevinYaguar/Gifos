@@ -98,7 +98,7 @@
   header .right-side nav .menu {
     display: none;
   }
-  header .right-side #btn-plus {
+  header .right-side img {
     display: none;
   }
   main {
@@ -257,7 +257,7 @@
     color: #572EE5;
     padding: 18px 156px 17.2px;
   }
-  header .fas {
+  header .fa-bars {
     display: none;
   }
   header .big-box {
@@ -324,6 +324,156 @@
     padding: 19px;
     background-color: #fff;
     border: 1px solid #572EE5;
+  }
+  main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  main .one {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 45px;
+  }
+  main .one .one-tittle {
+    width: 934px;
+    height: 100px;
+    text-align: center;
+    margin-bottom: 31px;
+  }
+  main .one .one-tittle span {
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 35px;
+    line-height: 50px;
+    color: #572EE5;
+    text-align: center;
+  }
+  main .one .one-tittle span .gifos-word {
+    color: #5ED7C6;
+    font-size: 35px;
+  }
+  main .one img {
+    width: 399px;
+    height: 190px;
+  }
+  main .one .searcher {
+    border: 1px solid #572EE5;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    border-radius: 27px;
+    padding: 13.8px 20px 13px 55px;
+    width: 551px;
+    height: 50px;
+  }
+  main .one .searcher .fa-search {
+    color: #7555e7;
+  }
+  main .one .searcher input {
+    border: 0;
+    color: #9CAFC3;
+    font-size: 16px;
+  }
+  main .one .trending {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 73px;
+  }
+  main .one .trending .trending-tt {
+    width: 236px;
+    height: 25px;
+    line-height: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #572EE5;
+  }
+  main .one .trending .trending-text {
+    width: 402px;
+    height: 25px;
+    line-height: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #572EE5;
+  }
+  main .two {
+    background-color: #F3F5F8;
+    width: 100%;
+  }
+  main .two .two-tittle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+  main .two .two-tittle .tendring-gifos-tittle {
+    margin-top: 67px;
+    margin-bottom: 7px;
+    line-height: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    color: #572EE5;
+  }
+  main .two .two-tittle .tendring-gifos-subtt {
+    width: 360px;
+    height: 21px;
+    margin: auto;
+    margin-bottom: 32px;
+    line-height: 21px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    color: #000000;
+  }
+  main .two .two-tittle .tendring-gifos-subtt span {
+    display: inline;
+  }
+  main .two .galery {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    padding-bottom: 82px;
+  }
+  main .two .galery img {
+    margin-left: 22px;
   }
 }
 /*# sourceMappingURL=styles.css.map */
