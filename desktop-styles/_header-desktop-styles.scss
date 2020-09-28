@@ -6,10 +6,11 @@
 
 header{
     display: flex;
-    justify-content: space-between;
+    height: 90px;
+    justify-content: space-around;
     align-items: center;
     color: #572EE5;
-    padding: 18px 156px 17.2px;
+    
     .fa-bars{
         display: none;
     }

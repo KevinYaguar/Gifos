@@ -239,6 +239,35 @@
 }
 
 @media (min-width: 801px) {
+  footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    height: 116px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  footer .share {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  footer .share #comparte {
+    line-height: 15px;
+    font-size: 13px;
+  }
+  footer .share .social-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    list-style: none;
+  }
+  footer .share .social-list li {
+    padding-left: 17px;
+  }
   .line {
     height: 5px;
     width: 100%;
@@ -248,14 +277,13 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    height: 90px;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
     color: #572EE5;
-    padding: 18px 156px 17.2px;
   }
   header .fa-bars {
     display: none;
@@ -426,6 +454,16 @@
     color: #572EE5;
   }
   main .two {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     background-color: #F3F5F8;
     width: 100%;
   }

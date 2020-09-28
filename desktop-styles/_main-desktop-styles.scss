@@ -84,6 +84,9 @@ main{
         
     }
     .two{
+        display: flex;
+    flex-direction: column;
+    align-items: center;
         background-color: #F3F5F8;
         width: 100%;
         .two-tittle{

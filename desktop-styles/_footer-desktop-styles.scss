@@ -1,0 +1,20 @@
+footer{
+    display: flex;
+    justify-content: space-around;
+    height: 116px;
+    align-items: center;
+    .share{
+        display: flex;
+        #comparte{
+            line-height: 15px;
+            font-size: 13px;
+        }
+        .social-list{
+            display: flex;
+            list-style: none;
+            li{
+                padding-left: 17px;
+            }
+        }
+    }
+}
