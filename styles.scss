@@ -3,6 +3,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+.oscuro{
+    background-color: #37383C !important;
+    color: #ffffff;
+}
+.oscuro2{
+    background-color: #222326 !important;
+    color: #ffffff !important; 
+}
+
 
 @media (max-width: 800px){
     @import "./mobil-styles/_footer-mobil-styles";

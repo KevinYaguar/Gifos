@@ -107,12 +107,22 @@ main {
                 }
             }
         }
-        .galery{
+        .galery {
             display: flex;
+            align-items: center;
             overflow: hidden;
             padding-bottom: 82px;
-            img{
+
+            img {
+                width: 243px;
+                height: 187px;
                 margin-left: 22px;
+            }
+
+            .flecha {
+                width: 40px;
+                height: 40px;
+                display: none;
             }
         }
     }

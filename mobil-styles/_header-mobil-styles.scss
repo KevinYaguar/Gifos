@@ -44,7 +44,35 @@ header {
             .menu {
                 display: none;
             }
-            
+            .menuOn{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                padding-top: 17px;
+                list-style: none;
+                background-color: rgba(87, 46, 229, 0.9);
+                color: #ffffff;
+                position: absolute;
+                top: 100px;
+                left: 0%;
+                height: 100%;
+                .mini-linea{
+                    width: 41px;
+                    height: 0.1px;
+                    background-color: #ffffff;
+                    margin-bottom: 2.9px;
+                }
+                li{
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 600;
+                    font-size: 15px;
+                    height: 52px;
+                    display: flex;
+                    align-items: center;
+                }
+                
+            }
         }
         img{
             display: none;

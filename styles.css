@@ -5,6 +5,16 @@
           box-sizing: border-box;
 }
 
+.oscuro {
+  background-color: #37383C !important;
+  color: #ffffff;
+}
+
+.oscuro2 {
+  background-color: #222326 !important;
+  color: #ffffff !important;
+}
+
 @media (max-width: 800px) {
   footer {
     display: -webkit-box;
@@ -97,6 +107,45 @@
   }
   header .right-side nav .menu {
     display: none;
+  }
+  header .right-side nav .menuOn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    padding-top: 17px;
+    list-style: none;
+    background-color: rgba(87, 46, 229, 0.9);
+    color: #ffffff;
+    position: absolute;
+    top: 100px;
+    left: 0%;
+    height: 100%;
+  }
+  header .right-side nav .menuOn .mini-linea {
+    width: 41px;
+    height: 0.1px;
+    background-color: #ffffff;
+    margin-bottom: 2.9px;
+  }
+  header .right-side nav .menuOn li {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    height: 52px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   header .right-side img {
     display: none;
@@ -230,11 +279,21 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     overflow: hidden;
     padding-bottom: 82px;
   }
   main .two .galery img {
+    width: 243px;
+    height: 187px;
     margin-left: 22px;
+  }
+  main .two .galery .flecha {
+    width: 40px;
+    height: 40px;
+    display: none;
   }
 }
 
@@ -334,8 +393,6 @@
   header .right-side .menu li {
     padding-right: 40px;
     line-height: 16px;
-  }
-  header .right-side .menu li a {
     text-decoration: none;
     text-transform: uppercase;
     color: #572EE5;
@@ -377,9 +434,9 @@
         -ms-flex-align: center;
             align-items: center;
     margin-bottom: 45px;
+    margin-top: 76px;
   }
   main .one .one-tittle {
-    width: 934px;
     height: 100px;
     text-align: center;
     margin-bottom: 31px;
@@ -405,21 +462,49 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
     border-radius: 27px;
     padding: 13.8px 20px 13px 55px;
     width: 551px;
-    height: 50px;
   }
   main .one .searcher .fa-search {
     color: #7555e7;
   }
   main .one .searcher input {
     border: 0;
+    font-size: 16px;
+    padding-bottom: 10px;
+    width: 90%;
+    border: 0;
+  }
+  main .one .searcher .Lista-Sugerencias {
+    display: none;
+  }
+  main .one .searcher .Lista-Sugerencias input {
+    border: 0;
+  }
+  main .one .searcher .Lista-Activa {
+    width: 100%;
+    border-top: 1px solid #9CAFC3;
+    list-style: none;
+  }
+  main .one .searcher .Lista-Activa input {
+    border: 0;
+  }
+  main .one .searcher .Lista-Activa li {
+    padding-top: 14px;
+    font-family: 'Roboto', sans-serif;
     color: #9CAFC3;
     font-size: 16px;
+    line-height: 19px;
+  }
+  main .one .searcher .Lista-Activa li #buscador {
+    padding-right: 14.6px;
+    color: #9CAFC3;
   }
   main .one .trending {
     display: -webkit-box;
@@ -507,11 +592,23 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     overflow: hidden;
-    padding-bottom: 82px;
+    padding-bottom: 182px;
   }
   main .two .galery img {
+    width: 24.8%;
+    height: 18.1%;
     margin-left: 22px;
+  }
+  main .two .galery .flecha {
+    width: 40px;
+    height: 40px;
   }
 }
 /*# sourceMappingURL=styles.css.map */

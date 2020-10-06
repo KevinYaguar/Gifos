@@ -12,31 +12,34 @@
     <title>GIFOS</title>
 </head>
 
-<body>
+<body id="body">
     <div class="line"></div>
     <header>
         <div class="big-box">
             <div class="logo-box">
-                <div class="logo-box background">
+                <div class="logo-box background" id="logoBack">
                 </div>
 
             </div>
-            <div class="logo-text">
+            <div class="logo-text" id="logoTextBack">
                 <span class="logo">GIFOS</span>
             </div>
         </div>
         <div class="right-side">
             <nav>
                 <i class="fas fa-bars" id="fa-bars"></i>
-                <ul class="menu">
-                    <li><a href="">modo nocturno</a></li>
-                    <li><a href="">favoritos</a></li>
-                    <li><a href="">mis gifos</a></li>
+                <ul class="menu" id="menu">
+                    <li id="dark">Modo Nocturno</li>
+                    <div class="mini-linea"></div>
+                    <li>Favoritos</li>
+                    <div class="mini-linea"></div>
+                    <li>Mis Gifos</li>
+                    <div class="mini-linea"></div>
                 </ul>
             </nav>
-           <img src="./img/button-crear-gifo.svg" alt="button-crear-gifo">
+            <img src="./img/button-crear-gifo.svg" alt="button-crear-gifo">
         </div>
-        
+
     </header>
     <main>
         <section class="one">
@@ -45,29 +48,32 @@
             </div>
             <img src="/assets/ilustra_header.svg" alt="home-image">
             <div class="searcher">
-                <input type="text" name="searcher" id="searcher" placeholder="Busca GIFOS y más">
-                <label for="searcher"><i class="fas fa-search"></i></label>
+                <input type="text" name="searcher" id="searcherInput" placeholder="Busca GIFOS y más">
+                <label for="searcher"><i class="fas fa-search" id="buscador"></i></label>
+                <ul class="Lista-Sugerencias" id="Sugerencias">
+                    
+                </ul>
             </div>
             <div class="trending">
                 <span class="trending-tt">Trending:</span>
                 <span class="trending-text">Reactions, Entertainment, Sports, Stickers, Artists</span>
             </div>
         </section>
-        <section class="two">
+        <section class="two" id="seccionTwo">
             <div class="two-tittle">
-                <span class="tendring-gifos-tittle">Trending GIFOS</span>
-                <div class="tendring-gifos-subtt">
-                    <span class="first-sentence">Mira los últimos </span> <span class="second-sentence">GIFOS de nuestra comunidad.</span>
+                <span class="tendring-gifos-tittle" id="tendring-gifos-tittle">Trending GIFOS</span>
+                <div class="tendring-gifos-subtt" id="tendring-gifos-subtt">
+                    <span class="first-sentence">Mira los últimos </span> <span class="second-sentence">GIFOS de nuestra
+                        comunidad.</span>
                 </div>
 
 
             </div>
-            <div class="galery">
-                <img src="./assets/button-slider-left-hover.svg" alt="">
-                <img src="https://via.placeholder.com/243x187" alt="" id="primer-imagen">
-                <img src="https://via.placeholder.com/243x187" alt="" id="segunda-imagen">
-                <img src="https://via.placeholder.com/243x187" alt="" id="tercer-imagen">
-                <img src="./assets/button-Slider-right-hover.svg" alt="">
+            <div class="galery" id="galery">
+                <img src="./assets/button-slider-left.svg" alt="" class="flecha" id="izquierda">
+                <div id="galeryIn">
+                </div>
+                <img src="./assets/button-Slider-right-hover.svg" alt="" class="flecha derecha">
             </div>
         </section>
     </main>

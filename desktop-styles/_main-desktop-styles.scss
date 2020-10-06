@@ -1,15 +1,17 @@
-main{
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .one {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-bottom: 45px;
+        margin-top: 76px;
 
         .one-tittle {
-            width: 934px;
+            
             height: 100px;
             text-align: center;
             margin-bottom: 31px;
@@ -21,6 +23,7 @@ main{
                 line-height: 50px;
                 color: #572EE5;
                 text-align: center;
+
                 .gifos-word {
                     color: #5ED7C6;
                     font-size: 35px;
@@ -32,16 +35,16 @@ main{
             width: 399px;
             height: 190px;
         }
-        
+
         .searcher {
             border: 1px solid #572EE5;
-            
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             border-radius: 27px;
             padding: 13.8px 20px 13px 55px;
             width: 551px;
-            height: 50px;
+            
 
             .fa-search {
                 color: #7555e7;
@@ -49,8 +52,35 @@ main{
 
             input {
                 border: 0;
-                color: #9CAFC3;
                 font-size: 16px;
+                padding-bottom: 10px;
+                width: 90%;
+                border: 0;
+            }
+            .Lista-Sugerencias{
+                display: none;
+                input{
+                    border: 0;
+                }
+            }
+            .Lista-Activa{
+                width: 100%;
+                border-top: 1px solid #9CAFC3;
+                list-style: none;
+                input{
+                    border: 0;
+                }
+                li{
+                    padding-top: 14px;
+                    font-family: 'Roboto', sans-serif;
+                    color: #9CAFC3;
+                    font-size: 16px;
+                    line-height: 19px;
+                    #buscador{
+                        padding-right: 14.6px;
+                        color: #9CAFC3;
+                    }
+                }
             }
         }
 
@@ -81,20 +111,23 @@ main{
                 color: #572EE5;
             }
         }
-        
+
     }
-    .two{
+
+    .two {
         display: flex;
-    flex-direction: column;
-    align-items: center;
+        flex-direction: column;
+        align-items: center;
         background-color: #F3F5F8;
         width: 100%;
-        .two-tittle{
+
+        .two-tittle {
             display: flex;
             flex-direction: column;
             justify-content: center;
             text-align: center;
-            .tendring-gifos-tittle{
+
+            .tendring-gifos-tittle {
                 margin-top: 67px;
                 margin-bottom: 7px;
                 line-height: 30px;
@@ -103,7 +136,8 @@ main{
                 font-size: 25px;
                 color: #572EE5;
             }
-            .tendring-gifos-subtt{
+
+            .tendring-gifos-subtt {
                 width: 360px;
                 height: 21px;
                 margin: auto;
@@ -113,19 +147,31 @@ main{
                 font-weight: 400;
                 font-size: 17px;
                 color: #000000;
-                span{
+
+                span {
                     display: inline;
-                   }
+                }
             }
         }
-        .galery{
+
+        .galery {
             display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
-            padding-bottom: 82px;
-            img{
+            padding-bottom: 182px;
+
+            img {
+                width: 24.8%;
+                height: 18.1%;
                 margin-left: 22px;
+            }
+
+            .flecha {
+                width: 40px;
+                height: 40px;
             }
         }
     }
-    
+
 }
