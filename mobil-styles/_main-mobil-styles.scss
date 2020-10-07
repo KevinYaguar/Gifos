@@ -55,7 +55,7 @@ main {
             .Lista-Sugerencias{
                 display: none;
                 input{
-                    border: 0;
+                    outline: none;
                 }
             }
             .Lista-Activa{
@@ -63,7 +63,7 @@ main {
                 border-top: 1px solid #9CAFC3;
                 list-style: none;
                 input{
-                    border: 0;
+                    outline: none;
                 }
                 li{
                     padding-top: 14px;
@@ -107,9 +107,16 @@ main {
             }
         }
         .respuesta-de-busqueda{
-            background-color: red;
-            height: 20px;
-            width: 100%;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: center;
+            column-gap: 25px;
+            row-gap: 21px;
+            max-width: 1127px;
+            img{
+                width: 156px;
+                height: 126px;
+            }
         }
     }
     .two{

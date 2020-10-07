@@ -15,6 +15,24 @@
   color: #ffffff !important;
 }
 
+#botonVerMas {
+  width: 127px;
+  height: 50px;
+  color: #572EE5;
+  border: 1px solid #572EE5;
+  border-radius: 25px;
+  padding: 18px 31.5px 16px 32.5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#resultadoTitulo {
+  text-transform: capitalize;
+}
+
 @media (max-width: 800px) {
   footer {
     display: -webkit-box;
@@ -214,7 +232,7 @@
     display: none;
   }
   main .one .searcher .Lista-Sugerencias input {
-    border: 0;
+    outline: none;
   }
   main .one .searcher .Lista-Activa {
     width: 100%;
@@ -222,7 +240,7 @@
     list-style: none;
   }
   main .one .searcher .Lista-Activa input {
-    border: 0;
+    outline: none;
   }
   main .one .searcher .Lista-Activa li {
     padding-top: 14px;
@@ -268,9 +286,22 @@
     color: #572EE5;
   }
   main .one .respuesta-de-busqueda {
-    background-color: red;
-    height: 20px;
-    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: wrap;
+        flex-flow: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-column-gap: 25px;
+            column-gap: 25px;
+    row-gap: 21px;
+    max-width: 1127px;
+  }
+  main .one .respuesta-de-busqueda img {
+    width: 156px;
+    height: 126px;
   }
   main .two {
     background-color: #F3F5F8;
@@ -514,8 +545,8 @@
   main .one .searcher .fa-search {
     color: #7555e7;
   }
-  main .one .searcher input {
-    border: 0;
+  main .one .searcher #searcherInput {
+    outline: none;
     font-size: 16px;
     padding-bottom: 10px;
     width: 90%;
@@ -525,7 +556,7 @@
     display: none;
   }
   main .one .searcher .Lista-Sugerencias input {
-    border: 0;
+    outline: none;
   }
   main .one .searcher .Lista-Activa {
     width: 100%;
@@ -533,7 +564,7 @@
     list-style: none;
   }
   main .one .searcher .Lista-Activa input {
-    border: 0;
+    outline: none;
   }
   main .one .searcher .Lista-Activa li {
     padding-top: 14px;
@@ -579,9 +610,20 @@
     color: #572EE5;
   }
   main .one .respuesta-de-busqueda {
-    background-color: red;
-    height: 20px;
-    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: wrap;
+        flex-flow: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 29px;
+    max-width: 1127px;
+  }
+  main .one .respuesta-de-busqueda img {
+    width: 260px;
+    height: 200px;
   }
   main .two {
     display: -webkit-box;

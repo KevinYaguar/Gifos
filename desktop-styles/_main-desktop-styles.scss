@@ -50,8 +50,8 @@ main {
                 color: #7555e7;
             }
 
-            input {
-                border: 0;
+            #searcherInput {
+                outline: none;
                 font-size: 16px;
                 padding-bottom: 10px;
                 width: 90%;
@@ -60,7 +60,7 @@ main {
             .Lista-Sugerencias{
                 display: none;
                 input{
-                    border: 0;
+                    outline: none;
                 }
             }
             .Lista-Activa{
@@ -68,7 +68,7 @@ main {
                 border-top: 1px solid #9CAFC3;
                 list-style: none;
                 input{
-                    border: 0;
+                    outline: none;
                 }
                 li{
                     padding-top: 14px;
@@ -112,9 +112,15 @@ main {
             }
         }
         .respuesta-de-busqueda{
-            background-color: red;
-            height: 20px;
-            width: 100%;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: center;
+            gap: 29px;
+            max-width: 1127px;
+            img{
+                width: 260px;
+                height: 200px;
+            }
         }
 
     }
