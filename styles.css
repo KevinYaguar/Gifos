@@ -191,19 +191,49 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
     border-radius: 27px;
     padding: 13.8px 20px 13px 55px;
     width: 334px;
-    height: 50px;
   }
   main .one .searcher .fa-search {
     color: #7555e7;
   }
   main .one .searcher input {
     border: 0;
+    font-size: 16px;
+    padding-bottom: 10px;
+    width: 90%;
+    border: 0;
+  }
+  main .one .searcher .Lista-Sugerencias {
+    display: none;
+  }
+  main .one .searcher .Lista-Sugerencias input {
+    border: 0;
+  }
+  main .one .searcher .Lista-Activa {
+    width: 100%;
+    border-top: 1px solid #9CAFC3;
+    list-style: none;
+  }
+  main .one .searcher .Lista-Activa input {
+    border: 0;
+  }
+  main .one .searcher .Lista-Activa li {
+    padding-top: 14px;
+    font-family: 'Roboto', sans-serif;
+    color: #9CAFC3;
+    font-size: 16px;
+    line-height: 19px;
+  }
+  main .one .searcher .Lista-Activa li #buscador {
+    padding-right: 14.6px;
+    color: #9CAFC3;
   }
   main .one .trending {
     display: -webkit-box;
@@ -236,6 +266,11 @@
     font-weight: 500;
     font-size: 14px;
     color: #572EE5;
+  }
+  main .one .respuesta-de-busqueda {
+    background-color: red;
+    height: 20px;
+    width: 100%;
   }
   main .two {
     background-color: #F3F5F8;
@@ -285,7 +320,12 @@
     overflow: hidden;
     padding-bottom: 82px;
   }
-  main .two .galery img {
+  main .two .galery #galeryIn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  main .two .galery #galeryIn img {
     width: 243px;
     height: 187px;
     margin-left: 22px;
@@ -538,6 +578,11 @@
     font-size: 14px;
     color: #572EE5;
   }
+  main .one .respuesta-de-busqueda {
+    background-color: red;
+    height: 20px;
+    width: 100%;
+  }
   main .two {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -600,8 +645,18 @@
             justify-content: center;
     overflow: hidden;
     padding-bottom: 182px;
+    padding-right: 92px;
+    padding-left: 94px;
   }
-  main .two .galery img {
+  main .two .galery #galeryIn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  main .two .galery #galeryIn .imagenes-trending {
     width: 24.8%;
     height: 18.1%;
     margin-left: 22px;

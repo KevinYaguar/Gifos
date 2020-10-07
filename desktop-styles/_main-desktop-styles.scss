@@ -111,6 +111,11 @@ main {
                 color: #572EE5;
             }
         }
+        .respuesta-de-busqueda{
+            background-color: red;
+            height: 20px;
+            width: 100%;
+        }
 
     }
 
@@ -160,11 +165,17 @@ main {
             justify-content: center;
             overflow: hidden;
             padding-bottom: 182px;
+            padding-right: 92px;
+            padding-left: 94px;
 
-            img {
-                width: 24.8%;
-                height: 18.1%;
-                margin-left: 22px;
+            #galeryIn{
+                display: flex;
+                justify-content: space-evenly;
+                .imagenes-trending {
+                    width: 24.8%;
+                    height: 18.1%;
+                    margin-left: 22px;
+                }
             }
 
             .flecha {

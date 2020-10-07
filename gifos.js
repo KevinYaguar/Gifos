@@ -11,26 +11,6 @@ hamburguesa.addEventListener('click', () => {
     menu.classList.toggle('menuOn');
 })
 
-//Fetch imagenes trending
-
-function trending(i) {
-    fetch('https://api.giphy.com/v1/gifs/search?' + ApiKey + '&q=trending&limit=25&offset=0&rating=g&lang=en')
-        .then(res => res.json())
-        .then(json => json.data)
-        .then(gif =>  gif[i].images.original)
-        .then(final => {
-            let galery = document.getElementById('galeryIn');
-            let imgTrend = document.createElement('img');
-            imgTrend.setAttribute('src', final.url);
-            imgTrend.setAttribute('id', 'ultima imagen creada');
-            galery.appendChild(imgTrend);
-            
-        })
-}
-
-for(i=0; i <= 2; i++){
-    trending(i);
-}
 //Hover en flecha izquierda
 let flechaIzquierda = document.getElementById('izquierda');
 flechaIzquierda.addEventListener('mouseover', () => {
@@ -60,7 +40,6 @@ modoOscuro.addEventListener('click', () => {
     searcher.classList.toggle('oscuro')
 })
 
-
 //focus X en el buscador
 
 let buscador = document.getElementById('buscador');
@@ -75,24 +54,39 @@ inputBusqueda.addEventListener('focusout', () => {
 });
 
 
+//Fetch imagenes trending
 
-//Buscador
-let sugerencia = document.createElement('li');
+function trending(i) {
+    fetch('https://api.giphy.com/v1/gifs/search?' + ApiKey + '&q=trending&limit=25&offset=0&rating=g&lang=en')
+        .then(res => res.json())
+        .then(json => json.data)
+        .then(gif =>  gif[i].images.original)
+        .then(final => {
+            let galeryIn = document.getElementById('galeryIn');
+            let imgTrend = document.createElement('img');
+            imgTrend.setAttribute('src', final.url);
+            imgTrend.setAttribute('id', 'ultima imagen creada');
+            imgTrend.setAttribute('class', 'imagenes-trending');
+            galeryIn.appendChild(imgTrend);
+            
+        })
+}
+
+for(i=0; i <= 2; i++){
+    trending(i);
+}
+
+//Buscador codigo reducido
+let sugerencias = document.getElementById('Sugerencias');  // ul sin elementos li
+let sugerencia1 = document.createElement('li');
 let sugerencia2 = document.createElement('li');
 let sugerencia3 = document.createElement('li');
 let sugerencia4 = document.createElement('li');
 let sugerencia5 = document.createElement('li');
 
-let sugerencias = document.getElementById('Sugerencias'); // ul sin elementos li
 inputBusqueda.addEventListener('focus', () => {
     sugerencias.classList.toggle('Lista-Activa');
     sugerencias.classList.toggle('Lista-Sugerencias');
-    sugerencias.appendChild(sugerencia);
-    sugerencias.appendChild(sugerencia2);
-    sugerencias.appendChild(sugerencia3);
-    sugerencias.appendChild(sugerencia4);
-    sugerencias.appendChild(sugerencia5);
-    
 });
 inputBusqueda.addEventListener('focusout', () => {
     sugerencias.classList.toggle('Lista-Activa');
@@ -104,21 +98,40 @@ async function obetenerSugerencias (busquedaIngresada){
     let response = await fetch(url);
     let json = await response.json();
     let data = await json.data;
-    for(i=0 ; i < data.length; i++){
-        sugerencia.innerHTML = '<i class="fas fa-search" id="buscador">' + data[0].name + '</i>';
-        sugerencia2.innerHTML = '<i class="fas fa-search" id="buscador">' + data[1].name + '</i>';
-        sugerencia3.innerHTML = '<i class="fas fa-search" id="buscador">' + data[2].name + '</i>';
-        sugerencia4.innerHTML = '<i class="fas fa-search" id="buscador">' + data[3].name + '</i>';
-        sugerencia5.innerHTML = '<i class="fas fa-search" id="buscador">' + data[4].name + '</i>';
-    }
-    
+    sugerencia1.innerHTML = '<i class="fas fa-search" id="buscador">' + data[0].name + '</i>';
+    sugerencias.appendChild(sugerencia1);
+    sugerencia2.innerHTML = '<i class="fas fa-search" id="buscador">' + data[1].name + '</i>';
+    sugerencias.appendChild(sugerencia2);
+    sugerencia3.innerHTML = '<i class="fas fa-search" id="buscador">' + data[2].name + '</i>';
+    sugerencias.appendChild(sugerencia3);
+    sugerencia4.innerHTML = '<i class="fas fa-search" id="buscador">' + data[3].name + '</i>';
+    sugerencias.appendChild(sugerencia4);
+    sugerencia5.innerHTML = '<i class="fas fa-search" id="buscador">' + data[4].name + '</i>';
+    sugerencias.appendChild(sugerencia5);
 }
 inputBusqueda.addEventListener('keyup', (busqueda)=>{
         busqueda = inputBusqueda.value;
         obetenerSugerencias(busqueda);
-
 } )
 
+async function ObtenerGifsSolicitados(){
+    let url = 'https://api.giphy.com/v1/gifs/search?' + ApiKey + '&q=trending&limit=25&offset=0&rating=g&lang=en';
+    let res = await fetch(url);
+    let json = await res.json();
+    let data = await json.data;
+    let gif = await data[1].images.original;
+    let bloqueDeRespuestas = document.getElementById('respuesta-de-busqueda');
+    let respuestaGif = document.createElement('img');
+    respuestaGif.setAttribute('src', gif.url);
+    respuestaGif.setAttribute('id', 'imagen de respuesta en ObtenerGifsSolicitados');
+    bloqueDeRespuestas.appendChild(respuestaGif);
+    
+}
 
-
+inputBusqueda.addEventListener('keyup', (event)=> {
+    if (event.keyCode === 13){
+        ObtenerGifsSolicitados();
+        }
+        
+})
 

@@ -34,11 +34,12 @@ main {
         .searcher {
             border: 1px solid #572EE5;
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             border-radius: 27px;
             padding: 13.8px 20px 13px 55px;
             width: 334px;
-            height: 50px;
+            
 
             .fa-search {
                 color: #7555e7;
@@ -46,6 +47,35 @@ main {
 
             input {
                 border: 0;
+                font-size: 16px;
+                padding-bottom: 10px;
+                width: 90%;
+                border: 0;
+            }
+            .Lista-Sugerencias{
+                display: none;
+                input{
+                    border: 0;
+                }
+            }
+            .Lista-Activa{
+                width: 100%;
+                border-top: 1px solid #9CAFC3;
+                list-style: none;
+                input{
+                    border: 0;
+                }
+                li{
+                    padding-top: 14px;
+                    font-family: 'Roboto', sans-serif;
+                    color: #9CAFC3;
+                    font-size: 16px;
+                    line-height: 19px;
+                    #buscador{
+                        padding-right: 14.6px;
+                        color: #9CAFC3;
+                    }
+                }
             }
         }
 
@@ -75,6 +105,11 @@ main {
                 font-size: 14px;
                 color: #572EE5;
             }
+        }
+        .respuesta-de-busqueda{
+            background-color: red;
+            height: 20px;
+            width: 100%;
         }
     }
     .two{
@@ -107,17 +142,22 @@ main {
                 }
             }
         }
+        
         .galery {
             display: flex;
             align-items: center;
             overflow: hidden;
             padding-bottom: 82px;
 
-            img {
-                width: 243px;
-                height: 187px;
-                margin-left: 22px;
+            #galeryIn{
+                display: flex;
+                img {
+                    width: 243px;
+                    height: 187px;
+                    margin-left: 22px;
+                }
             }
+            
 
             .flecha {
                 width: 40px;
