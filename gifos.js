@@ -128,14 +128,23 @@ let botonVerMas = document.createElement('button');
 var bloqueDeRespuestas = document.getElementById('respuesta-de-busqueda');
 
 
-async function ObtenerGifsSolicitados(GifsSolicitados, desde, hasta) {
-    let url = 'https://api.giphy.com/v1/gifs/search?' + ApiKey + '&q=' + GifsSolicitados + '&limit=120&offset=0&rating=g&lang=en';
+async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
+    let url =`https://api.giphy.com/v1/gifs/search?${ApiKey}&q=${GifsSolicitados}&limit=12&offset=${offset}&rating=g&lang=en`;
     let res = await fetch(url);
     let json = await res.json();
-    let data = await json.data;
+    //let data = await json.data;
+    //console.log(data);
+    for(let data of json.data){
+        let gif = data.images.original;
+        let respuestaGif = document.createElement('img');
+        respuestaGif.setAttribute('src', gif.url);
+        respuestaGif.setAttribute('id', 'imagen de respuesta en ObtenerGifsSolicitados');
+        bloqueDeRespuestas.appendChild(respuestaGif);
+    }
+    insertarBotonVerMas();
     //insertar 12 gifs
     
-    for (i = desde; i < hasta; i++) {
+    /*for (i = 0; i < 12; i++) {
         let gif = await data[i].images.original;
         let respuestaGif = document.createElement('img');
         respuestaGif.setAttribute('src', gif.url);
@@ -143,8 +152,9 @@ async function ObtenerGifsSolicitados(GifsSolicitados, desde, hasta) {
         bloqueDeRespuestas.appendChild(respuestaGif);
     }
     insertarBotonVerMas();
-        
+        */
 }
+// Funcion del boton VerMas
 
 function insertarBotonVerMas (){
     //boton ver mas
@@ -163,9 +173,13 @@ function cambiarTitulo (solicitado){
     desaparecerSubtitulo.innerText= '';
     desaparecerSubtitulo.style.height = '60px';
 }
+
+
+
+// Evento ENTER para imprimir los gifs en el DOM
 inputBusqueda.addEventListener('keyup', (event) => {
     if (event.keyCode === 13) {
-            ObtenerGifsSolicitados(inputBusqueda.value, 0, 12);
+            ObtenerGifsSolicitados(inputBusqueda.value, 0);
             cambiarTitulo(inputBusqueda.value);
             }
 })
@@ -193,10 +207,12 @@ sugerencia5.addEventListener('click', () => {
             cambiarTitulo(sugerencia5.innerText);
 })
 
-// VER MAS GIFS ----incompleto!!----
+// VER MAS GIFS ----incompleto!!---- Solo imprime del 13 a 25. 
+let pagOffset = 0;
 
 botonVerMas.addEventListener('click', () => {
-    ObtenerGifsSolicitados(inputBusqueda.value, 13, 25);
+    pagOffset = pagOffset + 12;
+    ObtenerGifsSolicitados(inputBusqueda.value, pagOffset);
     
 })
 
