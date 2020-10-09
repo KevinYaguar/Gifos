@@ -1,24 +1,16 @@
 //ApiKey
 const ApiKey = 'api_key=1yVSM9oVX3z5nlo213gmodWDvoRxttsM';
 
-//Menu Hamburguesa a X
-let hamburguesa = document.getElementById('fa-bars');
-let menu = document.getElementById('menu');
+//Menu Hamburguesa a X en la version Mobile.
+let hamburguesa = document.getElementById('fa-bars'); // Elemento i (menu hamburguesa) de Fontawesome.
+let menu = document.getElementById('menu'); // ul del header. (modo o., favoritos, mis gifs) 
+
 hamburguesa.addEventListener('click', () => {
     hamburguesa.classList.toggle('fa-times');
     hamburguesa.classList.toggle('fa-bars');
     menu.classList.toggle('menu');
     menu.classList.toggle('menuOn');
 })
-
-//Hover en flecha izquierda
-let flechaIzquierda = document.getElementById('izquierda');
-flechaIzquierda.addEventListener('mouseover', () => {
-    flechaIzquierda.setAttribute('src', './assets/button-slider-left-hover.svg');
-});
-flechaIzquierda.addEventListener('mouseout', () => {
-    flechaIzquierda.setAttribute('src', './assets/button-slider-left.svg');
-});
 
 // Modo Oscuro
 let modoOscuro = document.getElementById('dark'); //"Modo escuro"
@@ -28,7 +20,7 @@ let logoTextBack = document.getElementById('logoTextBack'); //Texto del logo
 let seccionTwo = document.getElementById('seccionTwo'); //Seccion dos del main
 let tendringGifosTittle = document.getElementById('tendring-gifos-tittle'); // Titulo de la seccion dos (Trending)
 let tendringGifosSubtt = document.getElementById('tendring-gifos-subtt'); //Subtitulo de la seccion dos (Trending)
-let searcher = document.getElementById('searcher') //Buscador
+let searcher = document.getElementById('searcher') //Buscador(div contenedor)
 
 modoOscuro.addEventListener('click', () => {
     cuerpoWeb.classList.toggle('oscuro');
@@ -37,24 +29,25 @@ modoOscuro.addEventListener('click', () => {
     seccionTwo.classList.toggle('oscuro2');
     tendringGifosTittle.classList.toggle('oscuro2');
     tendringGifosSubtt.classList.toggle('oscuro2');
-    searcher.classList.toggle('oscuro')
+    inputBusqueda.classList.toggle('oscuro');
 })
+// input del buscador
+let inputBusqueda = document.getElementById('searcherInput'); 
 
 //focus X en el buscador
 
-let buscador = document.getElementById('buscador');
-let inputBusqueda = document.getElementById('searcherInput');
+let buscador = document.getElementById('buscador'); // elemento i de fontawesome. En primera instancia es fa-bars. 
+
 inputBusqueda.addEventListener('focus', () => {
     buscador.classList.toggle('fa-times');
-    inputBusqueda.style.border = "0";
-
 });
 inputBusqueda.addEventListener('focusout', () => {
     buscador.classList.toggle('fa-times');
 });
+
 // Click on X para input.value vacío. y para plegar lista de sugerencias
 
-buscador.addEventListener('click', () =>{
+buscador.addEventListener('click', () => {
     inputBusqueda.value = '';
     sugerencias.classList.toggle('Lista-Activa');
     sugerencias.classList.toggle('Lista-Sugerencias');
@@ -101,20 +94,15 @@ async function obetenerSugerencias(busquedaIngresada) {
     let response = await fetch(url);
     let json = await response.json();
     let data = await json.data;
-    var resultado0 = data[0].name;
-    var resultado1 = data[1].name;
-    var resultado2 = data[2].name;
-    var resultado3 = data[3].name;
-    var resultado4 = data[4].name;
-    sugerencia1.innerHTML = `<i class="fas fa-search" id="buscador">${resultado0}</i>`;
+    sugerencia1.innerHTML = `<i class="fas fa-search" id="buscador">${data[0].name}</i>`;
     sugerencias.appendChild(sugerencia1);
-    sugerencia2.innerHTML = `<i class="fas fa-search" id="buscador">${resultado1}</i>`;
+    sugerencia2.innerHTML = `<i class="fas fa-search" id="buscador">${data[1].name}</i>`;
     sugerencias.appendChild(sugerencia2);
-    sugerencia3.innerHTML = `<i class="fas fa-search" id="buscador">${resultado2}</i>`;
+    sugerencia3.innerHTML = `<i class="fas fa-search" id="buscador">${data[2].name}</i>`;
     sugerencias.appendChild(sugerencia3);
-    sugerencia4.innerHTML = `<i class="fas fa-search" id="buscador">${resultado3}</i>`;
+    sugerencia4.innerHTML = `<i class="fas fa-search" id="buscador">${data[3].name}</i>`;
     sugerencias.appendChild(sugerencia4);
-    sugerencia5.innerHTML = `<i class="fas fa-search" id="buscador">${resultado4}</i>`;
+    sugerencia5.innerHTML = `<i class="fas fa-search" id="buscador">${data[4].name}</i>`;
     sugerencias.appendChild(sugerencia5);
 }
 inputBusqueda.addEventListener('keyup', (busqueda) => {
@@ -129,40 +117,40 @@ var bloqueDeRespuestas = document.getElementById('respuesta-de-busqueda');
 
 
 async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
-    let url =`https://api.giphy.com/v1/gifs/search?${ApiKey}&q=${GifsSolicitados}&limit=12&offset=${offset}&rating=g&lang=en`;
+    let url = `https://api.giphy.com/v1/gifs/search?${ApiKey}&q=${GifsSolicitados}&limit=12&offset=${offset}&rating=g&lang=en`;
     let res = await fetch(url);
     let json = await res.json();
     //let data = await json.data;
     //console.log(data);
-    for(let data of json.data){
+    for (let data of json.data) {
         let gif = data.images.original;
         let respuestaGif = document.createElement('img');
         respuestaGif.setAttribute('src', gif.url);
         respuestaGif.setAttribute('id', 'imagen de respuesta en ObtenerGifsSolicitados');
-        bloqueDeRespuestas.appendChild(respuestaGif);
+        let bloqueParaCadaImagen = document.createElement('div');
+        let bloqueParaCadaImageninferior = document.createElement('div');
+        bloqueParaCadaImageninferior.id = 'bloque-inferior';
+
+        bloqueParaCadaImagen.id = 'bloque-para-cada-imagen';
+
+        bloqueParaCadaImagen.appendChild(bloqueParaCadaImageninferior);
+        bloqueParaCadaImageninferior.appendChild(respuestaGif);
+
+        bloqueDeRespuestas.appendChild(bloqueParaCadaImagen);
     }
     insertarBotonVerMas();
-    //insertar 12 gifs
-    
-    /*for (i = 0; i < 12; i++) {
-        let gif = await data[i].images.original;
-        let respuestaGif = document.createElement('img');
-        respuestaGif.setAttribute('src', gif.url);
-        respuestaGif.setAttribute('id', 'imagen de respuesta en ObtenerGifsSolicitados');
-        bloqueDeRespuestas.appendChild(respuestaGif);
-    }
-    insertarBotonVerMas();
-        */
+
 }
 // Funcion del boton VerMas
 
-function insertarBotonVerMas (){
+function insertarBotonVerMas() {
     //boton ver mas
     botonVerMas.innerText = 'ver más';
     bloqueDeRespuestas.appendChild(botonVerMas);
     botonVerMas.id = 'botonVerMas';
 }
-function cambiarTitulo (solicitado){
+
+function cambiarTitulo(solicitado) {
     //Eliminar sub del trending y cambiar el texto a lo buscado
     let resultadoTitulo = document.getElementById('trending-tt');
     resultadoTitulo.innerText = solicitado;
@@ -170,7 +158,7 @@ function cambiarTitulo (solicitado){
     resultadoTitulo.style.fontSize = '35px';
     resultadoTitulo.style.lineHeight = '30px';
     let desaparecerSubtitulo = document.getElementById('trending-text');
-    desaparecerSubtitulo.innerText= '';
+    desaparecerSubtitulo.innerText = '';
     desaparecerSubtitulo.style.height = '60px';
 }
 
@@ -179,41 +167,49 @@ function cambiarTitulo (solicitado){
 // Evento ENTER para imprimir los gifs en el DOM
 inputBusqueda.addEventListener('keyup', (event) => {
     if (event.keyCode === 13) {
-            ObtenerGifsSolicitados(inputBusqueda.value, 0);
-            cambiarTitulo(inputBusqueda.value);
-            }
+        ObtenerGifsSolicitados(inputBusqueda.value, 0);
+        cambiarTitulo(inputBusqueda.value);
+    }
 })
 
-// imprimir resultados seleccionados de sugerencia en el dom
+// Imprimir resultados seleccionados de sugerencia con click en el DOM
 
 sugerencia1.addEventListener('click', () => {
     ObtenerGifsSolicitados(sugerencia1.innerText, 0, 12);
-            cambiarTitulo(sugerencia1.innerText);
+    cambiarTitulo(sugerencia1.innerText);
 })
 sugerencia2.addEventListener('click', () => {
     ObtenerGifsSolicitados(sugerencia2.innerText, 0, 12);
-            cambiarTitulo(sugerencia2.innerText);
+    cambiarTitulo(sugerencia2.innerText);
 })
 sugerencia3.addEventListener('click', () => {
     ObtenerGifsSolicitados(sugerencia3.innerText, 0, 12);
-            cambiarTitulo(sugerencia3.innerText);
+    cambiarTitulo(sugerencia3.innerText);
 })
 sugerencia4.addEventListener('click', () => {
     ObtenerGifsSolicitados(sugerencia4.innerText, 0, 12);
-            cambiarTitulo(sugerencia4.innerText);
+    cambiarTitulo(sugerencia4.innerText);
 })
 sugerencia5.addEventListener('click', () => {
     ObtenerGifsSolicitados(sugerencia5.innerText, 0, 12);
-            cambiarTitulo(sugerencia5.innerText);
+    cambiarTitulo(sugerencia5.innerText);
 })
 
-// VER MAS GIFS ----incompleto!!---- Solo imprime del 13 a 25. 
-let pagOffset = 0;
+// VER MAS GIFS 
+let pagOffset = 0; //Variable que determina el offset del llamado a la API. En el evento VerMas aumentará su valor de   12 en 12.
 
 botonVerMas.addEventListener('click', () => {
     pagOffset = pagOffset + 12;
     ObtenerGifsSolicitados(inputBusqueda.value, pagOffset);
-    
 })
 
 
+
+//Hover en flecha izquierda
+let flechaIzquierda = document.getElementById('izquierda');
+flechaIzquierda.addEventListener('mouseover', () => {
+    flechaIzquierda.setAttribute('src', './assets/button-slider-left-hover.svg');
+});
+flechaIzquierda.addEventListener('mouseout', () => {
+    flechaIzquierda.setAttribute('src', './assets/button-slider-left.svg');
+});

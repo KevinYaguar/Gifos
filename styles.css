@@ -33,6 +33,12 @@
   text-transform: capitalize;
 }
 
+#bloque-para-cada-imagen :hover {
+  background: #572EE5;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+
 @media (max-width: 800px) {
   footer {
     display: -webkit-box;
@@ -222,7 +228,7 @@
     color: #7555e7;
   }
   main .one .searcher input {
-    border: 0;
+    outline: none;
     font-size: 16px;
     padding-bottom: 10px;
     width: 90%;
