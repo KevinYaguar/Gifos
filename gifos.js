@@ -112,31 +112,58 @@ inputBusqueda.addEventListener('keyup', (busqueda) => {
 
 //Mostrar resultados gifs solicitados impresos en el DOM
 
-let botonVerMas = document.createElement('button');
-var bloqueDeRespuestas = document.getElementById('respuesta-de-busqueda');
+let botonVerMas = document.createElement('button'); // BOTON VER MAS
+var bloqueDeRespuestas = document.getElementById('respuesta-de-busqueda'); //Contenedor de todos los gifs a imprimir
 
 
 async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
     let url = `https://api.giphy.com/v1/gifs/search?${ApiKey}&q=${GifsSolicitados}&limit=12&offset=${offset}&rating=g&lang=en`;
     let res = await fetch(url);
     let json = await res.json();
-    //let data = await json.data;
-    //console.log(data);
+    
     for (let data of json.data) {
         let gif = data.images.original;
         let respuestaGif = document.createElement('img');
         respuestaGif.setAttribute('src', gif.url);
         respuestaGif.setAttribute('id', 'imagen de respuesta en ObtenerGifsSolicitados');
-        let bloqueParaCadaImagen = document.createElement('div');
-        let bloqueParaCadaImageninferior = document.createElement('div');
-        bloqueParaCadaImageninferior.id = 'bloque-inferior';
+
+        let bloqueParaCadaImagen = document.createElement('div'); //En este div sucederan los eventos mouseover
+        let bloqueParaCadaImagenInferior = document.createElement('div');// En este se imprimiran los gifs
 
         bloqueParaCadaImagen.id = 'bloque-para-cada-imagen';
-
-        bloqueParaCadaImagen.appendChild(bloqueParaCadaImageninferior);
-        bloqueParaCadaImageninferior.appendChild(respuestaGif);
+        bloqueParaCadaImagenInferior.id = 'bloque-inferior';
 
         bloqueDeRespuestas.appendChild(bloqueParaCadaImagen);
+        bloqueParaCadaImagen.appendChild(bloqueParaCadaImagenInferior);
+        bloqueParaCadaImagenInferior.appendChild(respuestaGif);
+
+        //Variables y eventos mouseover
+        let btnFav = document.createElement('div'); //Boton Favoritos
+        let heartFav = document.createElement('img'); //Corazon (fontawesome)
+        
+        heartFav.setAttribute('src', './img/icon-fav.svg');
+        btnFav.classList.toggle('btnFav');
+        btnFav.appendChild(heartFav);
+        bloqueParaCadaImagen.appendChild(btnFav);
+        btnFav.style.display = 'none';
+        btnFav.style.overflow = 'hidden';
+
+        bloqueParaCadaImagen.addEventListener('mouseover', () =>{
+            btnFav.style.display = 'flex';
+        });
+        btnFav.addEventListener('mouseover', () =>{
+            btnFav.style.background = '#ffffff';
+            btnFav.style.opacity = '1';
+        });
+        heartFav.addEventListener('click', () => {
+            heartFav.setAttribute('src', './img/icon-fav-active.svg');
+            heartFav.id = 'heartFav';       
+        });
+        bloqueParaCadaImagen.addEventListener('mouseout', () => {
+            btnFav.style.display = 'none';
+        });
+        
+
     }
     insertarBotonVerMas();
 
@@ -213,3 +240,4 @@ flechaIzquierda.addEventListener('mouseover', () => {
 flechaIzquierda.addEventListener('mouseout', () => {
     flechaIzquierda.setAttribute('src', './assets/button-slider-left.svg');
 });
+

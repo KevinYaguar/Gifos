@@ -37,6 +37,32 @@
     }
 }
 
+.btnFav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    position: relative;
+    bottom: 182px;
+    left: 164px;
+    opacity: 0.7;
+    img{
+        width: 32px;
+        height: 32px;
+    }
+}
+#heartFav{
+    width: 18px;
+    height: 15.9px;
+    background-color: #ffffff;
+}
+.btnFavOut{
+    display: none;
+}
+
 @media (max-width: 800px){
     @import "./mobil-styles/_footer-mobil-styles";
     @import "./mobil-styles/_header-mobil-styles";
