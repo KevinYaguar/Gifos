@@ -139,29 +139,37 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
 
         //Variables y eventos mouseover
         let btnFav = document.createElement('div'); //Boton Favoritos
+        btnFav.classList.toggle('btnFavOut'); //por defecto display:none.
         let heartFav = document.createElement('img'); //Corazon (fontawesome)
-        
         heartFav.setAttribute('src', './img/icon-fav.svg');
-        btnFav.classList.toggle('btnFav');
-        btnFav.appendChild(heartFav);
+        heartFav.id = 'heartFav';
+        
         bloqueParaCadaImagen.appendChild(btnFav);
-        btnFav.style.display = 'none';
-        btnFav.style.overflow = 'hidden';
+        btnFav.appendChild(heartFav);
 
-        bloqueParaCadaImagen.addEventListener('mouseover', () =>{
-            btnFav.style.display = 'flex';
+        bloqueParaCadaImagen.classList.add('cuadro');
+        bloqueParaCadaImagenInferior.classList.add('cuadro');
+
+        //Eventos mouseover
+        bloqueParaCadaImagen.addEventListener('mouseover', ()=>{
+            bloqueParaCadaImagen.classList.toggle('bloque-para-cada-imagen-inferior-hover');
+            bloqueParaCadaImagen.style.background = '#572EE5';
+            bloqueParaCadaImagenInferior.style.opacity = '0.6';
+
+            btnFav.classList.toggle('btnFavOut'); 
+            btnFav.classList.toggle('btnFav');             
         });
-        btnFav.addEventListener('mouseover', () =>{
-            btnFav.style.background = '#ffffff';
-            btnFav.style.opacity = '1';
+        
+        //Eventos mouseout
+        bloqueParaCadaImagen.addEventListener('mouseout', ()=>{
+            bloqueParaCadaImagen.classList.toggle('bloque-para-cada-imagen-inferior-hover');
+            bloqueParaCadaImagen.style.background = '';
+            bloqueParaCadaImagenInferior.style.opacity = '';
+            
+            btnFav.classList.toggle('btnFav');
+            btnFav.classList.toggle('btnFavOut');
         });
-        heartFav.addEventListener('click', () => {
-            heartFav.setAttribute('src', './img/icon-fav-active.svg');
-            heartFav.id = 'heartFav';       
-        });
-        bloqueParaCadaImagen.addEventListener('mouseout', () => {
-            btnFav.style.display = 'none';
-        });
+        
         
 
     }

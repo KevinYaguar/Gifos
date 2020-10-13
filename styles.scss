@@ -28,17 +28,14 @@
     text-transform: capitalize;
 }
 
-#bloque-para-cada-imagen{
-    :hover{
-        background: #572EE5;
-        
-        opacity: 0.6;
-        filter: alpha(opacity=60);
-    }
+.cuadro{
+    width: 260px;
+    height: 200px;
+    overflow: hidden;
 }
-
+//.bloque-para-cada-imagen-inferior-hover{}
 .btnFav{
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
     background: #FFFFFF;
@@ -55,6 +52,7 @@
     }
 }
 #heartFav{
+    display: block;
     width: 18px;
     height: 15.9px;
     background-color: #ffffff;
