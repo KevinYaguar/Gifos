@@ -30,7 +30,7 @@ function trending(i) {
             imgTrend.setAttribute('id', 'imgTrend');
 
             galeryIn.appendChild(imgTrend);
-
+            
             //cards
             let bloqueParaCadaImagen = document.createElement('div'); //En este div sucederan los eventos mouseover
             let bloqueParaCadaImagenInferior = document.createElement('div'); // En este se imprimiran los gifs
@@ -159,38 +159,26 @@ function trending(i) {
 
 
             //Efecto carrusel flecha derecha
-            bloqueParaCadaImagen.style.left = '0px';
+            let inicio = 0;
             flechaDerecha.addEventListener('click', () => {
-                switch (bloqueParaCadaImagen.style.left) {
-                    case '0px':
-                        bloqueParaCadaImagen.style.left = '-100%';
-                        break;
-                    case '-100%':
-                        bloqueParaCadaImagen.style.left = '-200%';
-                        break;
-                    case '-200%':
-                        bloqueParaCadaImagen.style.left = '-300%';
-                        break;
-                    case '-300%':
-                        bloqueParaCadaImagen.style.left = '0px';
-                        break;
+                if(inicio > -4246 && inicio <= 0){
+                    inicio = inicio - 386; 
+                    bloqueParaCadaImagen.style.left = inicio + 'px';
+                } 
+                if(inicio <= -4246){
+                    inicio = 0; 
+                    bloqueParaCadaImagen.style.left = inicio + 'px';
                 }
             });
             //Efecto carrusel flecha derecha
             flechaIzquierda.addEventListener('click', () => {
-                switch (bloqueParaCadaImagen.style.left) {
-                    case '0px':
-                        bloqueParaCadaImagen.style.left = '-300%';
-                        break;
-                    case '-300%':
-                        bloqueParaCadaImagen.style.left = '-200%';
-                        break;
-                    case '-200%':
-                        bloqueParaCadaImagen.style.left = '-100%';
-                        break;
-                    case '-100%':
-                        bloqueParaCadaImagen.style.left = '0px';
-                        break;
+                if(inicio == 0){
+                    inicio = -3860; 
+                    bloqueParaCadaImagen.style.left = inicio + 'px';
+                }
+                if(inicio >= -3860 && inicio < 0){
+                    inicio = inicio + 386; 
+                    bloqueParaCadaImagen.style.left = inicio + 'px';
                 }
             });
         });
