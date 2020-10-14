@@ -39,7 +39,7 @@
   overflow: hidden;
 }
 
-.btnFav {
+.btn-gif-card {
   display: block;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -52,21 +52,53 @@
   height: 32px;
   border-radius: 6px;
   position: relative;
-  bottom: 182px;
-  left: 164px;
+  bottom: 190px;
+  left: 133px;
   opacity: 0.7;
+  float: left;
+  margin-right: 10px;
 }
 
-.btnFav img {
+.btn-gif-card img {
   width: 32px;
   height: 32px;
 }
 
-#heartFav {
+.btn-gif-card-trending {
   display: block;
-  width: 18px;
-  height: 15.9px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #FFFFFF;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  position: relative;
+  bottom: 260px;
+  left: 223px;
+  opacity: 0.7;
+  float: left;
+  margin-right: 10px;
+}
+
+.btn-gif-card-trending img {
+  width: 32px;
+  height: 32px;
+}
+
+#img-btn-gif-card {
+  display: block;
+  width: 32px;
+  height: 32px;
   background-color: #ffffff;
+  border-radius: 6px;
+}
+
+.btn-fav-active {
+  padding: 8px 7px;
 }
 
 .btnFavOut {
@@ -725,23 +757,24 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    overflow: hidden;
     padding-bottom: 182px;
     padding-right: 92px;
     padding-left: 94px;
+    width: 100%;
   }
   main .two .galery #galeryIn {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
+    overflow: hidden;
+    margin-left: 22px;
+    margin-right: 22px;
   }
   main .two .galery #galeryIn .imagenes-trending {
-    width: 24.8%;
-    height: 18.1%;
-    margin-left: 22px;
+    width: 357px;
+    height: 275px;
+    margin-right: 29px;
+    position: relative;
   }
   main .two .galery .flecha {
     width: 40px;

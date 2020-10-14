@@ -34,7 +34,7 @@
     overflow: hidden;
 }
 //.bloque-para-cada-imagen-inferior-hover{}
-.btnFav{
+.btn-gif-card{
     display: block;
     align-items: center;
     justify-content: center;
@@ -43,19 +43,44 @@
     height: 32px;
     border-radius: 6px;
     position: relative;
-    bottom: 182px;
-    left: 164px;
+    bottom: 190px;
+    left: 133px;
     opacity: 0.7;
+    float: left;
+    margin-right: 10px;
     img{
         width: 32px;
         height: 32px;
     }
 }
-#heartFav{
+.btn-gif-card-trending{
     display: block;
-    width: 18px;
-    height: 15.9px;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    position: relative;
+    bottom: 260px;
+    left: 223px;
+    opacity: 0.7;
+    float: left;
+    margin-right: 10px;
+    img{
+        width: 32px;
+        height: 32px;
+    }
+}
+#img-btn-gif-card{
+    display: block;
+    width: 32px;
+    height: 32px;
     background-color: #ffffff;
+    border-radius: 6px;
+}
+.btn-fav-active{
+    padding: 8px 7px;
 }
 .btnFavOut{
     display: none;

@@ -169,18 +169,23 @@ main {
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
             padding-bottom: 182px;
             padding-right: 92px;
             padding-left: 94px;
-
+            width: 100%;
+            
             #galeryIn{
                 display: flex;
-                justify-content: space-evenly;
+                overflow: hidden;
+                margin-left: 22px;
+                margin-right: 22px;
+                
                 .imagenes-trending {
-                    width: 24.8%;
-                    height: 18.1%;
-                    margin-left: 22px;
+                    width: 357px;
+                    height: 275px;
+                    margin-right: 29px;
+                    position: relative;
+                    
                 }
             }
 
