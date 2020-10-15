@@ -156,8 +156,6 @@ function trending(i) {
                 }
             });
 
-
-
             //Efecto carrusel flecha derecha
             let inicio = 0;
             flechaDerecha.addEventListener('click', () => {

@@ -120,7 +120,7 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
         //Variables y eventos mouseover
         let btnFav = document.createElement('div'); //Boton Favoritos.
         btnFav.classList.toggle('btnFavOut'); //por defecto display:none.
-        let heartFav = document.createElement('img'); //imagen Corazon.
+        var heartFav = document.createElement('img'); //imagen Corazon.
         heartFav.setAttribute('src', './img/icon-fav.svg');
         
         //mantener activ
