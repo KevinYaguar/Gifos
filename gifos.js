@@ -226,10 +226,15 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
         });
         //ACTIVE sobre FAV
         heartFav.addEventListener('click', () => {
+            
             if (heartFav.src = './img/icon-fav.svg') {
                 heartFav.setAttribute('src', './img/icon-fav-active.svg');
                 heartFav.classList.add('btn-fav-active');
+                sessionStorage.setItem('prueba', respuestaGif);
             } 
+            
+            sessionStorage.setItem('gif', respuestaGif.getAttribute('src'));
+            
         });
     }
     insertarBotonVerMas();

@@ -52,13 +52,20 @@ favoritos.addEventListener('click', () => {
     sinContendioTexto.style.fontWeight = '700';
     sinContendioTexto.style.lineHeight = '33px';
 
-    
+
+    let objetoPrueba = sessionStorage.getItem('prueba');
+
+    sinContendioTexto.innerHTML = objetoPrueba; //insercion de prueba. 
 
 
     // inserciones
     cajaSinContenido.appendChild(sinContendioImg); //insertar img de sin contenido en la caja sin contenido
     cajaSinContenido.appendChild(sinContendioTexto); //insertar texto de sin contenido en la caja sin contenido
+   
+    console.log(objetoPrueba); //insercion objeto prueba
+    console.log(typeof(objetoPrueba));
 
+   
     seccionFavoritos.appendChild(corazonFavoritos); //insertar corazon en la seccion
     seccionFavoritos.appendChild(tituloFavoritos); //insertar titulo en la seccion
     seccionFavoritos.appendChild(cajaFavoritos); //insertar caja de favoritos
