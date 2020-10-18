@@ -10,7 +10,7 @@ hamburguesa.addEventListener('click', () => {
     hamburguesa.classList.toggle('fa-bars');
     menu.classList.toggle('menu');
     menu.classList.toggle('menuOn');
-})
+}, false);
 
 // Modo Oscuro
 let modoOscuro = document.getElementById('dark'); //"Modo escuro"
@@ -30,7 +30,7 @@ modoOscuro.addEventListener('click', () => {
     tendringGifosTittle.classList.toggle('oscuro2');
     tendringGifosSubtt.classList.toggle('oscuro2');
     inputBusqueda.classList.toggle('oscuro');
-})
+}, false);
 // input del buscador
 let inputBusqueda = document.getElementById('searcherInput');
 
@@ -40,10 +40,10 @@ let buscador = document.getElementById('buscador'); // elemento i de fontawesome
 
 inputBusqueda.addEventListener('focus', () => {
     buscador.classList.toggle('fa-times');
-});
+}, false);
 inputBusqueda.addEventListener('focusout', () => {
     buscador.classList.toggle('fa-times');
-});
+}, false);
 
 // Click on X para input.value vacío. y para plegar lista de sugerencias
 
@@ -51,7 +51,7 @@ buscador.addEventListener('click', () => {
     inputBusqueda.value = '';
     sugerencias.classList.toggle('Lista-Activa');
     sugerencias.classList.toggle('Lista-Sugerencias');
-})
+}, false);
 
 
 
@@ -66,8 +66,9 @@ let sugerencia5 = document.createElement('li');
 inputBusqueda.addEventListener('focus', () => {
     sugerencias.classList.toggle('Lista-Activa');
     sugerencias.classList.toggle('Lista-Sugerencias');
-});
+}, false);
 
+let arrayGifsParaStorage = []; //Array donde se acumularas los gifs guardados en favoritos
 
 async function obetenerSugerencias(busquedaIngresada) {
     let url = 'https://api.giphy.com/v1/gifs/search/tags?' + ApiKey + '&q=' + busquedaIngresada;
@@ -88,12 +89,18 @@ async function obetenerSugerencias(busquedaIngresada) {
 inputBusqueda.addEventListener('keyup', (busqueda) => {
     busqueda = inputBusqueda.value;
     obetenerSugerencias(busqueda);
-})
+}, false);
 
 //Mostrar resultados gifs solicitados impresos en el DOM
 
 let botonVerMas = document.createElement('button'); // BOTON VER MAS
 var bloqueDeRespuestas = document.getElementById('respuesta-de-busqueda'); //Contenedor de todos los gifs a imprimir
+
+
+var corazonNormal = './img/icon-fav.svg';
+var corazonHover = './img/icon-fav-hover.svg';
+var corazonActive = './img/icon-fav-active.svg';
+var corazonActiveActive = 'http://127.0.0.1:5500/img/icon-fav-active.svg';
 
 
 async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
@@ -120,11 +127,9 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
         //Variables y eventos mouseover
         let btnFav = document.createElement('div'); //Boton Favoritos.
         btnFav.classList.toggle('btnFavOut'); //por defecto display:none.
-        var heartFav = document.createElement('img'); //imagen Corazon.
-        heartFav.setAttribute('src', './img/icon-fav.svg');
-        
-        //mantener activ
-        
+        let heartFav = document.createElement('img'); //imagen Corazon.
+        heartFav.setAttribute('src', corazonNormal);
+
         heartFav.id = 'img-btn-gif-card';
 
         let btnDownload = document.createElement('div'); //Boton Descargar.
@@ -152,6 +157,35 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
         bloqueParaCadaImagen.classList.add('cuadro');
         bloqueParaCadaImagenInferior.classList.add('cuadro');
 
+        //funciones de normal, hover y click del src del heart fav.
+        function corazonNormalFunction () {
+            if(heartFav.src == corazonActiveActive){
+                heartFav.setAttribute('src', corazonActive);
+            } else{
+                heartFav.setAttribute('src', corazonNormal);
+            }
+        }
+        function corazonHoverFunction(){
+            if(heartFav.src == corazonActiveActive){
+                heartFav.setAttribute('src', corazonActive);
+            } else{
+                heartFav.setAttribute('src', corazonHover);
+            }
+        }
+        function corazonActiveFunction(){
+            if(heartFav.src == corazonActiveActive){
+                heartFav.setAttribute('src', corazonHover);
+            } else{
+                heartFav.setAttribute('src', corazonActive);
+            }
+        }
+        function guardarEnSssionStorage () {
+            sessionStorage.setItem('gifsbuscados', respuestaGif);
+            arrayGifsParaStorage.push(respuestaGif.getAttribute('src'));
+            arrayGifsParaStorage.join(',')
+            sessionStorage.setItem('arrayGifs', arrayGifsParaStorage);
+            console.log(arrayGifsParaStorage);
+        }
         //Eventos mouseover sobre el GIF
         bloqueParaCadaImagen.addEventListener('mouseover', () => {
             bloqueParaCadaImagen.classList.toggle('bloque-para-cada-imagen-inferior-hover');
@@ -159,33 +193,34 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
             bloqueParaCadaImagenInferior.style.opacity = '0.6';
 
             //Eventos mouseover sobre el boton FAV
+
             btnFav.classList.toggle('btnFavOut');
             btnFav.classList.toggle('btn-gif-card');
-            heartFav.addEventListener('mouseover', () => {
-                if(heartFav.src != './img/icon-fav-active.svg'){
-                    heartFav.setAttribute('src', './img/icon-fav-hover.svg');
-                    heartFav.classList.remove('btn-fav-active');
-                }
-                if(heartFav.src == './img/icon-fav-active.svg'){
-                    heartFav.setAttribute('src', './img/icon-fav-active.svg');
-                } 
-            });
+
+
+            heartFav.addEventListener('mouseover', corazonHoverFunction, false);
+            heartFav.addEventListener('mouseout', corazonNormalFunction, false);
+            heartFav.addEventListener('click', corazonActiveFunction, false);
+            heartFav.addEventListener('click', guardarEnSssionStorage, false);
+            
+            
 
             //Eventos mouseover sobre el boton DOWNLOAD
             btnDownload.classList.toggle('btnFavOut');
             btnDownload.classList.toggle('btn-gif-card');
             btnDownload.addEventListener('mouseover', () => {
                 downloadImg.setAttribute('src', './img/icon-download-hover.svg');
-            });
+            }, false);
 
             //Eventos mouseover sobre el boton EXPAND
             btnExpand.classList.toggle('btnFavOut');
             btnExpand.classList.toggle('btn-gif-card');
             btnExpand.addEventListener('mouseover', () => {
                 expandImg.setAttribute('src', './img/icon-max-hover.svg');
-            });
-        });
+            }, false);
+        }, false);
         
+       
         //Eventos mouseout sobre el GIF
         bloqueParaCadaImagen.addEventListener('mouseout', () => {
             bloqueParaCadaImagen.classList.toggle('bloque-para-cada-imagen-inferior-hover');
@@ -195,47 +230,27 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
             //Eventos mouseout sobre el boton FAV
             btnFav.classList.toggle('btn-gif-card');
             btnFav.classList.toggle('btnFavOut');
+
             
-            heartFav.addEventListener('mouseout', () => {
-                if(heartFav.src != './img/icon-fav.svg'){
-                    heartFav.setAttribute('src', './img/icon-fav.svg');
-                    heartFav.classList.remove('btn-fav-active');
-                }
-            });
-            heartFav.addEventListener('mouseout', ()=>{
-                if(heartFav.src == './img/icon-fav-active.svg'){
-                    heartFav.setAttribute('src', './img/icon-fav-active.svg');
-                    heartFav.classList.remove('btn-fav-active');
-                } 
-            });
             
+
+
 
             //Eventos mouseout sobre el boton DOWNLOAD
             btnDownload.classList.toggle('btn-gif-card');
             btnDownload.classList.toggle('btnFavOut');
             btnDownload.addEventListener('mouseout', () => {
                 downloadImg.setAttribute('src', './img/icon-download.svg');
-            });
+            }, false);
 
             //Eventos mouseout sobre el boton EXPAND
             btnExpand.classList.toggle('btn-gif-card');
             btnExpand.classList.toggle('btnFavOut');
             btnExpand.addEventListener('mouseout', () => {
                 expandImg.setAttribute('src', './img/icon-max-normal.svg');
-            });
-        });
-        //ACTIVE sobre FAV
-        heartFav.addEventListener('click', () => {
-            
-            if (heartFav.src = './img/icon-fav.svg') {
-                heartFav.setAttribute('src', './img/icon-fav-active.svg');
-                heartFav.classList.add('btn-fav-active');
-                sessionStorage.setItem('prueba', respuestaGif);
-            } 
-            
-            sessionStorage.setItem('gif', respuestaGif.getAttribute('src'));
-            
-        });
+            }, false);
+        }, false);
+
     }
     insertarBotonVerMas();
 }
@@ -269,30 +284,30 @@ inputBusqueda.addEventListener('keyup', (event) => {
         ObtenerGifsSolicitados(inputBusqueda.value, 0);
         cambiarTitulo(inputBusqueda.value);
     }
-})
+}, false);
 
 // Imprimir resultados seleccionados de sugerencia con click en el DOM
 
 sugerencia1.addEventListener('click', () => {
     ObtenerGifsSolicitados(sugerencia1.innerText, 0, 12);
     cambiarTitulo(sugerencia1.innerText);
-})
+}, false);
 sugerencia2.addEventListener('click', () => {
     ObtenerGifsSolicitados(sugerencia2.innerText, 0, 12);
     cambiarTitulo(sugerencia2.innerText);
-})
+}, false);
 sugerencia3.addEventListener('click', () => {
     ObtenerGifsSolicitados(sugerencia3.innerText, 0, 12);
     cambiarTitulo(sugerencia3.innerText);
-})
+}, false);
 sugerencia4.addEventListener('click', () => {
     ObtenerGifsSolicitados(sugerencia4.innerText, 0, 12);
     cambiarTitulo(sugerencia4.innerText);
-})
+}, false);
 sugerencia5.addEventListener('click', () => {
     ObtenerGifsSolicitados(sugerencia5.innerText, 0, 12);
     cambiarTitulo(sugerencia5.innerText);
-})
+}, false);
 
 // VER MAS GIFS 
 let pagOffset = 0; //Variable que determina el offset del llamado a la API. En el evento VerMas aumentará su valor de   12 en 12.
@@ -300,7 +315,4 @@ let pagOffset = 0; //Variable que determina el offset del llamado a la API. En e
 botonVerMas.addEventListener('click', () => {
     pagOffset = pagOffset + 12;
     ObtenerGifsSolicitados(inputBusqueda.value, pagOffset);
-})
-
-
-
+}, false);

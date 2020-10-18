@@ -18,6 +18,7 @@ flechaDerecha.addEventListener('mouseout', () => {
 
 //Fetch imagenes trending
 
+
 function trending(i) {
     fetch('https://api.giphy.com/v1/gifs/search?' + ApiKey + '&q=trending&limit=25&offset=0&rating=g&lang=en')
         .then(res => res.json())
@@ -30,7 +31,7 @@ function trending(i) {
             imgTrend.setAttribute('id', 'imgTrend');
 
             galeryIn.appendChild(imgTrend);
-            
+
             //cards
             let bloqueParaCadaImagen = document.createElement('div'); //En este div sucederan los eventos mouseover
             let bloqueParaCadaImagenInferior = document.createElement('div'); // En este se imprimiran los gifs
@@ -159,28 +160,41 @@ function trending(i) {
             //Efecto carrusel flecha derecha
             let inicio = 0;
             flechaDerecha.addEventListener('click', () => {
-                if(inicio > -4246 && inicio <= 0){
-                    inicio = inicio - 386; 
+                if (inicio > -4246 && inicio <= 0) {
+                    inicio = inicio - 386;
                     bloqueParaCadaImagen.style.left = inicio + 'px';
-                } 
-                if(inicio <= -4246){
-                    inicio = 0; 
+                }
+                if (inicio <= -4246) {
+                    inicio = 0;
                     bloqueParaCadaImagen.style.left = inicio + 'px';
                 }
             });
             //Efecto carrusel flecha derecha
             flechaIzquierda.addEventListener('click', () => {
-                if(inicio == 0){
-                    inicio = -3860; 
+                if (inicio == 0) {
+                    inicio = -3860;
                     bloqueParaCadaImagen.style.left = inicio + 'px';
                 }
-                if(inicio >= -3860 && inicio < 0){
-                    inicio = inicio + 386; 
+                if (inicio >= -3860 && inicio < 0) {
+                    inicio = inicio + 386;
                     bloqueParaCadaImagen.style.left = inicio + 'px';
                 }
             });
+            
+            //ACTIVE sobre FAV
+            heartFav.addEventListener('click', () => {
+                if (heartFav.src = './img/icon-fav.svg') {
+                    heartFav.setAttribute('src', './img/icon-fav-active.svg');
+                    heartFav.classList.add('btn-fav-active');
+                    sessionStorage.setItem('prueba', imgTrend);
+                }
+                sessionStorage.setItem('prueba', imgTrend);
+                arrayGifsParaStorage.push(imgTrend.getAttribute('src'));
+                arrayGifsParaStorage.join(',')
+                sessionStorage.setItem('arrayGifs', arrayGifsParaStorage);
+                console.log(arrayGifsParaStorage);
+            }, false);
         });
-
 }
 
 for (i = 0; i <= 11; i++) {

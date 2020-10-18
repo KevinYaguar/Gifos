@@ -197,3 +197,44 @@ main {
     }
 
 }
+.clase-display-none{
+    display: none;
+}
+
+.seccion-favoritos{
+    order: 1;
+    display: flex;
+    flex-direction: column;
+}
+.titulo-favoritos{
+    color: #572EE5;
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 30px;
+    text-align: center;
+}
+
+.caja-de-favoritos{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Caja-Sin-Contenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 109.3px;
+    padding-top: 137px;
+}
+.imagen-sin-contenido{
+    width: 150px;
+    height: 151px;
+}
+.texto-sin-contenido{
+    text-align: center;
+    color: #50E3C2;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 33px;
+}
