@@ -16,9 +16,14 @@ flechaDerecha.addEventListener('mouseout', () => {
     flechaDerecha.setAttribute('src', './assets/button-slider-right.svg');
 });
 
+
+//Corazones
+var corazonNormal = './img/icon-fav.svg';
+var corazonHover = './img/icon-fav-hover.svg';
+var corazonActive = './img/icon-fav-active.svg';
+var corazonActiveActive = 'http://127.0.0.1:5500/img/icon-fav-active.svg';
+
 //Fetch imagenes trending
-
-
 function trending(i) {
     fetch('https://api.giphy.com/v1/gifs/search?' + ApiKey + '&q=trending&limit=25&offset=0&rating=g&lang=en')
         .then(res => res.json())
@@ -38,6 +43,8 @@ function trending(i) {
 
             bloqueParaCadaImagen.id = 'bloque-para-cada-imagen';
             bloqueParaCadaImagenInferior.id = 'bloque-inferior';
+
+
             bloqueParaCadaImagen.setAttribute('class', 'imagenes-trending');
             bloqueParaCadaImagenInferior.setAttribute('class', 'imagenes-trending');
             imgTrend.setAttribute('class', 'imagenes-trending');
@@ -51,8 +58,6 @@ function trending(i) {
             btnFav.classList.toggle('btnFavOut'); //por defecto display:none.
             let heartFav = document.createElement('img'); //imagen Corazon.
             heartFav.setAttribute('src', './img/icon-fav.svg');
-
-            //mantener activ
 
             heartFav.id = 'btn-gif-card-trending';
 
@@ -77,87 +82,96 @@ function trending(i) {
             bloqueParaCadaImagen.appendChild(btnExpand); //Insercion del boton en el bloque EXPAND
             btnExpand.appendChild(expandImg); //Insercion de la imagen en el boton
 
+            //funciones de normal, hover y click del src del heart fav.
+            function corazonNormalFunction() {
+                if (heartFav.src == corazonActiveActive) {
+                    heartFav.setAttribute('src', corazonActive);
+                    heartFav.style.padding = '7px';
+                } else {
+                    heartFav.setAttribute('src', corazonNormal);
+                    heartFav.style.padding = '';
+                }
+            }
+
+            function corazonHoverFunction() {
+                if (heartFav.src == corazonActiveActive) {
+                    heartFav.setAttribute('src', corazonActive);
+                    heartFav.style.padding = '7px';
+                } else {
+                    heartFav.setAttribute('src', corazonHover);
+                    heartFav.style.padding = '';
+                }
+            }
+
+            function corazonActiveFunction() {
+                if (heartFav.src == corazonActiveActive) {
+                    heartFav.setAttribute('src', corazonHover);
+                    heartFav.style.padding = '';
+                } else {
+                    heartFav.setAttribute('src', corazonActive);
+                    heartFav.style.padding = '7px';
+                }
+            }
+
+            function guardarEnSssionStorage() {
+                sessionStorage.setItem('gifsbuscados', imgTrend);
+                arrayGifsParaStorage.push(imgTrend.getAttribute('src'));
+                arrayGifsParaStorage.join(',')
+                sessionStorage.setItem('arrayGifs', arrayGifsParaStorage);
+                console.log(arrayGifsParaStorage);
+            }
+
             //Eventos mouseover sobre el GIF
             bloqueParaCadaImagen.addEventListener('mouseover', () => {
-                bloqueParaCadaImagen.classList.toggle('bloque-para-cada-imagen-inferior-hover');
-                bloqueParaCadaImagen.style.background = '#572EE5';
-                bloqueParaCadaImagenInferior.style.opacity = '0.6';
+                bloqueParaCadaImagen.classList.toggle('bloque-para-cada-imagen-hover-background');
+                bloqueParaCadaImagenInferior.classList.toggle('opacity-cero-dot-six');
 
-                //Eventos mouseover sobre el boton FAV
                 btnFav.classList.toggle('btnFavOut');
                 btnFav.classList.toggle('btn-gif-card-trending');
-                heartFav.addEventListener('mouseover', () => {
-                    if (heartFav.src != './img/icon-fav-active.svg') {
-                        heartFav.setAttribute('src', './img/icon-fav-hover.svg');
-                        heartFav.classList.remove('btn-fav-active');
-                    }
-                    if (heartFav.src == './img/icon-fav-active.svg') {
-                        heartFav.setAttribute('src', './img/icon-fav-active.svg');
-                    }
-                });
+
+                //Eventos mouseover/out y click sobre el boton FAV
+                heartFav.addEventListener('mouseover', corazonHoverFunction, false);
+                heartFav.addEventListener('mouseout', corazonNormalFunction, false);
+                heartFav.addEventListener('click', corazonActiveFunction, false);
+                heartFav.addEventListener('click', guardarEnSssionStorage, false);
 
                 //Eventos mouseover sobre el boton DOWNLOAD
                 btnDownload.classList.toggle('btnFavOut');
                 btnDownload.classList.toggle('btn-gif-card-trending');
                 btnDownload.addEventListener('mouseover', () => {
                     downloadImg.setAttribute('src', './img/icon-download-hover.svg');
-                });
+                }, false);
 
                 //Eventos mouseover sobre el boton EXPAND
                 btnExpand.classList.toggle('btnFavOut');
                 btnExpand.classList.toggle('btn-gif-card-trending');
                 btnExpand.addEventListener('mouseover', () => {
                     expandImg.setAttribute('src', './img/icon-max-hover.svg');
-                });
-            });
+                }, false);
+            }, false);
+
+            //Eventos mouseout sobre el boton DOWNLOAD
+            btnDownload.addEventListener('mouseout', () => {
+                downloadImg.setAttribute('src', './img/icon-download.svg');
+            }, false);
+            //Eventos mouseout sobre el boton EXPAND
+            btnExpand.addEventListener('mouseout', () => {
+                expandImg.setAttribute('src', './img/icon-max-normal.svg');
+            }, false);
 
             //Eventos mouseout sobre el GIF
             bloqueParaCadaImagen.addEventListener('mouseout', () => {
-                bloqueParaCadaImagen.classList.toggle('bloque-para-cada-imagen-inferior-hover');
-                bloqueParaCadaImagen.style.background = '';
-                bloqueParaCadaImagenInferior.style.opacity = '';
-
-                //Eventos mouseout sobre el boton FAV
+                bloqueParaCadaImagen.classList.toggle('bloque-para-cada-imagen-hover-background');
+                bloqueParaCadaImagenInferior.classList.toggle('opacity-cero-dot-six');
                 btnFav.classList.toggle('btn-gif-card-trending');
                 btnFav.classList.toggle('btnFavOut');
-
-                heartFav.addEventListener('mouseout', () => {
-                    if (heartFav.src != './img/icon-fav.svg') {
-                        heartFav.setAttribute('src', './img/icon-fav.svg');
-                        heartFav.classList.remove('btn-fav-active');
-                    }
-                });
-                heartFav.addEventListener('mouseout', () => {
-                    if (heartFav.src == './img/icon-fav-active.svg') {
-                        heartFav.setAttribute('src', './img/icon-fav-active.svg');
-                        heartFav.classList.remove('btn-fav-active');
-                    }
-                });
-
-
-                //Eventos mouseout sobre el boton DOWNLOAD
                 btnDownload.classList.toggle('btn-gif-card-trending');
                 btnDownload.classList.toggle('btnFavOut');
-                btnDownload.addEventListener('mouseout', () => {
-                    downloadImg.setAttribute('src', './img/icon-download.svg');
-                });
-
-                //Eventos mouseout sobre el boton EXPAND
                 btnExpand.classList.toggle('btn-gif-card-trending');
                 btnExpand.classList.toggle('btnFavOut');
-                btnExpand.addEventListener('mouseout', () => {
-                    expandImg.setAttribute('src', './img/icon-max-normal.svg');
-                });
-            });
-            //ACTIVE sobre FAV
-            heartFav.addEventListener('click', () => {
-                if (heartFav.src = './img/icon-fav.svg') {
-                    heartFav.setAttribute('src', './img/icon-fav-active.svg');
-                    heartFav.classList.add('btn-fav-active');
-                }
             });
 
-            //Efecto carrusel flecha derecha
+            //Efecto carrusel flecha derecha //Solo funciona con 12 Gifs de la medida actual
             let inicio = 0;
             flechaDerecha.addEventListener('click', () => {
                 if (inicio > -4246 && inicio <= 0) {
@@ -180,20 +194,6 @@ function trending(i) {
                     bloqueParaCadaImagen.style.left = inicio + 'px';
                 }
             });
-            
-            //ACTIVE sobre FAV
-            heartFav.addEventListener('click', () => {
-                if (heartFav.src = './img/icon-fav.svg') {
-                    heartFav.setAttribute('src', './img/icon-fav-active.svg');
-                    heartFav.classList.add('btn-fav-active');
-                    sessionStorage.setItem('prueba', imgTrend);
-                }
-                sessionStorage.setItem('prueba', imgTrend);
-                arrayGifsParaStorage.push(imgTrend.getAttribute('src'));
-                arrayGifsParaStorage.join(',')
-                sessionStorage.setItem('arrayGifs', arrayGifsParaStorage);
-                console.log(arrayGifsParaStorage);
-            }, false);
         });
 }
 

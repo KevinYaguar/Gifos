@@ -67,15 +67,15 @@ async function obetenerSugerencias(busquedaIngresada) {
     let response = await fetch(url);
     let json = await response.json();
     let data = await json.data;
-    sugerencia1.innerHTML = `<i class="fas fa-search" id="buscador">${data[0].name}</i>`;
+    sugerencia1.innerHTML = `<i class="fas fa-search" id="buscador"></i>${data[0].name}`;
     sugerencias.appendChild(sugerencia1);
-    sugerencia2.innerHTML = `<i class="fas fa-search" id="buscador">${data[1].name}</i>`;
+    sugerencia2.innerHTML = `<i class="fas fa-search" id="buscador"></i>${data[1].name}`;
     sugerencias.appendChild(sugerencia2);
-    sugerencia3.innerHTML = `<i class="fas fa-search" id="buscador">${data[2].name}</i>`;
+    sugerencia3.innerHTML = `<i class="fas fa-search" id="buscador"></i>${data[2].name}`;
     sugerencias.appendChild(sugerencia3);
-    sugerencia4.innerHTML = `<i class="fas fa-search" id="buscador">${data[3].name}</i>`;
+    sugerencia4.innerHTML = `<i class="fas fa-search" id="buscador"></i>${data[3].name}`;
     sugerencias.appendChild(sugerencia4);
-    sugerencia5.innerHTML = `<i class="fas fa-search" id="buscador">${data[4].name}</i>`;
+    sugerencia5.innerHTML = `<i class="fas fa-search" id="buscador"></i>${data[4].name}`;
     sugerencias.appendChild(sugerencia5);
 }
 inputBusqueda.addEventListener('keyup', (busqueda) => {
