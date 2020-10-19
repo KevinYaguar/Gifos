@@ -39,6 +39,14 @@
   overflow: hidden;
 }
 
+.bloque-para-cada-imagen-hover-background {
+  background: #572EE5;
+}
+
+.opacity-cero-dot-six {
+  opacity: 0.6;
+}
+
 .btn-gif-card {
   display: block;
   -webkit-box-align: center;
