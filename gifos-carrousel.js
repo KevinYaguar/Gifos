@@ -194,6 +194,7 @@ function trending(i) {
                     bloqueParaCadaImagen.style.left = inicio + 'px';
                 }
             });
+            
         });
 }
 

@@ -113,6 +113,11 @@
   display: none;
 }
 
+.gifs-guardados-favoritos {
+  width: 260px;
+  height: 200px;
+}
+
 @media (max-width: 800px) {
   footer {
     display: -webkit-box;
@@ -494,6 +499,7 @@
         -ms-flex-align: center;
             align-items: center;
     color: #572EE5;
+    text-decoration: none;
   }
   header .fa-bars {
     display: none;
@@ -514,6 +520,7 @@
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     line-height: 21px;
+    color: #572EE5;
   }
   header .logo-box {
     width: 59.1px;

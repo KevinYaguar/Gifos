@@ -14,27 +14,28 @@ header {
     .fa-bars {
         display: none;
     }
+        text-decoration: none;
+        .big-box {
 
-    .big-box {
-
-        width: 60px;
-
-        .logo-text {
-            position: relative;
-            margin-top: -32px;
-            margin-left: 12px;
-            background: white;
-            width: 55.3px;
-            height: 20.1px;
-
-            span {
-                font-weight: 900;
-                font-family: 'Roboto', sans-serif;
-                font-size: 18px;
-                line-height: 21px;
+            width: 60px;
+    
+            .logo-text {
+                position: relative;
+                margin-top: -32px;
+                margin-left: 12px;
+                background: white;
+                width: 55.3px;
+                height: 20.1px;
+    
+                span {
+                    font-weight: 900;
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 18px;
+                    line-height: 21px;
+                    color: #572EE5;
+                }
             }
         }
-    }
 
     .logo-box {
         width: 59.1px;

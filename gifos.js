@@ -159,6 +159,7 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
                 heartFav.style.padding = '';
             }
         }
+
         function corazonHoverFunction() {
             if (heartFav.src == corazonActiveActive) {
                 heartFav.setAttribute('src', corazonActive);
@@ -168,6 +169,7 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
                 heartFav.style.padding = '';
             }
         }
+
         function corazonActiveFunction() {
             if (heartFav.src == corazonActiveActive) {
                 heartFav.setAttribute('src', corazonHover);
@@ -177,6 +179,7 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
                 heartFav.style.padding = '7px';
             }
         }
+
         function guardarEnSssionStorage() {
             sessionStorage.setItem('gifsbuscados', respuestaGif);
             arrayGifsParaStorage.push(respuestaGif.getAttribute('src'));
@@ -244,6 +247,7 @@ function insertarBotonVerMas() {
     bloqueDeRespuestas.appendChild(botonVerMas);
     botonVerMas.id = 'botonVerMas';
 }
+
 function cambiarTitulo(solicitado) {
     //Eliminar sub del trending y cambiar el texto a lo buscado
     let resultadoTitulo = document.getElementById('trending-tt');
