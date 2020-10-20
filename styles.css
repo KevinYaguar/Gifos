@@ -118,6 +118,20 @@
   height: 200px;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
+.contenedor-del-boton-ver-mas {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 @media (max-width: 800px) {
   footer {
     display: -webkit-box;
@@ -822,8 +836,12 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    -ms-flex-flow: wrap;
+        flex-flow: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 29px;
   }
   .Caja-Sin-Contenido {
     display: -webkit-box;

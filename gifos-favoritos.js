@@ -46,27 +46,36 @@ let main = document.querySelector('main');
 main.appendChild(seccionFavoritos); // insercion de la seccion en el main
 
 
-
 //Ocultar seccion de busqueda (section one). Crea al mismo tiempo la seccion favoritos. 
 favoritos.addEventListener('click', () => {
     seccionOne.classList.toggle('one');
     seccionOne.classList.toggle('clase-display-none');
     seccionFavoritos.classList.toggle('seccion-favoritos');
-    
+
+    //boton ver mas
+    function insertarBotonVerMas() {
+        botonVerMas.innerText = 'ver más';
+        botonVerMas.id = 'botonVerMas';
+        let contenedorDeBotonVerMas = document.createElement('div');
+        contenedorDeBotonVerMas.classList.add('contenedor-del-boton-ver-mas');
+        contenedorDeBotonVerMas.appendChild(botonVerMas);
+        cajaFavoritos.appendChild(contenedorDeBotonVerMas);
+    }
+
     if (arrayGifsParaStorage.length == 0) {
         cajaSinContenido.classList.toggle('Caja-Sin-Contenido')
-    }else {
+    } else {
         cajaSinContenido.classList.toggle('clase-display-none');
+        //este while vacia la caja cada vez que se vuelve a favoritos antes de llenarla de vuelta
         while (cajaFavoritos.firstChild) {
             cajaFavoritos.removeChild(cajaFavoritos.firstChild);
-          }
-        for (i = 0; i <= arrayGifsParaStorage.length -1; i++) {
-            let gifsFavGuardados = document.createElement('img');
-            gifsFavGuardados.setAttribute('src', arrayGifsParaStorage[i]);
-            gifsFavGuardados.classList.add('gifs-guardados-favoritos');
-            cajaFavoritos.appendChild(gifsFavGuardados);
-            
         }
+        for (i = 0; i <= arrayGifsParaStorage.length - 1; i++) {      
+                let gifsFavGuardados = document.createElement('img');
+                gifsFavGuardados.setAttribute('src', arrayGifsParaStorage[i]);
+                gifsFavGuardados.classList.add('gifs-guardados-favoritos');
+                cajaFavoritos.appendChild(gifsFavGuardados);
+        }
+        insertarBotonVerMas();
     }
 })
-

@@ -23,6 +23,7 @@
     line-height: 16px;
     font-weight: bold;
     text-transform: uppercase;
+    
 }
 #resultadoTitulo{
     text-transform: capitalize;
@@ -95,8 +96,14 @@
     width: 260px;
     height: 200px;
 }
-
-
+.pointer{
+    cursor: pointer;
+}
+.contenedor-del-boton-ver-mas{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 @media (max-width: 800px){
     @import "./mobil-styles/_footer-mobil-styles";

@@ -85,7 +85,7 @@ inputBusqueda.addEventListener('keyup', (busqueda) => {
 
 //Mostrar resultados gifs solicitados impresos en el DOM
 
-let botonVerMas = document.createElement('button'); // BOTON VER MAS
+
 var bloqueDeRespuestas = document.getElementById('respuesta-de-busqueda'); //Contenedor de todos los gifs a imprimir
 
 //Corazones
@@ -93,6 +93,18 @@ var corazonNormal = './img/icon-fav.svg';
 var corazonHover = './img/icon-fav-hover.svg';
 var corazonActive = './img/icon-fav-active.svg';
 var corazonActiveActive = 'http://127.0.0.1:5500/img/icon-fav-active.svg';
+// Funcion del boton VerMas
+let botonVerMas = document.createElement('button'); 
+function insertarBotonVerMas() {
+    //boton ver mas
+    botonVerMas.innerText = 'ver más';
+    botonVerMas.id = 'botonVerMas';
+    let contenedorDeBotonVerMas = document.createElement('div');
+    contenedorDeBotonVerMas.classList.add('contenedor-del-boton-ver-mas');
+    contenedorDeBotonVerMas.appendChild(botonVerMas);
+    bloqueDeRespuestas.appendChild(contenedorDeBotonVerMas);
+    
+}
 
 //Llamada a la API
 async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
@@ -240,13 +252,6 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
     insertarBotonVerMas();
 }
 
-// Funcion del boton VerMas
-function insertarBotonVerMas() {
-    //boton ver mas
-    botonVerMas.innerText = 'ver más';
-    bloqueDeRespuestas.appendChild(botonVerMas);
-    botonVerMas.id = 'botonVerMas';
-}
 
 function cambiarTitulo(solicitado) {
     //Eliminar sub del trending y cambiar el texto a lo buscado
