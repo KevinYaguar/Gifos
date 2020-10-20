@@ -1,9 +1,4 @@
-//ApiKey
-const ApiKey = 'api_key=1yVSM9oVX3z5nlo213gmodWDvoRxttsM';
-
 //Menu Hamburguesa a X en la version Mobile.
-let hamburguesa = document.getElementById('fa-bars'); // Elemento i (menu hamburguesa) de Fontawesome.
-let menu = document.getElementById('menu'); // ul del header. (modo o., favoritos, mis gifs) 
 hamburguesa.addEventListener('click', () => {
     hamburguesa.classList.toggle('fa-times');
     hamburguesa.classList.toggle('fa-bars');
@@ -12,14 +7,6 @@ hamburguesa.addEventListener('click', () => {
 }, false);
 
 // Modo Oscuro
-let modoOscuro = document.getElementById('dark'); //"Modo escuro"
-let cuerpoWeb = document.getElementById('body'); //Body Completo
-let logoBack = document.getElementById('logoBack'); //Backgorund del logo
-let logoTextBack = document.getElementById('logoTextBack'); //Texto del logo
-let seccionTwo = document.getElementById('seccionTwo'); //Seccion dos del main
-let tendringGifosTittle = document.getElementById('tendring-gifos-tittle'); // Titulo de la seccion dos (Trending)
-let tendringGifosSubtt = document.getElementById('tendring-gifos-subtt'); //Subtitulo de la seccion dos (Trending)
-let searcher = document.getElementById('searcher') //Buscador(div contenedor)
 modoOscuro.addEventListener('click', () => {
     cuerpoWeb.classList.toggle('oscuro');
     logoBack.classList.toggle('oscuro');
@@ -28,12 +15,17 @@ modoOscuro.addEventListener('click', () => {
     tendringGifosTittle.classList.toggle('oscuro2');
     tendringGifosSubtt.classList.toggle('oscuro2');
     inputBusqueda.classList.toggle('oscuro');
+    lines[0].classList.toggle('negro');
+    lines[1].classList.toggle('negro');
+    searcher.classList.toggle('border-blanco');
+    for (i = 0; i < spanColorNormal.length; i++) {
+        spanColorNormal[i].classList.toggle('blanco');
+    }
+
 }, false);
-// input del buscador
-let inputBusqueda = document.getElementById('searcherInput');
 
 //focus X en el buscador
-let buscador = document.getElementById('buscador'); // elemento i de fontawesome. En primera instancia es fa-bars. 
+
 inputBusqueda.addEventListener('focus', () => {
     buscador.classList.toggle('fa-times');
 }, false);
@@ -48,20 +40,28 @@ buscador.addEventListener('click', () => {
     sugerencias.classList.toggle('Lista-Sugerencias');
 }, false);
 
-//Buscador codigo reducido
-let sugerencias = document.getElementById('Sugerencias'); // ul sin elementos li
-let sugerencia1 = document.createElement('li');
-let sugerencia2 = document.createElement('li');
-let sugerencia3 = document.createElement('li');
-let sugerencia4 = document.createElement('li');
-let sugerencia5 = document.createElement('li');
+//Buscador: focus, sugerencias y mostrar resultados gifs solicitados impresos en el DOM.
+// Boton Ver mas: clase y uso.
+//Cambio del titulo por el lo buscado
+
 inputBusqueda.addEventListener('focus', () => {
     sugerencias.classList.toggle('Lista-Activa');
     sugerencias.classList.toggle('Lista-Sugerencias');
 }, false);
+inputBusqueda.addEventListener('keyup', (busqueda) => {
+    busqueda = inputBusqueda.value;
+    obetenerSugerencias(busqueda);
+}, false);
+function insertarBotonVerMas() {
+    //boton ver mas
+    botonVerMas.innerText = 'ver más';
+    botonVerMas.id = 'botonVerMas';
+    let contenedorDeBotonVerMas = document.createElement('div');
+    contenedorDeBotonVerMas.classList.add('contenedor-del-boton-ver-mas');
+    contenedorDeBotonVerMas.appendChild(botonVerMas);
+    bloqueDeRespuestas.appendChild(contenedorDeBotonVerMas);
 
-let arrayGifsParaStorage = []; //Array donde se acumularas los gifs guardados en favoritos
-
+}
 async function obetenerSugerencias(busquedaIngresada) {
     let url = 'https://api.giphy.com/v1/gifs/search/tags?' + ApiKey + '&q=' + busquedaIngresada;
     let response = await fetch(url);
@@ -78,35 +78,6 @@ async function obetenerSugerencias(busquedaIngresada) {
     sugerencia5.innerHTML = `<i class="fas fa-search" id="buscador"></i>${data[4].name}`;
     sugerencias.appendChild(sugerencia5);
 }
-inputBusqueda.addEventListener('keyup', (busqueda) => {
-    busqueda = inputBusqueda.value;
-    obetenerSugerencias(busqueda);
-}, false);
-
-//Mostrar resultados gifs solicitados impresos en el DOM
-
-
-var bloqueDeRespuestas = document.getElementById('respuesta-de-busqueda'); //Contenedor de todos los gifs a imprimir
-
-//Corazones
-var corazonNormal = './img/icon-fav.svg';
-var corazonHover = './img/icon-fav-hover.svg';
-var corazonActive = './img/icon-fav-active.svg';
-var corazonActiveActive = 'http://127.0.0.1:5500/img/icon-fav-active.svg';
-// Funcion del boton VerMas
-let botonVerMas = document.createElement('button'); 
-function insertarBotonVerMas() {
-    //boton ver mas
-    botonVerMas.innerText = 'ver más';
-    botonVerMas.id = 'botonVerMas';
-    let contenedorDeBotonVerMas = document.createElement('div');
-    contenedorDeBotonVerMas.classList.add('contenedor-del-boton-ver-mas');
-    contenedorDeBotonVerMas.appendChild(botonVerMas);
-    bloqueDeRespuestas.appendChild(contenedorDeBotonVerMas);
-    
-}
-
-//Llamada a la API
 async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
     let url = `https://api.giphy.com/v1/gifs/search?${ApiKey}&q=${GifsSolicitados}&limit=12&offset=${offset}&rating=g&lang=en`;
     let res = await fetch(url);
@@ -251,8 +222,6 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
     }
     insertarBotonVerMas();
 }
-
-
 function cambiarTitulo(solicitado) {
     //Eliminar sub del trending y cambiar el texto a lo buscado
     let resultadoTitulo = document.getElementById('trending-tt');
@@ -264,9 +233,6 @@ function cambiarTitulo(solicitado) {
     desaparecerSubtitulo.innerText = '';
     desaparecerSubtitulo.style.height = '60px';
 }
-
-
-
 // Evento ENTER para imprimir los gifs en el DOM
 inputBusqueda.addEventListener('keyup', (event) => {
     if (event.keyCode === 13) {
@@ -298,7 +264,6 @@ sugerencia5.addEventListener('click', () => {
 }, false);
 
 // VER MAS GIFS 
-let pagOffset = 0; //Variable que determina el offset del llamado a la API. En el evento VerMas aumentará su valor de   12 en 12.
 botonVerMas.addEventListener('click', () => {
     pagOffset = pagOffset + 12;
     ObtenerGifsSolicitados(inputBusqueda.value, pagOffset);

@@ -1,5 +1,4 @@
 //Hover en flecha izquierda
-let flechaIzquierda = document.getElementById('izquierda');
 flechaIzquierda.addEventListener('mouseover', () => {
     flechaIzquierda.setAttribute('src', './assets/button-slider-left-hover.svg');
 });
@@ -8,7 +7,6 @@ flechaIzquierda.addEventListener('mouseout', () => {
 });
 
 //Hover en flecha izquierda
-let flechaDerecha = document.getElementById('derecha');
 flechaDerecha.addEventListener('mouseover', () => {
     flechaDerecha.setAttribute('src', './assets/button-slider-right-hover.svg');
 });
@@ -16,12 +14,6 @@ flechaDerecha.addEventListener('mouseout', () => {
     flechaDerecha.setAttribute('src', './assets/button-slider-right.svg');
 });
 
-
-//Corazones
-var corazonNormal = './img/icon-fav.svg';
-var corazonHover = './img/icon-fav-hover.svg';
-var corazonActive = './img/icon-fav-active.svg';
-var corazonActiveActive = 'http://127.0.0.1:5500/img/icon-fav-active.svg';
 
 //Fetch imagenes trending
 function trending(i) {

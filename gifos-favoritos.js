@@ -1,32 +1,25 @@
-let seccionOne = document.querySelector('.one');
-let favoritos = document.getElementById('favoritos');
-
-//creacion seccion favoritos
-let seccionFavoritos = document.createElement('section');
+//En principio la seccion esta display none
 seccionFavoritos.classList.add('clase-display-none');
 
 //titulo favoritos
-let tituloFavoritos = document.createElement('h4');
+
 tituloFavoritos.innerHTML = 'Favoritos';
 tituloFavoritos.classList.add('titulo-favoritos');
 
 //corazon de la seccion favoritos
-let corazonFavoritos = document.createElement('img');
+
 corazonFavoritos.setAttribute('src', './img/icon-favoritos.svg');
 
 //Caja de favoritos
-let cajaFavoritos = document.createElement('div');
+
 cajaFavoritos.classList.add('caja-de-favoritos');
 
 
 //Sin Contenido
-let cajaSinContenido = document.createElement('div');
 
-let sinContendioImg = document.createElement('img');
 sinContendioImg.setAttribute('src', './img/icon-fav-sin-contenido.svg');
 sinContendioImg.classList.add('imagen-sin-contenido');
 
-let sinContendioTexto = document.createElement('p');
 sinContendioTexto.innerHTML = '<p>"¡Guarda tu primer GIFO en Favoritos</p><br><p> para que se muestre aquí!"</p>';
 sinContendioTexto.classList.add('texto-sin-contenido');
 
@@ -42,7 +35,7 @@ seccionFavoritos.appendChild(cajaFavoritos); //insertar caja de favoritos
 cajaFavoritos.appendChild(cajaSinContenido); //insertar caja sin contenido en la caja favoritos
 
 seccionTwo.style.order = '2'; //para que la seccion two quede por debajo
-let main = document.querySelector('main');
+
 main.appendChild(seccionFavoritos); // insercion de la seccion en el main
 
 
