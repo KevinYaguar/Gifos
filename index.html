@@ -28,15 +28,15 @@
             <nav>
                 <i class="fas fa-bars" id="fa-bars"></i>
                 <ul class="menu" id="menu">
-                    <li id="dark" class="pointer letra-color-normal">Modo Nocturno</li>
+                    <li id="dark"><span class="pointer letra-color-normal">Modo Nocturno</span></li>
                     <div class="mini-linea"></div>
-                    <li id="favoritos" class="pointer letra-color-normal">Favoritos</li>
+                    <li id="favoritos"><span class="pointer letra-color-normal">Favoritos</span></li>
                     <div class="mini-linea"></div>
-                    <li id="misGifos" class="pointer letra-color-normal">Mis Gifos</li>
+                    <li id="misGifos"><span class="pointer letra-color-normal">Mis Gifos</span></li>
                     <div class="mini-linea"></div>
                 </ul>
             </nav>
-            <img src="./img/button-crear-gifo.svg" alt="button-crear-gifo">
+            <img src="./img/button-crear-gifo.svg" alt="button-crear-gifo" id="masGifosImg">
         </div>
 
     </header>
@@ -68,10 +68,10 @@
             </div>
 
             <div class="galery" id="galery">
-                <img src="./assets/button-slider-left.svg" alt="" class="flecha" id="izquierda">
+                <img  alt="" class="flecha" id="izquierda">
                 <div id="galeryIn">
                 </div>
-                <img src="./assets/button-Slider-right.svg" alt="" class="flecha derecha" id="derecha">
+                <img alt="" class="flecha derecha" id="derecha">
             </div>
         </section>
     </main>
@@ -91,6 +91,7 @@
     </footer>
     <div class="line"></div>
     <script src="variables.js"></script>
+    <script src="modo-oscuro.js"></script>
     <script src="gifos.js"></script>
     <script src="gifos-carrousel.js"></script>
     <script src="gifos-favoritos.js"></script>

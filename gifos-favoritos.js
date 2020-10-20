@@ -2,21 +2,17 @@
 seccionFavoritos.classList.add('clase-display-none');
 
 //titulo favoritos
-
 tituloFavoritos.innerHTML = 'Favoritos';
 tituloFavoritos.classList.add('titulo-favoritos');
 
 //corazon de la seccion favoritos
-
 corazonFavoritos.setAttribute('src', './img/icon-favoritos.svg');
 
 //Caja de favoritos
-
 cajaFavoritos.classList.add('caja-de-favoritos');
 
 
 //Sin Contenido
-
 sinContendioImg.setAttribute('src', './img/icon-fav-sin-contenido.svg');
 sinContendioImg.classList.add('imagen-sin-contenido');
 
@@ -27,7 +23,6 @@ cajaSinContenido.appendChild(sinContendioImg); //insertar img de sin contenido e
 cajaSinContenido.appendChild(sinContendioTexto); //insertar texto de sin contenido en la caja sin contenido
 
 // inserciones
-
 seccionFavoritos.appendChild(corazonFavoritos); //insertar corazon en la seccion
 seccionFavoritos.appendChild(tituloFavoritos); //insertar titulo en la seccion
 seccionFavoritos.appendChild(cajaFavoritos); //insertar caja de favoritos
@@ -44,6 +39,8 @@ favoritos.addEventListener('click', () => {
     seccionOne.classList.toggle('one');
     seccionOne.classList.toggle('clase-display-none');
     seccionFavoritos.classList.toggle('seccion-favoritos');
+    favoritos.classList.toggle('favoritos-activado');
+
 
     //boton ver mas
     function insertarBotonVerMas() {

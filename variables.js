@@ -17,9 +17,10 @@ let logoTextBack = document.getElementById('logoTextBack'); //Texto del logo (fo
 // Nav
 let menu = document.getElementById('menu'); // ul del header. (modo o., favoritos, mis gifs).
 let hamburguesa = document.getElementById('fa-bars'); // Elemento i (menu hamburguesa) de Fontawesome.
-let modoOscuro = document.getElementById('dark'); //"Modo escuro" (li)
-let favoritos = document.getElementById('favoritos'); // (li)
-let misGifos = document.getElementById('misGifos'); // Boton Mis Gifos (li)
+let modoOscuro = document.getElementById('dark'); //      "MODO NOCTURNO"  (li)
+let favoritos = document.getElementById('favoritos'); //  "FAVORITOS"      (li)
+let misGifos = document.getElementById('misGifos'); //    "Mis Gifos"      (li)
+let masGifosImg = document.getElementById('masGifosImg');
 
 // Main
 
@@ -56,7 +57,14 @@ let tendringGifosSubtt = document.getElementById('tendring-gifos-subtt'); //Subt
 
 let flechaIzquierda = document.getElementById('izquierda');
 let flechaDerecha = document.getElementById('derecha');
-
+let flechaIzquierdaSrcNormal = './img/button-slider-left.svg';
+let flechaDerechaSrcNormal = './img/Button-Slider-right.svg';
+flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNormal);
+flechaDerecha.setAttribute('src', flechaDerechaSrcNormal);
+let flechaIzquierdaSrcHover = './img/button-slider-left-hover.svg';
+let flechaDerechaSrcHover = './img/Button-Slider-right-hover.svg';
+let flechaIzquierdaSrcNocturno = './img/button-slider-left-md-noct.svg';
+let flechaDerechaSrcNocturno = './img/button-slider-right-md-noct.svg';
 // Seccion Favoritos________________________________________________
 
 let seccionFavoritos = document.createElement('section');

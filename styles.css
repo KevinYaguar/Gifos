@@ -132,6 +132,10 @@
   cursor: pointer;
 }
 
+.pointer:hover {
+  border-bottom: 2px solid #5ED7C6;
+}
+
 .contenedor-del-boton-ver-mas {
   width: 100%;
   display: -webkit-box;
@@ -206,6 +210,10 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   line-height: 33px;
+}
+
+.favoritos-activado {
+  color: #9CAFC3 !important;
 }
 
 @media (max-width: 800px) {

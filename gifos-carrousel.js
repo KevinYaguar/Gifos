@@ -1,17 +1,33 @@
-//Hover en flecha izquierda
-flechaIzquierda.addEventListener('mouseover', () => {
-    flechaIzquierda.setAttribute('src', './assets/button-slider-left-hover.svg');
-});
-flechaIzquierda.addEventListener('mouseout', () => {
-    flechaIzquierda.setAttribute('src', './assets/button-slider-left.svg');
-});
+function flechaIzquierdaHoverReverse(){
+    if(flechaDerecha.src == 'http://127.0.0.1:5500/img/button-slider-right-md-noct.svg'){
+        flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNocturno);
+    } else{
+        flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNormal);
+    }
+}
+function flechaDerechaHoverReverse(){
+    if(flechaIzquierda.src == 'http://127.0.0.1:5500/img/button-slider-left-md-noct.svg'){
+        flechaDerecha.setAttribute('src', flechaDerechaSrcNocturno);
+    } else {
+        flechaDerecha.setAttribute('src', flechaDerechaSrcNormal);
+    }
+}
+
 
 //Hover en flecha izquierda
+flechaIzquierda.addEventListener('mouseover', () => {
+    flechaIzquierda.setAttribute('src', flechaIzquierdaSrcHover);
+});
+flechaIzquierda.addEventListener('mouseout', () => {
+    flechaIzquierdaHoverReverse();
+});
+
+//Hover en flecha derecha
 flechaDerecha.addEventListener('mouseover', () => {
-    flechaDerecha.setAttribute('src', './assets/button-slider-right-hover.svg');
+    flechaDerecha.setAttribute('src', flechaDerechaSrcHover);
 });
 flechaDerecha.addEventListener('mouseout', () => {
-    flechaDerecha.setAttribute('src', './assets/button-slider-right.svg');
+    flechaDerechaHoverReverse();
 });
 
 

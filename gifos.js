@@ -6,24 +6,6 @@ hamburguesa.addEventListener('click', () => {
     menu.classList.toggle('menuOn');
 }, false);
 
-// Modo Oscuro
-modoOscuro.addEventListener('click', () => {
-    cuerpoWeb.classList.toggle('oscuro');
-    logoBack.classList.toggle('oscuro');
-    logoTextBack.classList.toggle('oscuro');
-    seccionTwo.classList.toggle('oscuro2');
-    tendringGifosTittle.classList.toggle('oscuro2');
-    tendringGifosSubtt.classList.toggle('oscuro2');
-    inputBusqueda.classList.toggle('oscuro');
-    lines[0].classList.toggle('negro');
-    lines[1].classList.toggle('negro');
-    searcher.classList.toggle('border-blanco');
-    for (i = 0; i < spanColorNormal.length; i++) {
-        spanColorNormal[i].classList.toggle('blanco');
-    }
-
-}, false);
-
 //focus X en el buscador
 
 inputBusqueda.addEventListener('focus', () => {
