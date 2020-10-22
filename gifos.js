@@ -39,7 +39,7 @@ function insertarBotonVerMas() {
     //boton ver mas
     botonVerMas.innerText = 'ver más';
     botonVerMas.id = 'botonVerMas';
-    let contenedorDeBotonVerMas = document.createElement('div');
+    
     contenedorDeBotonVerMas.classList.add('contenedor-del-boton-ver-mas');
     contenedorDeBotonVerMas.appendChild(botonVerMas);
     bloqueDeRespuestas.appendChild(contenedorDeBotonVerMas);
@@ -211,8 +211,10 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
     insertarBotonVerMas();
     // VER MAS GIFS 
     botonVerMas.addEventListener('click', () => {
+        bloqueDeRespuestas.removeChild(contenedorDeBotonVerMas);
         pagOffset = pagOffset + 12;
         ObtenerGifsSolicitados(inputBusqueda.value, pagOffset);
+        
     }, false);
 }
 

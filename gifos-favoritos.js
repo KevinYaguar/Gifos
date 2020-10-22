@@ -56,9 +56,9 @@ favoritos.addEventListener('click', () => {
     function insertarBotonVerMasFavoritos() {
         botonVerMasFavoritos.innerText = 'ver más';
         botonVerMasFavoritos.id = 'botonVerMas';
-        contenedorDeBotonVerMas.classList.add('contenedor-del-boton-ver-mas');
-        contenedorDeBotonVerMas.appendChild(botonVerMasFavoritos);
-        cajaFavoritos.appendChild(contenedorDeBotonVerMas);
+        contenedorDeBotonVerMasFavoritos.classList.add('contenedor-del-boton-ver-mas');
+        contenedorDeBotonVerMasFavoritos.appendChild(botonVerMasFavoritos);
+        cajaFavoritos.appendChild(contenedorDeBotonVerMasFavoritos);
     }
 
     if (gifsGuardadosSinRepeticion.length == 0) {
@@ -91,17 +91,6 @@ favoritos.addEventListener('click', () => {
             num = num + 13;
             imprimirFavoritosEnCaja(num);
             insertarBotonVerMasFavoritos();
-            /*cajaFavoritos.removeChild(contenedorDeBotonVerMas);
-            gifsGuardadosSinRepeticion.filter(onlyUnique);
-            pagOffset = pagOffset + 12;
-            for (i = 12; i <= gifsGuardadosSinRepeticion.length - 1 && i < 24; i++) {
-                let gifsFavGuardados = document.createElement('img');
-                gifsFavGuardados.setAttribute('src', gifsGuardadosSinRepeticion[i]);
-                gifsFavGuardados.classList.add('gifs-guardados-favoritos');
-                cajaFavoritos.appendChild(gifsFavGuardados);
-                console.log(pagOffset);
-            }
-            insertarBotonVerMasFavoritos();*/
         }, false);
     }
 }, false)
