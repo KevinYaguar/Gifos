@@ -19,7 +19,7 @@ modoOscuro.addEventListener('click', () => {
 }, false);
 
 function buttonCrearGifCambiarImagen(){
-    if(masGifosImg.src == 'http://127.0.0.1:5500/img/button-crear-gifo.svg'){
+    if(masGifosImg.src == 'https://kevinyaguar.github.io/img/button-crear-gifo.svg'){
         masGifosImg.setAttribute('src', './img/CTA-crar-gifo-modo-noc.svg');
     } else {
         masGifosImg.setAttribute('src', 'http://127.0.0.1:5500/img/button-crear-gifo.svg')
