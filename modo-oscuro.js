@@ -27,7 +27,7 @@ function buttonCrearGifCambiarImagen(){
 }
 
 function flechaIzquierdaCambiarImagen(){
-    if(flechaIzquierda.src == 'http://127.0.0.1:5500/img/button-slider-left.svg'){
+    if(flechaIzquierda.src == 'https://kevinyaguar.github.io/img/button-slider-left.svg'){
         flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNocturno);
     } else {
         flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNormal);
@@ -35,7 +35,7 @@ function flechaIzquierdaCambiarImagen(){
 }
 
 function flechaDerechaCambiarImagen(){
-    if(flechaDerecha.src == 'http://127.0.0.1:5500/img/Button-Slider-right.svg'){
+    if(flechaDerecha.src == 'https://kevinyaguar.github.io/img/Button-Slider-right.svg'){
         flechaDerecha.setAttribute('src', flechaDerechaSrcNocturno);
     } else{
         flechaDerecha.setAttribute('src', flechaDerechaSrcNormal);
