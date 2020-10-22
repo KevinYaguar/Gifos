@@ -94,3 +94,11 @@ favoritos.addEventListener('click', () => {
         }, false);
     }
 }, false)
+
+
+gifos.addEventListener('click', ()=>{
+    seccionOne.classList.toggle('one');
+    seccionOne.classList.toggle('clase-display-none');
+    seccionFavoritos.classList.toggle('seccion-favoritos');
+    favoritos.classList.toggle('favoritos-activado');
+}, false);
