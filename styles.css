@@ -144,6 +144,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding-top: 78px;
 }
 
 .clase-display-none {
@@ -182,6 +183,8 @@
       -ms-flex-pack: center;
           justify-content: center;
   gap: 29px;
+  padding-top: 36px;
+  padding-bottom: 79px;
 }
 
 .Caja-Sin-Contenido {

@@ -145,12 +145,17 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
             }
         }
 
+
         function guardarEnSssionStorage() {
-            sessionStorage.setItem('gifsbuscados', respuestaGif);
-            arrayGifsParaStorage.push(respuestaGif.getAttribute('src'));
-            arrayGifsParaStorage.join(',')
-            sessionStorage.setItem('arrayGifs', arrayGifsParaStorage);
-            console.log(arrayGifsParaStorage);
+            if (heartFav.src == corazonActiveActive) {
+                arrayGifsParaStorage.push(respuestaGif.getAttribute('src'));                              
+                //console.log(arrayGifsParaStorage);
+            } else{          
+                arrayGifsParaStorage.pop(respuestaGif.getAttribute('src'));
+                //console.log(arrayGifsParaStorage);
+            }
+            var arrayGifsParaStorage2 = JSON.stringify(arrayGifsParaStorage);
+                sessionStorage.setItem('arrayGifs', arrayGifsParaStorage2);
         }
         //Eventos mouseover sobre el GIF
         bloqueParaCadaImagen.addEventListener('mouseover', () => {

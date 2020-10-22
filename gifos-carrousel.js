@@ -122,11 +122,16 @@ function trending(i) {
             }
 
             function guardarEnSssionStorage() {
-                sessionStorage.setItem('gifsbuscados', imgTrend);
-                arrayGifsParaStorage.push(imgTrend.getAttribute('src'));
-                arrayGifsParaStorage.join(',')
-                sessionStorage.setItem('arrayGifs', arrayGifsParaStorage);
-                console.log(arrayGifsParaStorage);
+                if (heartFav.src == corazonActiveActive) {
+                    arrayGifsParaStorage.push(imgTrend.getAttribute('src'));               
+                    //console.log(arrayGifsParaStorage);
+                } else{          
+                    arrayGifsParaStorage.pop(imgTrend.getAttribute('src'));
+                    //console.log(arrayGifsParaStorage);
+                }
+                var arrayGifsParaStorage2 = JSON.stringify(arrayGifsParaStorage);
+                sessionStorage.setItem('arrayGifs', arrayGifsParaStorage2);
+                
             }
 
             //Eventos mouseover sobre el GIF

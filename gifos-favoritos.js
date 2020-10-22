@@ -60,11 +60,24 @@ favoritos.addEventListener('click', () => {
         while (cajaFavoritos.firstChild) {
             cajaFavoritos.removeChild(cajaFavoritos.firstChild);
         }
-        for (i = 0; i <= arrayGifsParaStorage.length - 1; i++) {      
+        //Funcion para evitar repetidos
+        function onlyUnique(value, index, self) { 
+            return self.indexOf(value) === index;
+        }
+        //sessionStorage.setItem('arrayGifs', arrayGifsParaStorage);
+        let gifsGuardadosSinRepeticion = JSON.parse(sessionStorage['arrayGifs']);
+        //gifsGuardadosSinRepeticion.push(sessionStorage.getItem('arrayGifs'));
+        gifsGuardadosSinRepeticion.filter(onlyUnique);
+
+        // Recorrido del array e imopresion de los gifs en la caja de favortios
+        for (i = 0; i <= gifsGuardadosSinRepeticion.length - 1; i++) {      
                 let gifsFavGuardados = document.createElement('img');
-                gifsFavGuardados.setAttribute('src', arrayGifsParaStorage[i]);
+
+                    gifsFavGuardados.setAttribute('src', gifsGuardadosSinRepeticion[i]);
                 gifsFavGuardados.classList.add('gifs-guardados-favoritos');
                 cajaFavoritos.appendChild(gifsFavGuardados);
+
+                
         }
         insertarBotonVerMas();
     }
