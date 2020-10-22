@@ -80,19 +80,16 @@ favoritos.addEventListener('click', () => {
                 cajaFavoritos.appendChild(gifsFavGuardados);
             }
         }
-        imprimirFavoritosEnCaja(12);
-
-
-
-
-
+        let num = 12;
+        imprimirFavoritosEnCaja(num);
         insertarBotonVerMasFavoritos();
 
         botonVerMasFavoritos.addEventListener('click', () => {
             while (cajaFavoritos.firstChild) {
                 cajaFavoritos.removeChild(cajaFavoritos.firstChild);
             }
-            imprimirFavoritosEnCaja(24);
+            num = num + 13;
+            imprimirFavoritosEnCaja(num);
             insertarBotonVerMasFavoritos();
             /*cajaFavoritos.removeChild(contenedorDeBotonVerMas);
             gifsGuardadosSinRepeticion.filter(onlyUnique);
