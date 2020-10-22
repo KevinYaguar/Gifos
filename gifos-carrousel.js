@@ -1,12 +1,12 @@
 function flechaIzquierdaHoverReverse(){
-    if(flechaDerecha.src == 'https://kevinyaguar.github.io/img/button-slider-right-md-noct.svg'){
+    if(flechaDerecha.src == 'http://127.0.0.1:5500/img/button-slider-right-md-noct.svg'){ // https://kevinyaguar.github.io
         flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNocturno);
     } else{
         flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNormal);
     }
 }
 function flechaDerechaHoverReverse(){
-    if(flechaIzquierda.src == 'https://kevinyaguar.github.io/img/button-slider-left-md-noct.svg'){
+    if(flechaIzquierda.src == 'http://127.0.0.1:5500/img/button-slider-left-md-noct.svg'){ //https://kevinyaguar.github.io
         flechaDerecha.setAttribute('src', flechaDerechaSrcNocturno);
     } else {
         flechaDerecha.setAttribute('src', flechaDerechaSrcNormal);

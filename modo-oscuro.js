@@ -19,23 +19,23 @@ modoOscuro.addEventListener('click', () => {
 }, false);
 
 function buttonCrearGifCambiarImagen(){
-    if(masGifosImg.src == 'https://kevinyaguar.github.io/img/button-crear-gifo.svg'){
+    if(masGifosImg.src == 'http://127.0.0.1:5500/img/button-crear-gifo.svg'){//https://kevinyaguar.github.io
         masGifosImg.setAttribute('src', './img/CTA-crar-gifo-modo-noc.svg');
     } else {
-        masGifosImg.setAttribute('src', 'http://127.0.0.1:5500/img/button-crear-gifo.svg')
+        masGifosImg.setAttribute('src', 'http://127.0.0.1:5500/img/button-crear-gifo.svg') //https://kevinyaguar.github.io
     }
 }
 
 function flechaIzquierdaCambiarImagen(){
-    if(flechaIzquierda.src == 'https://kevinyaguar.github.io/img/button-slider-left.svg'){
-        flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNocturno);
+    if(flechaIzquierda.src == 'http://127.0.0.1:5500/img/button-slider-left.svg'){
+        flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNocturno);//https://kevinyaguar.github.io
     } else {
         flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNormal);
     }
 }
 
 function flechaDerechaCambiarImagen(){
-    if(flechaDerecha.src == 'https://kevinyaguar.github.io/img/Button-Slider-right.svg'){
+    if(flechaDerecha.src == 'http://127.0.0.1:5500/img/Button-Slider-right.svg'){//https://kevinyaguar.github.io
         flechaDerecha.setAttribute('src', flechaDerechaSrcNocturno);
     } else{
         flechaDerecha.setAttribute('src', flechaDerechaSrcNormal);

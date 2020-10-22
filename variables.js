@@ -46,7 +46,7 @@ let pagOffset = 0; //Variable que determina el offset del llamado a la API. En e
 var corazonNormal = './img/icon-fav.svg';
 var corazonHover = './img/icon-fav-hover.svg';
 var corazonActive = './img/icon-fav-active.svg';
-var corazonActiveActive = 'https://kevinyaguar.github.io/img/icon-fav-active.svg';
+var corazonActiveActive = 'http://127.0.0.1:5500/img/icon-fav-active.svg'; // https://kevinyaguar.github.io
 
 let botonVerMas = document.createElement('button');
 
