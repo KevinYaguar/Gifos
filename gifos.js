@@ -34,6 +34,7 @@ inputBusqueda.addEventListener('keyup', (busqueda) => {
     busqueda = inputBusqueda.value;
     obetenerSugerencias(busqueda);
 }, false);
+
 function insertarBotonVerMas() {
     //boton ver mas
     botonVerMas.innerText = 'ver más';
@@ -148,14 +149,14 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
 
         function guardarEnSssionStorage() {
             if (heartFav.src == corazonActiveActive) {
-                arrayGifsParaStorage.push(respuestaGif.getAttribute('src'));                              
+                arrayGifsParaStorage.push(respuestaGif.getAttribute('src'));
                 //console.log(arrayGifsParaStorage);
-            } else{          
+            } else {
                 arrayGifsParaStorage.pop(respuestaGif.getAttribute('src'));
                 //console.log(arrayGifsParaStorage);
             }
             var arrayGifsParaStorage2 = JSON.stringify(arrayGifsParaStorage);
-                sessionStorage.setItem('arrayGifs', arrayGifsParaStorage2);
+            sessionStorage.setItem('arrayGifs', arrayGifsParaStorage2);
         }
         //Eventos mouseover sobre el GIF
         bloqueParaCadaImagen.addEventListener('mouseover', () => {
@@ -208,7 +209,13 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
         }, false);
     }
     insertarBotonVerMas();
+    // VER MAS GIFS 
+    botonVerMas.addEventListener('click', () => {
+        pagOffset = pagOffset + 12;
+        ObtenerGifsSolicitados(inputBusqueda.value, pagOffset);
+    }, false);
 }
+
 function cambiarTitulo(solicitado) {
     //Eliminar sub del trending y cambiar el texto a lo buscado
     let resultadoTitulo = document.getElementById('trending-tt');
@@ -248,10 +255,4 @@ sugerencia4.addEventListener('click', () => {
 sugerencia5.addEventListener('click', () => {
     ObtenerGifsSolicitados(sugerencia5.innerText, 0, 12);
     cambiarTitulo(sugerencia5.innerText);
-}, false);
-
-// VER MAS GIFS 
-botonVerMas.addEventListener('click', () => {
-    pagOffset = pagOffset + 12;
-    ObtenerGifsSolicitados(inputBusqueda.value, pagOffset);
 }, false);

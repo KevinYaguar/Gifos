@@ -42,17 +42,26 @@ favoritos.addEventListener('click', () => {
     favoritos.classList.toggle('favoritos-activado');
 
 
+
+    //Funcion para evitar repetidos
+    function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
+    }
+    //sessionStorage.setItem('arrayGifs', arrayGifsParaStorage);
+    let gifsGuardadosSinRepeticion = JSON.parse(sessionStorage['arrayGifs']);
+    //gifsGuardadosSinRepeticion.push(sessionStorage.getItem('arrayGifs'));
+    gifsGuardadosSinRepeticion.filter(onlyUnique);
+
     //boton ver mas
-    function insertarBotonVerMas() {
-        botonVerMas.innerText = 'ver más';
-        botonVerMas.id = 'botonVerMas';
-        let contenedorDeBotonVerMas = document.createElement('div');
+    function insertarBotonVerMasFavoritos() {
+        botonVerMasFavoritos.innerText = 'ver más';
+        botonVerMasFavoritos.id = 'botonVerMas';
         contenedorDeBotonVerMas.classList.add('contenedor-del-boton-ver-mas');
-        contenedorDeBotonVerMas.appendChild(botonVerMas);
+        contenedorDeBotonVerMas.appendChild(botonVerMasFavoritos);
         cajaFavoritos.appendChild(contenedorDeBotonVerMas);
     }
 
-    if (arrayGifsParaStorage.length == 0) {
+    if (gifsGuardadosSinRepeticion.length == 0) {
         cajaSinContenido.classList.toggle('Caja-Sin-Contenido')
     } else {
         cajaSinContenido.classList.toggle('clase-display-none');
@@ -60,25 +69,42 @@ favoritos.addEventListener('click', () => {
         while (cajaFavoritos.firstChild) {
             cajaFavoritos.removeChild(cajaFavoritos.firstChild);
         }
-        //Funcion para evitar repetidos
-        function onlyUnique(value, index, self) { 
-            return self.indexOf(value) === index;
-        }
-        //sessionStorage.setItem('arrayGifs', arrayGifsParaStorage);
-        let gifsGuardadosSinRepeticion = JSON.parse(sessionStorage['arrayGifs']);
-        //gifsGuardadosSinRepeticion.push(sessionStorage.getItem('arrayGifs'));
-        gifsGuardadosSinRepeticion.filter(onlyUnique);
 
-        // Recorrido del array e imopresion de los gifs en la caja de favortios
-        for (i = 0; i <= gifsGuardadosSinRepeticion.length - 1; i++) {      
+
+        function imprimirFavoritosEnCaja(num) {
+            // Recorrido del array e imopresion de los gifs en la caja de favortios
+            for (i = 0; i <= gifsGuardadosSinRepeticion.length - 1 && i < num; i++) {
                 let gifsFavGuardados = document.createElement('img');
-
-                    gifsFavGuardados.setAttribute('src', gifsGuardadosSinRepeticion[i]);
+                gifsFavGuardados.setAttribute('src', gifsGuardadosSinRepeticion[i]);
                 gifsFavGuardados.classList.add('gifs-guardados-favoritos');
                 cajaFavoritos.appendChild(gifsFavGuardados);
-
-                
+            }
         }
-        insertarBotonVerMas();
+        imprimirFavoritosEnCaja(12);
+
+
+
+
+
+        insertarBotonVerMasFavoritos();
+
+        botonVerMasFavoritos.addEventListener('click', () => {
+            while (cajaFavoritos.firstChild) {
+                cajaFavoritos.removeChild(cajaFavoritos.firstChild);
+            }
+            imprimirFavoritosEnCaja(24);
+            insertarBotonVerMasFavoritos();
+            /*cajaFavoritos.removeChild(contenedorDeBotonVerMas);
+            gifsGuardadosSinRepeticion.filter(onlyUnique);
+            pagOffset = pagOffset + 12;
+            for (i = 12; i <= gifsGuardadosSinRepeticion.length - 1 && i < 24; i++) {
+                let gifsFavGuardados = document.createElement('img');
+                gifsFavGuardados.setAttribute('src', gifsGuardadosSinRepeticion[i]);
+                gifsFavGuardados.classList.add('gifs-guardados-favoritos');
+                cajaFavoritos.appendChild(gifsFavGuardados);
+                console.log(pagOffset);
+            }
+            insertarBotonVerMasFavoritos();*/
+        }, false);
     }
-})
+}, false)

@@ -74,5 +74,7 @@ let cajaFavoritos = document.createElement('div');
 let cajaSinContenido = document.createElement('div');
 let sinContendioImg = document.createElement('img');
 let sinContendioTexto = document.createElement('p');
+let contenedorDeBotonVerMas = document.createElement('div');
+let botonVerMasFavoritos = document.createElement('button');
 
 // Footer
