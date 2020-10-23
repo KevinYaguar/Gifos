@@ -88,7 +88,7 @@ favoritos.addEventListener('click', () => {
             while (cajaFavoritos.firstChild) {
                 cajaFavoritos.removeChild(cajaFavoritos.firstChild);
             }
-            num = num + 13;
+            num = num + 12;
             imprimirFavoritosEnCaja(num);
             insertarBotonVerMasFavoritos();
         }, false);

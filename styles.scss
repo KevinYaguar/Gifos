@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+.clase-display-none {
+    display: none;
+}
 .oscuro{
     background-color: #37383C !important;
 }
@@ -85,6 +88,7 @@
         height: 32px;
     }
 }
+
 #img-btn-gif-card{
     display: block;
     width: 32px;
@@ -117,9 +121,7 @@
     padding-bottom: 79px;
 }
 
-.clase-display-none {
-    display: none;
-}
+
 .seccion-favoritos {
     order: 1;
     display: flex;

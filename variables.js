@@ -82,3 +82,15 @@ let contenedorDeBotonVerMasFavoritos = document.createElement('div');
 let botonVerMasFavoritos = document.createElement('button');
 
 // Footer
+
+let footer = document.querySelector('footer');
+
+//gif MAX
+
+
+let seccionMax = document.createElement('section');
+seccionMax.id = 'seccionMAX';
+let contenedorDeGifMax = document.createElement('div');
+let cruzClose = document.createElement('img');
+cruzClose.setAttribute('src', './img/close.svg');
+let contenedorBajoMax = document.createElement('div');

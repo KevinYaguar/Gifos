@@ -1,12 +1,13 @@
-function flechaIzquierdaHoverReverse(){
-    if(flechaDerecha.src == 'http://127.0.0.1:5500/img/button-slider-right-md-noct.svg'){ // https://kevinyaguar.github.io
+function flechaIzquierdaHoverReverse() {
+    if (flechaDerecha.src == 'http://127.0.0.1:5500/img/button-slider-right-md-noct.svg') { // https://kevinyaguar.github.io
         flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNocturno);
-    } else{
+    } else {
         flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNormal);
     }
 }
-function flechaDerechaHoverReverse(){
-    if(flechaIzquierda.src == 'http://127.0.0.1:5500/img/button-slider-left-md-noct.svg'){ //https://kevinyaguar.github.io
+
+function flechaDerechaHoverReverse() {
+    if (flechaIzquierda.src == 'http://127.0.0.1:5500/img/button-slider-left-md-noct.svg') { //https://kevinyaguar.github.io
         flechaDerecha.setAttribute('src', flechaDerechaSrcNocturno);
     } else {
         flechaDerecha.setAttribute('src', flechaDerechaSrcNormal);
@@ -30,7 +31,17 @@ flechaDerecha.addEventListener('mouseout', () => {
     flechaDerechaHoverReverse();
 });
 
+async function algo(imgTrend) {
 
+    let a = document.createElement('a');
+    let response = await fetch(imgTrend);
+    let file = await response.blob();
+    a.download = 'SebaCabGif.gif';
+    a.href = window.URL.createObjectURL(file);
+    a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
+    a.click();
+
+};
 //Fetch imagenes trending
 function trending(i) {
     fetch('https://api.giphy.com/v1/gifs/search?' + ApiKey + '&q=trending&limit=25&offset=0&rating=g&lang=en')
@@ -43,7 +54,7 @@ function trending(i) {
             imgTrend.setAttribute('src', final.url);
             imgTrend.setAttribute('id', 'imgTrend');
 
-            galeryIn.appendChild(imgTrend);
+            //galeryIn.appendChild(imgTrend); esto parece ser un error
 
             //cards
             let bloqueParaCadaImagen = document.createElement('div'); //En este div sucederan los eventos mouseover
@@ -75,6 +86,13 @@ function trending(i) {
             downloadImg.setAttribute('src', './img/icon-download.svg');
             downloadImg.id = 'btn-gif-card-trending';
 
+
+            downloadImg.addEventListener('click', algo(imgTrend), false);
+            
+
+
+
+
             let btnExpand = document.createElement('div'); // Boton Expandir.
             btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.
             let expandImg = document.createElement('img'); //imagen Expandir
@@ -85,7 +103,10 @@ function trending(i) {
             btnFav.appendChild(heartFav); //Insercion de la imagen en el boton
 
             bloqueParaCadaImagen.appendChild(btnDownload); //Insercion del boton en el bloque DOWNLOAD
-            btnDownload.appendChild(downloadImg); //Insercion de la imagen en el boton
+            btnDownload.appendChild(downloadImg) //link de descarga
+            
+            //linkDeDescarga.appendChild(); //Insercion de la imagen en el boton
+
 
             bloqueParaCadaImagen.appendChild(btnExpand); //Insercion del boton en el bloque EXPAND
             btnExpand.appendChild(expandImg); //Insercion de la imagen en el boton
@@ -123,15 +144,15 @@ function trending(i) {
 
             function guardarEnSssionStorage() {
                 if (heartFav.src == corazonActiveActive) {
-                    arrayGifsParaStorage.push(imgTrend.getAttribute('src'));               
+                    arrayGifsParaStorage.push(imgTrend.getAttribute('src'));
                     //console.log(arrayGifsParaStorage);
-                } else{          
+                } else {
                     arrayGifsParaStorage.pop(imgTrend.getAttribute('src'));
                     //console.log(arrayGifsParaStorage);
                 }
                 var arrayGifsParaStorage2 = JSON.stringify(arrayGifsParaStorage);
                 sessionStorage.setItem('arrayGifs', arrayGifsParaStorage2);
-                
+
             }
 
             //Eventos mouseover sobre el GIF
@@ -161,7 +182,9 @@ function trending(i) {
                 btnExpand.addEventListener('mouseover', () => {
                     expandImg.setAttribute('src', './img/icon-max-hover.svg');
                 }, false);
-            }, false);
+
+
+            }, false); //fin del evento mouseover
 
             //Eventos mouseout sobre el boton DOWNLOAD
             btnDownload.addEventListener('mouseout', () => {
@@ -207,10 +230,31 @@ function trending(i) {
                     bloqueParaCadaImagen.style.left = inicio + 'px';
                 }
             });
-            
+
+            //Evento EXPANDIR
+            expandImg.addEventListener('click', () => {
+                main.classList.toggle('main');
+                main.classList.toggle('clase-display-none');
+                cuerpoWeb.insertBefore(seccionMax, footer);
+                seccionMax.classList.add('seccion-max');
+                cruzClose.classList.add('cruzClose');
+                seccionMax.appendChild(cruzClose);
+                seccionMax.appendChild(imgTrend);
+                seccionMax.appendChild(contenedorBajoMax);
+                contenedorBajoMax.appendChild(btnFav);
+                contenedorBajoMax.appendChild(btnDownload);
+                contenedorBajoMax.classList.add('contenedor-bajo');
+                btnFav.classList.toggle('btn-gif-card-trending');
+                btnDownload.classList.toggle('btn-gif-card-trending');
+                btnFav.classList.toggle('btn-gif-card-trending-max');
+                btnDownload.classList.toggle('btn-gif-card-trending-max');
+
+
+            }, false);
         });
+
 }
 
-for (i = 0; i <= 11; i++) {
+for (i = 0; i <= 1; i++) {
     trending(i);
 }
