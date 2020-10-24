@@ -61,6 +61,18 @@ async function obetenerSugerencias(busquedaIngresada) {
     sugerencia5.innerHTML = `<i class="fas fa-search" id="buscador"></i>${data[4].name}`;
     sugerencias.appendChild(sugerencia5);
 }
+//Funcion para descargar imagenes
+async function algo(respuestaGif) {
+
+    let a = document.createElement('a');
+    let response = await fetch(respuestaGif.src);
+    let file = await response.blob();
+    a.download = 'MiNuevoGif.gif';
+    a.href = window.URL.createObjectURL(file);
+    a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
+    a.click();
+
+};
 async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
     let url = `https://api.giphy.com/v1/gifs/search?${ApiKey}&q=${GifsSolicitados}&limit=12&offset=${offset}&rating=g&lang=en`;
     let res = await fetch(url);
@@ -95,6 +107,8 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
         let downloadImg = document.createElement('img'); //imagen Descargar.
         downloadImg.setAttribute('src', './img/icon-download.svg');
         downloadImg.id = 'img-btn-gif-card';
+        //descargar imagenes
+        downloadImg.addEventListener('click', ()=>{ return algo(respuestaGif)}, false);
 
         let btnExpand = document.createElement('div'); // Boton Expandir.
         btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.
