@@ -34,9 +34,9 @@ flechaDerecha.addEventListener('mouseout', () => {
 async function algo(imgTrend) {
 
     let a = document.createElement('a');
-    let response = await fetch(imgTrend);
+    let response = await fetch(imgTrend.src);
     let file = await response.blob();
-    a.download = 'SebaCabGif.gif';
+    a.download = 'MiNuevoGif.gif';
     a.href = window.URL.createObjectURL(file);
     a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
     a.click();
@@ -53,8 +53,6 @@ function trending(i) {
             var imgTrend = document.createElement('img');
             imgTrend.setAttribute('src', final.url);
             imgTrend.setAttribute('id', 'imgTrend');
-
-            //galeryIn.appendChild(imgTrend); esto parece ser un error
 
             //cards
             let bloqueParaCadaImagen = document.createElement('div'); //En este div sucederan los eventos mouseover
@@ -87,7 +85,7 @@ function trending(i) {
             downloadImg.id = 'btn-gif-card-trending';
 
 
-            downloadImg.addEventListener('click', algo(imgTrend), false);
+            downloadImg.addEventListener('click', ()=>{ return algo(imgTrend)}, false);
             
 
 
@@ -168,13 +166,16 @@ function trending(i) {
                 heartFav.addEventListener('mouseout', corazonNormalFunction, false);
                 heartFav.addEventListener('click', corazonActiveFunction, false);
                 heartFav.addEventListener('click', guardarEnSssionStorage, false);
-
+                
                 //Eventos mouseover sobre el boton DOWNLOAD
                 btnDownload.classList.toggle('btnFavOut');
                 btnDownload.classList.toggle('btn-gif-card-trending');
                 btnDownload.addEventListener('mouseover', () => {
                     downloadImg.setAttribute('src', './img/icon-download-hover.svg');
+                    
                 }, false);
+
+                
 
                 //Eventos mouseover sobre el boton EXPAND
                 btnExpand.classList.toggle('btnFavOut');
@@ -252,9 +253,9 @@ function trending(i) {
 
             }, false);
         });
-
+        
 }
 
-for (i = 0; i <= 1; i++) {
+for (i = 0; i <= 11; i++) {
     trending(i);
 }
