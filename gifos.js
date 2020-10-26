@@ -221,6 +221,85 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
             btnExpand.classList.toggle('btn-gif-card');
             btnExpand.classList.toggle('btnFavOut');
         }, false);
+
+        
+        //Expand
+
+    function cerrarExpand() {
+        while (seccionMax.firstChild) {
+            seccionMax.removeChild(seccionMax.firstChild);
+        }
+        seccionOne.classList.toggle('one');
+        seccionTwo.classList.toggle('two');
+        seccionOne.classList.toggle('clase-display-none');
+        seccionTwo.classList.toggle('clase-display-none');
+        seccionMax.classList.toggle('seccion-max');
+        seccionMax.classList.toggle('clase-display-none');
+    
+    };
+    cruzClose.addEventListener('click', cerrarExpand);
+
+    function expandir() {
+
+        seccionOne.classList.toggle('one');
+        seccionTwo.classList.toggle('two');
+        seccionOne.classList.toggle('clase-display-none');
+        seccionTwo.classList.toggle('clase-display-none');
+
+        seccionMax.classList.toggle('seccion-max');
+        seccionMax.appendChild(cruzClose);
+        seccionMax.appendChild(respuestaGif);
+        seccionMax.appendChild(contenedorBajoMax);
+        while (contenedorBajoMax.firstChild) {
+            contenedorBajoMax.removeChild(contenedorBajoMax.firstChild);
+        }
+        contenedorBajoMax.appendChild(btnFav);
+        contenedorBajoMax.appendChild(btnDownload);
+
+        if(btnFav.classList.value !== 'btnFavOut'){
+            btnFav.classList.toggle('btnFavOut'); //por defecto display:none.   
+        }
+        if(btnDownload.classList.value !== 'btnFavOut'){
+            btnDownload.classList.toggle('btnFavOut'); //por defecto display:none.   
+        }
+        if(btnExpand.classList.value !== 'btnFavOut'){
+            btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.   
+        }
+
+        btnFav.classList.toggle('btn-gif-card-trending-max');
+        btnDownload.classList.toggle('btn-gif-card-trending-max');
+    }
+    expandImg.addEventListener('click', expandir, false);
+
+    cruzClose.addEventListener('click', () => {
+        if(btnFav.classList.value == 'btn-gif-card-trending-max'){
+            btnFav.classList.toggle('btn-gif-card-trending-max');
+        }
+        if(btnDownload.classList.value == 'btn-gif-card-trending-max'){
+            btnDownload.classList.toggle('btn-gif-card-trending-max');
+        }
+        
+        if(btnFav.classList.value !== 'btnFavOut'){
+            btnFav.classList.toggle('btnFavOut'); //por defecto display:none.   
+        }
+        if(btnDownload.classList.value !== 'btnFavOut'){
+            btnDownload.classList.toggle('btnFavOut'); //por defecto display:none.   
+        }
+        if(btnExpand.classList.value !== 'btnFavOut'){
+            btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.   
+        }
+        
+        bloqueParaCadaImagenInferior.appendChild(respuestaGif);
+        
+        bloqueParaCadaImagen.appendChild(btnFav); //Insercion del boton en el bloque FAV
+        btnFav.appendChild(heartFav); //Insercion de la imagen en el boton
+
+        bloqueParaCadaImagen.appendChild(btnDownload); //Insercion del boton en el bloque DOWNLOAD
+        btnDownload.appendChild(downloadImg) //link de descarga
+
+        bloqueParaCadaImagen.appendChild(btnExpand); //Insercion del boton en el bloque EXPAND
+        btnExpand.appendChild(expandImg); //Insercion de la imagen en el boton
+    }, false);
     }
     insertarBotonVerMas();
     // VER MAS GIFS 
