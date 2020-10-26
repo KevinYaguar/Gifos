@@ -90,7 +90,18 @@ let footer = document.querySelector('footer');
 
 let seccionMax = document.createElement('section');
 seccionMax.id = 'seccionMAX';
+
 let contenedorDeGifMax = document.createElement('div');
 let cruzClose = document.createElement('img');
 cruzClose.setAttribute('src', './img/close.svg');
+cruzClose.classList.add('cruzClose');
 let contenedorBajoMax = document.createElement('div');
+contenedorBajoMax.classList.add('contenedor-bajo');
+
+
+
+
+
+
+//let galeryIn = document.getElementById('galeryIn');
+//var imgTrend = document.createElement('img');

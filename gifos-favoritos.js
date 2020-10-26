@@ -1,6 +1,6 @@
 //En principio la seccion esta display none
 seccionFavoritos.classList.add('clase-display-none');
-
+seccionFavoritos.id = 'SeccionFavoritos';
 //titulo favoritos
 tituloFavoritos.innerHTML = 'Favoritos';
 tituloFavoritos.classList.add('titulo-favoritos');

@@ -111,18 +111,6 @@
   height: 32px;
 }
 
-.btn-gif-card-trending-max {
-  display: block;
-  width: 32px;
-  height: 32px;
-}
-
-.btn-gif-card-trending-max img {
-  display: block;
-  width: 32px;
-  height: 32px;
-}
-
 #img-btn-gif-card {
   display: block;
   width: 32px;
@@ -932,47 +920,65 @@
     height: 40px;
   }
   .seccion-max {
-    display: block;
-    width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 0.1fr 1fr 0.1fr;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template: 0.1fr 1fr 0.1fr / 1fr 1fr 1fr;
   }
   .seccion-max .cruzClose {
-    margin-left: 60%;
-    margin-bottom: 8%;
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    grid-area: 1 / 2;
+    -ms-grid-column-align: end;
+        justify-self: end;
     width: 15.2px;
     height: 15.2px;
   }
   .seccion-max img {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: 2 / 2;
     width: 695px;
     height: 385px;
-  }
-  .seccion-max .btn-gif-card-trending-max {
-    display: block;
-    width: 32px;
-    height: 32px;
-    margin: 1%;
-  }
-  .seccion-max .btn-gif-card-trending-max img {
-    display: block;
-    width: 32px;
-    height: 32px;
   }
   .seccion-max .contenedor-bajo {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 100%;
-    position: relative;
-    left: 67%;
+    -ms-grid-row: 3;
+    -ms-grid-column: 2;
+    grid-area: 3 / 2;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  .seccion-max .contenedor-bajo .btn-gif-card-trending-max {
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin: 1%;
+    -webkit-box-align: unset;
+        -ms-flex-align: unset;
+            align-items: unset;
+    -webkit-box-pack: unset;
+        -ms-flex-pack: unset;
+            justify-content: unset;
+    background: unset;
+    width: unset;
+    height: unset;
+    border-radius: unset;
+    position: unset;
+    bottom: unset;
+    left: unset;
+    opacity: unset;
+    float: unset;
+    margin-right: 10px;
+  }
+  .seccion-max .contenedor-bajo .btn-gif-card-trending-max img {
+    display: block;
+    width: 32px;
+    height: 32px;
   }
 }
 /*# sourceMappingURL=styles.css.map */

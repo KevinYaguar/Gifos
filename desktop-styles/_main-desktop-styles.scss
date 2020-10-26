@@ -207,41 +207,52 @@ main {
 }
 
 .seccion-max {
-    display: block;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template: 0.1fr 1fr 0.1fr / 1fr 1fr 1fr;
 
     .cruzClose {
-        margin-left: 60%;
-        margin-bottom: 8%;
+        grid-area: 1 / 2;
+        justify-self: end;
         width: 15.2px;
         height: 15.2px;
     }
 
     img {
+        grid-area: 2 / 2;
         width: 695px;
         height: 385px;
     }
 
-    .btn-gif-card-trending-max {
-        display: block;
-        width: 32px;
-        height: 32px;
-        margin: 1%;
+    .contenedor-bajo {
+        display: flex;
+        grid-area: 3 / 2;
+        justify-content: flex-end;
 
-        img {
+        .btn-gif-card-trending-max {
             display: block;
             width: 32px;
             height: 32px;
-        }
-    }
+            margin: 1%;
+            //para evitar que se sobre exponga la clase anterior.
+            align-items: unset;
+            justify-content: unset;
+            background: unset;
+            width: unset;
+            height: unset;
+            border-radius: unset;
+            position: unset;
+            bottom: unset;
+            left: unset;
+            opacity: unset;
+            float: unset;
+            margin-right: 10px;
 
-    .contenedor-bajo {
-        display: flex;
-        width: 100%;
-        position: relative;
-        left: 67%;
+            img {
+                display: block;
+                width: 32px;
+                height: 32px;
+            }
+        }
+
     }
 }
