@@ -50,6 +50,7 @@ function trending(i) {
         .then(json => json.data)
         .then(gif => gif[i].images.original)
         .then(final => {
+            
             let galeryIn = document.getElementById('galeryIn');
             var imgTrend = document.createElement('img');
             imgTrend.setAttribute('src', final.url);
