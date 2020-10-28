@@ -90,6 +90,7 @@ let footer = document.querySelector('footer');
 
 let seccionMax = document.createElement('section');
 seccionMax.id = 'seccionMAX';
+//seccionMax.classList.add('clase-display-none');
 
 let contenedorDeGifMax = document.createElement('div');
 let cruzClose = document.createElement('img');
@@ -99,9 +100,58 @@ let contenedorBajoMax = document.createElement('div');
 contenedorBajoMax.classList.add('contenedor-bajo');
 
 
+// Crear Gifos
+
+let camara = document.createElement('img');
+camara.setAttribute('src', './img/camara.svg');
+camara.classList.add('camara');
+;
+let contenedorCentralCrearGif = document.createElement('div');
+contenedorCentralCrearGif.classList.add('contenedor-central-crear-gif');
+
+let cuadradoEzquina1= document.createElement('div');
+cuadradoEzquina1.classList.add('cuadrado-ezquina');
+cuadradoEzquina1.classList.add('border-top');
+cuadradoEzquina1.classList.add('border-left');
 
 
+let cuadradoEzquina2 = document.createElement('div');
+cuadradoEzquina2.classList.add('cuadrado-ezquina');
+cuadradoEzquina2.classList.add('border-top');
+cuadradoEzquina2.classList.add('border-right');
+
+let cuadradoEzquina3 = document.createElement('div');
+cuadradoEzquina3.classList.add('cuadrado-ezquina');
+cuadradoEzquina3.classList.add('border-bottom');
+cuadradoEzquina3.classList.add('border-left');
+
+let cuadradoEzquina4 = document.createElement('div');
+cuadradoEzquina4.classList.add('cuadrado-ezquina');
+cuadradoEzquina4.classList.add('border-bottom');
+cuadradoEzquina4.classList.add('border-right');
+
+let spanNumero1 = document.createElement('p');
+let spanNumero2 = document.createElement('p');
+let spanNumero3 = document.createElement('p');
+
+let contenedorDeNumeros = document.createElement('div');
 
 
-//let galeryIn = document.getElementById('galeryIn');
-//var imgTrend = document.createElement('img');
+let contenedorDeNumero1 = document.createElement('div');
+contenedorDeNumero1.appendChild(spanNumero1);
+spanNumero1.innerText = '1';
+
+let contenedorDeNumero2 = document.createElement('div');
+contenedorDeNumero2.appendChild(spanNumero2);
+spanNumero2.innerText = '2';
+
+let contenedorDeNumero3 = document.createElement('div');
+contenedorDeNumero3.appendChild(spanNumero3);
+spanNumero3.innerText = '3';
+
+let lineaSeparatoria = document.createElement('div');
+
+let botonComenzar = document.createElement('button');
+botonComenzar.innerHTML = 'COMENZAR';
+botonComenzar.classList.add('boton-comenzar');
+

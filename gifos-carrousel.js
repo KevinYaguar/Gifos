@@ -254,7 +254,8 @@ function trending(i) {
                 seccionTwo.classList.toggle('two');
                 seccionOne.classList.toggle('clase-display-none');
                 seccionTwo.classList.toggle('clase-display-none');
-
+                
+                //seccionMax.classList.toggle('clase-display-none');
                 seccionMax.classList.toggle('seccion-max');
                 seccionMax.appendChild(cruzClose);
                 seccionMax.appendChild(imgTrend);

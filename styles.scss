@@ -171,6 +171,120 @@
     color: #9CAFC3 !important;
 }
 
+//CREAR GIF
+.seccion-crear-gif{
+    display: grid;
+    grid-template: 1fr 0.3fr 6.9px 0.3fr/0.2fr 0.2fr 1fr 0.1fr;
+    justify-content: center;
+}
+.camara{
+    grid-area: 1 / 1 / 1 / 1;
+    justify-self: flex-end;
+    align-self: center;
+}
+.luz{
+    grid-area: 1 / 2 / 1 / 2;
+justify-self: flex-start;
+align-self: center;
+}
+.contenedor-central-crear-gif{
+    border: 1px solid #572EE5;
+    height: 390px;
+    width: 688px;
+    grid-area: 1 / 3/ 1;
+    padding: 20px;
+    display: grid;
+    grid-template: 0.1fr 1fr 0.1fr/ 0.1fr 1fr 0.1fr;
+}
+
+.rollo{
+    grid-area: 2 / 4 / 2 / 4;
+    justify-self: center;
+}
+
+.cuadrado-ezquina{
+    width: 27px;
+    height: 25px;
+}
+
+.border-top{
+    border-top: 1px solid #50E3C2 ;
+}
+.border-bottom{
+    border-bottom: 1px solid #50E3C2 ;
+    align-self: end;
+}
+.border-left{
+    border-left: 1px solid #50E3C2 ;
+}
+.border-right{
+    border-right: 1px solid #50E3C2 ;
+    justify-self: flex-end;
+}
+.contenedores-de-numeros{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #572EE5;
+    border-radius: 16px;
+    width: 32px;
+    height: 32px;        
+    color: #572EE5;
+    margin-right: 26px;
+}
+.contenedor-de-numeros-general{
+    grid-area: 2 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.linea-separatoria{
+    background-color: #572EE5;
+    grid-area: 3 / 3;
+    position: relative;
+    width: 111%;
+    left: -6%;
+    border-radius: 5px;
+}
+.boton-comenzar{
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid #572EE5;
+    background-color: #ffffff;
+    color: #572EE5;
+    border-radius: 25px;
+    width: 127px;
+    height: 50px;
+    grid-area: 4 / 3;
+    align-self: center;
+    justify-self: center;
+    font-weight: 700;
+}
+.contenedor-central-crear-gif-Inner {
+    grid-area: 2 / 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.crear-gif-bloque-up{
+    text-align: center;
+    span{
+        font-family: 'Montserrat', sans-serif;
+        color: #572EE5;
+        font-size: 25px;
+        line-height: 35px;
+        font-weight: 700;
+    }
+}
+.crear-gif-bloque-down{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    font-size: 16px;
+    line-height: 29px;
+    font-weight: 400;
+
+}
 @media (max-width: 800px){
     @import "./mobil-styles/_footer-mobil-styles";
     @import "./mobil-styles/_header-mobil-styles";
