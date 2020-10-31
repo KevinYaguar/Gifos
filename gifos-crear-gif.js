@@ -26,8 +26,8 @@ let crearGifBloqueDown = document.createElement('div');
 crearGifBloqueDown.classList.add('crear-gif-bloque-down');
 let crearGifBloqueDownFrase = document.createElement('span');
 
-crearGifBloqueUpFrase.innerHTML= '<p>Aquí podrás</p> <p>crear tus propios <span class="gifos-word">GIFOS</span></p>';
-crearGifBloqueDownFrase.innerHTML= '<p>¡Crea tu GIFO en sólo 3 pasos!</p> <p>(sólo necesitas una cámara para grabar un video)</p>';
+crearGifBloqueUpFrase.innerHTML = '<p>Aquí podrás</p> <p>crear tus propios <span class="gifos-word">GIFOS</span></p>';
+crearGifBloqueDownFrase.innerHTML = '<p>¡Crea tu GIFO en sólo 3 pasos!</p> <p>(sólo necesitas una cámara para grabar un video)</p>';
 
 contenedorCentralCrearGifInner.appendChild(crearGifBloqueUp);
 crearGifBloqueUp.appendChild(crearGifBloqueUpFrase);
@@ -40,8 +40,14 @@ crearGifBloqueDown.appendChild(crearGifBloqueDownFrase);
 
 
 contenedorDeNumero1.classList.add('contenedores-de-numeros');
+contenedorDeNumero1.style.gridArea = '1 / 2';
+contenedorDeNumero1.style.justifySelf = 'end';
 contenedorDeNumero2.classList.add('contenedores-de-numeros');
+contenedorDeNumero2.style.gridArea = '1 / 3';
+contenedorDeNumero2.style.justifySelf = 'center';
 contenedorDeNumero3.classList.add('contenedores-de-numeros');
+contenedorDeNumero3.style.gridArea = '1 / 4';
+contenedorDeNumero3.style.justifySelf = 'start';
 
 contenedorDeNumeros.classList.add('contenedor-de-numeros-general');
 contenedorDeNumeros.appendChild(contenedorDeNumero1);
@@ -81,28 +87,29 @@ seccionCrearGif.appendChild(lineaSeparatoria);
 
 seccionCrearGif.appendChild(botonComenzar);
 seccionCrearGif.appendChild(botonGrabar);
+seccionCrearGif.appendChild(botonFinalizar);
 
-masGifosImg.addEventListener('mouseover', ()=>{
-    if(masGifosImg.src !== './img/CTA-crear-gifo-hover.svg'){
+masGifosImg.addEventListener('mouseover', () => {
+    if (masGifosImg.src !== './img/CTA-crear-gifo-hover.svg') {
         masGifosImg.setAttribute('src', './img/CTA-crear-gifo-hover.svg');
     }
 }, false);
 
-masGifosImg.addEventListener('mouseout', ()=>{
-    
-    if(masGifosImg.src == 'http://127.0.0.1:5500/img/CTA-crear-gifo-hover.svg'){
+masGifosImg.addEventListener('mouseout', () => {
+
+    if (masGifosImg.src == 'http://127.0.0.1:5500/img/CTA-crear-gifo-hover.svg') {
         masGifosImg.setAttribute('src', './img/button-crear-gifo.svg');
     }
-    if(masGifosImg.src == 'http://127.0.0.1:5500/img/CTA-crear-gifo-active.svg'){
+    if (masGifosImg.src == 'http://127.0.0.1:5500/img/CTA-crear-gifo-active.svg') {
         masGifosImg.setAttribute('src', './img/CTA-crear-gifo-active.svg')
-    } 
-},false);
+    }
+}, false);
 
-masGifosImg.addEventListener('click', ()=>{
-    if(masGifosImg.src !== './img/CTA-crear-gifo-active'){
+masGifosImg.addEventListener('click', () => {
+    if (masGifosImg.src !== './img/CTA-crear-gifo-active') {
         masGifosImg.setAttribute('src', './img/CTA-crear-gifo-active.svg');
     }
-    
+
     seccionOne.classList.toggle('one');
     seccionOne.classList.toggle('clase-display-none');
     seccionTwo.classList.toggle('two');
@@ -125,8 +132,8 @@ let crearGifBloqueDownUno = document.createElement('div');
 crearGifBloqueDownUno.classList.add('crear-gif-bloque-down');
 let crearGifBloqueDownFraseUno = document.createElement('span');
 
-crearGifBloqueUpFraseUno.innerHTML= '<p>¿Nos das acceso a tu cámara?</p>';
-crearGifBloqueDownFraseUno.innerHTML= '<p>El acceso a tu camara será válido sólo</p> <p>por el tiempo en el que estés creando el GIFO.</p>';
+crearGifBloqueUpFraseUno.innerHTML = '<p>¿Nos das acceso a tu cámara?</p>';
+crearGifBloqueDownFraseUno.innerHTML = '<p>El acceso a tu camara será válido sólo</p> <p>por el tiempo en el que estés creando el GIFO.</p>';
 
 contenedorCentralCrearGifInnerUno.appendChild(crearGifBloqueUpUno);
 crearGifBloqueUpUno.appendChild(crearGifBloqueUpFraseUno);
@@ -161,7 +168,7 @@ contenedorCentralCrearGifInnerDos.appendChild(videoGif);
 //Crear gifos
 
 
-botonComenzar.addEventListener('click', ()=>{
+botonComenzar.addEventListener('click', () => {
     contenedorCentralCrearGifInner.classList.toggle('contenedor-central-crear-gif-Inner');
     contenedorCentralCrearGifInner.classList.toggle('clase-display-none');
     contenedorCentralCrearGifInnerUno.classList.toggle('clase-display-none');
@@ -173,12 +180,12 @@ botonComenzar.addEventListener('click', ()=>{
             video: true,
             audio: false
         }).then(async function (stream) {
-            
+
             videoGif.srcObject = stream;
             videoGif.onloadedmetadata = function (e) {
                 videoGif.play();
             };
-            if(videoGif.srcObject = stream){
+            if (videoGif.srcObject = stream) {
                 contenedorCentralCrearGifInnerUno.classList.toggle('clase-display-none');
                 contenedorCentralCrearGifInnerUno.classList.toggle('contenedor-central-crear-gif-Inner');
                 contenedorCentralCrearGifInnerDos.classList.toggle('clase-display-none');
@@ -196,16 +203,25 @@ botonComenzar.addEventListener('click', ()=>{
         });
     }
     activarCamara();
-},false);
+}, false);
 
-botonGrabar.addEventListener('click', getStreamAndRecord, false);
+
+botonGrabar.addEventListener('click', () => {
+    getStreamAndRecord();
+    botonGrabar.classList.toggle('clase-display-none');
+    botonGrabar.classList.toggle('boton-comenzar');
+    botonFinalizar.classList.toggle('clase-display-none');
+    botonFinalizar.classList.toggle('boton-comenzar');
+
+}, false);
+
 
 function getStreamAndRecord() {
     navigator.mediaDevices.getUserMedia({
         video: true,
         audio: false
     }).then(async function (stream) {
-        
+
         videoGif.srcObject = stream;
         videoGif.onloadedmetadata = function (e) {
             videoGif.play();
@@ -221,16 +237,44 @@ function getStreamAndRecord() {
             },
         });
         recorder.startRecording();
-        
-        const sleep = m => new Promise(r => setTimeout(r, m));
-        await sleep(5000);
 
-        recorder.stopRecording(function () {
-            gifprevio = document.createElement('img');
-            gifprevio.src =  URL.createObjectURL(recorder.getBlob());
-            videoGif.style.display = 'none';
-            contenedorCentralCrearGifInnerDos.appendChild(gifprevio);
-        });
+        botonFinalizar.addEventListener('click', detenerGrabacion, false);
 
+        function detenerGrabacion() {
+            recorder.stopRecording(function () {
+                gifprevio = document.createElement('img');
+                gifprevio.src = URL.createObjectURL(recorder.getBlob());
+                videoGif.style.display = 'none';
+                contenedorCentralCrearGifInnerDos.appendChild(gifprevio);
+            });
+        }
     });
 };
+
+var cronometroTimer;
+
+function detenerse() {
+    clearInterval(cronometro);
+}
+
+function carga() {
+    contador_s = 0;
+    contador_m = 0;
+    s = document.getElementById("segundos");
+    m = document.getElementById("minutos");
+    cronometro = setInterval(
+        function () {
+            if (contador_s == 60) {
+                contador_s = 0;
+                contador_m++;
+                m.innerHTML = contador_m;
+                if (contador_m == 60) {
+                    contador_m = 0;
+                }
+            }
+            s.innerHTML = contador_s;
+            contador_s++;
+        }, 1000);
+}
+botonGrabar.addEventListener('click', carga, false);
+botonFinalizar.addEventListener('click', detenerse, false);

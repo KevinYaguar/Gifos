@@ -158,3 +158,27 @@ botonComenzar.classList.add('boton-comenzar');
 let botonGrabar= document.createElement('button');
 botonGrabar.innerHTML = 'GRABAR';
 botonGrabar.classList.add('clase-display-none');
+
+let botonFinalizar= document.createElement('button');
+botonFinalizar.innerHTML = 'FINALIZAR';
+botonFinalizar.classList.add('clase-display-none');
+
+let contenedorDeCronometro = document.createElement('div');
+let cronometro = document.createElement('p');
+let segundos = document.createElement('span');
+segundos.id = 'segundos';
+let separador = document.createElement('span');
+let minutos = document.createElement('span');
+minutos.id = 'minutos';
+
+segundos.innerText = 0;
+separador.innerText= ':';
+minutos.innerText = 0;
+contenedorDeCronometro.classList.add('contenedor-cronometro');
+
+cronometro.appendChild(minutos);
+cronometro.appendChild(separador);
+cronometro.appendChild(segundos);
+contenedorDeCronometro.appendChild(cronometro);
+
+contenedorDeNumeros.appendChild(contenedorDeCronometro);

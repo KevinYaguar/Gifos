@@ -174,7 +174,7 @@
 //CREAR GIF
 .seccion-crear-gif{
     display: grid;
-    grid-template: 1fr 0.3fr 6.9px 0.3fr/0.2fr 0.2fr 1fr 0.1fr;
+    grid-template: 1fr 0.2fr 6.9px 0.3fr/0.2fr 0.2fr 1fr 0.1fr;
     justify-content: center;
 }
 .camara{
@@ -200,6 +200,7 @@ align-self: center;
 .rollo{
     grid-area: 2 / 4 / 2 / 4;
     justify-self: center;
+    margin-left: 30%;
 }
 
 .cuadrado-ezquina{
@@ -229,19 +230,20 @@ align-self: center;
     border-radius: 16px;
     width: 32px;
     height: 32px;        
-    
-    margin-right: 26px;
+    align-self: center;
     p{
         color: #572EE5;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 600;
     }
     
 }
 .contenedor-de-numeros-general{
     grid-area: 2 / 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template: 1fr / 1fr 1fr 1fr 1fr 1fr;
 }
+
 .linea-separatoria{
     background-color: #572EE5;
     grid-area: 3 / 3;
@@ -298,10 +300,18 @@ align-self: center;
     background-color: #572EE5;
     p{
         color: #ffffff;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 600;
     }
 }
 .tamaño-video{
     width: 400px;
+}
+.contenedor-cronometro{
+    grid-area: 1 / 5;
+    justify-self: end;
+    align-self: center;
+    margin-right: 10px;
 }
 
 @media (max-width: 800px){

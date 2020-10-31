@@ -224,9 +224,9 @@
 .seccion-crear-gif {
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 1fr 0.3fr 6.9px 0.3fr;
+  -ms-grid-rows: 1fr 0.2fr 6.9px 0.3fr;
   -ms-grid-columns: 0.2fr 0.2fr 1fr 0.1fr;
-      grid-template: 1fr 0.3fr 6.9px 0.3fr/0.2fr 0.2fr 1fr 0.1fr;
+      grid-template: 1fr 0.2fr 6.9px 0.3fr/0.2fr 0.2fr 1fr 0.1fr;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -273,6 +273,7 @@
   grid-area: 2 / 4 / 2 / 4;
   -ms-grid-column-align: center;
       justify-self: center;
+  margin-left: 30%;
 }
 
 .cuadrado-ezquina {
@@ -314,26 +315,25 @@
   border-radius: 16px;
   width: 32px;
   height: 32px;
-  margin-right: 26px;
+  -ms-flex-item-align: center;
+      align-self: center;
 }
 
 .contenedores-de-numeros p {
   color: #572EE5;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
 }
 
 .contenedor-de-numeros-general {
   -ms-grid-row: 2;
   -ms-grid-column: 3;
   grid-area: 2 / 3;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template: 1fr / 1fr 1fr 1fr 1fr 1fr;
 }
 
 .linea-separatoria {
@@ -417,10 +417,24 @@
 
 .background-color p {
   color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
 }
 
 .tamaño-video {
   width: 400px;
+}
+
+.contenedor-cronometro {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+  grid-area: 1 / 5;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-right: 10px;
 }
 
 @media (max-width: 800px) {
