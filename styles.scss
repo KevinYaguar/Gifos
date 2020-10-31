@@ -229,8 +229,12 @@ align-self: center;
     border-radius: 16px;
     width: 32px;
     height: 32px;        
-    color: #572EE5;
+    
     margin-right: 26px;
+    p{
+        color: #572EE5;
+    }
+    
 }
 .contenedor-de-numeros-general{
     grid-area: 2 / 3;
@@ -274,6 +278,10 @@ align-self: center;
         font-size: 25px;
         line-height: 35px;
         font-weight: 700;
+        .gifos-word {
+            color: #5ED7C6;
+            font-size: 35px;
+        }
     }
 }
 .crear-gif-bloque-down{
@@ -285,6 +293,17 @@ align-self: center;
     font-weight: 400;
 
 }
+
+.background-color{
+    background-color: #572EE5;
+    p{
+        color: #ffffff;
+    }
+}
+.tamaño-video{
+    width: 400px;
+}
+
 @media (max-width: 800px){
     @import "./mobil-styles/_footer-mobil-styles";
     @import "./mobil-styles/_header-mobil-styles";

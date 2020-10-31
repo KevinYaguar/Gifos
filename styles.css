@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -313,8 +314,11 @@
   border-radius: 16px;
   width: 32px;
   height: 32px;
-  color: #572EE5;
   margin-right: 26px;
+}
+
+.contenedores-de-numeros p {
+  color: #572EE5;
 }
 
 .contenedor-de-numeros-general {
@@ -393,6 +397,11 @@
   font-weight: 700;
 }
 
+.crear-gif-bloque-up span .gifos-word {
+  color: #5ED7C6;
+  font-size: 35px;
+}
+
 .crear-gif-bloque-down {
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -400,6 +409,18 @@
   font-size: 16px;
   line-height: 29px;
   font-weight: 400;
+}
+
+.background-color {
+  background-color: #572EE5;
+}
+
+.background-color p {
+  color: #ffffff;
+}
+
+.tamaño-video {
+  width: 400px;
 }
 
 @media (max-width: 800px) {

@@ -155,3 +155,6 @@ let botonComenzar = document.createElement('button');
 botonComenzar.innerHTML = 'COMENZAR';
 botonComenzar.classList.add('boton-comenzar');
 
+let botonGrabar= document.createElement('button');
+botonGrabar.innerHTML = 'GRABAR';
+botonGrabar.classList.add('clase-display-none');
