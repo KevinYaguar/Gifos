@@ -163,6 +163,10 @@ let botonFinalizar= document.createElement('button');
 botonFinalizar.innerHTML = 'FINALIZAR';
 botonFinalizar.classList.add('clase-display-none');
 
+let botonSubirGifo= document.createElement('button');
+botonSubirGifo.innerHTML = 'SUBIR GIFO';
+botonSubirGifo.classList.add('clase-display-none');
+
 let contenedorDeCronometro = document.createElement('div');
 let cronometro = document.createElement('p');
 let segundos = document.createElement('span');
@@ -171,9 +175,9 @@ let separador = document.createElement('span');
 let minutos = document.createElement('span');
 minutos.id = 'minutos';
 
-segundos.innerText = 0;
+segundos.innerText = 00;
 separador.innerText= ':';
-minutos.innerText = 0;
+minutos.innerText = 00;
 contenedorDeCronometro.classList.add('contenedor-cronometro');
 
 cronometro.appendChild(minutos);
@@ -182,3 +186,11 @@ cronometro.appendChild(segundos);
 contenedorDeCronometro.appendChild(cronometro);
 
 contenedorDeNumeros.appendChild(contenedorDeCronometro);
+
+let repetirCaptura = document.createElement('p');
+repetirCaptura.innerText = 'REPETIR CAPTURA';
+repetirCaptura.classList.add('clase-display-none');
+repetirCaptura.style.borderBottom = '2px solid #5ED7C6';
+repetirCaptura.style.fontSize = '13px';
+repetirCaptura.style.fontSize = '16px';
+contenedorDeCronometro.appendChild(repetirCaptura);

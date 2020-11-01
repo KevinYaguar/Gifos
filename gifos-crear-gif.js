@@ -88,6 +88,7 @@ seccionCrearGif.appendChild(lineaSeparatoria);
 seccionCrearGif.appendChild(botonComenzar);
 seccionCrearGif.appendChild(botonGrabar);
 seccionCrearGif.appendChild(botonFinalizar);
+seccionCrearGif.appendChild(botonSubirGifo);
 
 masGifosImg.addEventListener('mouseover', () => {
     if (masGifosImg.src !== './img/CTA-crear-gifo-hover.svg') {
@@ -167,41 +168,39 @@ contenedorCentralCrearGifInnerDos.appendChild(videoGif);
 
 //Crear gifos
 
+function activarCamara() {
+    navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: false
+    }).then(async function (stream) {
 
+        videoGif.srcObject = stream;
+        videoGif.onloadedmetadata = function (e) {
+            videoGif.play();
+        };
+        if (videoGif.srcObject = stream) {
+            contenedorCentralCrearGifInnerUno.classList.toggle('clase-display-none');
+            contenedorCentralCrearGifInnerUno.classList.toggle('contenedor-central-crear-gif-Inner');
+            contenedorCentralCrearGifInnerDos.classList.toggle('clase-display-none');
+            contenedorCentralCrearGifInnerDos.classList.toggle('contenedor-central-crear-gif-Inner');
+            videoGif.classList.toggle('clase-display-none');
+            videoGif.classList.toggle('tamaño-video');
+
+            botonComenzar.classList.toggle('boton-comenzar');
+            botonComenzar.classList.toggle('clase-display-none');
+            botonGrabar.classList.toggle('clase-display-none');
+            botonGrabar.classList.toggle('boton-comenzar');
+            contenedorDeNumero1.classList.toggle('background-color');
+            contenedorDeNumero2.classList.toggle('background-color');
+        }
+    });
+}
 botonComenzar.addEventListener('click', () => {
     contenedorCentralCrearGifInner.classList.toggle('contenedor-central-crear-gif-Inner');
     contenedorCentralCrearGifInner.classList.toggle('clase-display-none');
     contenedorCentralCrearGifInnerUno.classList.toggle('clase-display-none');
     contenedorCentralCrearGifInnerUno.classList.toggle('contenedor-central-crear-gif-Inner');
     contenedorDeNumero1.classList.toggle('background-color');
-
-    function activarCamara() {
-        navigator.mediaDevices.getUserMedia({
-            video: true,
-            audio: false
-        }).then(async function (stream) {
-
-            videoGif.srcObject = stream;
-            videoGif.onloadedmetadata = function (e) {
-                videoGif.play();
-            };
-            if (videoGif.srcObject = stream) {
-                contenedorCentralCrearGifInnerUno.classList.toggle('clase-display-none');
-                contenedorCentralCrearGifInnerUno.classList.toggle('contenedor-central-crear-gif-Inner');
-                contenedorCentralCrearGifInnerDos.classList.toggle('clase-display-none');
-                contenedorCentralCrearGifInnerDos.classList.toggle('contenedor-central-crear-gif-Inner');
-                videoGif.classList.toggle('clase-display-none');
-                videoGif.classList.toggle('tamaño-video');
-
-                botonComenzar.classList.toggle('boton-comenzar');
-                botonComenzar.classList.toggle('clase-display-none');
-                botonGrabar.classList.toggle('clase-display-none');
-                botonGrabar.classList.toggle('boton-comenzar');
-                contenedorDeNumero1.classList.toggle('background-color');
-                contenedorDeNumero2.classList.toggle('background-color');
-            }
-        });
-    }
     activarCamara();
 }, false);
 
@@ -214,6 +213,11 @@ botonGrabar.addEventListener('click', () => {
     botonFinalizar.classList.toggle('boton-comenzar');
 
 }, false);
+
+
+gifprevio = document.createElement('img');
+gifprevio.classList.toggle('clase-display-none');
+contenedorCentralCrearGifInnerDos.appendChild(gifprevio);
 
 
 function getStreamAndRecord() {
@@ -242,10 +246,9 @@ function getStreamAndRecord() {
 
         function detenerGrabacion() {
             recorder.stopRecording(function () {
-                gifprevio = document.createElement('img');
+
                 gifprevio.src = URL.createObjectURL(recorder.getBlob());
-                videoGif.style.display = 'none';
-                contenedorCentralCrearGifInnerDos.appendChild(gifprevio);
+
             });
         }
     });
@@ -254,7 +257,7 @@ function getStreamAndRecord() {
 var cronometroTimer;
 
 function detenerse() {
-    clearInterval(cronometro);
+    clearInterval(cronometroTimer);
 }
 
 function carga() {
@@ -262,7 +265,7 @@ function carga() {
     contador_m = 0;
     s = document.getElementById("segundos");
     m = document.getElementById("minutos");
-    cronometro = setInterval(
+    cronometroTimer = setInterval(
         function () {
             if (contador_s == 60) {
                 contador_s = 0;
@@ -277,4 +280,40 @@ function carga() {
         }, 1000);
 }
 botonGrabar.addEventListener('click', carga, false);
-botonFinalizar.addEventListener('click', detenerse, false);
+botonFinalizar.addEventListener('click', () => {
+    detenerse();
+    cronometro.classList.toggle('clase-display-none');
+    repetirCaptura.classList.toggle('clase-display-none');
+    contenedorDeNumeros.classList.toggle('contenedor-de-numeros-general');
+    contenedorDeNumeros.classList.toggle('contenedor-de-numeros-general-repetir');
+    botonFinalizar.classList.toggle('boton-comenzar');
+    botonFinalizar.classList.toggle('clase-display-none');
+    botonSubirGifo.classList.toggle('boton-comenzar');
+    botonSubirGifo.classList.toggle('clase-display-none');
+
+    videoGif.classList.toggle('clase-display-none');
+    videoGif.classList.toggle('tamaño-video');
+    gifprevio.classList.toggle('clase-display-none');
+
+}, false);
+
+repetirCaptura.addEventListener('click', () => {
+    videoGif.classList.toggle('clase-display-none');
+    videoGif.classList.toggle('tamaño-video');
+    gifprevio.classList.toggle('clase-display-none');
+
+    botonSubirGifo.classList.toggle('boton-comenzar');
+    botonSubirGifo.classList.toggle('clase-display-none');
+
+    botonGrabar.classList.toggle('clase-display-none');
+    botonGrabar.classList.toggle('boton-comenzar');
+
+    repetirCaptura.classList.toggle('clase-display-none');
+    cronometro.classList.toggle('clase-display-none');
+
+    contenedorDeNumeros.classList.toggle('contenedor-de-numeros-general');
+    contenedorDeNumeros.classList.toggle('contenedor-de-numeros-general-repetir');
+}, false);
+
+
+// VER BOTON FINALIZAR 

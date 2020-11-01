@@ -336,6 +336,17 @@
       grid-template: 1fr / 1fr 1fr 1fr 1fr 1fr;
 }
 
+.contenedor-de-numeros-general-repetir {
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: 2 / 3;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template: 1fr /  1fr 1fr 1fr 1fr;
+}
+
 .linea-separatoria {
   background-color: #572EE5;
   -ms-grid-row: 3;
@@ -435,6 +446,14 @@
       -ms-grid-row-align: center;
       align-self: center;
   margin-right: 10px;
+}
+
+.contenedor-cronometro p {
+  color: #572EE5;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 700;
 }
 
 @media (max-width: 800px) {

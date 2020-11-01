@@ -243,6 +243,12 @@ align-self: center;
     display: grid;
     grid-template: 1fr / 1fr 1fr 1fr 1fr 1fr;
 }
+.contenedor-de-numeros-general-repetir{
+    grid-area: 2 / 3;
+    display: grid;
+    grid-template: 1fr /  1fr 1fr 1fr 1fr;
+}
+
 
 .linea-separatoria{
     background-color: #572EE5;
@@ -312,7 +318,16 @@ align-self: center;
     justify-self: end;
     align-self: center;
     margin-right: 10px;
+    p{
+        color: #572EE5;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+        line-height: 22px;
+        font-weight: 700;
+    }
 }
+
+
 
 @media (max-width: 800px){
     @import "./mobil-styles/_footer-mobil-styles";
