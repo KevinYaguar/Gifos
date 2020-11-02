@@ -1,13 +1,25 @@
 function flechaIzquierdaHoverReverse() {
-    if (flechaDerecha.src == 'http://127.0.0.1:5500/img/button-slider-right-md-noct.svg') { // https://kevinyaguar.github.io
+    switch(cuerpoWeb.classList.value){
+        /*case 'oscuro':
+            flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNocturnoServer);
+            break;
+        /*case '':
+            flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNormal);
+            break;*/
+    }
+
+
+
+
+    /*if (flechaDerecha.src == flechaDerechaSrcNocturnoServer) { 
         flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNocturno);
     } else {
         flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNormal);
-    }
+    }*/
 }
 
 function flechaDerechaHoverReverse() {
-    if (flechaIzquierda.src == 'http://127.0.0.1:5500/img/button-slider-left-md-noct.svg') { //https://kevinyaguar.github.io
+    if (flechaIzquierda.src == flechaIzquierdaSrcNocturnoServer) { 
         flechaDerecha.setAttribute('src', flechaDerechaSrcNocturno);
     } else {
         flechaDerecha.setAttribute('src', flechaDerechaSrcNormal);

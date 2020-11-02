@@ -1,16 +1,21 @@
 function flechaIzquierdaHoverReverse() {
-    if (flechaDerecha.src == 'http://127.0.0.1:5500/img/button-slider-right-md-noct.svg') { // https://kevinyaguar.github.io
-        flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNocturno);
-    } else {
-        flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNormal);
+    switch(cuerpoWeb.classList.value){
+        case 'oscuro':
+            flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNocturnoServer);
+            break;
+        case '':
+            flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNormal);
+            break;
     }
 }
-
 function flechaDerechaHoverReverse() {
-    if (flechaIzquierda.src == 'http://127.0.0.1:5500/img/button-slider-left-md-noct.svg') { //https://kevinyaguar.github.io
-        flechaDerecha.setAttribute('src', flechaDerechaSrcNocturno);
-    } else {
-        flechaDerecha.setAttribute('src', flechaDerechaSrcNormal);
+    switch(cuerpoWeb.classList.value){
+        case 'oscuro':
+            flechaDerecha.setAttribute('src', flechaDerechaSrcNocturnoServer);
+            break;
+        case '':
+            flechaDerecha.setAttribute('src', flechaDerechaSrcNormal);
+            break;
     }
 }
 
