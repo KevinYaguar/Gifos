@@ -1,12 +1,4 @@
-let seccionMisGifos = document.createElement('section');
-let tituloMisGifos = document.createElement('h4');
-let caritaMisGifos = document.createElement('img');
-let cajaMisGifos = document.createElement('div');
-let cajaSinContenidoMisGifos = document.createElement('div');
-let sinContenidoImgMisGifos = document.createElement('img');
-let sinContenidoTextoMisGifos = document.createElement('p');
-let contenedorDeBotonMisGifos = document.createElement('div');
-let botonVerMisGifos = document.createElement('button');
+
 
 //En principio la seccion esta display none
 seccionMisGifos.classList.add('clase-display-none');
@@ -45,5 +37,9 @@ misGifos.addEventListener('click', ()=>{
     seccionOne.classList.toggle('clase-display-none');
     seccionMisGifos.classList.toggle('clase-display-none');
     seccionMisGifos.classList.toggle('seccion-favoritos');
+    
+    if(cajaMisGifos.classList.value == 'caja-favoritos'){
+        //
+    }
 
 }, false);

@@ -2,7 +2,7 @@
 const ApiKey = 'api_key=1yVSM9oVX3z5nlo213gmodWDvoRxttsM';
 
 //Server
-let server = 'http://127.0.0.1:5501/';
+let server = 'http://127.0.0.1:5502/';
 let serverGitHub = 'https://kevinyaguar.github.io/'
 // Body y local storage
 let cuerpoWeb = document.getElementById('body'); //Body Completo.
@@ -118,7 +118,7 @@ let contenedorCentralCrearGif = document.createElement('div');
 contenedorCentralCrearGif.classList.add('contenedor-central-crear-gif');
 
 
-let cuadradoEzquina1= document.createElement('div');
+let cuadradoEzquina1 = document.createElement('div');
 cuadradoEzquina1.classList.add('cuadrado-ezquina');
 cuadradoEzquina1.classList.add('border-top');
 cuadradoEzquina1.classList.add('border-left');
@@ -133,6 +133,7 @@ let cuadradoEzquina3 = document.createElement('div');
 cuadradoEzquina3.classList.add('cuadrado-ezquina');
 cuadradoEzquina3.classList.add('border-bottom');
 cuadradoEzquina3.classList.add('border-left');
+
 
 let cuadradoEzquina4 = document.createElement('div');
 cuadradoEzquina4.classList.add('cuadrado-ezquina');
@@ -165,15 +166,15 @@ let botonComenzar = document.createElement('button');
 botonComenzar.innerHTML = 'COMENZAR';
 botonComenzar.classList.add('boton-comenzar');
 
-let botonGrabar= document.createElement('button');
+let botonGrabar = document.createElement('button');
 botonGrabar.innerHTML = 'GRABAR';
 botonGrabar.classList.add('clase-display-none');
 
-let botonFinalizar= document.createElement('button');
+let botonFinalizar = document.createElement('button');
 botonFinalizar.innerHTML = 'FINALIZAR';
 botonFinalizar.classList.add('clase-display-none');
 
-let botonSubirGifo= document.createElement('button');
+let botonSubirGifo = document.createElement('button');
 botonSubirGifo.innerHTML = 'SUBIR GIFO';
 botonSubirGifo.classList.add('clase-display-none');
 
@@ -187,7 +188,7 @@ let minutos = document.createElement('span');
 minutos.id = 'minutos';
 
 segundos.innerText = 00;
-separador.innerText= ':';
+separador.innerText = ':';
 minutos.innerText = 00;
 contenedorDeCronometro.classList.add('contenedor-cronometro');
 
@@ -279,3 +280,66 @@ videoGif.classList.add('clase-display-none');
 
 gifprevio = document.createElement('img');
 gifprevio.classList.toggle('clase-display-none');
+
+
+
+let form = new FormData();
+var urlGif = '';
+
+//SECCIION MIS GIFOS
+let seccionMisGifos = document.createElement('section');
+let tituloMisGifos = document.createElement('h4');
+let caritaMisGifos = document.createElement('img');
+let cajaMisGifos = document.createElement('div');
+let cajaSinContenidoMisGifos = document.createElement('div');
+let sinContenidoImgMisGifos = document.createElement('img');
+let sinContenidoTextoMisGifos = document.createElement('p');
+let contenedorDeBotonMisGifos = document.createElement('div');
+let botonVerMisGifos = document.createElement('button');
+
+
+const cajaMisFavoritos = document.createElement('div'); //con esto hago que mi Gif recien grabado y subido al locasStorage
+cajaMisFavoritos.id = 'CajaMisGifos';
+
+
+main.appendChild(cajaFavoritos);
+
+let bloqueSubiendoGif = document.createElement('div');
+bloqueSubiendoGif.classList.add('clase-display-none');
+
+let bloqueSubiendoGifTexto = document.createElement('p');
+bloqueSubiendoGifTexto.innerText = 'Estamos subiendo tu GIFO';
+bloqueSubiendoGifTexto.classList.add('clase-display-none');
+
+let bloqueSubiendoGifImg = document.createElement('img');
+bloqueSubiendoGifImg.setAttribute('src', './img/loader.svg');
+bloqueSubiendoGifImg.classList.add('clase-display-none');
+
+
+let botonDescargarMiGifo = document.createElement('div');
+botonDescargarMiGifo.classList.add('clase-display-none');
+
+let botonDescargarMiGifoImg = document.createElement('img');
+botonDescargarMiGifoImg.setAttribute('src', './img/icon-download.svg');
+//botonDescargarMiGifoImg.classList.add('clase-display-none');
+
+botonDescargarMiGifo.appendChild(botonDescargarMiGifoImg);
+
+let botonCopiarLinkMiGifo = document.createElement('div');
+botonCopiarLinkMiGifo.classList.add('clase-display-none');
+
+let botonCopiarLinkMiGifoImg = document.createElement('img');
+botonCopiarLinkMiGifoImg.setAttribute('src', './img/icon-link-normal.svg');
+
+botonCopiarLinkMiGifo.appendChild(botonCopiarLinkMiGifoImg);
+
+
+contenedorCentralCrearGifInnerDos.appendChild(bloqueSubiendoGif);
+contenedorCentralCrearGifInnerDos.appendChild(bloqueSubiendoGifImg);
+contenedorCentralCrearGifInnerDos.appendChild(bloqueSubiendoGifTexto);
+
+contenedorCentralCrearGifInnerDos.appendChild(botonDescargarMiGifo);
+contenedorCentralCrearGifInnerDos.appendChild(botonCopiarLinkMiGifo);
+
+
+let arrayGifsMisFavoritosId = [];

@@ -57,7 +57,7 @@ contenedorDeNumeros.appendChild(contenedorDeCronometro);
 
 
 masGifosImg.addEventListener('mouseover', () => {
-    switch(masGifosImg.src){
+    switch (masGifosImg.src) {
         case masGifosImgSRCServer:
             masGifosImg.setAttribute('src', masGifosImgHover);
             break;
@@ -68,7 +68,8 @@ masGifosImg.addEventListener('mouseover', () => {
 }, false);
 
 masGifosImg.addEventListener('mouseout', () => {
-    switch(seccionCrearGif.classList.value){
+
+    switch (seccionCrearGif.classList.value) {
         case 'seccion-crear-gif':
             masGifosImg.setAttribute('src', masGifosImgActiveServer);
             break;
@@ -106,6 +107,7 @@ function activarCamara() {
         videoGif.onloadedmetadata = function (e) {
             videoGif.play();
         };
+
         if (videoGif.srcObject = stream) {
             contenedorCentralCrearGifInnerUno.classList.toggle('clase-display-none');
             contenedorCentralCrearGifInnerUno.classList.toggle('contenedor-central-crear-gif-Inner');
@@ -142,10 +144,12 @@ botonGrabar.addEventListener('click', () => {
     carga();
 }, false);
 
-
+var dataId = '';
+//Funcion que graba y crea el gif
 function getStreamAndRecord() {
     navigator.mediaDevices.getUserMedia({
         video: true,
+        
         audio: false
     }).then(async function (stream) {
 
@@ -157,7 +161,8 @@ function getStreamAndRecord() {
             type: 'gif',
             frameRate: 1,
             quality: 10,
-            width: 400,
+            width: 480,
+            height: 320,
             hidden: 240,
             onGifRecordingStarted: function () {
                 console.log('started')
@@ -165,20 +170,99 @@ function getStreamAndRecord() {
         });
         recorder.startRecording();
 
+        recorder.stream = stream;
+
+        //unir esto
         botonFinalizar.addEventListener('click', detenerGrabacion, false);
 
         function detenerGrabacion() {
-            recorder.stopRecording(function () {
 
+            recorder.stopRecording(function () {
+                recorder.stream.stop();
                 gifprevio.src = URL.createObjectURL(recorder.getBlob());
+
+                function subirGif() {
+
+                    form.append('file', recorder.getBlob(), 'myGif.gif');
+                    console.log(form.get('file'));
+
+                    bloqueSubiendoGif.classList.toggle('subiendo-gif');
+                    bloqueSubiendoGifTexto.classList.toggle('subiendo-gif-texto');
+                    bloqueSubiendoGifImg.classList.toggle('subiendo-gif-img');
+
+                    bloqueSubiendoGif.classList.toggle('clase-display-none');
+                    bloqueSubiendoGifTexto.classList.toggle('clase-display-none');
+                    bloqueSubiendoGifImg.classList.toggle('clase-display-none');
+
+                    
+
+
+                    fetch(`https://upload.giphy.com/v1/gifs?${ApiKey}`, {
+                            method: "POST",
+                            body: form
+                        })
+                        .then(response => {
+                            console.log(response.status);
+                            return response.json();
+                        }).then(data => {
+                             dataId = data.data.id;
+                            fetch("https://api.giphy.com/v1/gifs/" + dataId + "?&" + ApiKey)
+                                .then(response => {
+                                    return response.json();
+                                }).then(obj => {
+                                    console.log(obj);
+                                    urlGif = obj.data.images.original.url;
+                                    console.log(urlGif);
+                                    sessionStorage.setItem(dataId, JSON.stringify(obj)); //envio al local Storage el data id
+                                    console.log(sessionStorage); //y su contenido (obj) para guardarlo, por cada gif subido
+
+                                    bloqueSubiendoGifImg.setAttribute('src', './img/check.svg');
+                                    bloqueSubiendoGifTexto.innerText = 'GIFO subido con éxito';
+
+                                    botonDescargarMiGifo.classList.toggle('clase-display-none');
+                                    botonDescargarMiGifo.classList.toggle('boton-descargar-mi-gifo');
+
+                                    botonCopiarLinkMiGifo.classList.toggle('clase-display-none');
+                                    botonCopiarLinkMiGifo.classList.toggle('boton-link-mi-gifo');
+
+                                    
+
+                                    cajaSinContenidoMisGifos.classList.add('clase-display-none');
+                                    cajaSinContenidoMisGifos.classList.remove('Caja-Sin-Contenido');
+
+
+                                    var kv = sessionStorage.getItem(dataId);
+                                    var kvParse = JSON.parse(kv); //le saco el stringgify
+                                    var keyUrl = kvParse.data.images.original.url; //obtengo la URL para poder mostrar el Gif
+                                      
+                               
+                                    seccionMisGifos.appendChild(cajaMisFavoritos); //aparezca en la seccion sin necesidad de recargar la pagina
+                                    cajaMisFavoritos.classList.add('caja-mis-gifos');
+                                    const nuevoGif = document.createElement('img');
+                                    cajaMisFavoritos.appendChild(nuevoGif);
+                                    nuevoGif.src = keyUrl;
+
+                                    arrayGifsMisFavoritosId.push(dataId);
+                                    console.log(arrayGifsMisFavoritosId);
+
+                                });
+
+                        });
+
+
+
+                }
+                botonSubirGifo.addEventListener('click', subirGif, false);
 
             });
         }
     });
 };
 
+
 //Funcion Cronometro
 var cronometroTimer;
+
 function detenerse() {
     clearInterval(cronometroTimer);
 }
@@ -220,6 +304,7 @@ botonFinalizar.addEventListener('click', () => {
     videoGif.classList.toggle('tamaño-video');
     gifprevio.classList.toggle('clase-display-none');
 
+    //
 }, false);
 
 
@@ -240,4 +325,5 @@ repetirCaptura.addEventListener('click', () => {
 
     contenedorDeNumeros.classList.toggle('contenedor-de-numeros-general');
     contenedorDeNumeros.classList.toggle('contenedor-de-numeros-general-repetir');
+    activarCamara();
 }, false);

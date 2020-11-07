@@ -19,7 +19,6 @@ function flechaDerechaHoverReverse() {
     }
 }
 
-
 //Hover en flecha izquierda
 flechaIzquierda.addEventListener('mouseover', () => {
     flechaIzquierda.setAttribute('src', flechaIzquierdaSrcHover);
