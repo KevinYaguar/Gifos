@@ -268,8 +268,12 @@ function getStreamAndRecord() {
                                     cajaMisFavoritos.appendChild(nuevoGif);
                                     nuevoGif.src = keyUrl;
 
-                                    arrayGifsMisFavoritosId.push(dataId);
-                                    console.log(arrayGifsMisFavoritosId);
+                                    arrayGifsMisGifosId.push(dataId);
+                                    sessionStorage.setItem('keykey', dataId);
+
+                                    //var arrayGifsParaStorage3 = JSON.stringify(arrayGifsMisGifosId);
+                                    //sessionStorage.setItem('arrayGifs', arrayGifsParaStorage3);
+
 
                                     botonCopiarLinkMiGifoImg.addEventListener('click', () => {
                                         updateClipboard(urlGif);                                       

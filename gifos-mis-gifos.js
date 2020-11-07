@@ -1,5 +1,3 @@
-
-
 //En principio la seccion esta display none
 seccionMisGifos.classList.add('clase-display-none');
 seccionMisGifos.id = 'seccion-Mis-Gifos';
@@ -32,14 +30,27 @@ seccionMisGifos.appendChild(cajaSinContenidoMisGifos);
 
 main.appendChild(seccionMisGifos);
 
-misGifos.addEventListener('click', ()=>{
+misGifos.addEventListener('click', () => {
     seccionOne.classList.toggle('one');
     seccionOne.classList.toggle('clase-display-none');
     seccionMisGifos.classList.toggle('clase-display-none');
     seccionMisGifos.classList.toggle('seccion-favoritos');
-    
-    if(cajaMisGifos.classList.value == 'caja-favoritos'){
-        //
+
+    let gifCreado = sessionStorage.getItem('keykey');
+    if (gifCreado) {
+        cajaSinContenidoMisGifos.classList.toggle('Caja-Sin-Contenido');
+        cajaSinContenidoMisGifos.classList.toggle('clase-display-none');
+
+        var kv = sessionStorage.getItem(gifCreado);
+        var kvParse = JSON.parse(kv); //le saco el stringgify
+        var keyUrl = kvParse.data.images.original.url; //obtengo la URL para poder mostrar el Gif
+
+
+        seccionMisGifos.appendChild(cajaMisFavoritos); //aparezca en la seccion sin necesidad de recargar la pagina
+        cajaMisFavoritos.classList.add('caja-mis-gifos');
+        const nuevoGif = document.createElement('img');
+        cajaMisFavoritos.appendChild(nuevoGif);
+        nuevoGif.src = keyUrl;
     }
 
 }, false);
