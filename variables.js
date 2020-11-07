@@ -343,3 +343,5 @@ contenedorCentralCrearGifInnerDos.appendChild(botonCopiarLinkMiGifo);
 
 
 let arrayGifsMisFavoritosId = [];
+
+var dataId = '';

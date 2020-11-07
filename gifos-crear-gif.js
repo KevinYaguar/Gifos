@@ -93,7 +93,18 @@ masGifosImg.addEventListener('click', () => {
 
 }, false);
 
+//DESCARGAR GIF
+async function descargarMiGifo(gifprevio) {
 
+    let a = document.createElement('a');
+    let response = await fetch(gifprevio.src);
+    let file = await response.blob();
+    a.download = 'MiNuevoGif.gif';
+    a.href = window.URL.createObjectURL(file);
+    a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
+    a.click();
+
+};
 
 //Crear gifos
 
@@ -144,12 +155,23 @@ botonGrabar.addEventListener('click', () => {
     carga();
 }, false);
 
-var dataId = '';
-//Funcion que graba y crea el gif
+
+// Funcion para copiar en portapapeles el link del gif
+function updateClipboard(urlGif) {
+    navigator.clipboard.writeText(urlGif).then(function() {
+      alert('URL copiada en el portapapeles');
+    }, function() {
+      alert('no se a podido copiar');
+    });
+  }
+
+
+
+
 function getStreamAndRecord() {
     navigator.mediaDevices.getUserMedia({
         video: true,
-        
+
         audio: false
     }).then(async function (stream) {
 
@@ -194,7 +216,7 @@ function getStreamAndRecord() {
                     bloqueSubiendoGifTexto.classList.toggle('clase-display-none');
                     bloqueSubiendoGifImg.classList.toggle('clase-display-none');
 
-                    
+
 
 
                     fetch(`https://upload.giphy.com/v1/gifs?${ApiKey}`, {
@@ -205,13 +227,14 @@ function getStreamAndRecord() {
                             console.log(response.status);
                             return response.json();
                         }).then(data => {
-                             dataId = data.data.id;
+                            dataId = data.data.id;
                             fetch("https://api.giphy.com/v1/gifs/" + dataId + "?&" + ApiKey)
                                 .then(response => {
                                     return response.json();
                                 }).then(obj => {
                                     console.log(obj);
                                     urlGif = obj.data.images.original.url;
+                                    urlGif.id = 'url-my-gif';
                                     console.log(urlGif);
                                     sessionStorage.setItem(dataId, JSON.stringify(obj)); //envio al local Storage el data id
                                     console.log(sessionStorage); //y su contenido (obj) para guardarlo, por cada gif subido
@@ -225,7 +248,10 @@ function getStreamAndRecord() {
                                     botonCopiarLinkMiGifo.classList.toggle('clase-display-none');
                                     botonCopiarLinkMiGifo.classList.toggle('boton-link-mi-gifo');
 
-                                    
+                                    botonDescargarMiGifoImg.addEventListener('click', () => {
+                                        descargarMiGifo(gifprevio);
+                                    }, false);
+
 
                                     cajaSinContenidoMisGifos.classList.add('clase-display-none');
                                     cajaSinContenidoMisGifos.classList.remove('Caja-Sin-Contenido');
@@ -234,8 +260,8 @@ function getStreamAndRecord() {
                                     var kv = sessionStorage.getItem(dataId);
                                     var kvParse = JSON.parse(kv); //le saco el stringgify
                                     var keyUrl = kvParse.data.images.original.url; //obtengo la URL para poder mostrar el Gif
-                                      
-                               
+
+
                                     seccionMisGifos.appendChild(cajaMisFavoritos); //aparezca en la seccion sin necesidad de recargar la pagina
                                     cajaMisFavoritos.classList.add('caja-mis-gifos');
                                     const nuevoGif = document.createElement('img');
@@ -244,6 +270,10 @@ function getStreamAndRecord() {
 
                                     arrayGifsMisFavoritosId.push(dataId);
                                     console.log(arrayGifsMisFavoritosId);
+
+                                    botonCopiarLinkMiGifoImg.addEventListener('click', () => {
+                                        updateClipboard(urlGif);                                       
+                                    }, false);
 
                                 });
 
