@@ -1,5 +1,5 @@
 function flechaIzquierdaHoverReverse() {
-    switch(cuerpoWeb.classList.value){
+    switch (cuerpoWeb.classList.value) {
         case 'oscuro':
             flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNocturnoServer);
             break;
@@ -8,8 +8,9 @@ function flechaIzquierdaHoverReverse() {
             break;
     }
 }
+
 function flechaDerechaHoverReverse() {
-    switch(cuerpoWeb.classList.value){
+    switch (cuerpoWeb.classList.value) {
         case 'oscuro':
             flechaDerecha.setAttribute('src', flechaDerechaSrcNocturnoServer);
             break;
@@ -54,7 +55,7 @@ function trending(i) {
         .then(json => json.data)
         .then(gif => gif[i].images.original)
         .then(final => {
-            
+
             let galeryIn = document.getElementById('galeryIn');
             var imgTrend = document.createElement('img');
             imgTrend.setAttribute('src', final.url);
@@ -159,7 +160,7 @@ function trending(i) {
                 bloqueParaCadaImagen.classList.toggle('bloque-para-cada-imagen-hover-background');
                 bloqueParaCadaImagenInferior.classList.toggle('opacity-cero-dot-six');
 
-                if(btnFav.classList.value == 'btnFavOut'){
+                if (btnFav.classList.value == 'btnFavOut') {
                     btnFav.classList.toggle('btnFavOut'); //por defecto display:none.   
                 }
                 btnFav.classList.toggle('btn-gif-card-trending');
@@ -171,7 +172,7 @@ function trending(i) {
                 heartFav.addEventListener('click', guardarEnSssionStorage, false);
 
                 //Eventos mouseover sobre el boton DOWNLOAD
-                if(btnDownload.classList.value == 'btnFavOut'){
+                if (btnDownload.classList.value == 'btnFavOut') {
                     btnDownload.classList.toggle('btnFavOut'); //por defecto display:none.   
                 }
                 btnDownload.classList.toggle('btn-gif-card-trending');
@@ -183,7 +184,7 @@ function trending(i) {
 
 
                 //Eventos mouseover sobre el boton EXPAND
-                if(btnExpand.classList.value == 'btnFavOut'){
+                if (btnExpand.classList.value == 'btnFavOut') {
                     btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.   
                 }
                 btnExpand.classList.toggle('btn-gif-card-trending');
@@ -210,19 +211,19 @@ function trending(i) {
                 bloqueParaCadaImagenInferior.classList.toggle('opacity-cero-dot-six');
                 btnFav.classList.toggle('btn-gif-card-trending');
 
-                if(btnFav.classList.value !== 'btnFavOut'){
+                if (btnFav.classList.value !== 'btnFavOut') {
                     btnFav.classList.toggle('btnFavOut'); //por defecto display:none.   
                 }
 
                 btnDownload.classList.toggle('btn-gif-card-trending');
 
-                if(btnDownload.classList.value !== 'btnFavOut'){
+                if (btnDownload.classList.value !== 'btnFavOut') {
                     btnDownload.classList.toggle('btnFavOut'); //por defecto display:none.   
                 }
 
                 btnExpand.classList.toggle('btn-gif-card-trending');
 
-                if(btnExpand.classList.value !== 'btnFavOut'){
+                if (btnExpand.classList.value !== 'btnFavOut') {
                     btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.   
                 }
             });
@@ -254,31 +255,15 @@ function trending(i) {
             //Evento EXPANDIR
             function expandir() {
 
-                seccionOne.classList.toggle('one');
-                seccionTwo.classList.toggle('two');
-                seccionOne.classList.toggle('clase-display-none');
-                seccionTwo.classList.toggle('clase-display-none');
-                
-                //seccionMax.classList.toggle('clase-display-none');
-                seccionMax.classList.toggle('seccion-max');
-                seccionMax.appendChild(cruzClose);
-                seccionMax.appendChild(imgTrend);
-                seccionMax.appendChild(contenedorBajoMax);
-                while (contenedorBajoMax.firstChild) {
-                    contenedorBajoMax.removeChild(contenedorBajoMax.firstChild);
-                }
+                showHide(seccionMax, 'seccion-max', seccionOne, seccionTwo)
+
+                hijosMax(cruzClose, imgTrend, contenedorBajoMax)
+                eliminarHijos(contenedorBajoMax);
+
                 contenedorBajoMax.appendChild(btnFav);
                 contenedorBajoMax.appendChild(btnDownload);
 
-                if(btnFav.classList.value !== 'btnFavOut'){
-                    btnFav.classList.toggle('btnFavOut'); //por defecto display:none.   
-                }
-                if(btnDownload.classList.value !== 'btnFavOut'){
-                    btnDownload.classList.toggle('btnFavOut'); //por defecto display:none.   
-                }
-                if(btnExpand.classList.value !== 'btnFavOut'){
-                    btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.   
-                }
+                botonesFavDownloadExpand(btnFav, btnDownload, btnExpand);
 
                 btnFav.classList.toggle('btn-gif-card-trending-max');
                 btnDownload.classList.toggle('btn-gif-card-trending-max');
@@ -286,25 +271,12 @@ function trending(i) {
             expandImg.addEventListener('click', expandir, false);
 
             cruzClose.addEventListener('click', () => {
-                if(btnFav.classList.value == 'btn-gif-card-trending-max'){
-                    btnFav.classList.toggle('btn-gif-card-trending-max');
-                }
-                if(btnDownload.classList.value == 'btn-gif-card-trending-max'){
-                    btnDownload.classList.toggle('btn-gif-card-trending-max');
-                }
-                
-                if(btnFav.classList.value !== 'btnFavOut'){
-                    btnFav.classList.toggle('btnFavOut'); //por defecto display:none.   
-                }
-                if(btnDownload.classList.value !== 'btnFavOut'){
-                    btnDownload.classList.toggle('btnFavOut'); //por defecto display:none.   
-                }
-                if(btnExpand.classList.value !== 'btnFavOut'){
-                    btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.   
-                }
-                
+                botonesFavDownloadParaMax(btnFav, btnDownload);
+
+                botonesFavDownloadExpand(btnFav, btnDownload, btnExpand)
+
                 bloqueParaCadaImagenInferior.appendChild(imgTrend);
-                
+
                 bloqueParaCadaImagen.appendChild(btnFav); //Insercion del boton en el bloque FAV
                 btnFav.appendChild(heartFav); //Insercion de la imagen en el boton
 
@@ -326,15 +298,10 @@ main.appendChild(seccionMax);
 
 
 function cerrarExpand() {
-    while (seccionMax.firstChild) {
-        seccionMax.removeChild(seccionMax.firstChild);
-    }
-    seccionOne.classList.toggle('one');
-    seccionTwo.classList.toggle('two');
-    seccionOne.classList.toggle('clase-display-none');
-    seccionTwo.classList.toggle('clase-display-none');
-    seccionMax.classList.toggle('seccion-max');
-    seccionMax.classList.toggle('clase-display-none');
+
+    eliminarHijos(seccionMax);
+    showHide(seccionOne, 'one', seccionMax)
+    showTrending(seccionTwo, 'two');
 
 };
 cruzClose.addEventListener('click', cerrarExpand);

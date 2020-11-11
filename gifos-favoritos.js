@@ -36,10 +36,23 @@ main.appendChild(seccionFavoritos); // insercion de la seccion en el main
 
 //Ocultar seccion de busqueda (section one). Crea al mismo tiempo la seccion favoritos. 
 favoritos.addEventListener('click', () => {
-    seccionOne.classList.toggle('one');
-    seccionOne.classList.toggle('clase-display-none');
-    seccionFavoritos.classList.toggle('seccion-favoritos');
+    
+
+    showHide(seccionFavoritos, 'seccion-favoritos', seccionOne,  seccionMisGifos, seccionCrearGif);
+
+    showTrending(seccionTwo, 'two');
+
     favoritos.classList.toggle('favoritos-activado');
+
+    if (misGifos.classList.value == 'favoritos-activado') {
+        misGifos.classList.toggle('favoritos-activado');
+    }
+   
+    if (masGifosImg.src == masGifosImgActiveServer) {
+        masGifosImg.setAttribute('src', masGifosImgSRC);
+    }
+
+
 
 
 
@@ -97,8 +110,10 @@ favoritos.addEventListener('click', () => {
 
 
 gifos.addEventListener('click', ()=>{
-    seccionOne.classList.toggle('one');
-    seccionOne.classList.toggle('clase-display-none');
-    seccionFavoritos.classList.toggle('seccion-favoritos');
-    favoritos.classList.toggle('favoritos-activado');
+
+    showHide(seccionOne, 'one', seccionFavoritos, seccionCrearGif, seccionMisGifos)
+    showTrending(seccionTwo, 'two');
+
+    showHide(contenedorCentralCrearGifInner, 'contenedor-central-crear-gif-Inner', contenedorCentralCrearGifInnerUno, contenedorCentralCrearGifInnerDos);
+    showHide(botonComenzar, 'boton-comenzar', botonFinalizar, botonGrabar, botonSubirGifo);
 }, false);

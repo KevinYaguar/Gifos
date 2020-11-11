@@ -226,9 +226,7 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
         //Expand
 
     function cerrarExpand() {
-        while (seccionMax.firstChild) {
-            seccionMax.removeChild(seccionMax.firstChild);
-        }
+        eliminarHijos(seccionMax);
         seccionOne.classList.toggle('one');
         seccionTwo.classList.toggle('two');
         seccionOne.classList.toggle('clase-display-none');
@@ -240,32 +238,15 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
     cruzClose.addEventListener('click', cerrarExpand);
 
     function expandir() {
+        showHide(seccionMax, 'seccion-max', seccionOne, seccionTwo);
 
-        seccionOne.classList.toggle('one');
-        seccionTwo.classList.toggle('two');
-        seccionOne.classList.toggle('clase-display-none');
-        seccionTwo.classList.toggle('clase-display-none');
+        hijosMax(cruzClose, respuestaGif, contenedorBajoMax)
+        eliminarHijos(contenedorBajoMax);
 
-        //seccionMax.classList.toggle('clase-display-none');
-        seccionMax.classList.toggle('seccion-max');
-        seccionMax.appendChild(cruzClose);
-        seccionMax.appendChild(respuestaGif);
-        seccionMax.appendChild(contenedorBajoMax);
-        while (contenedorBajoMax.firstChild) {
-            contenedorBajoMax.removeChild(contenedorBajoMax.firstChild);
-        }
         contenedorBajoMax.appendChild(btnFav);
         contenedorBajoMax.appendChild(btnDownload);
 
-        if(btnFav.classList.value !== 'btnFavOut'){
-            btnFav.classList.toggle('btnFavOut'); //por defecto display:none.   
-        }
-        if(btnDownload.classList.value !== 'btnFavOut'){
-            btnDownload.classList.toggle('btnFavOut'); //por defecto display:none.   
-        }
-        if(btnExpand.classList.value !== 'btnFavOut'){
-            btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.   
-        }
+        botonesFavDownloadExpand(btnFav, btnDownload, btnExpand)
 
         btnFav.classList.toggle('btn-gif-card-trending-max');
         btnDownload.classList.toggle('btn-gif-card-trending-max');
@@ -273,22 +254,9 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
     expandImg.addEventListener('click', expandir, false);
 
     cruzClose.addEventListener('click', () => {
-        if(btnFav.classList.value == 'btn-gif-card-trending-max'){
-            btnFav.classList.toggle('btn-gif-card-trending-max');
-        }
-        if(btnDownload.classList.value == 'btn-gif-card-trending-max'){
-            btnDownload.classList.toggle('btn-gif-card-trending-max');
-        }
+        botonesFavDownloadParaMax(btnFav, btnDownload);
         
-        if(btnFav.classList.value !== 'btnFavOut'){
-            btnFav.classList.toggle('btnFavOut'); //por defecto display:none.   
-        }
-        if(btnDownload.classList.value !== 'btnFavOut'){
-            btnDownload.classList.toggle('btnFavOut'); //por defecto display:none.   
-        }
-        if(btnExpand.classList.value !== 'btnFavOut'){
-            btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.   
-        }
+        botonesFavDownloadExpand(btnFav, btnDownload, btnExpand)
         
         bloqueParaCadaImagenInferior.appendChild(respuestaGif);
         

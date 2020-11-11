@@ -84,12 +84,18 @@ masGifosImg.addEventListener('click', () => {
         masGifosImg.setAttribute('src', masGifosImgActive);
     }
 
-    seccionOne.classList.toggle('one');
-    seccionOne.classList.toggle('clase-display-none');
-    seccionTwo.classList.toggle('two');
-    seccionTwo.classList.toggle('clase-display-none');
-    seccionCrearGif.classList.toggle('clase-display-none');
-    seccionCrearGif.classList.toggle('seccion-crear-gif');
+    showHide(seccionCrearGif, 'seccion-crear-gif', seccionOne, seccionTwo, seccionMisGifos, seccionFavoritos);
+    showHide(contenedorCentralCrearGifInner, 'contenedor-central-crear-gif-Inner', contenedorCentralCrearGifInnerUno, contenedorCentralCrearGifInnerDos);
+    showHide(botonComenzar, 'boton-comenzar', botonFinalizar, botonGrabar, botonSubirGifo);
+
+
+    if (favoritos.classList.value == 'favoritos-activado') {
+        favoritos.classList.toggle('favoritos-activado');
+    }
+    if (misGifos.classList.value == 'favoritos-activado') {
+        misGifos.classList.toggle('favoritos-activado');
+    }
+
 
 }, false);
 
@@ -143,6 +149,22 @@ botonComenzar.addEventListener('click', () => {
     contenedorCentralCrearGifInnerUno.classList.toggle('contenedor-central-crear-gif-Inner');
     contenedorDeNumero1.classList.toggle('background-color');
     activarCamara();
+    gifprevio.setAttribute('class', claseDisplayNone);
+    gifprevio.setAttribute('src', '');
+    bloqueSubiendoGif.setAttribute('class', claseDisplayNone);
+    bloqueSubiendoGifImg.setAttribute('class', claseDisplayNone);
+    bloqueSubiendoGifImg.setAttribute('src', './img/loader.svg');
+    bloqueSubiendoGifTexto.innerText = 'Estamos subiendo tu GIFO';
+    bloqueSubiendoGifTexto.setAttribute('class', claseDisplayNone);
+    botonDescargarMiGifo.setAttribute('class', claseDisplayNone);
+    botonCopiarLinkMiGifo.setAttribute('class', claseDisplayNone);
+    //dataId = '';
+
+    bloqueSubiendoGif.setAttribute('class', claseDisplayNone);
+    bloqueSubiendoGifTexto.setAttribute('class', claseDisplayNone);
+    bloqueSubiendoGifImg.setAttribute('class', claseDisplayNone);
+
+
 }, false);
 
 
@@ -158,12 +180,12 @@ botonGrabar.addEventListener('click', () => {
 
 // Funcion para copiar en portapapeles el link del gif
 function updateClipboard(urlGif) {
-    navigator.clipboard.writeText(urlGif).then(function() {
-      alert('URL copiada en el portapapeles');
-    }, function() {
-      alert('no se a podido copiar');
+    navigator.clipboard.writeText(urlGif).then(function () {
+        alert('URL copiada en el portapapeles');
+    }, function () {
+        alert('no se a podido copiar');
     });
-  }
+}
 
 
 
@@ -194,7 +216,6 @@ function getStreamAndRecord() {
 
         recorder.stream = stream;
 
-        //unir esto
         botonFinalizar.addEventListener('click', detenerGrabacion, false);
 
         function detenerGrabacion() {
@@ -202,31 +223,26 @@ function getStreamAndRecord() {
             recorder.stopRecording(function () {
                 recorder.stream.stop();
                 gifprevio.src = URL.createObjectURL(recorder.getBlob());
+                
 
                 function subirGif() {
+                    bloqueSubiendoGif.setAttribute('class', 'subiendo-gif');
+                    bloqueSubiendoGifTexto.setAttribute('class', 'subiendo-gif-texto');
+                    bloqueSubiendoGifImg.setAttribute('class', 'subiendo-gif-img');
 
-                    form.append('file', recorder.getBlob(), 'myGif.gif');
+                    let form = new FormData();
+                    form.set('file', recorder.getBlob(), 'myGif.gif');
                     console.log(form.get('file'));
 
-                    bloqueSubiendoGif.classList.toggle('subiendo-gif');
-                    bloqueSubiendoGifTexto.classList.toggle('subiendo-gif-texto');
-                    bloqueSubiendoGifImg.classList.toggle('subiendo-gif-img');
-
-                    bloqueSubiendoGif.classList.toggle('clase-display-none');
-                    bloqueSubiendoGifTexto.classList.toggle('clase-display-none');
-                    bloqueSubiendoGifImg.classList.toggle('clase-display-none');
-
-
-
-
                     fetch(`https://upload.giphy.com/v1/gifs?${ApiKey}`, {
-                            method: "POST",
-                            body: form
-                        })
+                        method: "POST",
+                        body: form
+                    })
                         .then(response => {
                             console.log(response.status);
                             return response.json();
                         }).then(data => {
+                            //dataId = '';
                             dataId = data.data.id;
                             fetch("https://api.giphy.com/v1/gifs/" + dataId + "?&" + ApiKey)
                                 .then(response => {
@@ -242,22 +258,19 @@ function getStreamAndRecord() {
                                     bloqueSubiendoGifImg.setAttribute('src', './img/check.svg');
                                     bloqueSubiendoGifTexto.innerText = 'GIFO subido con éxito';
 
-                                    botonDescargarMiGifo.classList.toggle('clase-display-none');
-                                    botonDescargarMiGifo.classList.toggle('boton-descargar-mi-gifo');
-
-                                    botonCopiarLinkMiGifo.classList.toggle('clase-display-none');
-                                    botonCopiarLinkMiGifo.classList.toggle('boton-link-mi-gifo');
+                                    botonDescargarMiGifo.setAttribute('class', 'boton-descargar-mi-gifo')
+                                    botonCopiarLinkMiGifo.setAttribute('class', 'boton-link-mi-gifo')
 
                                     botonDescargarMiGifoImg.addEventListener('click', () => {
                                         descargarMiGifo(gifprevio);
                                     }, false);
 
 
-                                    cajaSinContenidoMisGifos.classList.add('clase-display-none');
-                                    cajaSinContenidoMisGifos.classList.remove('Caja-Sin-Contenido');
+                                    arrayGifsMisGifosId.push(dataId);
+                                    sessionStorage.setItem('keykey', dataId);
+                                    let gifCreado = sessionStorage.getItem('keykey');
 
-
-                                    var kv = sessionStorage.getItem(dataId);
+                                    var kv = sessionStorage.getItem(gifCreado);
                                     var kvParse = JSON.parse(kv); //le saco el stringgify
                                     var keyUrl = kvParse.data.images.original.url; //obtengo la URL para poder mostrar el Gif
 
@@ -267,27 +280,35 @@ function getStreamAndRecord() {
                                     const nuevoGif = document.createElement('img');
                                     cajaMisFavoritos.appendChild(nuevoGif);
                                     nuevoGif.src = keyUrl;
+                                    nuevoGif.classList.add('nuevo-gif');
+                                    
+                                    cajaMisFavoritos.appendChild(hoverNuevoGif);
 
-                                    arrayGifsMisGifosId.push(dataId);
-                                    sessionStorage.setItem('keykey', dataId);
+                                    botonTrashImg.addEventListener('click', () => {
+                                        cajaMisFavoritos.removeChild(nuevoGif);
+                                        cajaMisFavoritos.removeChild(hoverNuevoGif);
 
-                                    //var arrayGifsParaStorage3 = JSON.stringify(arrayGifsMisGifosId);
-                                    //sessionStorage.setItem('arrayGifs', arrayGifsParaStorage3);
-
+                                        if (!cajaMisFavoritos.firstChild) {
+                                            cajaSinContenidoMisGifos.classList.toggle('Caja-Sin-Contenido');
+                                            cajaSinContenidoMisGifos.classList.toggle('clase-display-none');
+                                            cajaMisFavoritos.setAttribute('class', claseDisplayNone);
+                                        }
+                                    }, false);
+                                    if (cajaMisFavoritos.firstChild) {
+                                        cajaSinContenidoMisGifos.setAttribute('class', claseDisplayNone)
+                                    }
 
                                     botonCopiarLinkMiGifoImg.addEventListener('click', () => {
-                                        updateClipboard(urlGif);                                       
+                                        updateClipboard(urlGif);
                                     }, false);
-
+                                    
+                                    //let form = '';
+                                    //form.set('', '', '');
+                                    //console.log(form.get('file'));
                                 });
-
                         });
-
-
-
                 }
                 botonSubirGifo.addEventListener('click', subirGif, false);
-
             });
         }
     });

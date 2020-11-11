@@ -31,26 +31,20 @@ seccionMisGifos.appendChild(cajaSinContenidoMisGifos);
 main.appendChild(seccionMisGifos);
 
 misGifos.addEventListener('click', () => {
-    seccionOne.classList.toggle('one');
-    seccionOne.classList.toggle('clase-display-none');
-    seccionMisGifos.classList.toggle('clase-display-none');
-    seccionMisGifos.classList.toggle('seccion-favoritos');
 
-    let gifCreado = sessionStorage.getItem('keykey');
-    if (gifCreado) {
-        cajaSinContenidoMisGifos.classList.toggle('Caja-Sin-Contenido');
-        cajaSinContenidoMisGifos.classList.toggle('clase-display-none');
+    showHide(seccionMisGifos, 'seccion-favoritos', seccionOne, seccionFavoritos, seccionCrearGif);
 
-        var kv = sessionStorage.getItem(gifCreado);
-        var kvParse = JSON.parse(kv); //le saco el stringgify
-        var keyUrl = kvParse.data.images.original.url; //obtengo la URL para poder mostrar el Gif
+    showTrending(seccionTwo, 'two');
+    
+    showHide(contenedorCentralCrearGifInner, 'contenedor-central-crear-gif-Inner', contenedorCentralCrearGifInnerUno, contenedorCentralCrearGifInnerDos);
 
-
-        seccionMisGifos.appendChild(cajaMisFavoritos); //aparezca en la seccion sin necesidad de recargar la pagina
-        cajaMisFavoritos.classList.add('caja-mis-gifos');
-        const nuevoGif = document.createElement('img');
-        cajaMisFavoritos.appendChild(nuevoGif);
-        nuevoGif.src = keyUrl;
+    misGifos.classList.toggle('favoritos-activado');
+    
+    if (favoritos.classList.value == 'favoritos-activado') {
+        favoritos.classList.toggle('favoritos-activado');
     }
-
+    
+    if (masGifosImg.src == masGifosImgActiveServer) {
+        masGifosImg.setAttribute('src', masGifosImgSRC);
+    }
 }, false);

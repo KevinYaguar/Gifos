@@ -508,6 +508,11 @@
   right: 83px;
 }
 
+.boton-descargar-mi-gifo :hover {
+  background-color: #fff;
+  border-radius: 6px;
+}
+
 .boton-link-mi-gifo {
   width: 32px;
   height: 32px;
@@ -516,10 +521,60 @@
   right: 41px;
 }
 
-/*.boton-descargar-mi-gifo-img{
-    width: 16.7px;
-    height: 18.3px;
-}*/
+.boton-link-mi-gifo :hover {
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.nuevo-gif {
+  width: 260px;
+  height: 200px;
+}
+
+.nuevo-gif-hover {
+  background-color: #572EE5;
+  opacity: 0.6;
+}
+
+.boton-trash {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 11px;
+  right: 95px;
+}
+
+.boton-trash :hover {
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.boton-download {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 11px;
+  right: 52px;
+}
+
+.boton-download :hover {
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.boton-max {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 11px;
+  right: 10px;
+}
+
+.boton-max :hover {
+  background-color: #fff;
+  border-radius: 6px;
+}
+
 @media (max-width: 800px) {
   footer {
     display: -webkit-box;

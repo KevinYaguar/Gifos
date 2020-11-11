@@ -1,6 +1,8 @@
 // ApiKey
 const ApiKey = 'api_key=1yVSM9oVX3z5nlo213gmodWDvoRxttsM';
 
+
+
 //Server
 let server = 'http://127.0.0.1:5502/';
 let serverGitHub = 'https://kevinyaguar.github.io/'
@@ -281,9 +283,149 @@ videoGif.classList.add('clase-display-none');
 gifprevio = document.createElement('img');
 gifprevio.classList.toggle('clase-display-none');
 
+//HOVER DE LOS GIFS EN MIS GIFOS
+
+//hover nuevo gif en mis gifos
+let hoverNuevoGif = document.createElement('div');
+hoverNuevoGif.classList.add('nuevo-gif');
+hoverNuevoGif.style.position = 'relative';
+hoverNuevoGif.style.right = '289px';
+
+//boton trash
+let botonTrash = document.createElement('div');
+botonTrash.classList.toggle('clase-display-none');
+
+let botonTrashImg = document.createElement('img');
+botonTrashImg.setAttribute('src', './img/icon-trash-normal.svg');
+//botonTrashImg.classList.add('clase-display-none');
+
+botonTrash.appendChild(botonTrashImg);
+
+hoverNuevoGif.appendChild(botonTrash);
 
 
-let form = new FormData();
+
+botonTrashImg.addEventListener('mouseover', () => {
+    if (botonTrashImg.src == server + 'img/icon-trash-normal.svg') {
+        botonTrashImg.setAttribute('src', './img/icon-trash-hover.svg')
+    } else {
+        botonTrashImg.setAttribute('src', './img/icon-trash-normal.svg')
+    }
+}, false);
+botonTrashImg.addEventListener('mouseout', () => {
+    if (botonTrashImg.src == server + 'img/icon-trash-hover.svg') {
+        botonTrashImg.setAttribute('src', './img/icon-trash-normal.svg')
+    } else {
+        botonTrashImg.setAttribute('src', './img/icon-trash-hover.svg');
+    }
+}, false);
+
+//boton Download
+let botonDownload = document.createElement('div');
+botonDownload.classList.toggle('clase-display-none');
+
+let botonDownloadImg = document.createElement('img');
+botonDownloadImg.setAttribute('src', './img/icon-download.svg');
+//botonTrashImg.classList.add('clase-display-none');
+
+botonDownload.appendChild(botonDownloadImg);
+
+hoverNuevoGif.appendChild(botonDownload);
+
+
+
+botonDownloadImg.addEventListener('mouseover', () => {
+    if (botonDownloadImg.src == server + 'img/icon-download.svg') {
+        botonDownloadImg.setAttribute('src', './img/icon-download-hover.svg')
+    } else {
+        botonDownloadImg.setAttribute('src', './img/icon-download.svg')
+    }
+}, false);
+botonDownloadImg.addEventListener('mouseout', () => {
+    if (botonDownloadImg.src == server + 'img/icon-download-hover.svg') {
+        botonDownloadImg.setAttribute('src', './img/icon-download.svg')
+    } else {
+        botonDownloadImg.setAttribute('src', './img/icon-download-hover.svg');
+    }
+}, false);
+
+//boton Max
+let botonMax = document.createElement('div');
+botonMax.classList.toggle('clase-display-none');
+
+let botonMaxImg = document.createElement('img');
+botonMaxImg.setAttribute('src', './img/icon-max-normal.svg');
+//botonTrashImg.classList.add('clase-display-none');
+
+botonMax.appendChild(botonMaxImg);
+
+hoverNuevoGif.appendChild(botonMax);
+
+
+hoverNuevoGif.addEventListener('mouseover', () => {
+
+    hoverNuevoGif.classList.toggle('nuevo-gif-hover');
+    //botonTrashImg.classList.toggle('clase-display-none');
+    botonTrash.classList.toggle('clase-display-none');
+    botonTrash.classList.toggle('boton-trash');
+
+    botonDownload.classList.toggle('clase-display-none');
+    botonDownload.classList.toggle('boton-download');
+
+    botonMax.classList.toggle('clase-display-none');
+    botonMax.classList.toggle('boton-max');
+
+}, false);
+
+hoverNuevoGif.addEventListener('mouseout', () => {
+
+    hoverNuevoGif.classList.toggle('nuevo-gif-hover');
+    //botonTrashImg.classList.toggle('clase-display-none');
+    botonTrash.classList.toggle('clase-display-none');
+    botonTrash.classList.toggle('boton-trash');
+
+    botonDownload.classList.toggle('clase-display-none');
+    botonDownload.classList.toggle('boton-download');
+
+    botonMax.classList.toggle('clase-display-none');
+    botonMax.classList.toggle('boton-max');
+}, false);
+
+botonMaxImg.addEventListener('mouseover', () => {
+    if (botonMaxImg.src == server + 'img/icon-max-normal.svg') {
+        botonMaxImg.setAttribute('src', './img/icon-max-hover.svg')
+    } else {
+        botonMaxImg.setAttribute('src', './img/icon-max-normal.svg')
+    }
+}, false);
+botonMaxImg.addEventListener('mouseout', () => {
+    if (botonMaxImg.src == server + 'img/icon-max-hover.svg') {
+        botonMaxImg.setAttribute('src', './img/icon-max-normal.svg')
+    } else {
+        botonMaxImg.setAttribute('src', './img/icon-max-hover.svg');
+    }
+}, false);
+
+
+//descargar gifo
+//DESCARGAR GIF
+async function descargarMiGifo(nuevoGif) {
+
+    let a = document.createElement('a');
+    let response = await fetch(nuevoGif.src);
+    let file = await response.blob();
+    a.download = 'MiNuevoGif.gif';
+    a.href = window.URL.createObjectURL(file);
+    a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
+    a.click();
+
+};
+botonDownloadImg.addEventListener('click', () => {
+    descargarMiGifo(nuevoGif);
+}, false);
+/// FIN DE HOVER DE MIS GIFOS
+
+
 var urlGif = '';
 
 //SECCIION MIS GIFOS
@@ -345,3 +487,106 @@ contenedorCentralCrearGifInnerDos.appendChild(botonCopiarLinkMiGifo);
 let arrayGifsMisGifosId = [];
 
 var dataId = '';
+
+//MOUSEOVER SOBRE BOTON DESCARGAR Y LINK
+botonDescargarMiGifoImg.addEventListener('mouseover', () => {
+    if (botonDescargarMiGifoImg.src == server + 'img/icon-download.svg') {
+        botonDescargarMiGifoImg.setAttribute('src', './img/icon-download-hover.svg')
+    } else {
+        botonDescargarMiGifoImg.setAttribute('src', './img/icon-download.svg')
+    }
+}, false);
+
+botonCopiarLinkMiGifoImg.addEventListener('mouseover', () => {
+    if (botonCopiarLinkMiGifoImg.src == server + 'img/icon-link-normal.svg') {
+        botonCopiarLinkMiGifoImg.setAttribute('src', './img/icon-link-hover.svg')
+    } else {
+        botonCopiarLinkMiGifoImg.setAttribute('src', './img/icon-link-normal.svg')
+    }
+}, false);
+
+//MOUSEOUT SOBRE BOTON DESCAGAR Y LINK
+
+botonDescargarMiGifoImg.addEventListener('mouseout', () => {
+    if (botonDescargarMiGifoImg.src == server + 'img/icon-download-hover.svg') {
+        botonDescargarMiGifoImg.setAttribute('src', './img/icon-download.svg')
+    } else {
+        botonDescargarMiGifoImg.setAttribute('src', './img/icon-download-hover.svg')
+    }
+}, false);
+
+botonCopiarLinkMiGifoImg.addEventListener('mouseout', () => {
+    if (botonCopiarLinkMiGifoImg.src == server + 'img/icon-link-hover.svg') {
+        botonCopiarLinkMiGifoImg.setAttribute('src', './img/icon-link-normal.svg')
+    } else {
+        botonCopiarLinkMiGifoImg.setAttribute('src', './img/icon-link-hover.svg')
+    }
+}, false);
+
+
+let gifCreado = sessionStorage.getItem('keykey');
+
+
+
+let claseDisplayNone = 'clase-display-none';
+
+
+//FUNCION PARA DESPLEGAR Y ESCONDER SECCIONES
+function showHide(show, clase, hideOne, hideTwo, hideThree, hideFour) {
+    try {
+        show.setAttribute('class', clase);
+        if (hideOne.classList.value != claseDisplayNone) {
+            hideOne.setAttribute('class', claseDisplayNone)
+        }
+        if (hideTwo.classList.value != claseDisplayNone) {
+            hideTwo.setAttribute('class', claseDisplayNone)
+        }
+        if (hideThree.classList.value != claseDisplayNone) {
+            hideThree.setAttribute('class', claseDisplayNone)
+        }
+        if (hideFour.classList.value != claseDisplayNone) {
+            hideFour.setAttribute('class', claseDisplayNone)
+        }
+    } catch (e) {
+        console.log()
+    };
+}
+
+//FUNCION PARA DESPLEGAR Y ESCONDER SECCION TWO(CARROUSEL)
+function showTrending(show, clase) {
+    show.setAttribute('class', clase);
+}
+
+//Funcion eliminar hijos
+function eliminarHijos(padre) {
+    while (padre.firstChild) {
+        padre.removeChild(padre.firstChild);
+    }
+}
+
+function hijosMax(cruz, gif, contenedorBajo) {
+    seccionMax.appendChild(cruz);
+    seccionMax.appendChild(gif);
+    seccionMax.appendChild(contenedorBajo);
+}
+
+function botonesFavDownloadExpand(fav, donwload, expand) {
+    if (fav.classList.value !== 'btnFavOut') {
+        fav.classList.toggle('btnFavOut'); //por defecto display:none.   
+    }
+    if (donwload.classList.value !== 'btnFavOut') {
+        donwload.classList.toggle('btnFavOut'); //por defecto display:none.   
+    }
+    if (expand.classList.value !== 'btnFavOut') {
+        expand.classList.toggle('btnFavOut'); //por defecto display:none.   
+    }
+}
+
+function botonesFavDownloadParaMax(fav, down) {
+    if (fav.classList.value == 'btn-gif-card-trending-max') {
+        fav.classList.toggle('btn-gif-card-trending-max');
+    }
+    if (down.classList.value == 'btn-gif-card-trending-max') {
+        down.classList.toggle('btn-gif-card-trending-max');
+    }
+}
