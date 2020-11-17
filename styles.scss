@@ -403,7 +403,7 @@ align-self: center;
 
 .nuevo-gif-hover{
     background-color: #572EE5;
-    opacity: 0.6;
+    //opacity: 0.6;
     //position: relative;
     //right: 289px;
 }
@@ -441,7 +441,13 @@ align-self: center;
         border-radius: 6px;
     }
 }
-
+.div-inter{
+    width: 260px;
+    height: 200px;
+    :hover{
+        opacity: 0.6;
+    }
+}
 @media (max-width: 800px){
     @import "./mobil-styles/_footer-mobil-styles";
     @import "./mobil-styles/_header-mobil-styles";

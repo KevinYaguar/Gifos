@@ -538,7 +538,6 @@
 
 .nuevo-gif-hover {
   background-color: #572EE5;
-  opacity: 0.6;
 }
 
 .boton-trash {
@@ -578,6 +577,15 @@
 .boton-max :hover {
   background-color: #fff;
   border-radius: 6px;
+}
+
+.div-inter {
+  width: 260px;
+  height: 200px;
+}
+
+.div-inter :hover {
+  opacity: 0.6;
 }
 
 @media (max-width: 800px) {

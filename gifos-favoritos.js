@@ -116,4 +116,15 @@ gifos.addEventListener('click', ()=>{
 
     showHide(contenedorCentralCrearGifInner, 'contenedor-central-crear-gif-Inner', contenedorCentralCrearGifInnerUno, contenedorCentralCrearGifInnerDos);
     showHide(botonComenzar, 'boton-comenzar', botonFinalizar, botonGrabar, botonSubirGifo);
+
+    if (misGifos.classList.value == 'favoritos-activado') {
+        misGifos.classList.toggle('favoritos-activado');
+    }
+    if (favoritos.classList.value == 'favoritos-activado') {
+        favoritos.classList.toggle('favoritos-activado');
+    }
+    if (masGifosImg.src == masGifosImgActiveServer) {
+        masGifosImg.setAttribute('src', masGifosImgSRC);
+    }
+
 }, false);

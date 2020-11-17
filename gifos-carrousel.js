@@ -252,7 +252,38 @@ function trending(i) {
                 }
             });
 
-            
+            function expandir() {
+                showHide(seccionMax, 'seccion-max', seccionOne, seccionTwo);
+        
+                hijosMax(cruzClose, imgTrend, contenedorBajoMax)
+                eliminarHijos(contenedorBajoMax);
+        
+                contenedorBajoMax.appendChild(btnFav);
+                contenedorBajoMax.appendChild(btnDownload);
+        
+                botonesFavDownloadExpand(btnFav, btnDownload, btnExpand)
+        
+                btnFav.classList.toggle('btn-gif-card-trending-max');
+                btnDownload.classList.toggle('btn-gif-card-trending-max');
+            }
+            expandImg.addEventListener('click', expandir, false);
+        
+            cruzClose.addEventListener('click', () => {
+                botonesFavDownloadParaMax(btnFav, btnDownload);
+                
+                botonesFavDownloadExpand(btnFav, btnDownload, btnExpand)
+                
+                bloqueParaCadaImagenInferior.appendChild(imgTrend);
+                
+                bloqueParaCadaImagen.appendChild(btnFav); //Insercion del boton en el bloque FAV
+                btnFav.appendChild(heartFav); //Insercion de la imagen en el boton
+        
+                bloqueParaCadaImagen.appendChild(btnDownload); //Insercion del boton en el bloque DOWNLOAD
+                btnDownload.appendChild(downloadImg) //link de descarga
+        
+                bloqueParaCadaImagen.appendChild(btnExpand); //Insercion del boton en el bloque EXPAND
+                btnExpand.appendChild(expandImg); //Insercion de la imagen en el boton
+            }, false);
 
         });
 }
@@ -267,8 +298,12 @@ main.appendChild(seccionMax);
 function cerrarExpand() {
 
     eliminarHijos(seccionMax);
-    showHide(seccionOne, 'one', seccionMax)
-    showTrending(seccionTwo, 'two');
 
+    if(misGifos.classList.value == "favoritos-activado"){
+        showHide(seccionMisGifos, 'seccion-favoritos', seccionMax)
+    } else{
+        showHide(seccionOne, 'one', seccionMax)
+        showTrending(seccionTwo, 'two');
+    }
 };
 cruzClose.addEventListener('click', cerrarExpand);

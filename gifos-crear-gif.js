@@ -289,7 +289,19 @@ function getStreamAndRecord() {
                                     //hoverNuevoGif.style.position = 'relative';
                                     //hoverNuevoGif.style.right = '289px';
 
-                                    hoverNuevoGif.appendChild(nuevoGif);
+                                    
+
+                                    //hover inter background #572EE5
+                                    let hoverInter = document.createElement('div');
+                                    hoverInter.classList.add('div-inter');
+
+                                    hoverNuevoGif.appendChild(hoverInter);
+
+                                    hoverInter.appendChild(nuevoGif);
+
+
+
+
                                     nuevoGif.src = keyUrl;
                                     nuevoGif.classList.add('nuevo-gif-img');
 
@@ -490,7 +502,7 @@ function getStreamAndRecord() {
 
                                         botonesFavDownloadExpand(btnFav, botonDownloadImg, botonMaxImg)
 
-                                        hoverNuevoGif.insertBefore(nuevoGif, botonTrash);
+                                        hoverInter.appendChild(nuevoGif);
 
                                         //bloqueParaCadaImagen.appendChild(btnFav); //Insercion del boton en el bloque FAV
                                         btnFav.appendChild(heartFav); //Insercion de la imagen en el boton
