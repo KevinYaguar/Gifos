@@ -455,8 +455,39 @@ function getStreamAndRecord() {
                                     }, false);
                                     /// FIN DE HOVER DE MIS GIFOS
 
+                                    //eventos over botones 
+                                    botonTrash.addEventListener('mouseover', ()=>{
+                                        //hoverNuevoGif.classList.toggle('nuevo-gif-hover');
+                                        hoverInter.style.opacity='0.6';
+                                    });
+
+                                    botonTrash.addEventListener('mouseout', ()=>{
+                                        //hoverNuevoGif.classList.toggle('nuevo-gif-hover');
+                                        hoverInter.style.opacity='1';
+                                    });
+                                    //eventos over botones 
+                                    botonDownload.addEventListener('mouseover', ()=>{
+                                        //hoverNuevoGif.classList.toggle('nuevo-gif-hover');
+                                        hoverInter.style.opacity='0.6';
+                                    });
+
+                                    botonDownload.addEventListener('mouseout', ()=>{
+                                        //hoverNuevoGif.classList.toggle('nuevo-gif-hover');
+                                        hoverInter.style.opacity='1';
+                                    });
+                                    //eventos over botones 
+                                    botonMax.addEventListener('mouseover', ()=>{
+                                        //hoverNuevoGif.classList.toggle('nuevo-gif-hover');
+                                        hoverInter.style.opacity='0.6';
+                                    });
+
+                                    botonMax.addEventListener('mouseout', ()=>{
+                                        //hoverNuevoGif.classList.toggle('nuevo-gif-hover');
+                                        hoverInter.style.opacity='1';
+                                    });
+
                                     botonTrashImg.addEventListener('click', () => {
-                                        hoverNuevoGif.removeChild(nuevoGif);
+                                        hoverInter.removeChild(nuevoGif);
                                         cajaMisFavoritos.removeChild(hoverNuevoGif);
 
                                         if (!cajaMisFavoritos.firstChild) {
@@ -465,7 +496,8 @@ function getStreamAndRecord() {
                                             cajaMisFavoritos.setAttribute('class', claseDisplayNone);
                                         }
                                     }, false);
-                                    if (hoverNuevoGif.firstChild) {
+                                    
+                                    if (hoverInter.firstChild) {
                                         cajaSinContenidoMisGifos.setAttribute('class', claseDisplayNone)
                                     }
 
