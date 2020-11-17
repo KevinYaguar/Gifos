@@ -147,7 +147,11 @@ botonComenzar.addEventListener('click', () => {
     contenedorCentralCrearGifInner.classList.toggle('clase-display-none');
     contenedorCentralCrearGifInnerUno.classList.toggle('clase-display-none');
     contenedorCentralCrearGifInnerUno.classList.toggle('contenedor-central-crear-gif-Inner');
-    contenedorDeNumero1.classList.toggle('background-color');
+    
+    contenedorDeNumero1.setAttribute('class', 'contenedores-de-numeros background-color');
+    contenedorDeNumero2.setAttribute('class', 'contenedores-de-numeros');
+    contenedorDeNumero3.setAttribute('class', 'contenedores-de-numeros');
+
     activarCamara();
     gifprevio.setAttribute('class', claseDisplayNone);
     gifprevio.setAttribute('src', '');
@@ -164,6 +168,7 @@ botonComenzar.addEventListener('click', () => {
     bloqueSubiendoGifTexto.setAttribute('class', claseDisplayNone);
     bloqueSubiendoGifImg.setAttribute('class', claseDisplayNone);
 
+    
 
 }, false);
 
@@ -174,6 +179,8 @@ botonGrabar.addEventListener('click', () => {
     botonGrabar.classList.toggle('boton-comenzar');
     botonFinalizar.classList.toggle('clase-display-none');
     botonFinalizar.classList.toggle('boton-comenzar');
+    repetirCaptura.setAttribute('class', claseDisplayNone);
+    cronometro.setAttribute('class', 'contenedor-cronometro');
     carga();
 }, false);
 
@@ -520,6 +527,12 @@ function getStreamAndRecord() {
 
                 }
                 botonSubirGifo.addEventListener('click', subirGif, false);
+                botonSubirGifo.addEventListener('click', ()=>{
+                    botonSubirGifo.setAttribute('class', claseDisplayNone);
+                    repetirCaptura.setAttribute('class', claseDisplayNone);
+                    contenedorDeNumero2.classList.toggle('background-color');
+                    contenedorDeNumero3.classList.toggle('background-color');
+                }, false)
             });
         }
     });
@@ -558,7 +571,7 @@ function carga() {
 botonFinalizar.addEventListener('click', () => {
     detenerse();
     cronometro.classList.toggle('clase-display-none');
-    repetirCaptura.classList.toggle('clase-display-none');
+    repetirCaptura.setAttribute('class', '');
     contenedorDeNumeros.classList.toggle('contenedor-de-numeros-general');
     contenedorDeNumeros.classList.toggle('contenedor-de-numeros-general-repetir');
     botonFinalizar.classList.toggle('boton-comenzar');
