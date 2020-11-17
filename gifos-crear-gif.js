@@ -490,7 +490,7 @@ function getStreamAndRecord() {
 
                                         botonesFavDownloadExpand(btnFav, botonDownloadImg, botonMaxImg)
 
-                                        hoverNuevoGif.appendChild(nuevoGif);
+                                        hoverNuevoGif.insertBefore(nuevoGif, botonTrash);
 
                                         //bloqueParaCadaImagen.appendChild(btnFav); //Insercion del boton en el bloque FAV
                                         btnFav.appendChild(heartFav); //Insercion de la imagen en el boton
