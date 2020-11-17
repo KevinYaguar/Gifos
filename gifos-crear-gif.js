@@ -223,7 +223,7 @@ function getStreamAndRecord() {
             recorder.stopRecording(function () {
                 recorder.stream.stop();
                 gifprevio.src = URL.createObjectURL(recorder.getBlob());
-                
+
 
                 function subirGif() {
                     bloqueSubiendoGif.setAttribute('class', 'subiendo-gif');
@@ -235,9 +235,9 @@ function getStreamAndRecord() {
                     console.log(form.get('file'));
 
                     fetch(`https://upload.giphy.com/v1/gifs?${ApiKey}`, {
-                        method: "POST",
-                        body: form
-                    })
+                            method: "POST",
+                            body: form
+                        })
                         .then(response => {
                             console.log(response.status);
                             return response.json();
@@ -278,14 +278,166 @@ function getStreamAndRecord() {
                                     seccionMisGifos.appendChild(cajaMisFavoritos); //aparezca en la seccion sin necesidad de recargar la pagina
                                     cajaMisFavoritos.classList.add('caja-mis-gifos');
                                     const nuevoGif = document.createElement('img');
-                                    cajaMisFavoritos.appendChild(nuevoGif);
-                                    nuevoGif.src = keyUrl;
-                                    nuevoGif.classList.add('nuevo-gif');
                                     
-                                    cajaMisFavoritos.appendChild(hoverNuevoGif);
+
+
+                                    //HOVER DE LOS GIFS EN MIS GIFOS
+
+                                    //hover nuevo gif en mis gifos
+                                    let hoverNuevoGif = document.createElement('div');
+                                    hoverNuevoGif.classList.add('nuevo-gif-div');
+                                    //hoverNuevoGif.style.position = 'relative';
+                                    //hoverNuevoGif.style.right = '289px';
+
+                                    hoverNuevoGif.appendChild(nuevoGif);
+                                    nuevoGif.src = keyUrl;
+                                    nuevoGif.classList.add('nuevo-gif-img');
+
+                                    //boton trash
+                                    let botonTrash = document.createElement('div');
+                                    botonTrash.classList.toggle('clase-display-none');
+
+                                    let botonTrashImg = document.createElement('img');
+                                    botonTrashImg.setAttribute('src', './img/icon-trash-normal.svg');
+                                    //botonTrashImg.classList.add('clase-display-none');
+
+                                    botonTrash.appendChild(botonTrashImg);
+
+                                    hoverNuevoGif.appendChild(botonTrash);
+
+
+
+                                    botonTrashImg.addEventListener('mouseover', () => {
+                                        if (botonTrashImg.src == server + 'img/icon-trash-normal.svg') {
+                                            botonTrashImg.setAttribute('src', './img/icon-trash-hover.svg')
+                                        } else {
+                                            botonTrashImg.setAttribute('src', './img/icon-trash-normal.svg')
+                                        }
+                                    }, false);
+                                    botonTrashImg.addEventListener('mouseout', () => {
+                                        if (botonTrashImg.src == server + 'img/icon-trash-hover.svg') {
+                                            botonTrashImg.setAttribute('src', './img/icon-trash-normal.svg')
+                                        } else {
+                                            botonTrashImg.setAttribute('src', './img/icon-trash-hover.svg');
+                                        }
+                                    }, false);
+
+                                    //boton Download
+                                    let botonDownload = document.createElement('div');
+                                    botonDownload.classList.toggle('clase-display-none');
+
+                                    let botonDownloadImg = document.createElement('img');
+                                    botonDownloadImg.setAttribute('src', './img/icon-download.svg');
+                                    //botonTrashImg.classList.add('clase-display-none');
+
+                                    botonDownload.appendChild(botonDownloadImg);
+
+                                    hoverNuevoGif.appendChild(botonDownload);
+
+
+
+                                    botonDownloadImg.addEventListener('mouseover', () => {
+                                        if (botonDownloadImg.src == server + 'img/icon-download.svg') {
+                                            botonDownloadImg.setAttribute('src', './img/icon-download-hover.svg')
+                                        } else {
+                                            botonDownloadImg.setAttribute('src', './img/icon-download.svg')
+                                        }
+                                    }, false);
+                                    botonDownloadImg.addEventListener('mouseout', () => {
+                                        if (botonDownloadImg.src == server + 'img/icon-download-hover.svg') {
+                                            botonDownloadImg.setAttribute('src', './img/icon-download.svg')
+                                        } else {
+                                            botonDownloadImg.setAttribute('src', './img/icon-download-hover.svg');
+                                        }
+                                    }, false);
+
+                                    //boton Max
+                                    let botonMax = document.createElement('div');
+                                    botonMax.classList.toggle('clase-display-none');
+
+                                    let botonMaxImg = document.createElement('img');
+                                    botonMaxImg.setAttribute('src', './img/icon-max-normal.svg');
+                                    //botonTrashImg.classList.add('clase-display-none');
+
+                                    botonMax.appendChild(botonMaxImg);
+
+                                    hoverNuevoGif.appendChild(botonMax);
+
+
+                                    hoverNuevoGif.addEventListener('mouseover', () => {
+
+                                        hoverNuevoGif.classList.toggle('nuevo-gif-hover');
+                                        //botonTrashImg.classList.toggle('clase-display-none');
+                                        botonTrash.classList.toggle('clase-display-none');
+                                        botonTrash.classList.toggle('boton-trash');
+
+                                        botonDownload.classList.toggle('clase-display-none');
+                                        botonDownload.classList.toggle('boton-download');
+
+
+                                        botonMax.classList.toggle('clase-display-none');
+                                        botonMax.classList.toggle('boton-max');
+
+                                        if(botonMaxImg.classList.value = 'btnFavOut'){
+                                            botonMaxImg.setAttribute('class', 'btn-gif-card-trending-max');
+                                        }
+                                        if(botonDownloadImg.classList.value = 'btnFavOut'){
+                                            botonDownloadImg.setAttribute('class', 'btn-gif-card-trending-max');
+                                        }
+
+
+                                    }, false);
+
+                                    hoverNuevoGif.addEventListener('mouseout', () => {
+
+                                        hoverNuevoGif.classList.toggle('nuevo-gif-hover');
+                                        //botonTrashImg.classList.toggle('clase-display-none');
+                                        botonTrash.classList.toggle('clase-display-none');
+                                        botonTrash.classList.toggle('boton-trash');
+
+                                        botonDownload.classList.toggle('clase-display-none');
+                                        botonDownload.classList.toggle('boton-download');
+
+                                        botonMax.classList.toggle('clase-display-none');
+                                        botonMax.classList.toggle('boton-max');
+                                    }, false);
+
+                                    botonMaxImg.addEventListener('mouseover', () => {
+                                        if (botonMaxImg.src == server + 'img/icon-max-normal.svg') {
+                                            botonMaxImg.setAttribute('src', './img/icon-max-hover.svg')
+                                        } else {
+                                            botonMaxImg.setAttribute('src', './img/icon-max-normal.svg')
+                                        }
+                                    }, false);
+                                    botonMaxImg.addEventListener('mouseout', () => {
+                                        if (botonMaxImg.src == server + 'img/icon-max-hover.svg') {
+                                            botonMaxImg.setAttribute('src', './img/icon-max-normal.svg')
+                                        } else {
+                                            botonMaxImg.setAttribute('src', './img/icon-max-hover.svg');
+                                        }
+                                    }, false);
+
+
+                                    //descargar gifo
+                                    //DESCARGAR GIF
+                                    async function descargarMiGifo(nuevoGif) {
+
+                                        let a = document.createElement('a');
+                                        let response = await fetch(nuevoGif.src);
+                                        let file = await response.blob();
+                                        a.download = 'MiNuevoGif.gif';
+                                        a.href = window.URL.createObjectURL(file);
+                                        a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
+                                        a.click();
+
+                                    };
+                                    botonDownloadImg.addEventListener('click', () => {
+                                        descargarMiGifo(nuevoGif);
+                                    }, false);
+                                    /// FIN DE HOVER DE MIS GIFOS
 
                                     botonTrashImg.addEventListener('click', () => {
-                                        cajaMisFavoritos.removeChild(nuevoGif);
+                                        hoverNuevoGif.removeChild(nuevoGif);
                                         cajaMisFavoritos.removeChild(hoverNuevoGif);
 
                                         if (!cajaMisFavoritos.firstChild) {
@@ -294,19 +446,66 @@ function getStreamAndRecord() {
                                             cajaMisFavoritos.setAttribute('class', claseDisplayNone);
                                         }
                                     }, false);
-                                    if (cajaMisFavoritos.firstChild) {
+                                    if (hoverNuevoGif.firstChild) {
                                         cajaSinContenidoMisGifos.setAttribute('class', claseDisplayNone)
                                     }
 
                                     botonCopiarLinkMiGifoImg.addEventListener('click', () => {
                                         updateClipboard(urlGif);
                                     }, false);
-                                    
+
                                     //let form = '';
                                     //form.set('', '', '');
                                     //console.log(form.get('file'));
+
+                                    cajaMisFavoritos.appendChild(hoverNuevoGif);
+
+                                    let btnFav = document.createElement('div'); //Boton Favoritos.
+                                    btnFav.classList.toggle('btnFavOut'); //por defecto display:none.
+                                    let heartFav = document.createElement('img'); //imagen Corazon.
+                                    heartFav.setAttribute('src', corazonNormal);
+                            
+                                    heartFav.id = 'img-btn-gif-card';
+
+                                    //Evento EXPANDIR
+                                    function expandir() {
+
+                                        showHide(seccionMax, 'seccion-max', seccionOne, seccionTwo, seccionMisGifos)
+
+                                        hijosMax(cruzClose, nuevoGif, contenedorBajoMax)
+                                        eliminarHijos(contenedorBajoMax);
+
+                                        contenedorBajoMax.appendChild(btnFav);
+                                        contenedorBajoMax.appendChild(botonDownloadImg);
+
+                                        botonesFavDownloadExpand(btnFav, botonDownloadImg, botonMaxImg);
+
+                                        botonMaxImg.classList.toggle('btn-gif-card-trending-max');
+                                        botonDownloadImg.classList.toggle('btn-gif-card-trending-max');
+                                    }
+                                    botonMaxImg.addEventListener('click', expandir, false);
+
+                                    cruzClose.addEventListener('click', () => {
+                                        botonesFavDownloadParaMax(botonMaxImg, botonDownloadImg);
+
+                                        botonesFavDownloadExpand(btnFav, botonDownloadImg, botonMaxImg)
+
+                                        hoverNuevoGif.appendChild(nuevoGif);
+
+                                        //bloqueParaCadaImagen.appendChild(btnFav); //Insercion del boton en el bloque FAV
+                                        btnFav.appendChild(heartFav); //Insercion de la imagen en el boton
+
+                                        //bloqueParaCadaImagen.appendChild(botonDownloadImg); //Insercion del boton en el bloque DOWNLOAD
+                                        botonDownload.appendChild(botonDownloadImg) //link de descarga
+
+                                        //bloqueParaCadaImagen.appendChild(botonMaxImg); //Insercion del boton en el bloque EXPAND
+                                        botonMax.appendChild(botonMaxImg); //Insercion de la imagen en el boton
+                                    }, false);
+
+
                                 });
                         });
+
                 }
                 botonSubirGifo.addEventListener('click', subirGif, false);
             });

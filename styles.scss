@@ -386,10 +386,21 @@ align-self: center;
         border-radius: 6px;
     }
 }
-.nuevo-gif{
+.nuevo-gif-div{
     width: 260px;
     height: 200px;
+  //  position: relative;
+  //  z-index: 1;
 }
+.nuevo-gif-img{
+    width: 260px;
+    height: 200px;
+   // position: relative;
+    //right: 289px;
+    //z-index: 0;
+}
+
+
 .nuevo-gif-hover{
     background-color: #572EE5;
     opacity: 0.6;
@@ -400,9 +411,9 @@ align-self: center;
 .boton-trash{
     width: 32px;
     height: 32px;
-    position: absolute;
-    top: 11px;
-    right: 95px;
+    position: relative;
+    bottom: 194px;
+    left: 131px;
     :hover{
         background-color: #fff;
         border-radius: 6px;
@@ -411,9 +422,9 @@ align-self: center;
 .boton-download{
     width: 32px;
     height: 32px;
-    position: absolute;
-    top: 11px;
-    right: 52px;
+    position: relative;
+    bottom: 226px;
+    left: 174px;
     :hover{
         background-color: #fff;
         border-radius: 6px;
@@ -422,9 +433,9 @@ align-self: center;
 .boton-max{
     width: 32px;
     height: 32px;
-    position: absolute;
-    top: 11px;
-    right: 10px;
+    position: relative;
+    bottom: 258px;
+    left: 215px;
     :hover{
         background-color: #fff;
         border-radius: 6px;

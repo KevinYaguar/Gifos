@@ -526,7 +526,12 @@
   border-radius: 6px;
 }
 
-.nuevo-gif {
+.nuevo-gif-div {
+  width: 260px;
+  height: 200px;
+}
+
+.nuevo-gif-img {
   width: 260px;
   height: 200px;
 }
@@ -539,9 +544,9 @@
 .boton-trash {
   width: 32px;
   height: 32px;
-  position: absolute;
-  top: 11px;
-  right: 95px;
+  position: relative;
+  bottom: 194px;
+  left: 131px;
 }
 
 .boton-trash :hover {
@@ -552,9 +557,9 @@
 .boton-download {
   width: 32px;
   height: 32px;
-  position: absolute;
-  top: 11px;
-  right: 52px;
+  position: relative;
+  bottom: 226px;
+  left: 174px;
 }
 
 .boton-download :hover {
@@ -565,9 +570,9 @@
 .boton-max {
   width: 32px;
   height: 32px;
-  position: absolute;
-  top: 11px;
-  right: 10px;
+  position: relative;
+  bottom: 258px;
+  left: 215px;
 }
 
 .boton-max :hover {
