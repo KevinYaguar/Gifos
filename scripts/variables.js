@@ -4,8 +4,9 @@ const ApiKey = 'api_key=1yVSM9oVX3z5nlo213gmodWDvoRxttsM';
 
 
 //Server
-let server = 'http://127.0.0.1:5502/';
-let serverGitHub = 'https://kevinyaguar.github.io/'
+let server = 'https://kevinyaguar.github.io/';
+
+let serverGitHub = 'http://127.0.0.1:5502/' ;
 // Body y local storage
 let cuerpoWeb = document.getElementById('body'); //Body Completo.
 let lines = document.getElementsByClassName('line'); //lineas.
