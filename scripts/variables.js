@@ -479,13 +479,16 @@ function cards(gif, padre, claseDeHover, claseDeBotones) {
     let heartFav = document.createElement('img'); //imagen Corazon.
     heartFav.setAttribute('src', './img/icon-fav.svg');
 
-    heartFav.id = claseDeBotones;
+    //heartFav.id = claseDeBotones;
+    //heartFav.classList.add(claseDeBotones)
+
 
     let btnDownload = document.createElement('div'); //Boton Descargar.
     btnDownload.classList.toggle('btnFavOut'); //por defecto display:none.
     let downloadImg = document.createElement('img'); //imagen Descargar.
     downloadImg.setAttribute('src', './img/icon-download.svg');
-    downloadImg.id = claseDeBotones;
+    //downloadImg.id = claseDeBotones;
+    //downloadImg.classList.add(claseDeBotones)
     //descargar imagenes
     downloadImg.addEventListener('click', () => {
         return algo(gif)
@@ -495,7 +498,8 @@ function cards(gif, padre, claseDeHover, claseDeBotones) {
     btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.
     let expandImg = document.createElement('img'); //imagen Expandir
     expandImg.setAttribute('src', './img/icon-max-normal.svg');
-    expandImg.id = claseDeBotones;
+    //expandImg.id = claseDeBotones;
+    //expandImg.classList.add(claseDeBotones)
 
     bloqueParaCadaImagen.appendChild(btnFav); //Insercion del boton en el bloque FAV
     btnFav.appendChild(heartFav); //Insercion de la imagen en el boton

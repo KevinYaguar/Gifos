@@ -49,9 +49,9 @@
 }
 
 .cuadro {
-  width: 260px;
-  height: 200px;
-  overflow: hidden;
+  width: 260px !important;
+  height: 200px !important;
+  overflow: hidden !important;
 }
 
 .bloque-para-cada-imagen-hover-background {
@@ -76,7 +76,7 @@
   border-radius: 6px;
   position: relative;
   bottom: 190px;
-  left: 133px;
+  left: 134px;
   opacity: 0.7;
   float: left;
   margin-right: 10px;
@@ -105,9 +105,33 @@
   opacity: 0.7;
   float: left;
   margin-right: 10px;
+  /*img{
+        width: 32px;
+        height: 32px;
+    }*/
 }
 
-.btn-gif-card-trending img {
+.btn-gif-card-favoritos {
+  display: block;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #FFFFFF;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  position: relative;
+  bottom: 190px;
+  left: 134px;
+  opacity: 0.7;
+  float: left;
+  margin-right: 10px;
+}
+
+.btn-gif-card-favoritos img {
   width: 32px;
   height: 32px;
 }
@@ -1104,7 +1128,7 @@
     color: #5ED7C6;
     font-size: 35px;
   }
-  main .one img {
+  main .one .ilustra {
     width: 399px;
     height: 190px;
   }
@@ -1200,10 +1224,10 @@
             justify-content: center;
     gap: 29px;
     max-width: 1127px;
-  }
-  main .one .respuesta-de-busqueda img {
-    width: 260px;
-    height: 200px;
+    /*img {
+                width: 260px;
+                height: 200px;
+            }*/
   }
   main .two {
     display: -webkit-box;

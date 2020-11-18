@@ -30,11 +30,11 @@ main {
                 }
             }
         }
-
-        img {
+        .ilustra{
             width: 399px;
             height: 190px;
         }
+        
 
         .searcher {
             border: 1px solid #572EE5;
@@ -125,10 +125,10 @@ main {
             gap: 29px;
             max-width: 1127px;
 
-            img {
+            /*img {
                 width: 260px;
                 height: 200px;
-            }
+            }*/
         }
 
     }

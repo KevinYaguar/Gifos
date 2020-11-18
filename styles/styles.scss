@@ -40,9 +40,9 @@
 }
 
 .cuadro{
-    width: 260px;
-    height: 200px;
-    overflow: hidden;
+    width: 260px !important;
+    height: 200px !important;
+    overflow: hidden !important;
 }
 .bloque-para-cada-imagen-hover-background{
     background: #572EE5;
@@ -60,13 +60,13 @@
     border-radius: 6px;
     position: relative;
     bottom: 190px;
-    left: 133px;
+    left: 134px;
     opacity: 0.7;
     float: left;
     margin-right: 10px;
     img{
-        width: 32px;
-        height: 32px;
+        width: 32px ;
+        height: 32px ;
     }
 }
 .btn-gif-card-trending{
@@ -83,10 +83,10 @@
     opacity: 0.7;
     float: left;
     margin-right: 10px;
-    img{
+    /*img{
         width: 32px;
         height: 32px;
-    }
+    }*/
 }
 .btn-gif-card-favoritos{
     display: block;
@@ -468,15 +468,15 @@ align-self: center;
     }
 }
 @media (max-width: 800px){
-    @import "./mobil-styles/_footer-mobil-styles";
-    @import "./mobil-styles/_header-mobil-styles";
-    @import "./mobil-styles/_main-mobil-styles";
+    @import "../mobil-styles/footer-mobil-styles";
+    @import "../mobil-styles/_header-mobil-styles";
+    @import "../mobil-styles/_main-mobil-styles";
     
 }
 
 @media (min-width: 801px) {
-    @import "./desktop-styles/_footer-desktop-styles";
-    @import "./desktop-styles/header-desktop-styles";
-    @import "./desktop-styles/_main-desktop-styles";
+    @import "../desktop-styles/_footer-desktop-styles";
+    @import "../desktop-styles/header-desktop-styles";
+    @import "../desktop-styles/_main-desktop-styles";
     
 }
