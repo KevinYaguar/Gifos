@@ -90,7 +90,10 @@ favoritos.addEventListener('click', () => {
                 let gifsFavGuardados = document.createElement('img');
                 gifsFavGuardados.setAttribute('src', gifsGuardadosSinRepeticion[i]);
                 gifsFavGuardados.classList.add('gifs-guardados-favoritos');
-                cajaFavoritos.appendChild(gifsFavGuardados);
+
+                cards(gifsFavGuardados, cajaFavoritos, 'gifs-guardados-favoritos', 'btn-gif-card-favoritos')
+
+                //cajaFavoritos.appendChild(gifsFavGuardados);
             }
         }
         let num = 12;

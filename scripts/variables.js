@@ -4,9 +4,10 @@ const ApiKey = 'api_key=1yVSM9oVX3z5nlo213gmodWDvoRxttsM';
 
 
 //Server
-let server = 'https://kevinyaguar.github.io/';
+let server = 'http://127.0.0.1:5502/';
 //http://127.0.0.1:5502/'
-let serverGitHub = 'https://kevinyaguar.github.io/' ;
+let serverGitHub = 'https://kevinyaguar.github.io/';
+
 // Body y local storage
 let cuerpoWeb = document.getElementById('body'); //Body Completo.
 let lines = document.getElementsByClassName('line'); //lineas.
@@ -451,4 +452,208 @@ function botonesFavDownloadParaMax(fav, down) {
     if (down.classList.value == 'btn-gif-card-trending-max') {
         down.classList.toggle('btn-gif-card-trending-max');
     }
+}
+
+//////////////////////////////////////////////// FUNCION CARDS
+
+function cards(gif, padre, claseDeHover, claseDeBotones) {
+    //cards
+    let bloqueParaCadaImagen = document.createElement('div'); //En este div sucederan los eventos mouseover
+    let bloqueParaCadaImagenInferior = document.createElement('div'); // En este se imprimiran los gifs
+
+    bloqueParaCadaImagen.id = 'bloque-para-cada-imagen';
+    bloqueParaCadaImagenInferior.id = 'bloque-inferior';
+
+
+    bloqueParaCadaImagen.setAttribute('class', claseDeHover);
+    bloqueParaCadaImagenInferior.setAttribute('class', claseDeHover);
+    gif.setAttribute('class', claseDeHover);
+
+    padre.appendChild(bloqueParaCadaImagen);
+    bloqueParaCadaImagen.appendChild(bloqueParaCadaImagenInferior);
+    bloqueParaCadaImagenInferior.appendChild(gif);
+
+    //Variables y eventos mouseover
+    let btnFav = document.createElement('div'); //Boton Favoritos.
+    btnFav.classList.toggle('btnFavOut'); //por defecto display:none.
+    let heartFav = document.createElement('img'); //imagen Corazon.
+    heartFav.setAttribute('src', './img/icon-fav.svg');
+
+    heartFav.id = claseDeBotones;
+
+    let btnDownload = document.createElement('div'); //Boton Descargar.
+    btnDownload.classList.toggle('btnFavOut'); //por defecto display:none.
+    let downloadImg = document.createElement('img'); //imagen Descargar.
+    downloadImg.setAttribute('src', './img/icon-download.svg');
+    downloadImg.id = claseDeBotones;
+    //descargar imagenes
+    downloadImg.addEventListener('click', () => {
+        return algo(gif)
+    }, false);
+
+    let btnExpand = document.createElement('div'); // Boton Expandir.
+    btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.
+    let expandImg = document.createElement('img'); //imagen Expandir
+    expandImg.setAttribute('src', './img/icon-max-normal.svg');
+    expandImg.id = claseDeBotones;
+
+    bloqueParaCadaImagen.appendChild(btnFav); //Insercion del boton en el bloque FAV
+    btnFav.appendChild(heartFav); //Insercion de la imagen en el boton
+
+    bloqueParaCadaImagen.appendChild(btnDownload); //Insercion del boton en el bloque DOWNLOAD
+    btnDownload.appendChild(downloadImg) //link de descarga
+
+
+    bloqueParaCadaImagen.appendChild(btnExpand); //Insercion del boton en el bloque EXPAND
+    btnExpand.appendChild(expandImg); //Insercion de la imagen en el boton
+
+    //funciones de normal, hover y click del src del heart fav.
+    function corazonNormalFunction() {
+        if (heartFav.src == corazonActiveActive) {
+            heartFav.setAttribute('src', corazonActive);
+            heartFav.style.padding = '7px';
+        } else {
+            heartFav.setAttribute('src', corazonNormal);
+            heartFav.style.padding = '';
+        }
+    }
+
+    function corazonHoverFunction() {
+        if (heartFav.src == corazonActiveActive) {
+            heartFav.setAttribute('src', corazonActive);
+            heartFav.style.padding = '7px';
+        } else {
+            heartFav.setAttribute('src', corazonHover);
+            heartFav.style.padding = '';
+        }
+    }
+
+    function corazonActiveFunction() {
+        if (heartFav.src == corazonActiveActive) {
+            heartFav.setAttribute('src', corazonHover);
+            heartFav.style.padding = '';
+        } else {
+            heartFav.setAttribute('src', corazonActive);
+            heartFav.style.padding = '7px';
+        }
+    }
+
+    function guardarEnSssionStorage() {
+        if (heartFav.src == corazonActiveActive) {
+            arrayGifsParaStorage.push(gif.getAttribute('src'));
+            //console.log(arrayGifsParaStorage);
+        } else {
+            arrayGifsParaStorage.pop(gif.getAttribute('src'));
+            //console.log(arrayGifsParaStorage);
+        }
+        var arrayGifsParaStorage2 = JSON.stringify(arrayGifsParaStorage);
+        sessionStorage.setItem('arrayGifs', arrayGifsParaStorage2);
+
+    }
+
+    //Eventos mouseover sobre el GIF
+    bloqueParaCadaImagen.addEventListener('mouseover', () => {
+        bloqueParaCadaImagen.classList.toggle('bloque-para-cada-imagen-hover-background');
+        bloqueParaCadaImagenInferior.classList.toggle('opacity-cero-dot-six');
+
+        if (btnFav.classList.value == 'btnFavOut') {
+            btnFav.classList.toggle('btnFavOut'); //por defecto display:none.   
+        }
+        btnFav.classList.toggle(claseDeBotones);
+
+        //Eventos mouseover/out y click sobre el boton FAV
+        heartFav.addEventListener('mouseover', corazonHoverFunction, false);
+        heartFav.addEventListener('mouseout', corazonNormalFunction, false);
+        heartFav.addEventListener('click', corazonActiveFunction, false);
+        heartFav.addEventListener('click', guardarEnSssionStorage, false);
+
+        //Eventos mouseover sobre el boton DOWNLOAD
+        if (btnDownload.classList.value == 'btnFavOut') {
+            btnDownload.classList.toggle('btnFavOut'); //por defecto display:none.   
+        }
+        btnDownload.classList.toggle(claseDeBotones);
+        btnDownload.addEventListener('mouseover', () => {
+            downloadImg.setAttribute('src', './img/icon-download-hover.svg');
+
+        }, false);
+
+
+
+        //Eventos mouseover sobre el boton EXPAND
+        if (btnExpand.classList.value == 'btnFavOut') {
+            btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.   
+        }
+        btnExpand.classList.toggle(claseDeBotones);
+        btnExpand.addEventListener('mouseover', () => {
+            expandImg.setAttribute('src', './img/icon-max-hover.svg');
+        }, false);
+
+
+    }, false); //fin del evento mouseover
+
+    //Eventos mouseout sobre el boton DOWNLOAD
+    btnDownload.addEventListener('mouseout', () => {
+        downloadImg.setAttribute('src', './img/icon-download.svg');
+    }, false);
+
+    //Eventos mouseout sobre el boton EXPAND
+    btnExpand.addEventListener('mouseout', () => {
+        expandImg.setAttribute('src', './img/icon-max-normal.svg');
+    }, false);
+
+    //Eventos mouseout sobre el GIF
+    bloqueParaCadaImagen.addEventListener('mouseout', () => {
+        bloqueParaCadaImagen.classList.toggle('bloque-para-cada-imagen-hover-background');
+        bloqueParaCadaImagenInferior.classList.toggle('opacity-cero-dot-six');
+        btnFav.classList.toggle(claseDeBotones);
+
+        if (btnFav.classList.value !== 'btnFavOut') {
+            btnFav.classList.toggle('btnFavOut'); //por defecto display:none.   
+        }
+
+        btnDownload.classList.toggle(claseDeBotones);
+
+        if (btnDownload.classList.value !== 'btnFavOut') {
+            btnDownload.classList.toggle('btnFavOut'); //por defecto display:none.   
+        }
+
+        btnExpand.classList.toggle(claseDeBotones);
+
+        if (btnExpand.classList.value !== 'btnFavOut') {
+            btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.   
+        }
+    });
+ //////////////////////////////////////////
+ function expandir() {
+    showHide(seccionMax, 'seccion-max', seccionOne, seccionTwo);
+
+    hijosMax(cruzClose, gif, contenedorBajoMax)
+    eliminarHijos(contenedorBajoMax);
+
+    contenedorBajoMax.appendChild(btnFav);
+    contenedorBajoMax.appendChild(btnDownload);
+
+    botonesFavDownloadExpand(btnFav, btnDownload, btnExpand)
+
+    btnFav.classList.toggle('btn-gif-card-trending-max');
+    btnDownload.classList.toggle('btn-gif-card-trending-max');
+}
+expandImg.addEventListener('click', expandir, false);
+
+cruzClose.addEventListener('click', () => {
+    botonesFavDownloadParaMax(btnFav, btnDownload);
+    
+    botonesFavDownloadExpand(btnFav, btnDownload, btnExpand)
+    
+    bloqueParaCadaImagenInferior.appendChild(gif);
+    
+    bloqueParaCadaImagen.appendChild(btnFav); //Insercion del boton en el bloque FAV
+    btnFav.appendChild(heartFav); //Insercion de la imagen en el boton
+
+    bloqueParaCadaImagen.appendChild(btnDownload); //Insercion del boton en el bloque DOWNLOAD
+    btnDownload.appendChild(downloadImg) //link de descarga
+
+    bloqueParaCadaImagen.appendChild(btnExpand); //Insercion del boton en el bloque EXPAND
+    btnExpand.appendChild(expandImg); //Insercion de la imagen en el boton
+}, false);
 }
