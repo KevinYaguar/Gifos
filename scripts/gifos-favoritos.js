@@ -37,7 +37,6 @@ main.appendChild(seccionFavoritos); // insercion de la seccion en el main
 //Ocultar seccion de busqueda (section one). Crea al mismo tiempo la seccion favoritos. 
 favoritos.addEventListener('click', () => {
     
-
     showHide(seccionFavoritos, 'seccion-favoritos', seccionOne,  seccionMisGifos, seccionCrearGif);
 
     showTrending(seccionTwo, 'two');
@@ -51,10 +50,6 @@ favoritos.addEventListener('click', () => {
     if (masGifosImg.src == masGifosImgActiveServer) {
         masGifosImg.setAttribute('src', masGifosImgSRC);
     }
-
-
-
-
 
     //Funcion para evitar repetidos
     function onlyUnique(value, index, self) {
@@ -111,23 +106,3 @@ favoritos.addEventListener('click', () => {
     }
 }, false)
 
-
-gifos.addEventListener('click', ()=>{
-
-    showHide(seccionOne, 'one', seccionFavoritos, seccionCrearGif, seccionMisGifos)
-    showTrending(seccionTwo, 'two');
-
-    showHide(contenedorCentralCrearGifInner, 'contenedor-central-crear-gif-Inner', contenedorCentralCrearGifInnerUno, contenedorCentralCrearGifInnerDos);
-    showHide(botonComenzar, 'boton-comenzar', botonFinalizar, botonGrabar, botonSubirGifo);
-
-    if (misGifos.classList.value == 'favoritos-activado') {
-        misGifos.classList.toggle('favoritos-activado');
-    }
-    if (favoritos.classList.value == 'favoritos-activado') {
-        favoritos.classList.toggle('favoritos-activado');
-    }
-    if (masGifosImg.src == masGifosImgActiveServer) {
-        masGifosImg.setAttribute('src', masGifosImgSRC);
-    }
-
-}, false);
