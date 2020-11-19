@@ -147,7 +147,7 @@ botonComenzar.addEventListener('click', () => {
     contenedorCentralCrearGifInner.classList.toggle('clase-display-none');
     contenedorCentralCrearGifInnerUno.classList.toggle('clase-display-none');
     contenedorCentralCrearGifInnerUno.classList.toggle('contenedor-central-crear-gif-Inner');
-    
+
     contenedorDeNumero1.setAttribute('class', 'contenedores-de-numeros background-color');
     contenedorDeNumero2.setAttribute('class', 'contenedores-de-numeros');
     contenedorDeNumero3.setAttribute('class', 'contenedores-de-numeros');
@@ -168,7 +168,7 @@ botonComenzar.addEventListener('click', () => {
     bloqueSubiendoGifTexto.setAttribute('class', claseDisplayNone);
     bloqueSubiendoGifImg.setAttribute('class', claseDisplayNone);
 
-    
+
 
 }, false);
 
@@ -285,7 +285,7 @@ function getStreamAndRecord() {
                                     seccionMisGifos.appendChild(cajaMisFavoritos); //aparezca en la seccion sin necesidad de recargar la pagina
                                     cajaMisFavoritos.classList.add('caja-mis-gifos');
                                     const nuevoGif = document.createElement('img');
-                                    
+
 
 
                                     //HOVER DE LOS GIFS EN MIS GIFOS
@@ -296,7 +296,7 @@ function getStreamAndRecord() {
                                     //hoverNuevoGif.style.position = 'relative';
                                     //hoverNuevoGif.style.right = '289px';
 
-                                    
+
 
                                     //hover inter background #572EE5
                                     let hoverInter = document.createElement('div');
@@ -397,10 +397,10 @@ function getStreamAndRecord() {
                                         botonMax.classList.toggle('clase-display-none');
                                         botonMax.classList.toggle('boton-max');
 
-                                        if(botonMaxImg.classList.value = 'btnFavOut'){
+                                        if (botonMaxImg.classList.value = 'btnFavOut') {
                                             botonMaxImg.setAttribute('class', 'btn-gif-card-trending-max');
                                         }
-                                        if(botonDownloadImg.classList.value = 'btnFavOut'){
+                                        if (botonDownloadImg.classList.value = 'btnFavOut') {
                                             botonDownloadImg.setAttribute('class', 'btn-gif-card-trending-max');
                                         }
 
@@ -456,34 +456,34 @@ function getStreamAndRecord() {
                                     /// FIN DE HOVER DE MIS GIFOS
 
                                     //eventos over botones 
-                                    botonTrash.addEventListener('mouseover', ()=>{
+                                    botonTrash.addEventListener('mouseover', () => {
                                         //hoverNuevoGif.classList.toggle('nuevo-gif-hover');
-                                        hoverInter.style.opacity='0.6';
+                                        hoverInter.style.opacity = '0.6';
                                     });
 
-                                    botonTrash.addEventListener('mouseout', ()=>{
+                                    botonTrash.addEventListener('mouseout', () => {
                                         //hoverNuevoGif.classList.toggle('nuevo-gif-hover');
-                                        hoverInter.style.opacity='1';
+                                        hoverInter.style.opacity = '1';
                                     });
                                     //eventos over botones 
-                                    botonDownload.addEventListener('mouseover', ()=>{
+                                    botonDownload.addEventListener('mouseover', () => {
                                         //hoverNuevoGif.classList.toggle('nuevo-gif-hover');
-                                        hoverInter.style.opacity='0.6';
+                                        hoverInter.style.opacity = '0.6';
                                     });
 
-                                    botonDownload.addEventListener('mouseout', ()=>{
+                                    botonDownload.addEventListener('mouseout', () => {
                                         //hoverNuevoGif.classList.toggle('nuevo-gif-hover');
-                                        hoverInter.style.opacity='1';
+                                        hoverInter.style.opacity = '1';
                                     });
                                     //eventos over botones 
-                                    botonMax.addEventListener('mouseover', ()=>{
+                                    botonMax.addEventListener('mouseover', () => {
                                         //hoverNuevoGif.classList.toggle('nuevo-gif-hover');
-                                        hoverInter.style.opacity='0.6';
+                                        hoverInter.style.opacity = '0.6';
                                     });
 
-                                    botonMax.addEventListener('mouseout', ()=>{
+                                    botonMax.addEventListener('mouseout', () => {
                                         //hoverNuevoGif.classList.toggle('nuevo-gif-hover');
-                                        hoverInter.style.opacity='1';
+                                        hoverInter.style.opacity = '1';
                                     });
 
                                     botonTrashImg.addEventListener('click', () => {
@@ -496,7 +496,7 @@ function getStreamAndRecord() {
                                             cajaMisFavoritos.setAttribute('class', claseDisplayNone);
                                         }
                                     }, false);
-                                    
+
                                     if (hoverInter.firstChild) {
                                         cajaSinContenidoMisGifos.setAttribute('class', claseDisplayNone)
                                     }
@@ -515,26 +515,28 @@ function getStreamAndRecord() {
                                     btnFav.classList.toggle('btnFavOut'); //por defecto display:none.
                                     let heartFav = document.createElement('img'); //imagen Corazon.
                                     heartFav.setAttribute('src', corazonNormal);
-                            
+
                                     heartFav.id = 'img-btn-gif-card';
 
                                     //Evento EXPANDIR
                                     function expandir() {
 
-                                        showHide(seccionMax, 'seccion-max', seccionOne, seccionTwo, seccionMisGifos)
+                                        showHide(seccionMax, 'seccion-max', seccionOne, seccionTwo, seccionMisGifos, seccionFavoritos)
 
                                         hijosMax(cruzClose, nuevoGif, contenedorBajoMax)
                                         eliminarHijos(contenedorBajoMax);
 
-                                        contenedorBajoMax.appendChild(btnFav);
+                                        contenedorBajoMax.appendChild(heartFav);
                                         contenedorBajoMax.appendChild(botonDownloadImg);
 
                                         botonesFavDownloadExpand(btnFav, botonDownloadImg, botonMaxImg);
 
-                                        botonMaxImg.classList.toggle('btn-gif-card-trending-max');
-                                        botonDownloadImg.classList.toggle('btn-gif-card-trending-max');
+                                        heartFav.classList.add('btn-gif-card-trending-max');
+                                        botonDownloadImg.classList.add('btn-gif-card-trending-max');
                                     }
-                                    botonMaxImg.addEventListener('click', expandir, false);
+                                    botonMaxImg.addEventListener('click', ()=>{
+                                        expandir();
+                                    }, false);
 
                                     cruzClose.addEventListener('click', () => {
                                         botonesFavDownloadParaMax(botonMaxImg, botonDownloadImg);
@@ -553,13 +555,26 @@ function getStreamAndRecord() {
                                         botonMax.appendChild(botonMaxImg); //Insercion de la imagen en el boton
                                     }, false);
 
+                                    //Eventos mouseover/out y click sobre el boton FAV
+                                    heartFav.addEventListener('mouseover', () => {
+                                        corazonHoverFunction(heartFav);
+                                    }, false);
+                                    heartFav.addEventListener('mouseout', () => {
+                                        corazonNormalFunction(heartFav);
+                                    }, false);
+                                    heartFav.addEventListener('click', () => {
+                                        corazonActiveFunction(heartFav);
+                                    }, false);
+                                    heartFav.addEventListener('click', () => {
+                                        guardarEnSssionStorage(heartFav, nuevoGif);
+                                    }, false);
 
                                 });
                         });
 
                 }
                 botonSubirGifo.addEventListener('click', subirGif, false);
-                botonSubirGifo.addEventListener('click', ()=>{
+                botonSubirGifo.addEventListener('click', () => {
                     botonSubirGifo.setAttribute('class', claseDisplayNone);
                     repetirCaptura.setAttribute('class', claseDisplayNone);
                     contenedorDeNumero2.classList.toggle('background-color');

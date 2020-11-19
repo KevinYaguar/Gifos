@@ -2,18 +2,18 @@
 function showHide(show, clase, hideOne, hideTwo, hideThree, hideFour) {
     try {
         show.setAttribute('class', clase);
-        if (hideOne.classList.value != claseDisplayNone) {
+        
             hideOne.setAttribute('class', claseDisplayNone)
-        }
-        if (hideTwo.classList.value != claseDisplayNone) {
+        
+        
             hideTwo.setAttribute('class', claseDisplayNone)
-        }
-        if (hideThree.classList.value != claseDisplayNone) {
+        
+        
             hideThree.setAttribute('class', claseDisplayNone)
-        }
-        if (hideFour.classList.value != claseDisplayNone) {
+        
+        
             hideFour.setAttribute('class', claseDisplayNone)
-        }
+        
     } catch (e) {
         console.log()
     };

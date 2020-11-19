@@ -1,5 +1,4 @@
 //FUNCION CARDS
-
 function cards(gif, padre, claseDeHover, claseDeBotones) {
     //cards
     let bloqueParaCadaImagen = document.createElement('div'); //En este div sucederan los eventos mouseover
@@ -23,16 +22,11 @@ function cards(gif, padre, claseDeHover, claseDeBotones) {
     let heartFav = document.createElement('img'); //imagen Corazon.
     heartFav.setAttribute('src', './img/icon-fav.svg');
 
-    //heartFav.id = claseDeBotones;
-    //heartFav.classList.add(claseDeBotones)
-
-
     let btnDownload = document.createElement('div'); //Boton Descargar.
     btnDownload.classList.toggle('btnFavOut'); //por defecto display:none.
     let downloadImg = document.createElement('img'); //imagen Descargar.
     downloadImg.setAttribute('src', './img/icon-download.svg');
-    //downloadImg.id = claseDeBotones;
-    //downloadImg.classList.add(claseDeBotones)
+
     //descargar imagenes
     downloadImg.addEventListener('click', () => {
         return algo(gif)
@@ -42,8 +36,7 @@ function cards(gif, padre, claseDeHover, claseDeBotones) {
     btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.
     let expandImg = document.createElement('img'); //imagen Expandir
     expandImg.setAttribute('src', './img/icon-max-normal.svg');
-    //expandImg.id = claseDeBotones;
-    //expandImg.classList.add(claseDeBotones)
+
 
     bloqueParaCadaImagen.appendChild(btnFav); //Insercion del boton en el bloque FAV
     btnFav.appendChild(heartFav); //Insercion de la imagen en el boton
@@ -55,49 +48,6 @@ function cards(gif, padre, claseDeHover, claseDeBotones) {
     bloqueParaCadaImagen.appendChild(btnExpand); //Insercion del boton en el bloque EXPAND
     btnExpand.appendChild(expandImg); //Insercion de la imagen en el boton
 
-    //funciones de normal, hover y click del src del heart fav.
-    function corazonNormalFunction() {
-        if (heartFav.src == corazonActiveActive) {
-            heartFav.setAttribute('src', corazonActive);
-            heartFav.style.padding = '7px';
-        } else {
-            heartFav.setAttribute('src', corazonNormal);
-            heartFav.style.padding = '';
-        }
-    }
-
-    function corazonHoverFunction() {
-        if (heartFav.src == corazonActiveActive) {
-            heartFav.setAttribute('src', corazonActive);
-            heartFav.style.padding = '7px';
-        } else {
-            heartFav.setAttribute('src', corazonHover);
-            heartFav.style.padding = '';
-        }
-    }
-
-    function corazonActiveFunction() {
-        if (heartFav.src == corazonActiveActive) {
-            heartFav.setAttribute('src', corazonHover);
-            heartFav.style.padding = '';
-        } else {
-            heartFav.setAttribute('src', corazonActive);
-            heartFav.style.padding = '7px';
-        }
-    }
-
-    function guardarEnSssionStorage() {
-        if (heartFav.src == corazonActiveActive) {
-            arrayGifsParaStorage.push(gif.getAttribute('src'));
-            //console.log(arrayGifsParaStorage);
-        } else {
-            arrayGifsParaStorage.pop(gif.getAttribute('src'));
-            //console.log(arrayGifsParaStorage);
-        }
-        var arrayGifsParaStorage2 = JSON.stringify(arrayGifsParaStorage);
-        sessionStorage.setItem('arrayGifs', arrayGifsParaStorage2);
-
-    }
 
     //Eventos mouseover sobre el GIF
     bloqueParaCadaImagen.addEventListener('mouseover', () => {
@@ -109,12 +59,6 @@ function cards(gif, padre, claseDeHover, claseDeBotones) {
         }
         btnFav.classList.toggle(claseDeBotones);
 
-        //Eventos mouseover/out y click sobre el boton FAV
-        heartFav.addEventListener('mouseover', corazonHoverFunction, false);
-        heartFav.addEventListener('mouseout', corazonNormalFunction, false);
-        heartFav.addEventListener('click', corazonActiveFunction, false);
-        heartFav.addEventListener('click', guardarEnSssionStorage, false);
-
         //Eventos mouseover sobre el boton DOWNLOAD
         if (btnDownload.classList.value == 'btnFavOut') {
             btnDownload.classList.toggle('btnFavOut'); //por defecto display:none.   
@@ -125,8 +69,6 @@ function cards(gif, padre, claseDeHover, claseDeBotones) {
 
         }, false);
 
-
-
         //Eventos mouseover sobre el boton EXPAND
         if (btnExpand.classList.value == 'btnFavOut') {
             btnExpand.classList.toggle('btnFavOut'); //por defecto display:none.   
@@ -136,8 +78,21 @@ function cards(gif, padre, claseDeHover, claseDeBotones) {
             expandImg.setAttribute('src', './img/icon-max-hover.svg');
         }, false);
 
-
     }, false); //fin del evento mouseover
+    
+    //Eventos mouseover/out y click sobre el boton FAV
+    heartFav.addEventListener('mouseover', ()=>{
+        corazonHoverFunction(heartFav);
+    }, false);
+    heartFav.addEventListener('mouseout', ()=>{
+        corazonNormalFunction(heartFav);
+    }, false);
+    heartFav.addEventListener('click', ()=>{
+        corazonActiveFunction(heartFav);
+    }, false);
+    heartFav.addEventListener('click', ()=>{
+        guardarEnSssionStorage(heartFav, gif);
+    }, false);
 
     //Eventos mouseout sobre el boton DOWNLOAD
     btnDownload.addEventListener('mouseout', () => {
@@ -205,14 +160,16 @@ function cards(gif, padre, claseDeHover, claseDeBotones) {
         btnExpand.appendChild(expandImg); //Insercion de la imagen en el boton
     }, false);
 }
-
 //Funcion eliminar hijos
 function eliminarHijos(padre) {
     while (padre.firstChild) {
         padre.removeChild(padre.firstChild);
     }
 }
-
+//Funcion para evitar repetidos
+function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+}
 //MOUSEOVER SOBRE BOTON DESCARGAR Y LINK
 botonDescargarMiGifoImg.addEventListener('mouseover', () => {
     if (botonDescargarMiGifoImg.src == server + 'img/icon-download.svg') {

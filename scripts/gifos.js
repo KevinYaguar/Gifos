@@ -38,7 +38,7 @@ inputBusqueda.addEventListener('keyup', (busqueda) => {
 function insertarBotonVerMas() {
     //boton ver mas
     botonVerMas.innerText = 'ver más';
-    botonVerMas.id = 'botonVerMas';
+    botonVerMas.classList.add('botonVerMas') ;
     
     contenedorDeBotonVerMas.classList.add('contenedor-del-boton-ver-mas');
     contenedorDeBotonVerMas.appendChild(botonVerMas);
@@ -102,7 +102,7 @@ function cambiarTitulo(solicitado) {
     //Eliminar sub del trending y cambiar el texto a lo buscado
     let resultadoTitulo = document.getElementById('trending-tt');
     resultadoTitulo.innerText = solicitado;
-    resultadoTitulo.id = 'resultadoTitulo';
+    resultadoTitulo.classList.add('resultadoTitulo');
     resultadoTitulo.style.fontSize = '35px';
     resultadoTitulo.style.lineHeight = '30px';
     let desaparecerSubtitulo = document.getElementById('trending-text');

@@ -51,10 +51,7 @@ favoritos.addEventListener('click', () => {
         masGifosImg.setAttribute('src', masGifosImgSRC);
     }
 
-    //Funcion para evitar repetidos
-    function onlyUnique(value, index, self) {
-        return self.indexOf(value) === index;
-    }
+    
     //sessionStorage.setItem('arrayGifs', arrayGifsParaStorage);
     let gifsGuardadosSinRepeticion = JSON.parse(sessionStorage['arrayGifs']);
     //gifsGuardadosSinRepeticion.push(sessionStorage.getItem('arrayGifs'));
@@ -63,7 +60,7 @@ favoritos.addEventListener('click', () => {
     //boton ver mas
     function insertarBotonVerMasFavoritos() {
         botonVerMasFavoritos.innerText = 'ver más';
-        botonVerMasFavoritos.id = 'botonVerMas';
+        botonVerMasFavoritos.classList.add('botonVerMas');
         contenedorDeBotonVerMasFavoritos.classList.add('contenedor-del-boton-ver-mas');
         contenedorDeBotonVerMasFavoritos.appendChild(botonVerMasFavoritos);
         cajaFavoritos.appendChild(contenedorDeBotonVerMasFavoritos);

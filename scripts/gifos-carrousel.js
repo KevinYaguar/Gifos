@@ -105,6 +105,8 @@ function cerrarExpand() {
 
     if(misGifos.classList.value == "favoritos-activado"){
         showHide(seccionMisGifos, 'seccion-favoritos', seccionMax)
+    } else if(favoritos.classList.value == "favoritos-activado"){
+        showHide(seccionFavoritos, 'seccion-favoritos', seccionMax)
     } else{
         showHide(seccionOne, 'one', seccionMax)
         showTrending(seccionTwo, 'two');
