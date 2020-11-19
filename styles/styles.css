@@ -56,6 +56,10 @@
   text-transform: capitalize;
 }
 
+.opacity-cero-dot-six {
+  opacity: 0.6;
+}
+
 .cuadro {
   width: 260px !important;
   height: 200px !important;
@@ -64,10 +68,6 @@
 
 .bloque-para-cada-imagen-hover-background {
   background: #572EE5;
-}
-
-.opacity-cero-dot-six {
-  opacity: 0.6;
 }
 
 .btn-gif-card {
@@ -113,10 +113,6 @@
   opacity: 0.7;
   float: left;
   margin-right: 10px;
-  /*img{
-        width: 32px;
-        height: 32px;
-    }*/
 }
 
 .btn-gif-card-favoritos {
@@ -213,7 +209,7 @@
   padding-top: 36px;
 }
 
-.Caja-Sin-Contenido {
+.caja-sin-contenido {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

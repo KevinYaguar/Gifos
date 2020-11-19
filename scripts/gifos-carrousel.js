@@ -61,33 +61,11 @@ function trending(i) {
             imgTrend.setAttribute('src', final.url);
             imgTrend.setAttribute('id', 'imgTrend');
         
-            cards(imgTrend, galeryIn, 'imagenes-trending', 'btn-gif-card-trending');
+            cards(imgTrend, galeryIn, 'imagenes-trending', 'btn-gif-card-trending', corazonNormal);
 
             
 
-            //Efecto carrusel flecha derecha //Solo funciona con 12 Gifs de la medida actual
-            let inicio = 0;
-            flechaDerecha.addEventListener('click', () => {
-                if (inicio > -4246 && inicio <= 0) {
-                    inicio = inicio - 386;
-                    bloqueParaCadaImagen.style.left = inicio + 'px';
-                }
-                if (inicio <= -4246) {
-                    inicio = 0;
-                    bloqueParaCadaImagen.style.left = inicio + 'px';
-                }
-            });
-            //Efecto carrusel flecha derecha
-            flechaIzquierda.addEventListener('click', () => {
-                if (inicio == 0) {
-                    inicio = -3860;
-                    bloqueParaCadaImagen.style.left = inicio + 'px';
-                }
-                if (inicio >= -3860 && inicio < 0) {
-                    inicio = inicio + 386;
-                    bloqueParaCadaImagen.style.left = inicio + 'px';
-                }
-            });
+            
             
         });
 }

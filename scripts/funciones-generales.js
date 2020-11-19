@@ -1,5 +1,5 @@
 //FUNCION CARDS
-function cards(gif, padre, claseDeHover, claseDeBotones) {
+function cards(gif, padre, claseDeHover, claseDeBotones, corazon) {
     //cards
     let bloqueParaCadaImagen = document.createElement('div'); //En este div sucederan los eventos mouseover
     let bloqueParaCadaImagenInferior = document.createElement('div'); // En este se imprimiran los gifs
@@ -20,7 +20,8 @@ function cards(gif, padre, claseDeHover, claseDeBotones) {
     let btnFav = document.createElement('div'); //Boton Favoritos.
     btnFav.classList.toggle('btnFavOut'); //por defecto display:none.
     let heartFav = document.createElement('img'); //imagen Corazon.
-    heartFav.setAttribute('src', './img/icon-fav.svg');
+
+    heartFav.setAttribute('src', corazon);
 
     let btnDownload = document.createElement('div'); //Boton Descargar.
     btnDownload.classList.toggle('btnFavOut'); //por defecto display:none.
@@ -58,6 +59,10 @@ function cards(gif, padre, claseDeHover, claseDeBotones) {
             btnFav.classList.toggle('btnFavOut'); //por defecto display:none.   
         }
         btnFav.classList.toggle(claseDeBotones);
+        if(heartFav.src == corazonActiveActive){
+            heartFav.style.padding = '6px';
+        }
+        
 
         //Eventos mouseover sobre el boton DOWNLOAD
         if (btnDownload.classList.value == 'btnFavOut') {
@@ -79,19 +84,74 @@ function cards(gif, padre, claseDeHover, claseDeBotones) {
         }, false);
 
     }, false); //fin del evento mouseover
-    
+
     //Eventos mouseover/out y click sobre el boton FAV
-    heartFav.addEventListener('mouseover', ()=>{
+    heartFav.addEventListener('mouseover', () => {
         corazonHoverFunction(heartFav);
     }, false);
-    heartFav.addEventListener('mouseout', ()=>{
+    heartFav.addEventListener('mouseout', () => {
         corazonNormalFunction(heartFav);
     }, false);
-    heartFav.addEventListener('click', ()=>{
+    heartFav.addEventListener('click', () => {
         corazonActiveFunction(heartFav);
     }, false);
-    heartFav.addEventListener('click', ()=>{
+    heartFav.addEventListener('click', () => {
         guardarEnSssionStorage(heartFav, gif);
+
+        //sessionStorage.setItem('arrayGifs', arrayGifsParaStorage);
+        let gifsGuardadosSinRepeticion = JSON.parse(sessionStorage['arrayGifs']);
+        //gifsGuardadosSinRepeticion.push(sessionStorage.getItem('arrayGifs'));
+        gifsGuardadosSinRepeticion.filter(onlyUnique);
+
+        //boton ver mas
+        function insertarBotonVerMasFavoritos() {
+            botonVerMasFavoritos.innerText = 'ver más';
+            botonVerMasFavoritos.classList.add('botonVerMas');
+            contenedorDeBotonVerMasFavoritos.classList.add('contenedor-del-boton-ver-mas');
+            contenedorDeBotonVerMasFavoritos.appendChild(botonVerMasFavoritos);
+            cajaFavoritos.appendChild(contenedorDeBotonVerMasFavoritos);
+        }
+        if (gifsGuardadosSinRepeticion.length == 0) {
+            //eliminarHijos(cajaFavoritos);
+            cajaFavoritos.setAttribute('class', claseDisplayNone);
+            cajaSinContenido.setAttribute('class', 'caja-sin-contenido');
+            console.log(gifsGuardadosSinRepeticion.length);
+        }
+        if (gifsGuardadosSinRepeticion.length >= 1) {
+            cajaSinContenido.setAttribute('class', 'clase-display-none');
+            console.log(gifsGuardadosSinRepeticion.length);
+            //este while vacia la caja cada vez que se vuelve a favoritos antes de llenarla de vuelta
+            while (cajaFavoritos.firstChild) {
+                cajaFavoritos.removeChild(cajaFavoritos.firstChild);
+            }
+
+
+            function imprimirFavoritosEnCaja(num) {
+                // Recorrido del array e impresion de los gifs en la caja de favortios
+                for (i = 0; i <= gifsGuardadosSinRepeticion.length - 1 && i < num; i++) {
+                    let gifsFavGuardados = document.createElement('img');
+                    gifsFavGuardados.setAttribute('src', gifsGuardadosSinRepeticion[i]);
+                    gifsFavGuardados.classList.add('gifs-guardados-favoritos');
+
+                    cards(gifsFavGuardados, cajaFavoritos, 'gifs-guardados-favoritos', 'btn-gif-card-favoritos', corazonActive)
+
+                    //cajaFavoritos.appendChild(gifsFavGuardados);
+                }
+            }
+            let num = 12;
+
+            imprimirFavoritosEnCaja(num);
+            insertarBotonVerMasFavoritos();
+
+            botonVerMasFavoritos.addEventListener('click', () => {
+                while (cajaFavoritos.firstChild) {
+                    cajaFavoritos.removeChild(cajaFavoritos.firstChild);
+                }
+                num = num + 12;
+                imprimirFavoritosEnCaja(num);
+                insertarBotonVerMasFavoritos();
+            }, false);
+        }
     }, false);
 
     //Eventos mouseout sobre el boton DOWNLOAD
@@ -159,6 +219,30 @@ function cards(gif, padre, claseDeHover, claseDeBotones) {
         bloqueParaCadaImagen.appendChild(btnExpand); //Insercion del boton en el bloque EXPAND
         btnExpand.appendChild(expandImg); //Insercion de la imagen en el boton
     }, false);
+
+    //Efecto carrusel flecha derecha //Solo funciona con 12 Gifs de la medida actual
+    let inicio = 0;
+    flechaDerecha.addEventListener('click', () => {
+        if (inicio > -4246 && inicio <= 0) {
+            inicio = inicio - 386;
+            bloqueParaCadaImagen.style.left = inicio + 'px';
+        }
+        if (inicio <= -4246) {
+            inicio = 0;
+            bloqueParaCadaImagen.style.left = inicio + 'px';
+        }
+    });
+    //Efecto carrusel flecha derecha
+    flechaIzquierda.addEventListener('click', () => {
+        if (inicio == 0) {
+            inicio = -3860;
+            bloqueParaCadaImagen.style.left = inicio + 'px';
+        }
+        if (inicio >= -3860 && inicio < 0) {
+            inicio = inicio + 386;
+            bloqueParaCadaImagen.style.left = inicio + 'px';
+        }
+    });
 }
 //Funcion eliminar hijos
 function eliminarHijos(padre) {

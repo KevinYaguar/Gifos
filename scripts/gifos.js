@@ -84,7 +84,7 @@ async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
         respuestaGif.setAttribute('src', gif.url);
         respuestaGif.setAttribute('id', 'imagen de respuesta en ObtenerGifsSolicitados');
 
-        cards(respuestaGif, bloqueDeRespuestas, 'cuadro', 'btn-gif-card');
+        cards(respuestaGif, bloqueDeRespuestas, 'cuadro', 'btn-gif-card', corazonNormal);
         
         
     }

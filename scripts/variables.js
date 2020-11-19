@@ -1,6 +1,8 @@
 // ApiKey
 const ApiKey = 'api_key=1yVSM9oVX3z5nlo213gmodWDvoRxttsM';
 
+let gifsGuardadosSinRepeticion = [];
+
 //Server
 let server = 'http://127.0.0.1:5502/';
 //http://127.0.0.1:5502/'
@@ -89,6 +91,7 @@ let tituloFavoritos = document.createElement('h4');
 let corazonFavoritos = document.createElement('img');
 let cajaFavoritos = document.createElement('div');
 let cajaSinContenido = document.createElement('div');
+cajaSinContenido.classList.add('caja-sin-contenido')
 let sinContendioImg = document.createElement('img');
 let sinContendioTexto = document.createElement('p');
 let contenedorDeBotonVerMas = document.createElement('div');

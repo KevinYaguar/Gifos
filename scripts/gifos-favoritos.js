@@ -27,7 +27,7 @@ seccionFavoritos.appendChild(corazonFavoritos); //insertar corazon en la seccion
 seccionFavoritos.appendChild(tituloFavoritos); //insertar titulo en la seccion
 seccionFavoritos.appendChild(cajaFavoritos); //insertar caja de favoritos
 
-cajaFavoritos.appendChild(cajaSinContenido); //insertar caja sin contenido en la caja favoritos
+seccionFavoritos.appendChild(cajaSinContenido); //insertar caja sin contenido en la caja favoritos
 
 seccionTwo.style.order = '2'; //para que la seccion two quede por debajo
 
@@ -36,8 +36,8 @@ main.appendChild(seccionFavoritos); // insercion de la seccion en el main
 
 //Ocultar seccion de busqueda (section one). Crea al mismo tiempo la seccion favoritos. 
 favoritos.addEventListener('click', () => {
-    
-    showHide(seccionFavoritos, 'seccion-favoritos', seccionOne,  seccionMisGifos, seccionCrearGif);
+
+    showHide(seccionFavoritos, 'seccion-favoritos', seccionOne, seccionMisGifos, seccionCrearGif);
 
     showTrending(seccionTwo, 'two');
 
@@ -46,14 +46,15 @@ favoritos.addEventListener('click', () => {
     if (misGifos.classList.value == 'favoritos-activado') {
         misGifos.classList.toggle('favoritos-activado');
     }
-   
+
     if (masGifosImg.src == masGifosImgActiveServer) {
         masGifosImg.setAttribute('src', masGifosImgSRC);
     }
 
+
     
     //sessionStorage.setItem('arrayGifs', arrayGifsParaStorage);
-    let gifsGuardadosSinRepeticion = JSON.parse(sessionStorage['arrayGifs']);
+    gifsGuardadosSinRepeticion = JSON.parse(sessionStorage['arrayGifs']);
     //gifsGuardadosSinRepeticion.push(sessionStorage.getItem('arrayGifs'));
     gifsGuardadosSinRepeticion.filter(onlyUnique);
 
@@ -65,11 +66,17 @@ favoritos.addEventListener('click', () => {
         contenedorDeBotonVerMasFavoritos.appendChild(botonVerMasFavoritos);
         cajaFavoritos.appendChild(contenedorDeBotonVerMasFavoritos);
     }
-
+    //CORREGIR CLASES Y LOGICA DE LA CAJA SIN CONTENIDO
     if (gifsGuardadosSinRepeticion.length == 0) {
-        cajaSinContenido.classList.toggle('Caja-Sin-Contenido')
-    } else {
-        cajaSinContenido.classList.toggle('clase-display-none');
+        //eliminarHijos(cajaFavoritos);
+        cajaFavoritos.setAttribute('class', claseDisplayNone);
+        cajaSinContenido.setAttribute('class', 'caja-sin-contenido');
+        console.log(gifsGuardadosSinRepeticion.length);
+    } 
+    if(gifsGuardadosSinRepeticion.length >= 1) {
+        cajaSinContenido.setAttribute('class', 'clase-display-none');
+        cajaFavoritos.setAttribute('class', 'caja-de-favoritos');
+        console.log(gifsGuardadosSinRepeticion.length);
         //este while vacia la caja cada vez que se vuelve a favoritos antes de llenarla de vuelta
         while (cajaFavoritos.firstChild) {
             cajaFavoritos.removeChild(cajaFavoritos.firstChild);
@@ -77,18 +84,19 @@ favoritos.addEventListener('click', () => {
 
 
         function imprimirFavoritosEnCaja(num) {
-            // Recorrido del array e imopresion de los gifs en la caja de favortios
-            for (i = 0; i <= gifsGuardadosSinRepeticion.length - 1 && i < num; i++) {
+            // Recorrido del array e impresion de los gifs en la caja de favortios
+            for (i = 0; i <= gifsGuardadosSinRepeticion.length -1 && i < num; i++) {
                 let gifsFavGuardados = document.createElement('img');
                 gifsFavGuardados.setAttribute('src', gifsGuardadosSinRepeticion[i]);
                 gifsFavGuardados.classList.add('gifs-guardados-favoritos');
 
-                cards(gifsFavGuardados, cajaFavoritos, 'gifs-guardados-favoritos', 'btn-gif-card-favoritos')
+                cards(gifsFavGuardados, cajaFavoritos, 'gifs-guardados-favoritos', 'btn-gif-card-favoritos', corazonActive)
 
                 //cajaFavoritos.appendChild(gifsFavGuardados);
             }
         }
         let num = 12;
+        
         imprimirFavoritosEnCaja(num);
         insertarBotonVerMasFavoritos();
 
@@ -102,4 +110,3 @@ favoritos.addEventListener('click', () => {
         }, false);
     }
 }, false)
-
