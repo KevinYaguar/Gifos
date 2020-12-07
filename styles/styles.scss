@@ -76,21 +76,7 @@
         height: 32px ;
     }
 }
-.btn-gif-card-trending{
-    display: block;
-    align-items: center;
-    justify-content: center;
-    background: #FFFFFF;
-    width: 32px;
-    height: 32px;
-    border-radius: 6px;
-    position: relative;
-    bottom: 260px;
-    left: 223px;
-    opacity: 0.7;
-    float: left;
-    margin-right: 10px;
-}
+
 .btn-gif-card-favoritos{
     display: block;
     align-items: center;
@@ -168,8 +154,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 109.3px;
-    padding-top: 137px;
+    padding-bottom: 137px;
+    padding-top: 110px;
 }
 
 .imagen-sin-contenido {
@@ -467,7 +453,7 @@ align-self: center;
     }
 }
 @media (max-width: 800px){
-    @import "../mobil-styles/footer-mobil-styles";
+    @import "../mobil-styles/_footer-mobil-styles";
     @import "../mobil-styles/_header-mobil-styles";
     @import "../mobil-styles/_main-mobil-styles";
     
@@ -475,7 +461,7 @@ align-self: center;
 
 @media (min-width: 801px) {
     @import "../desktop-styles/_footer-desktop-styles";
-    @import "../desktop-styles/header-desktop-styles";
+    @import "../desktop-styles/_header-desktop-styles";
     @import "../desktop-styles/_main-desktop-styles";
     
 }

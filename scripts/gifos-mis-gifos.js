@@ -10,7 +10,7 @@ tituloMisGifos.innerHTML = 'Mis GIFOS';
 tituloMisGifos.classList.add('titulo-favoritos');
 
 //Sin Contenido
-cajaSinContenidoMisGifos.classList.add('Caja-Sin-Contenido');
+cajaSinContenidoMisGifos.classList.add('caja-sin-contenido');
 
 sinContenidoImgMisGifos.setAttribute('src', './img/icon-mis-gifos-sin-contenido.svg');
 

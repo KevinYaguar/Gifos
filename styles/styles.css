@@ -95,26 +95,6 @@
   height: 32px;
 }
 
-.btn-gif-card-trending {
-  display: block;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background: #FFFFFF;
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  position: relative;
-  bottom: 260px;
-  left: 223px;
-  opacity: 0.7;
-  float: left;
-  margin-right: 10px;
-}
-
 .btn-gif-card-favoritos {
   display: block;
   -webkit-box-align: center;
@@ -220,8 +200,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-bottom: 109.3px;
-  padding-top: 137px;
+  padding-bottom: 137px;
+  padding-top: 110px;
 }
 
 .imagen-sin-contenido {
@@ -953,16 +933,37 @@
     display: -ms-flexbox;
     display: flex;
     overflow: hidden;
+    margin-left: 22px;
   }
-  main .two .galery #galeryIn img {
+  main .two .galery #galeryIn .imagenes-trending {
     width: 243px;
     height: 187px;
-    margin-left: 22px;
+    margin-right: 22px;
+    position: relative;
   }
   main .two .galery .flecha {
     width: 40px;
     height: 40px;
     display: none;
+  }
+  .btn-gif-card-trending {
+    display: block;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    background: #FFFFFF;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    position: relative;
+    bottom: 176px;
+    left: 116px;
+    opacity: 0.7;
+    float: left;
+    margin-right: 10px;
   }
 }
 
@@ -1368,6 +1369,25 @@
     display: block;
     width: 32px;
     height: 32px;
+  }
+  .btn-gif-card-trending {
+    display: block;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    background: #FFFFFF;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    position: relative;
+    bottom: 260px;
+    left: 223px;
+    opacity: 0.7;
+    float: left;
+    margin-right: 10px;
   }
 }
 /*# sourceMappingURL=styles.css.map */

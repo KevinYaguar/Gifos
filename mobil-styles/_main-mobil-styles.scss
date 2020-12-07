@@ -165,10 +165,12 @@ main {
             #galeryIn{
                 display: flex;
                 overflow: hidden;
-                img {
+                margin-left: 22px;
+                .imagenes-trending {
                     width: 243px;
                     height: 187px;
-                    margin-left: 22px;
+                    margin-right: 22px;
+                    position: relative;
                 }
             }
             
@@ -179,4 +181,19 @@ main {
             }
         }
     }
+}
+.btn-gif-card-trending{
+    display: block;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    position: relative;
+    bottom: 176px;
+    left: 116px;
+    opacity: 0.7;
+    float: left;
+    margin-right: 10px;
 }
