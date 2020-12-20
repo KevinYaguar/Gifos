@@ -103,8 +103,6 @@ function verMas (input) {
         try{
             bloqueDeRespuestas.removeChild(contenedorDeBotonVerMas);
         } catch(err){}
-        
-
         pagOffset = pagOffset + 12;
         ObtenerGifsSolicitados(input, pagOffset);
         

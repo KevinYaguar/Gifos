@@ -48,6 +48,7 @@ async function algo(imgTrend) {
     a.click();
 
 };
+galeryIn.setAttribute('class', 'scrolling-wrapper')
 //Fetch imagenes trending
 function trending(i) {
     fetch('https://api.giphy.com/v1/gifs/search?' + ApiKey + '&q=trending&limit=25&offset=0&rating=g&lang=en')

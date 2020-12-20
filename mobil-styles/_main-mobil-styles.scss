@@ -164,7 +164,9 @@ main {
             width: 100%;
             #galeryIn{
                 display: flex;
-                overflow: hidden;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                white-space: nowrap;
                 margin-left: 22px;
                 .imagenes-trending {
                     width: 243px;
