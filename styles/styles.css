@@ -932,7 +932,9 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
     margin-left: 22px;
   }
   main .two .galery #galeryIn .imagenes-trending {

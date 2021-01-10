@@ -73,6 +73,7 @@ async function obetenerSugerencias(busquedaIngresada) {
     })
 
 }
+<<<<<<< HEAD
 
 async function getGifsArray(topic, offset) {
     const url= `https://api.giphy.com/v1/gifs/search?${ApiKey}&q=${topic}&limit=12&offset=${offset}&rating=g&lang=en`;
@@ -106,6 +107,57 @@ function printGifsSearched(GifsSolicitados, offset) {
 
 
 
+=======
+//Funcion para descargar imagenes
+async function algo(respuestaGif) {
+
+    let a = document.createElement('a');
+    let response = await fetch(respuestaGif.src);
+    let file = await response.blob();
+    a.download = 'MiNuevoGif.gif';
+    a.href = window.URL.createObjectURL(file);
+    a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
+    a.click();
+
+};
+
+
+
+async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
+    let url = `https://api.giphy.com/v1/gifs/search?${ApiKey}&q=${GifsSolicitados}&limit=12&offset=${offset}&rating=g&lang=en`;
+    let res = await fetch(url);
+    let json = await res.json();
+
+    
+
+    for (let data of json.data) {
+        let gif = data.images.original;
+        let respuestaGif = document.createElement('img');
+        respuestaGif.setAttribute('src', gif.url);
+        respuestaGif.setAttribute('id', 'imagen de respuesta en ObtenerGifsSolicitados');
+
+        cards(respuestaGif, bloqueDeRespuestas, 'cuadro', 'btn-gif-card', corazonNormal);
+        
+        
+    }
+    insertarBotonVerMas();
+   verMas(inputBusqueda.value);
+}
+ // VER MAS GIFS 
+
+function verMas (input) {
+    botonVerMas.addEventListener('click', () => {
+        try{
+            bloqueDeRespuestas.removeChild(contenedorDeBotonVerMas);
+        } catch(err){}
+        pagOffset = pagOffset + 12;
+        ObtenerGifsSolicitados(input, pagOffset);
+        
+    }, false);
+}
+
+ 
+>>>>>>> cfeeb53d008ae2ccf69bcd02b0f3587a0976a184
 function cambiarTitulo(solicitado) {
     //Eliminar sub del trending y cambiar el texto a lo buscado
     let resultadoTitulo = document.getElementById('trending-tt');
@@ -121,7 +173,11 @@ function cambiarTitulo(solicitado) {
 inputBusqueda.addEventListener('keyup', (event) => {
     if (event.keyCode === 13) {
         eliminarHijos(bloqueDeRespuestas);
+<<<<<<< HEAD
         printGifsSearched(inputBusqueda.value, 0);
+=======
+        ObtenerGifsSolicitados(inputBusqueda.value, 0);
+>>>>>>> cfeeb53d008ae2ccf69bcd02b0f3587a0976a184
         cambiarTitulo(inputBusqueda.value);
         insertarBotonVerMas();
     }
@@ -136,6 +192,7 @@ botonVerMas.addEventListener('click', () => {
     insertarBotonVerMas();
 
 }, false);
+<<<<<<< HEAD
 
 // Imprimir resultados seleccionados de sugerencia con click en el DOM
 
@@ -145,3 +202,49 @@ function sugestions(li) {
         cambiarTitulo(li.innerText);
     }, false);
 }
+=======
+sugerencia5.addEventListener('click', () => {
+    ObtenerGifsSolicitados(sugerencia5.innerText, 0, 12);
+    cambiarTitulo(sugerencia5.innerText);
+}, false);
+
+
+let trendringText1 = document.getElementById('trending-text-1');
+let trendringText2 = document.getElementById('trending-text-2');
+let trendringText3= document.getElementById('trending-text-3');
+let trendringText4 = document.getElementById('trending-text-4');
+let trendringText5 = document.getElementById('trending-text-5');
+
+trendringText1.addEventListener('click', ()=>{
+    eliminarHijos(bloqueDeRespuestas);
+    ObtenerGifsSolicitados(trendringText1.innerText, 0, 12)
+    insertarBotonVerMas();
+    verMas(trendringText1.innerText);
+})
+
+trendringText2.addEventListener('click', ()=>{
+    eliminarHijos(bloqueDeRespuestas);
+    ObtenerGifsSolicitados(trendringText2.innerText, 0, 12)
+    insertarBotonVerMas();
+    verMas(trendringText2.innerText);
+})
+trendringText3.addEventListener('click', ()=>{
+    eliminarHijos(bloqueDeRespuestas);
+    ObtenerGifsSolicitados(trendringText3.innerText, 0, 12)
+    insertarBotonVerMas();
+    verMas(trendringText3.innerText);
+})
+trendringText4.addEventListener('click', ()=>{
+    eliminarHijos(bloqueDeRespuestas);
+    ObtenerGifsSolicitados(trendringText4.innerText, 0, 12)
+    insertarBotonVerMas();
+    verMas(trendringText4.innerText);
+})
+trendringText5.addEventListener('click', ()=>{
+    eliminarHijos(bloqueDeRespuestas);
+    ObtenerGifsSolicitados(trendringText5.innerText, 0, 12)
+    insertarBotonVerMas();
+    verMas(trendringText6.innerText);
+})
+
+>>>>>>> cfeeb53d008ae2ccf69bcd02b0f3587a0976a184

@@ -47,6 +47,7 @@ function hoverColor (imagenes, classParam) {
     }
 }
 
+<<<<<<< HEAD
 const getImagesArray = (imagenes, classParam) => {
     let imagenesArray = [];
     for(i=0; i < imagenes.length; i++){
@@ -55,6 +56,57 @@ const getImagesArray = (imagenes, classParam) => {
         }
     }
     return imagenesArray;
+=======
+//Hover en flecha izquierda
+flechaIzquierda.addEventListener('mouseover', () => {
+    flechaIzquierda.setAttribute('src', flechaIzquierdaSrcHover);
+});
+flechaIzquierda.addEventListener('mouseout', () => {
+    flechaIzquierdaHoverReverse();
+});
+
+//Hover en flecha derecha
+flechaDerecha.addEventListener('mouseover', () => {
+    flechaDerecha.setAttribute('src', flechaDerechaSrcHover);
+});
+flechaDerecha.addEventListener('mouseout', () => {
+    flechaDerechaHoverReverse();
+});
+
+//Funcion para descargar imagenes
+async function algo(imgTrend) {
+
+    let a = document.createElement('a');
+    let response = await fetch(imgTrend.src);
+    let file = await response.blob();
+    a.download = 'MiNuevoGif.gif';
+    a.href = window.URL.createObjectURL(file);
+    a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
+    a.click();
+
+};
+galeryIn.setAttribute('class', 'scrolling-wrapper')
+//Fetch imagenes trending
+function trending(i) {
+    fetch('https://api.giphy.com/v1/gifs/search?' + ApiKey + '&q=trending&limit=25&offset=0&rating=g&lang=en')
+        .then(res => res.json())
+        .then(json => json.data)
+        .then(gif => gif[i].images.original)
+        .then(final => {
+
+            let galeryIn = document.getElementById('galeryIn');
+            var imgTrend = document.createElement('img');
+            imgTrend.setAttribute('src', final.url);
+            imgTrend.setAttribute('id', 'imgTrend');
+        
+            cards(imgTrend, galeryIn, 'imagenes-trending', 'btn-gif-card-trending', corazonNormal);
+
+            
+
+            
+            
+        });
+>>>>>>> cfeeb53d008ae2ccf69bcd02b0f3587a0976a184
 }
 
 const carrousel = () => {

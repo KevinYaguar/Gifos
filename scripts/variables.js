@@ -3,6 +3,14 @@ const ApiKey = 'api_key=1yVSM9oVX3z5nlo213gmodWDvoRxttsM';
 
 let gifsGuardadosSinRepeticion = [];
 
+<<<<<<< HEAD
+=======
+//Server
+let server = serverGitHub;
+//http://127.0.0.1:5502/'
+let serverGitHub = 'https://kevinyaguar.github.io/';
+
+>>>>>>> cfeeb53d008ae2ccf69bcd02b0f3587a0976a184
 // Body y local storage
 let cuerpoWeb = document.getElementById('body'); //Body Completo.
 let lines = document.getElementsByClassName('line'); //lineas.
