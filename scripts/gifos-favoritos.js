@@ -47,25 +47,16 @@ favoritos.addEventListener('click', () => {
         misGifos.classList.toggle('favoritos-activado');
     }
 
-    if (masGifosImg.src == masGifosImgActiveServer) {
+    if (masGifosImg.getAttribute('src') === masGifosImgActive) {
         masGifosImg.setAttribute('src', masGifosImgSRC);
     }
 
-
     
-    //sessionStorage.setItem('arrayGifs', arrayGifsParaStorage);
     gifsGuardadosSinRepeticion = JSON.parse(sessionStorage['arrayGifs']);
-    //gifsGuardadosSinRepeticion.push(sessionStorage.getItem('arrayGifs'));
+    
     gifsGuardadosSinRepeticion.filter(onlyUnique);
 
-    //boton ver mas
-    function insertarBotonVerMasFavoritos() {
-        botonVerMasFavoritos.innerText = 'ver más';
-        botonVerMasFavoritos.classList.add('botonVerMas');
-        contenedorDeBotonVerMasFavoritos.classList.add('contenedor-del-boton-ver-mas');
-        contenedorDeBotonVerMasFavoritos.appendChild(botonVerMasFavoritos);
-        cajaFavoritos.appendChild(contenedorDeBotonVerMasFavoritos);
-    }
+    
     //CORREGIR CLASES Y LOGICA DE LA CAJA SIN CONTENIDO
     if (gifsGuardadosSinRepeticion.length == 0) {
         //eliminarHijos(cajaFavoritos);
@@ -73,40 +64,48 @@ favoritos.addEventListener('click', () => {
         cajaSinContenido.setAttribute('class', 'caja-sin-contenido');
         console.log(gifsGuardadosSinRepeticion.length);
     } 
-    if(gifsGuardadosSinRepeticion.length >= 1) {
-        cajaSinContenido.setAttribute('class', 'clase-display-none');
+    favorites(gifsGuardadosSinRepeticion)
+    
+}, false)
+
+function favorites(array){
+    if(array.length >= 1) {
+        cajaSinContenido.setAttribute('class', claseDisplayNone);
         cajaFavoritos.setAttribute('class', 'caja-de-favoritos');
-        console.log(gifsGuardadosSinRepeticion.length);
         //este while vacia la caja cada vez que se vuelve a favoritos antes de llenarla de vuelta
-        while (cajaFavoritos.firstChild) {
-            cajaFavoritos.removeChild(cajaFavoritos.firstChild);
-        }
+        eliminarHijos(cajaFavoritos);
 
-
-        function imprimirFavoritosEnCaja(num) {
-            // Recorrido del array e impresion de los gifs en la caja de favortios
-            for (i = 0; i <= gifsGuardadosSinRepeticion.length -1 && i < num; i++) {
-                let gifsFavGuardados = document.createElement('img');
-                gifsFavGuardados.setAttribute('src', gifsGuardadosSinRepeticion[i]);
-                gifsFavGuardados.classList.add('gifs-guardados-favoritos');
-
-                cards(gifsFavGuardados, cajaFavoritos, 'gifs-guardados-favoritos', 'btn-gif-card-favoritos', corazonActive)
-
-                //cajaFavoritos.appendChild(gifsFavGuardados);
-            }
-        }
         let num = 12;
         
         imprimirFavoritosEnCaja(num);
         insertarBotonVerMasFavoritos();
 
         botonVerMasFavoritos.addEventListener('click', () => {
-            while (cajaFavoritos.firstChild) {
-                cajaFavoritos.removeChild(cajaFavoritos.firstChild);
-            }
+            eliminarHijos(cajaFavoritos);
             num = num + 12;
             imprimirFavoritosEnCaja(num);
             insertarBotonVerMasFavoritos();
         }, false);
     }
-}, false)
+}
+
+//boton ver mas
+function insertarBotonVerMasFavoritos() {
+    botonVerMasFavoritos.innerText = 'ver más';
+    botonVerMasFavoritos.classList.add('botonVerMas');
+    contenedorDeBotonVerMasFavoritos.classList.add('contenedor-del-boton-ver-mas');
+    contenedorDeBotonVerMasFavoritos.appendChild(botonVerMasFavoritos);
+    cajaFavoritos.appendChild(contenedorDeBotonVerMasFavoritos);
+}
+
+function imprimirFavoritosEnCaja(num) {
+    // Recorrido del array e impresion de los gifs en la caja de favortios
+    for (i = 0; i <= gifsGuardadosSinRepeticion.length -1 && i < num; i++) {
+        let gifsFavGuardados = document.createElement('img');
+        gifsFavGuardados.setAttribute('src', gifsGuardadosSinRepeticion[i]);
+        gifsFavGuardados.classList.add('gifs-guardados-favoritos');
+
+        cards(gifsFavGuardados, cajaFavoritos, 'gifs-guardados-favoritos', 'btn-gif-card-favoritos', corazonActive)
+
+    }
+}

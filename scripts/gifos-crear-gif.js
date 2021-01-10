@@ -57,11 +57,11 @@ contenedorDeNumeros.appendChild(contenedorDeCronometro);
 
 
 masGifosImg.addEventListener('mouseover', () => {
-    switch (masGifosImg.src) {
-        case masGifosImgSRCServer:
+    switch (masGifosImg.getAttribute('src')) {
+        case masGifosImgSRC:
             masGifosImg.setAttribute('src', masGifosImgHover);
             break;
-        case masGifosImgActiveServer:
+        case masGifosImgActive:
             masGifosImg.setAttribute('src', masGifosImgHover);
             break;
     }
@@ -71,7 +71,7 @@ masGifosImg.addEventListener('mouseout', () => {
 
     switch (seccionCrearGif.classList.value) {
         case 'seccion-crear-gif':
-            masGifosImg.setAttribute('src', masGifosImgActiveServer);
+            masGifosImg.setAttribute('src', masGifosImgActive);
             break;
         case 'clase-display-none':
             masGifosImg.setAttribute('src', masGifosImgSRC);
@@ -327,14 +327,14 @@ function getStreamAndRecord() {
 
 
                                     botonTrashImg.addEventListener('mouseover', () => {
-                                        if (botonTrashImg.src == server + 'img/icon-trash-normal.svg') {
+                                        if (botonTrashImg.getAttribute('src') === 'img/icon-trash-normal.svg') {
                                             botonTrashImg.setAttribute('src', './img/icon-trash-hover.svg')
                                         } else {
                                             botonTrashImg.setAttribute('src', './img/icon-trash-normal.svg')
                                         }
                                     }, false);
                                     botonTrashImg.addEventListener('mouseout', () => {
-                                        if (botonTrashImg.src == server + 'img/icon-trash-hover.svg') {
+                                        if (botonTrashImg.getAttribute('src') === 'img/icon-trash-hover.svg') {
                                             botonTrashImg.setAttribute('src', './img/icon-trash-normal.svg')
                                         } else {
                                             botonTrashImg.setAttribute('src', './img/icon-trash-hover.svg');
@@ -356,14 +356,14 @@ function getStreamAndRecord() {
 
 
                                     botonDownloadImg.addEventListener('mouseover', () => {
-                                        if (botonDownloadImg.src == server + 'img/icon-download.svg') {
+                                        if (botonDownloadImg.getAttribute('src') === 'img/icon-download.svg') {
                                             botonDownloadImg.setAttribute('src', './img/icon-download-hover.svg')
                                         } else {
                                             botonDownloadImg.setAttribute('src', './img/icon-download.svg')
                                         }
                                     }, false);
                                     botonDownloadImg.addEventListener('mouseout', () => {
-                                        if (botonDownloadImg.src == server + 'img/icon-download-hover.svg') {
+                                        if (botonDownloadImg.getAttribute('src') === 'img/icon-download-hover.svg') {
                                             botonDownloadImg.setAttribute('src', './img/icon-download.svg')
                                         } else {
                                             botonDownloadImg.setAttribute('src', './img/icon-download-hover.svg');
@@ -422,14 +422,14 @@ function getStreamAndRecord() {
                                     }, false);
 
                                     botonMaxImg.addEventListener('mouseover', () => {
-                                        if (botonMaxImg.src == server + 'img/icon-max-normal.svg') {
+                                        if (botonMaxImg.getAttribute('src') ==='img/icon-max-normal.svg') {
                                             botonMaxImg.setAttribute('src', './img/icon-max-hover.svg')
                                         } else {
                                             botonMaxImg.setAttribute('src', './img/icon-max-normal.svg')
                                         }
                                     }, false);
                                     botonMaxImg.addEventListener('mouseout', () => {
-                                        if (botonMaxImg.src == server + 'img/icon-max-hover.svg') {
+                                        if (botonMaxImg.getAttribute('src') ==='img/icon-max-hover.svg') {
                                             botonMaxImg.setAttribute('src', './img/icon-max-normal.svg')
                                         } else {
                                             botonMaxImg.setAttribute('src', './img/icon-max-hover.svg');

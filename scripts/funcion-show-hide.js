@@ -46,7 +46,7 @@ gifos.addEventListener('click', ()=>{
     if (favoritos.classList.value == 'favoritos-activado') {
         favoritos.classList.toggle('favoritos-activado');
     }
-    if (masGifosImg.src == masGifosImgActiveServer) {
+    if (masGifosImg.getAttribute('src') == masGifosImgActive) {
         masGifosImg.setAttribute('src', masGifosImgSRC);
     }
 }, false);

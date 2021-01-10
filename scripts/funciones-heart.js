@@ -1,7 +1,7 @@
 //funciones de normal, hover y click del src del heart fav.
 function corazonNormalFunction(heartFav) {
     
-    if (heartFav.src == corazonActiveActive) {
+    if (heartFav.getAttribute('src') === corazonActive) {
         heartFav.setAttribute('src', corazonActive);
         heartFav.style.padding = '7px';
     } else {
@@ -11,19 +11,18 @@ function corazonNormalFunction(heartFav) {
 }
 
 function corazonHoverFunction(heartFav) {
-    if (heartFav.src == corazonActiveActive) {
+    if (heartFav.getAttribute('src') === corazonActive) {
         heartFav.setAttribute('src', corazonActive);
         //heartFav.style.padding = '7px';
     } 
-    if(heartFav.src != corazonActiveActive){
+    if(heartFav.getAttribute('src')!== corazonActive){
         heartFav.setAttribute('src', corazonHover);
-        console.log('hola');
         heartFav.style.padding = '';
     }
 }
 
 function corazonActiveFunction(heartFav) {
-    if (heartFav.src == corazonActiveActive) {
+    if (heartFav.getAttribute('src') === corazonActive) {
         heartFav.setAttribute('src', corazonHover);
         heartFav.style.padding = '';
     } else {
@@ -33,14 +32,15 @@ function corazonActiveFunction(heartFav) {
 }
 
 function guardarEnSssionStorage(heartFav, gif) {
-    if (heartFav.src == corazonActiveActive) {
+    if (heartFav.getAttribute('src') === corazonActive) {
         arrayGifsParaStorage.push(gif.getAttribute('src'));
-        //console.log(arrayGifsParaStorage);
+
     } else {
         arrayGifsParaStorage.pop(gif.getAttribute('src'));
-        //console.log(arrayGifsParaStorage);
+
     }
     var arrayGifsParaStorage2 = JSON.stringify(arrayGifsParaStorage);
     sessionStorage.setItem('arrayGifs', arrayGifsParaStorage2);
 
 }
+

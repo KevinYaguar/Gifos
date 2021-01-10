@@ -19,29 +19,29 @@ modoOscuro.addEventListener('click', () => {
 }, false);
 
 function buttonCrearGifCambiarImagen() {
-    if (masGifosImg.src == masGifosImgSRCServer || masGifosImg.src == masGifosImgActiveServer) {
+    if (masGifosImg.getAttribute('src') == masGifosImg || masGifosImg.getAttribute('src') == masGifosImgActive) {
         masGifosImg.setAttribute('src', masGifosImgModoNocturno);
     } else
         switch (seccionCrearGif.classList.value) {
             case 'seccion-crear-gif':
-                masGifosImg.setAttribute('src', masGifosImgActiveServer);
+                masGifosImg.setAttribute('src', masGifosImgActive);
                 break;
             case 'clase-display-none':
-                masGifosImg.setAttribute('src', masGifosImgSRCServer);
+                masGifosImg.setAttribute('src', masGifosImg);
                 break;
         }
 }
 
 function flechaIzquierdaCambiarImagen() {
-    if (flechaIzquierda.src == flechaIzquierdaServer) {
-        flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNocturno); //https://kevinyaguar.github.io
+    if (flechaIzquierda.getAttribute('src') == flechaIzquierdaSrcNormal) {
+        flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNocturno); 
     } else {
         flechaIzquierda.setAttribute('src', flechaIzquierdaSrcNormal);
     }
 }
 
 function flechaDerechaCambiarImagen() {
-    if (flechaDerecha.src == flechaDerechaServer) { //https://kevinyaguar.github.io
+    if (flechaDerecha.getAttribute('src') == flechaDerechaSrcNormal) { 
         flechaDerecha.setAttribute('src', flechaDerechaSrcNocturno);
     } else {
         flechaDerecha.setAttribute('src', flechaDerechaSrcNormal);

@@ -1,4 +1,4 @@
-//Menu Hamburguesa a X en la version Mobile.
+//Cambio de menu desplegable
 hamburguesa.addEventListener('click', () => {
     hamburguesa.classList.toggle('fa-times');
     hamburguesa.classList.toggle('fa-bars');
@@ -16,6 +16,7 @@ inputBusqueda.addEventListener('focusout', () => {
 }, false);
 
 // Click on X para input.value vacío. y para plegar lista de sugerencias
+//Cambio del titulo por el lo buscado
 buscador.addEventListener('click', () => {
     inputBusqueda.value = '';
     sugerencias.classList.toggle('Lista-Activa');
@@ -24,79 +25,86 @@ buscador.addEventListener('click', () => {
 
 //Buscador: focus, sugerencias y mostrar resultados gifs solicitados impresos en el DOM.
 // Boton Ver mas: clase y uso.
-//Cambio del titulo por el lo buscado
+
 
 inputBusqueda.addEventListener('focus', () => {
     sugerencias.classList.toggle('Lista-Activa');
     sugerencias.classList.toggle('Lista-Sugerencias');
 }, false);
-inputBusqueda.addEventListener('keyup', (busqueda) => {
-    busqueda = inputBusqueda.value;
-    obetenerSugerencias(busqueda);
+inputBusqueda.addEventListener('blur', () => {
+    sugerencias.classList.toggle('Lista-Activa');
+    sugerencias.classList.toggle('Lista-Sugerencias');
 }, false);
 
+
+//Obtener sugerencias al escribir
+inputBusqueda.addEventListener('keyup', () => {
+    obetenerSugerencias(inputBusqueda.value);
+}, false);
+
+//boton ver mas
 function insertarBotonVerMas() {
-    //boton ver mas
-    botonVerMas.innerText = 'ver más';
-    botonVerMas.classList.add('botonVerMas') ;
     
+    setTimeout(()=>{
+        botonVerMas.innerText = 'ver más';
+    botonVerMas.classList.add('botonVerMas');
+
     contenedorDeBotonVerMas.classList.add('contenedor-del-boton-ver-mas');
     contenedorDeBotonVerMas.appendChild(botonVerMas);
     bloqueDeRespuestas.appendChild(contenedorDeBotonVerMas);
+    }, 1000)
 
 }
+
 async function obetenerSugerencias(busquedaIngresada) {
     let url = 'https://api.giphy.com/v1/gifs/search/tags?' + ApiKey + '&q=' + busquedaIngresada;
     let response = await fetch(url);
     let json = await response.json();
     let data = await json.data;
-    sugerencia1.innerHTML = `<i class="fas fa-search" id="buscador"></i>${data[0].name}`;
-    sugerencias.appendChild(sugerencia1);
-    sugerencia2.innerHTML = `<i class="fas fa-search" id="buscador"></i>${data[1].name}`;
-    sugerencias.appendChild(sugerencia2);
-    sugerencia3.innerHTML = `<i class="fas fa-search" id="buscador"></i>${data[2].name}`;
-    sugerencias.appendChild(sugerencia3);
-    sugerencia4.innerHTML = `<i class="fas fa-search" id="buscador"></i>${data[3].name}`;
-    sugerencias.appendChild(sugerencia4);
-    sugerencia5.innerHTML = `<i class="fas fa-search" id="buscador"></i>${data[4].name}`;
-    sugerencias.appendChild(sugerencia5);
+
+    eliminarHijos(sugerencias);
+
+    data.forEach(item => {
+        let sugestion = document.createElement('li');
+        sugestion.classList.add('sug');
+        sugestion.innerHTML = `<i class="fas fa-search" id="buscador"></i> ${item.name}`
+        sugerencias.appendChild(sugestion)
+        sugestions(sugestion);
+    })
+
 }
-//Funcion para descargar imagenes
-async function algo(respuestaGif) {
 
-    let a = document.createElement('a');
-    let response = await fetch(respuestaGif.src);
-    let file = await response.blob();
-    a.download = 'MiNuevoGif.gif';
-    a.href = window.URL.createObjectURL(file);
-    a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
-    a.click();
+async function getGifsArray(topic, offset) {
+    const url= `https://api.giphy.com/v1/gifs/search?${ApiKey}&q=${topic}&limit=12&offset=${offset}&rating=g&lang=en`;
+    const res = await fetch(url);
+    const json = await res.json();
+    const data = await json.data;
 
-};
-async function ObtenerGifsSolicitados(GifsSolicitados, offset) {
-    let url = `https://api.giphy.com/v1/gifs/search?${ApiKey}&q=${GifsSolicitados}&limit=12&offset=${offset}&rating=g&lang=en`;
-    let res = await fetch(url);
-    let json = await res.json();
+    const arrayImgGifs = [];
+    for(gif of data){
+        const imgGif = document.createElement('img');
 
-    for (let data of json.data) {
-        let gif = data.images.original;
-        let respuestaGif = document.createElement('img');
-        respuestaGif.setAttribute('src', gif.url);
-        respuestaGif.setAttribute('id', 'imagen de respuesta en ObtenerGifsSolicitados');
+        imgGif.setAttribute('src', gif.images.original.url);
 
-        cards(respuestaGif, bloqueDeRespuestas, 'cuadro', 'btn-gif-card', corazonNormal);
-        
-        
+        arrayImgGifs.push(imgGif) 
     }
-    insertarBotonVerMas();
-    // VER MAS GIFS 
-    botonVerMas.addEventListener('click', () => {
-        bloqueDeRespuestas.removeChild(contenedorDeBotonVerMas);
-        pagOffset = pagOffset + 12;
-        ObtenerGifsSolicitados(inputBusqueda.value, pagOffset);
-        
-    }, false);
+    return arrayImgGifs;
 }
+
+function printGifsSearched(GifsSolicitados, offset) {
+    const arrayImgGifs = getGifsArray(GifsSolicitados, offset);
+
+    arrayImgGifs.then(res=> {
+        res.forEach(gif=>{
+            cards(gif, bloqueDeRespuestas, 'cuadro', 'btn-gif-card', corazonNormal);
+        })
+        const imagenes = document.getElementsByTagName('img');
+        hoverColor(imagenes, 'cuadro');
+        getButtons(imagenes, 'cuadro');
+    })
+}
+
+
 
 function cambiarTitulo(solicitado) {
     //Eliminar sub del trending y cambiar el texto a lo buscado
@@ -112,29 +120,28 @@ function cambiarTitulo(solicitado) {
 // Evento ENTER para imprimir los gifs en el DOM
 inputBusqueda.addEventListener('keyup', (event) => {
     if (event.keyCode === 13) {
-        ObtenerGifsSolicitados(inputBusqueda.value, 0);
+        eliminarHijos(bloqueDeRespuestas);
+        printGifsSearched(inputBusqueda.value, 0);
         cambiarTitulo(inputBusqueda.value);
+        insertarBotonVerMas();
     }
 }, false);
 
+// VER MAS GIFS 
+botonVerMas.addEventListener('click', () => {
+    bloqueDeRespuestas.removeChild(contenedorDeBotonVerMas);
+    pagOffset = pagOffset + 12;
+    printGifsSearched(inputBusqueda.value, pagOffset);
+
+    insertarBotonVerMas();
+
+}, false);
+
 // Imprimir resultados seleccionados de sugerencia con click en el DOM
-sugerencia1.addEventListener('click', () => {
-    ObtenerGifsSolicitados(sugerencia1.innerText, 0, 12);
-    cambiarTitulo(sugerencia1.innerText);
-}, false);
-sugerencia2.addEventListener('click', () => {
-    ObtenerGifsSolicitados(sugerencia2.innerText, 0, 12);
-    cambiarTitulo(sugerencia2.innerText);
-}, false);
-sugerencia3.addEventListener('click', () => {
-    ObtenerGifsSolicitados(sugerencia3.innerText, 0, 12);
-    cambiarTitulo(sugerencia3.innerText);
-}, false);
-sugerencia4.addEventListener('click', () => {
-    ObtenerGifsSolicitados(sugerencia4.innerText, 0, 12);
-    cambiarTitulo(sugerencia4.innerText);
-}, false);
-sugerencia5.addEventListener('click', () => {
-    ObtenerGifsSolicitados(sugerencia5.innerText, 0, 12);
-    cambiarTitulo(sugerencia5.innerText);
-}, false);
+
+function sugestions(li) {
+    li.addEventListener('click', () => {
+        printGifsSearched(li.innerText, 0, 12);
+        cambiarTitulo(li.innerText);
+    }, false);
+}
