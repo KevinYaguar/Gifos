@@ -125,10 +125,6 @@ main {
             gap: 29px;
             max-width: 1127px;
 
-            /*img {
-                width: 260px;
-                height: 200px;
-            }*/
         }
 
     }
@@ -188,12 +184,10 @@ main {
                 margin-left: 22px;
                 margin-right: 22px;
 
+
                 .imagenes-trending {
                     width: 357px;
                     height: 275px;
-                    margin-right: 29px;
-                    position: relative;
-
                 }
             }
 
@@ -207,26 +201,26 @@ main {
 }
 
 .seccion-max {
-    display: grid;
-    grid-template: 0.1fr 1fr 0.1fr / 1fr 1fr 1fr;
+    display: flex;
+    flex-direction: column;
 
     .cruzClose {
-        grid-area: 1 / 2;
-        justify-self: end;
-        width: 15.2px;
-        height: 15.2px;
-    }
-
-    img {
-        grid-area: 2 / 2;
-        width: 695px;
-        height: 385px;
+        align-self: flex-end;
+        margin-bottom: 78.4px;
+        position: relative;
+        left: 60px;
     }
 
     .contenedor-bajo {
         display: flex;
-        grid-area: 3 / 2;
-        justify-content: flex-end;
+        justify-content: space-between;
+        align-items: baseline;
+
+        .title-box{
+            p{
+                color: black;
+            }
+        }
 
         .btn-gif-card-trending-max {
             display: block;
@@ -270,4 +264,23 @@ main {
     opacity: 0.7;
     float: left;
     margin-right: 10px;
+}
+
+.div-mayor{
+    margin-right: 29px;
+    width: 357px;
+    height: 275px;
+    display: grid;
+    grid-template: 181px 94px / 226px 32.5px 11px 32.5px 11px 32.5px 11px;
+}
+
+.div-mayor-busqueda{
+    margin-right: 29px;
+    width: 260px;
+    height: 200px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 181px 94px;
+    -ms-grid-columns: 226px 32.5px 11px 32.5px 11px 32.5px 11px;
+    grid-template: 132px 68px / 132px 32.5px 10px 32.5px 10px 32.5px 10px;
 }

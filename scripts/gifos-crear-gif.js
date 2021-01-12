@@ -57,25 +57,39 @@ contenedorDeNumeros.appendChild(contenedorDeCronometro);
 
 
 masGifosImg.addEventListener('mouseover', () => {
-    switch (masGifosImg.getAttribute('src')) {
-        case masGifosImgSRC:
-            masGifosImg.setAttribute('src', masGifosImgHover);
-            break;
-        case masGifosImgActive:
-            masGifosImg.setAttribute('src', masGifosImgHover);
-            break;
-    }
+
+        switch (masGifosImg.getAttribute('src')) {
+            case masGifosImgSRC:
+                masGifosImg.setAttribute('src', masGifosImgHover);
+                break;
+            case masGifosImgModoNocturno:
+                masGifosImg.setAttribute('src', masGifosImgHover);
+            case masGifosImgActive:
+                masGifosImg.setAttribute('src', masGifosImgHover);
+                break;
+        }
+
 }, false);
 
 masGifosImg.addEventListener('mouseout', () => {
-
-    switch (seccionCrearGif.classList.value) {
-        case 'seccion-crear-gif':
-            masGifosImg.setAttribute('src', masGifosImgActive);
-            break;
-        case 'clase-display-none':
-            masGifosImg.setAttribute('src', masGifosImgSRC);
-            break;
+    if(modoOscuro.firstChild.innerText == 'MODO DIURNO'){
+        switch (seccionCrearGif.classList.value) {
+            case 'seccion-crear-gif':
+                masGifosImg.setAttribute('src', masGifosImgActive);
+                break;
+            case 'clase-display-none':
+                masGifosImg.setAttribute('src', masGifosImgModoNocturno);
+                break;
+        }
+    } else{
+        switch (seccionCrearGif.classList.value) {
+            case 'seccion-crear-gif':
+                masGifosImg.setAttribute('src', masGifosImgActive);
+                break;
+            case 'clase-display-none':
+                masGifosImg.setAttribute('src', masGifosImgSRC);
+                break;
+        }
     }
 }, false);
 

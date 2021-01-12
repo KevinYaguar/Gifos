@@ -1,49 +1,78 @@
 //Eventos click
-galeryIn.addEventListener('click', e =>{
+main.addEventListener('click', e =>{
     donwloadFunction(e);
     heartFunctions(e);
     expandFunction(e);
 })
+//Eventos mouserover y mouseout
+
+main.addEventListener('mouseover', e =>{
+    heartHover(e);
+    downloadHover(e);
+    expandHover(e);
+})
+main.addEventListener('mouseout', e =>{
+    heartHover(e)
+    downloadHover(e);
+    expandHover(e);
+})
 
 const donwloadFunction = (e) => {
-    if(e.target.getAttribute('src') === './img/icon-download.svg'){
-        let gif = e.target.parentElement.previousElementSibling.previousElementSibling.firstChild;
+    if(e.target.getAttribute('src') === downloadImgHover){
+        let gif = e.target.parentElement.parentElement.parentElement.previousElementSibling;
         return donwloadGif(gif)
     }
 }
 const heartFunctions = (e) =>{
     if(e.target.getAttribute('src') === corazonNormal|| e.target.getAttribute('src') === corazonActive  || e.target.getAttribute('src') === corazonHover){
-        let gif = e.target.parentElement.previousElementSibling.firstChild;
-        console.log(gif);
+        //e.target.setAttribute('src', corazonActive);
+        let gif = e.target.parentElement.parentElement.parentElement.previousElementSibling;
         corazonActiveFunction(e.target)
         guardarEnSssionStorage(e.target, gif)
-    }  
+    } 
 }
 
+function corazonActiveFunction(heartFav) {
+    if (heartFav.getAttribute('src') === corazonActive) {
+        heartFav.setAttribute('src', corazonHover);
+        heartFav.style.padding = '';
+    } else {
+        heartFav.setAttribute('src', corazonActive);
+        heartFav.style.padding = '7px';
+    }
+}
+
+function guardarEnSssionStorage(heartFav, gif) {
+    if (heartFav.getAttribute('src') === corazonActive) {
+        arrayGifsParaStorage.push(gif.getAttribute('src'));
+
+    } else {
+        arrayGifsParaStorage.pop(gif.getAttribute('src'));
+
+    }
+    var arrayGifsParaStorage2 = JSON.stringify(arrayGifsParaStorage);
+    sessionStorage.setItem('arrayGifs', arrayGifsParaStorage2);
+
+}
 const expandFunction = (e) => {
     if(e.target.getAttribute('src') === expandImgHover){
         let buttonFav = e.target.parentElement.previousElementSibling.previousElementSibling;
+        
         let buttonDownload = e.target.parentElement.previousElementSibling;
+        
         let buttonExpand = e.target.parentElement;
-        let gif = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.firstChild;
-        expandir(gif, buttonFav, buttonDownload, buttonExpand);
+
+        let gif = e.target.parentElement.parentElement.parentElement.previousElementSibling;
+
+        let user = e.target.parentElement.parentElement.nextSibling;
+
+        expandir(gif, buttonFav, buttonDownload, user);
     }
 }
 
 
 
-//Eventos mouserover y mouseout
 
-galeryIn.addEventListener('mouseover', e =>{
-    heartHover(e);
-    downloadHover(e);
-    expandHover(e);
-})
-galeryIn.addEventListener('mouseout', e =>{
-    heartHover(e)
-    downloadHover(e);
-    expandHover(e);
-})
 
 const heartHover = (e) =>{
     if(e.target.getAttribute('src') === corazonNormal){

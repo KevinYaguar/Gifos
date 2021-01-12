@@ -3,14 +3,6 @@ const ApiKey = 'api_key=1yVSM9oVX3z5nlo213gmodWDvoRxttsM';
 
 let gifsGuardadosSinRepeticion = [];
 
-<<<<<<< HEAD
-=======
-//Server
-let server = serverGitHub;
-//http://127.0.0.1:5502/'
-let serverGitHub = 'https://kevinyaguar.github.io/';
-
->>>>>>> cfeeb53d008ae2ccf69bcd02b0f3587a0976a184
 // Body y local storage
 let cuerpoWeb = document.getElementById('body'); //Body Completo.
 let lines = document.getElementsByClassName('line'); //lineas.
@@ -69,7 +61,20 @@ let seccionTwo = document.getElementById('seccionTwo'); //Seccion dos del main
 let tendringGifosTittle = document.getElementById('tendring-gifos-tittle'); // Titulo de la seccion dos (Trending)
 let tendringGifosSubtt = document.getElementById('tendring-gifos-subtt'); //Subtitulo de la seccion dos (Trending)
 
+let busquedaSinResultadoSRC = './img/icon-busqueda-sin-resultado.svg';
+let resultadoTitulo = document.getElementById('trending-tt');
+let subtitulo = document.getElementById('trending-text');
+
 //Carrousel
+let leftArrowImage = document.createElement('img');
+let rightArrowImage = document.createElement('img');
+
+leftArrowImage.setAttribute('src', './img/button-slider-left.svg')
+rightArrowImage.setAttribute('src', './img/Button-Slider-right.svg')
+
+console.log(leftArrowImage)
+console.log(rightArrowImage)
+
 let flechaIzquierda = document.getElementById('izquierda');
 let flechaDerecha = document.getElementById('derecha');
 let flechaIzquierdaSrcNormal = './img/button-slider-left.svg';
@@ -81,6 +86,7 @@ let flechaDerechaSrcHover = './img/Button-Slider-right-hover.svg';
 let flechaIzquierdaSrcNocturno = './img/button-slider-left-md-noct.svg';
 let flechaDerechaSrcNocturno = './img/button-slider-right-md-noct.svg';
 
+let galery = document.getElementById('galery');
 let galeryIn = document.getElementById('galeryIn');
 
 // Seccion Favoritos
@@ -101,17 +107,29 @@ let footer = document.querySelector('footer');
 
 //gif MAX
 let seccionMax = document.createElement('section');
-seccionMax.id = 'seccionMAX';
+
+
 
 //seccionMax.classList.add('clase-display-none');
 let contenedorDeGifMax = document.createElement('div');
 let cruzClose = document.createElement('img');
 cruzClose.setAttribute('src', './img/close.svg');
 cruzClose.classList.add('cruzClose');
+
 let contenedorBajoMax = document.createElement('div');
 contenedorBajoMax.classList.add('contenedor-bajo');
+
+buttonBoxMax = document.createElement('div');
+
 
 
 var urlGif = '';
 
 let claseDisplayNone = 'clase-display-none';
+
+
+
+
+
+
+main.appendChild(seccionMax);

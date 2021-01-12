@@ -16,10 +16,11 @@ modoOscuro.addEventListener('click', () => {
     buttonCrearGifCambiarImagen();
     flechaIzquierdaCambiarImagen();
     flechaDerechaCambiarImagen();
+    modoDiurnoText();
 }, false);
 
 function buttonCrearGifCambiarImagen() {
-    if (masGifosImg.getAttribute('src') == masGifosImg || masGifosImg.getAttribute('src') == masGifosImgActive) {
+    if (masGifosImg.getAttribute('src') == masGifosImgSRC) {
         masGifosImg.setAttribute('src', masGifosImgModoNocturno);
     } else
         switch (seccionCrearGif.classList.value) {
@@ -27,7 +28,7 @@ function buttonCrearGifCambiarImagen() {
                 masGifosImg.setAttribute('src', masGifosImgActive);
                 break;
             case 'clase-display-none':
-                masGifosImg.setAttribute('src', masGifosImg);
+                masGifosImg.setAttribute('src', masGifosImgSRC);
                 break;
         }
 }
@@ -45,5 +46,13 @@ function flechaDerechaCambiarImagen() {
         flechaDerecha.setAttribute('src', flechaDerechaSrcNocturno);
     } else {
         flechaDerecha.setAttribute('src', flechaDerechaSrcNormal);
+    }
+}
+
+const modoDiurnoText = () => {
+    if(modoOscuro.firstChild.innerText === 'MODO NOCTURNO'){
+        modoOscuro.firstChild.innerText = 'MODO DIURNO';
+    } else {
+        modoOscuro.firstChild.innerText = 'MODO NOCTURNO'
     }
 }

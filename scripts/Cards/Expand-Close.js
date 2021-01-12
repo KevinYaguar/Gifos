@@ -4,14 +4,27 @@ cruzClose.addEventListener('click', e => {
     
 });
 
-function expandir(gif, btnFav, btnDownload, btnExpand) {
+seccionMax.classList.add(claseDisplayNone);
+seccionMax.appendChild(cruzClose);
+seccionMax.appendChild(contenedorBajoMax);
+contenedorBajoMax.appendChild(buttonBoxMax);
+buttonBoxMax.classList.add('button-box-max');
+function expandir(gif, btnFav, btnDownload, user) {
+
     showHide(seccionMax, 'seccion-max', seccionOne, seccionTwo);
 
-    hijosMax(cruzClose, gif, contenedorBajoMax)
-    eliminarHijos(contenedorBajoMax);
+    //hijosMax(cruzClose, gif, contenedorBajoMax)
 
-    contenedorBajoMax.appendChild(btnFav);
-    contenedorBajoMax.appendChild(btnDownload);
+    gif.setAttribute('class', 'img-max')
+
+    seccionMax.insertBefore(gif, contenedorBajoMax)
+
+    
+    contenedorBajoMax.insertBefore(user, buttonBoxMax);
+    buttonBoxMax.appendChild(btnFav);
+    buttonBoxMax.appendChild(btnDownload);
+    
+    //eliminarHijos(contenedorBajoMax);
 
     //botonesFavDownloadExpand(btnFav, btnDownload, btnExpand)
 
@@ -51,20 +64,5 @@ const close = (e) => {
         }
     }
 
-    /*
-    botonesFavDownloadParaMax(btnFav, btnDownload);
 
-    botonesFavDownloadExpand(btnFav, btnDownload, btnExpand)
-
-    bloqueParaCadaImagenInferior.appendChild(gif);
-
-    bloqueParaCadaImagen.appendChild(btnFav); //Insercion del boton en el bloque FAV
-    btnFav.appendChild(heartFav); //Insercion de la imagen en el boton
-
-    bloqueParaCadaImagen.appendChild(btnDownload); //Insercion del boton en el bloque DOWNLOAD
-    btnDownload.appendChild(downloadImg) //link de descarga
-
-    bloqueParaCadaImagen.appendChild(btnExpand); //Insercion del boton en el bloque EXPAND
-    btnExpand.appendChild(expandImg); //Insercion de la imagen en el boton
-    */
 }

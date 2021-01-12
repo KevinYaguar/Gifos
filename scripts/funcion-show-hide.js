@@ -47,6 +47,10 @@ gifos.addEventListener('click', ()=>{
         favoritos.classList.toggle('favoritos-activado');
     }
     if (masGifosImg.getAttribute('src') == masGifosImgActive) {
-        masGifosImg.setAttribute('src', masGifosImgSRC);
+        if(modoOscuro.firstChild.innerText == 'MODO NOCTURNO'){
+            masGifosImg.setAttribute('src', masGifosImgSRC);
+        } else {
+            masGifosImg.setAttribute('src', masGifosImgModoNocturno);
+        }
     }
 }, false);
