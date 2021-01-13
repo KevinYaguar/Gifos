@@ -105,7 +105,7 @@ function imprimirFavoritosEnCaja(num) {
         gifsFavGuardados.setAttribute('src', gifsGuardadosSinRepeticion[i]);
         gifsFavGuardados.classList.add('gifs-guardados-favoritos');
 
-        cards(gifsFavGuardados, cajaFavoritos, 'gifs-guardados-favoritos', 'btn-gif-card-favoritos', corazonActive)
+        cards(gifsFavGuardados, cajaFavoritos, 'father-box-searcher', 'cuadro', corazonActive)
 
     }
 }
