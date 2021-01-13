@@ -59,20 +59,15 @@ const expandFunction = (e) => {
         let buttonFav = e.target.parentElement.previousElementSibling.previousElementSibling;
         
         let buttonDownload = e.target.parentElement.previousElementSibling;
-        
-        let buttonExpand = e.target.parentElement;
 
         let gif = e.target.parentElement.parentElement.parentElement.previousElementSibling;
+        let gifParentClass = gif.parentElement.classList.value;
 
         let user = e.target.parentElement.parentElement.nextSibling;
 
-        expandir(gif, buttonFav, buttonDownload, user);
+        expandir(gif, buttonFav, buttonDownload, user, gifParentClass);
     }
 }
-
-
-
-
 
 const heartHover = (e) =>{
     if(e.target.getAttribute('src') === corazonNormal){
@@ -98,6 +93,7 @@ const expandHover = (e) => {
     }
 }
 
+//////////////////////////////////////////////
 //MOUSEOVER SOBRE BOTON DESCARGAR Y LINK
 botonDescargarMiGifoImg.addEventListener('mouseover', () => {
     if (botonDescargarMiGifoImg.getAttribute('src') === 'img/icon-download.svg') {

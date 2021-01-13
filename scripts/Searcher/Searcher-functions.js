@@ -1,18 +1,3 @@
-//boton ver mas
-function insertarBotonVerMas() {
-    
-    setTimeout(()=>{
-        botonVerMas.innerText = 'ver más';
-        botonVerMas.classList.add('botonVerMas');
-
-        contenedorDeBotonVerMas.classList.add('contenedor-del-boton-ver-mas');
-        contenedorDeBotonVerMas.appendChild(botonVerMas);
-        bloqueDeRespuestas.appendChild(contenedorDeBotonVerMas);
-    }, 1000)
-
-}
-
-
 function printGifsSearched(GifsSolicitados, offset) {
 
     getGifDataArray(GifsSolicitados, offset).then(res =>{
@@ -37,6 +22,18 @@ function printGifsSearched(GifsSolicitados, offset) {
     })
 }
 
+function insertarBotonVerMas() {
+    
+    setTimeout(()=>{
+        botonVerMas.innerText = 'ver más';
+        botonVerMas.classList.add('botonVerMas');
+
+        contenedorDeBotonVerMas.classList.add('contenedor-del-boton-ver-mas');
+        contenedorDeBotonVerMas.appendChild(botonVerMas);
+        bloqueDeRespuestas.appendChild(contenedorDeBotonVerMas);
+    }, 1000)
+
+}
 
 function cambiarTitulo(solicitado, classTitle) {
     //Eliminar sub del trending y cambiar el texto a lo buscado
@@ -60,7 +57,6 @@ function cambiarTitulo(solicitado, classTitle) {
 // Imprimir resultados seleccionados de sugerencia con click en el DOM
 function sugestions(li) {
     li.addEventListener('click', () => {
-        console.log('hola')
         printGifsSearched(li.innerText, 0, 12);
         //cambiarTitulo(li.innerText);
         eliminarHijos(bloqueDeRespuestas);

@@ -72,8 +72,6 @@ let rightArrowImage = document.createElement('img');
 leftArrowImage.setAttribute('src', './img/button-slider-left.svg')
 rightArrowImage.setAttribute('src', './img/Button-Slider-right.svg')
 
-console.log(leftArrowImage)
-console.log(rightArrowImage)
 
 let flechaIzquierda = document.getElementById('izquierda');
 let flechaDerecha = document.getElementById('derecha');
