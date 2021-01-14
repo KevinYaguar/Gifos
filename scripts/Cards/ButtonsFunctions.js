@@ -57,6 +57,7 @@ function corazonActiveFunction(heartFav) {
     if (heartFav.getAttribute('src') === corazonActive) {
         heartFav.setAttribute('src', corazonHover);
         heartFav.style.padding = '';
+        
     } else {
         heartFav.setAttribute('src', corazonActive);
         heartFav.style.padding = '7px';
@@ -118,25 +119,38 @@ const expandFunction = (e) => {
 
 const heartHover = (e) =>{
     if(e.target.getAttribute('src') === corazonNormal){
-        e.target.setAttribute('src', corazonHover)
+        e.target.setAttribute('src', corazonHover)        
+        e.target.parentElement.style.opacity = '1';
     } else if(e.target.getAttribute('src') === corazonHover){
-        e.target.setAttribute('src', corazonNormal)
-    }
+        e.target.setAttribute('src', corazonNormal)        
+        e.target.parentElement.style.opacity = '0.7';
+    } else if(e.target.getAttribute('src') === corazonActive){      
+        
+        if(e.target.parentElement.style.opacity === '' || e.target.parentElement.style.opacity === '0.7'){
+            e.target.parentElement.style.opacity = '1';
+        } else{
+            e.target.parentElement.style.opacity = '0.7';
+        }
+    }  
 }
 
 const downloadHover = (e) => {
     if(e.target.getAttribute('src') === downloadImg){
-        e.target.setAttribute('src', downloadImgHover)
+        e.target.setAttribute('src', downloadImgHover)        
+        e.target.parentElement.style.opacity = '1';
     } else if(e.target.getAttribute('src') === downloadImgHover){
-        e.target.setAttribute('src', downloadImg)
-    }
+        e.target.setAttribute('src', downloadImg)        
+        e.target.parentElement.style.opacity = '0.7';
+    }    
 }
 
 const expandHover = (e) => {
     if(e.target.getAttribute('src') === expandImg){
         e.target.setAttribute('src', expandImgHover)
+        e.target.parentElement.style.opacity = '1';
     } else if(e.target.getAttribute('src') === expandImgHover){
         e.target.setAttribute('src', expandImg)
+        e.target.parentElement.style.opacity = '0.7';
     }
 }
 
