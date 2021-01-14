@@ -17,23 +17,44 @@ function printGifsSearched(GifsSolicitados, offset) {
             for(i=0; i< dataArray.length; i++){
                 cards(dataArray[i][0], bloqueDeRespuestas, 'father-box-searcher', 'cuadro', corazonNormal, dataArray[i][1]);
             }
-            insertarBotonVerMas();
+            let botonVerMas = insertarBotonVerMas();
+            bloqueDeRespuestas.appendChild(botonVerMas);
+
+            activarFavoritos();
         }
     })
 }
 
-function insertarBotonVerMas() {
-    
-    setTimeout(()=>{
-        botonVerMas.innerText = 'ver más';
-        botonVerMas.classList.add('botonVerMas');
+function activarFavoritos(){
+    let gifsImpresos = document.getElementsByTagName('img');
 
-        contenedorDeBotonVerMas.classList.add('contenedor-del-boton-ver-mas');
-        contenedorDeBotonVerMas.appendChild(botonVerMas);
-        bloqueDeRespuestas.appendChild(contenedorDeBotonVerMas);
-    }, 1000)
+            for(i = 0; i < gifsImpresos.length; i++){
+                let arrayPrevioFavoritos = JSON.parse(sessionStorage['arrayGifs']);
 
+                for(k = 0; k < arrayPrevioFavoritos.length; k++){
+
+                    if(arrayPrevioFavoritos[k][0] === gifsImpresos[i].src){
+                        let corazon = gifsImpresos[i].nextElementSibling.firstChild.firstChild.firstChild;
+                        corazon.setAttribute('src', corazonActive)
+                        corazon.style.padding = '7px';
+                    }
+                }
+            }
 }
+
+function insertarBotonVerMas() {
+
+    let botonVerMas = document.createElement('button');
+    botonVerMas.innerText = 'ver más';
+    botonVerMas.classList.add('botonVerMas');
+
+    contenedorDeBotonVerMas.classList.add('contenedor-del-boton-ver-mas');
+    contenedorDeBotonVerMas.appendChild(botonVerMas);
+
+    return botonVerMas;
+}
+
+
 
 function cambiarTitulo(solicitado, classTitle) {
     //Eliminar sub del trending y cambiar el texto a lo buscado
@@ -57,7 +78,7 @@ function cambiarTitulo(solicitado, classTitle) {
 // Imprimir resultados seleccionados de sugerencia con click en el DOM
 function sugestions(li) {
     li.addEventListener('click', () => {
-        printGifsSearched(li.innerText, 0, 12);
+        printGifsSearched(li.innerText, 0);
         //cambiarTitulo(li.innerText);
         eliminarHijos(bloqueDeRespuestas);
         sugerencias.setAttribute('class', 'Lista-Sugerencias');

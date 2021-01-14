@@ -1,4 +1,14 @@
 function cards(gif, padre, fatherClass, claseDeImg, corazon, title) {
+
+    /*let arrayPrevioFavoritos = JSON.parse(sessionStorage['arrayGifs']);
+    for(i = 0; i < arrayPrevioFavoritos.length; i++){
+       if(gif.src === arrayPrevioFavoritos[i][0]) {
+        console.log(gif)
+       }
+    }*/
+    
+        
+
     let divPadre = createbloquePadre(padre, gif);
     let buttonsBox = createButtonsBox(corazon);
     let titleBox = createTitleBox(title);
@@ -40,6 +50,9 @@ const btnInsertion = (buttonsBox, src) => {
     btn.classList.add('btn-gif-card');
 
     img.setAttribute('src', src);
+    if(src === corazonActive){
+        img.style.padding = '7px'
+    }
 
     return buttonsBox;
 }
@@ -79,14 +92,24 @@ const hoverFunction = (e) => {
     if (e.target.classList.contains('imagenes-trending') || e.target.classList.contains('cuadro')) {
         e.target.nextSibling.setAttribute('class', 'hover-box')
     }
-    if (e.target == galeryIn || e.target == galery || e.target == seccionTwo || e.target.classList.contains('two-tittle') || e.target.classList.contains('respuesta-de-busqueda')) {
+    if (e.target == galeryIn || e.target == galery || e.target == seccionTwo || e.target.classList.contains('two-tittle') || e.target.classList.contains('respuesta-de-busqueda') || e.target.classList.contains('caja-de-favoritos') ) {
         for (i = 0; i < galeryIn.children.length; i++) {
             galeryIn.children[i].lastChild.setAttribute('class', claseDisplayNone)
         }
+
         for (i = 0; i < bloqueDeRespuestas.children.length; i++) {
-            if (bloqueDeRespuestas.children[i].lastChild.classList.contains('botonVerMas')) {} else {
-                bloqueDeRespuestas.children[i].lastChild.setAttribute('class', claseDisplayNone)
-            }
+            try{
+                if (bloqueDeRespuestas.children[i].lastChild.classList.contains('botonVerMas')) {} else {
+                    bloqueDeRespuestas.children[i].lastChild.setAttribute('class', claseDisplayNone)
+                }
+            } catch(e){}
+        }
+        for (i = 0; i < cajaFavoritos.children.length; i++) {
+            try{
+                if (cajaFavoritos.children[i].lastChild.classList.contains('botonVerMas')) {} else {
+                    cajaFavoritos.children[i].lastChild.setAttribute('class', claseDisplayNone)
+                }
+            } catch(e){}
         }
     }
 }

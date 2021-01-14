@@ -42,13 +42,3 @@ inputBusqueda.addEventListener('keyup', (event) => {
     }
 }, false);
 
-
-// VER MAS GIFS 
-botonVerMas.addEventListener('click', () => {
-    bloqueDeRespuestas.removeChild(contenedorDeBotonVerMas);
-    pagOffset = pagOffset + 12;
-    printGifsSearched(inputBusqueda.value, pagOffset);
-
-    insertarBotonVerMas();
-
-}, false);

@@ -1,12 +1,19 @@
 const carrousel = () => {
 
      getGifDataArray('trending', 0).then(res =>{
-         let dataArray = res;
-         for(i=0; i< dataArray.length; i++){
-             cards(dataArray[i][0], galeryIn, 'father-box-carrousel', 'imagenes-trending', corazonNormal, dataArray[i][1]);
-         }
+        
+        let dataArray = res;
+        for(i=0; i< dataArray.length; i++){
+            
+            cards(dataArray[i][0], galeryIn, 'father-box-carrousel', 'imagenes-trending', corazonNormal, dataArray[i][1]);
+        }
+
+        activarFavoritos();
      })
 }
+
+
+
 function flechaIzquierdaHoverReverse() {
     switch (cuerpoWeb.classList.value) {
         case 'oscuro':

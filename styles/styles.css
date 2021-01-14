@@ -253,6 +253,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 100%;
+  margin-bottom: 79px;
 }
 
 .titulo-favoritos {

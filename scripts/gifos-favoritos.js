@@ -11,7 +11,6 @@ corazonFavoritos.setAttribute('src', './img/icon-favoritos.svg');
 //Caja de favoritos
 cajaFavoritos.classList.add('caja-de-favoritos');
 
-
 //Sin Contenido
 sinContendioImg.setAttribute('src', './img/icon-fav-sin-contenido.svg');
 sinContendioImg.classList.add('imagen-sin-contenido');
@@ -33,8 +32,6 @@ seccionTwo.style.order = '2'; //para que la seccion two quede por debajo
 
 main.appendChild(seccionFavoritos); // insercion de la seccion en el main
 
-
-//Ocultar seccion de busqueda (section one). Crea al mismo tiempo la seccion favoritos. 
 favoritos.addEventListener('click', () => {
 
     showHide(seccionFavoritos, 'seccion-favoritos', seccionOne, seccionMisGifos, seccionCrearGif);
@@ -51,61 +48,49 @@ favoritos.addEventListener('click', () => {
         masGifosImg.setAttribute('src', masGifosImgSRC);
     }
 
-    
-    gifsGuardadosSinRepeticion = JSON.parse(sessionStorage['arrayGifs']);
+    let gifsGuardadosSinRepeticion  = JSON.parse(sessionStorage['arrayGifs']);
     
     gifsGuardadosSinRepeticion.filter(onlyUnique);
 
-    
-    //CORREGIR CLASES Y LOGICA DE LA CAJA SIN CONTENIDO
+    console.log(gifsGuardadosSinRepeticion)
+
     if (gifsGuardadosSinRepeticion.length == 0) {
-        //eliminarHijos(cajaFavoritos);
+
         cajaFavoritos.setAttribute('class', claseDisplayNone);
         cajaSinContenido.setAttribute('class', 'caja-sin-contenido');
-        console.log(gifsGuardadosSinRepeticion.length);
+
     } 
     favorites(gifsGuardadosSinRepeticion)
     
 }, false)
 
-function favorites(array){
-    if(array.length >= 1) {
+function favorites(arrayFavoritos){
+    if(arrayFavoritos.length >= 1) {
         cajaSinContenido.setAttribute('class', claseDisplayNone);
         cajaFavoritos.setAttribute('class', 'caja-de-favoritos');
-        //este while vacia la caja cada vez que se vuelve a favoritos antes de llenarla de vuelta
+        
         eliminarHijos(cajaFavoritos);
 
-        let num = 12;
-        
-        imprimirFavoritosEnCaja(num);
-        insertarBotonVerMasFavoritos();
-
-        botonVerMasFavoritos.addEventListener('click', () => {
-            eliminarHijos(cajaFavoritos);
-            num = num + 12;
-            imprimirFavoritosEnCaja(num);
-            insertarBotonVerMasFavoritos();
-        }, false);
+        imprimirFavoritosEnCaja(0, arrayFavoritos);
     }
 }
 
-//boton ver mas
-function insertarBotonVerMasFavoritos() {
-    botonVerMasFavoritos.innerText = 'ver más';
-    botonVerMasFavoritos.classList.add('botonVerMas');
-    contenedorDeBotonVerMasFavoritos.classList.add('contenedor-del-boton-ver-mas');
-    contenedorDeBotonVerMasFavoritos.appendChild(botonVerMasFavoritos);
-    cajaFavoritos.appendChild(contenedorDeBotonVerMasFavoritos);
-}
+function imprimirFavoritosEnCaja(num, arrayFavoritos) {
+    
+    num = num + 12;
 
-function imprimirFavoritosEnCaja(num) {
     // Recorrido del array e impresion de los gifs en la caja de favortios
-    for (i = 0; i <= gifsGuardadosSinRepeticion.length -1 && i < num; i++) {
+    for (i = 0; i <= arrayFavoritos.length -1 && i < num; i++) {
+
         let gifsFavGuardados = document.createElement('img');
-        gifsFavGuardados.setAttribute('src', gifsGuardadosSinRepeticion[i]);
+        gifsFavGuardados.setAttribute('src', arrayFavoritos[i][0]);
         gifsFavGuardados.classList.add('gifs-guardados-favoritos');
 
-        cards(gifsFavGuardados, cajaFavoritos, 'father-box-searcher', 'cuadro', corazonActive)
+        cards(gifsFavGuardados, cajaFavoritos, 'father-box-searcher', 'cuadro', corazonActive, arrayFavoritos[i][1])
 
     }
+    if(arrayFavoritos.length > num){
+        let botonVerMasFavortos = insertarBotonVerMas();
+        cajaFavoritos.appendChild(botonVerMasFavortos);
+    };
 }

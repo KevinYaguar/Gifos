@@ -1,13 +1,13 @@
 // ApiKey
 const ApiKey = 'api_key=1yVSM9oVX3z5nlo213gmodWDvoRxttsM';
 
-let gifsGuardadosSinRepeticion = [];
+
 
 // Body y local storage
 let cuerpoWeb = document.getElementById('body'); //Body Completo.
 let lines = document.getElementsByClassName('line'); //lineas.
 let spanColorNormal = document.getElementsByClassName('letra-color-normal'); //Palabras para cambiar a blanco
-let arrayGifsParaStorage = []; //Array donde se acumularas los gifs guardados en favoritos
+
 
 let gifos = document.getElementById('gifos');
 
@@ -44,6 +44,7 @@ let sugerencias = document.getElementById('Sugerencias'); // ul sin elementos li
 
 var bloqueDeRespuestas = document.getElementById('respuesta-de-busqueda'); //Contenedor de todos los gifs a imprimir
 let pagOffset = 0; //Variable que determina el offset del llamado a la API. En el evento VerMas aumentará su valor de   12 en 12.
+let num = 0; //Variable que determina el num del llamado a la favoritos. En el evento VerMas aumentará su valor de   12 en 12.
 var corazonNormal = './img/icon-fav.svg';
 var corazonHover = './img/icon-fav-hover.svg';
 var corazonActive = './img/icon-fav-active.svg';
@@ -54,7 +55,7 @@ var downloadImgHover = './img/icon-download-hover.svg';
 var expandImg = './img/icon-max-normal.svg';
 var expandImgHover = './img/icon-max-hover.svg';
 
-let botonVerMas = document.createElement('button');
+//let botonVerMas = document.createElement('button');
 
 // Seccion Two
 let seccionTwo = document.getElementById('seccionTwo'); //Seccion dos del main
@@ -98,7 +99,7 @@ let sinContendioImg = document.createElement('img');
 let sinContendioTexto = document.createElement('p');
 let contenedorDeBotonVerMas = document.createElement('div');
 let contenedorDeBotonVerMasFavoritos = document.createElement('div');
-let botonVerMasFavoritos = document.createElement('button');
+//let botonVerMasFavoritos = document.createElement('button');
 
 // Footer
 let footer = document.querySelector('footer');

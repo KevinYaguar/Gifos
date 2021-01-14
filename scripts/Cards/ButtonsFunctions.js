@@ -3,6 +3,7 @@ main.addEventListener('click', e =>{
     donwloadFunction(e);
     heartFunctions(e);
     expandFunction(e);
+    verMasGifs(e);
 })
 //Eventos mouserover y mouseout
 
@@ -17,6 +18,24 @@ main.addEventListener('mouseout', e =>{
     expandHover(e);
 })
 
+const verMasGifs = (e) => {
+    let origin = e.target.parentElement;
+
+    if(origin.classList.contains('respuesta-de-busqueda')){
+
+        bloqueDeRespuestas.removeChild(bloqueDeRespuestas.lastChild);
+        pagOffset = pagOffset + 12;
+        printGifsSearched(inputBusqueda.value, pagOffset);
+
+    } else if(origin.classList.contains('caja-de-favoritos')){
+
+        eliminarHijos(cajaFavoritos);
+        num = num + 12;
+        imprimirFavoritosEnCaja(num);
+
+    }
+}
+
 const donwloadFunction = (e) => {
     if(e.target.getAttribute('src') === downloadImgHover){
         let gif = e.target.parentElement.parentElement.parentElement.previousElementSibling;
@@ -27,8 +46,10 @@ const heartFunctions = (e) =>{
     if(e.target.getAttribute('src') === corazonNormal|| e.target.getAttribute('src') === corazonActive  || e.target.getAttribute('src') === corazonHover){
         //e.target.setAttribute('src', corazonActive);
         let gif = e.target.parentElement.parentElement.parentElement.previousElementSibling;
+        let user = gif.parentElement.lastChild.lastChild.firstChild.innerText;
         corazonActiveFunction(e.target)
-        guardarEnSssionStorage(e.target, gif)
+        guardarEnSssionStorage(e.target, gif, user)
+        
     } 
 }
 
@@ -42,17 +63,43 @@ function corazonActiveFunction(heartFav) {
     }
 }
 
-function guardarEnSssionStorage(heartFav, gif) {
+
+let arrayFavoritosEnStorage = sessionStorage.getItem('arrayGifs');
+
+if(arrayFavoritosEnStorage === null){ 
+
+    let array = []; //Array donde se acumularas los gifs guardados en favoritos
+    let arrayFavoritosEnStorage = JSON.stringify(array);
+    sessionStorage.setItem('arrayGifs', arrayFavoritosEnStorage);
+}
+
+function guardarEnSssionStorage(heartFav, gif, user) {
+
     if (heartFav.getAttribute('src') === corazonActive) {
-        arrayGifsParaStorage.push(gif.getAttribute('src'));
+
+        let arrayPrevioFavoritos = JSON.parse(sessionStorage['arrayGifs']);
+        
+        let arrayInfoGif = [];
+        arrayInfoGif.push(gif.getAttribute('src'));
+        arrayInfoGif.push(user);
+        arrayPrevioFavoritos.push(arrayInfoGif);
+
+        let nuevoArrayFavoritos = JSON.stringify(arrayPrevioFavoritos);
+        sessionStorage.setItem('arrayGifs', nuevoArrayFavoritos);
 
     } else {
-        arrayGifsParaStorage.pop(gif.getAttribute('src'));
+        
+        let arrayPrevioFavoritos = JSON.parse(sessionStorage['arrayGifs']);
+        for(i=0; i < arrayPrevioFavoritos.length; i++){
+            if(arrayPrevioFavoritos[i][0].indexOf(gif.getAttribute('src')) >= 0){
+                arrayPrevioFavoritos.splice([i], 1)
+            }
+        }
+
+        let nuevoArrayFavoritos = JSON.stringify(arrayPrevioFavoritos);
+        sessionStorage.setItem('arrayGifs', nuevoArrayFavoritos);
 
     }
-    var arrayGifsParaStorage2 = JSON.stringify(arrayGifsParaStorage);
-    sessionStorage.setItem('arrayGifs', arrayGifsParaStorage2);
-
 }
 const expandFunction = (e) => {
     if(e.target.getAttribute('src') === expandImgHover){
