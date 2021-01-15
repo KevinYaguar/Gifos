@@ -249,7 +249,18 @@ function getStreamAndRecord() {
 
                 
                 botonSubirGifo.addEventListener('click', () => {
-                    subirGif(recorder)
+                    bloqueSubiendoGif.setAttribute('class', 'subiendo-gif');
+                    bloqueSubiendoGifTexto.setAttribute('class', 'subiendo-gif-texto');
+                    bloqueSubiendoGifImg.setAttribute('class', 'subiendo-gif-img');
+
+                    subirGif(recorder);
+
+                    bloqueSubiendoGifImg.setAttribute('src', './img/check.svg');
+                    bloqueSubiendoGifTexto.innerText = 'GIFO subido con éxito';
+
+                    botonDescargarMiGifo.setAttribute('class', 'boton-descargar-mi-gifo')
+                    botonCopiarLinkMiGifo.setAttribute('class', 'boton-link-mi-gifo')
+
                     botonSubirGifo.setAttribute('class', claseDisplayNone);
                     repetirCaptura.setAttribute('class', claseDisplayNone);
                     contenedorDeNumero2.classList.toggle('background-color');
@@ -260,85 +271,50 @@ function getStreamAndRecord() {
         }
     });
 };
-function subirGif(recorder) {
-    bloqueSubiendoGif.setAttribute('class', 'subiendo-gif');
-    bloqueSubiendoGifTexto.setAttribute('class', 'subiendo-gif-texto');
-    bloqueSubiendoGifImg.setAttribute('class', 'subiendo-gif-img');
 
+function subirGif(recorder) {
+    
     let form = new FormData();
     form.set('file', recorder.getBlob(), 'myGif.gif');
-    //console.log(form.get('file'));
-
-    fetch(`https://upload.giphy.com/v1/gifs?${ApiKey}`, {
+    try{
+        fetch(`https://upload.giphy.com/v1/gifs?${ApiKey}`, {
             method: "POST",
             body: form
         })
         .then(response => {
-            //console.log(response.status);
             return response.json();
         }).then(data => {
-            //dataId = '';
+
             dataId = data.data.id;
-            fetch("https://api.giphy.com/v1/gifs/" + dataId + "?&" + ApiKey)
-                .then(response => {
-                    return response.json();
-                }).then(obj => {
-                    console.log(obj);
-                    urlGif = obj.data.images.original.url;
-                    user = obj.data.user.username;
-                    console.log(urlGif);
-                    let arrayPrevioMisGifos = JSON.parse(sessionStorage['MisGifos']);
-
-                    let arrayInfoGif = [];
-                    arrayInfoGif.push(urlGif);
-                    arrayInfoGif.push(user);
-                    arrayPrevioMisGifos.push(arrayInfoGif);
+            console.log(dataId)
             
-                    let nuevoArrayMisGifos = JSON.stringify(arrayPrevioMisGifos);
-                    
-                    sessionStorage.setItem('MisGifos', nuevoArrayMisGifos);
+            setGifToStorge(dataId)
 
-                    //sessionStorage.setItem(dataId, urlGif); //envio al local Storage el data id
-                    console.log(sessionStorage); //y su contenido (obj) para guardarlo, por cada gif subido
-
-                    bloqueSubiendoGifImg.setAttribute('src', './img/check.svg');
-                    bloqueSubiendoGifTexto.innerText = 'GIFO subido con éxito';
-
-                    botonDescargarMiGifo.setAttribute('class', 'boton-descargar-mi-gifo')
-                    botonCopiarLinkMiGifo.setAttribute('class', 'boton-link-mi-gifo')
-
-
-                    arrayGifsMisGifosId.push(dataId);
-                    //sessionStorage.setItem('keykey', dataId);
-                    let gifCreado = sessionStorage.getItem('keykey');
-
-                    //var keyUrl = sessionStorage.getItem(gifCreado);
-
-                    //////////////////////////////////////////
-
-                    seccionMisGifos.appendChild(cajaMisFavoritos); //aparezca en la seccion sin necesidad de recargar la pagina
-                    cajaMisFavoritos.classList.add('caja-mis-gifos');
-                    const nuevoGif = document.createElement('img');
-
-                    //HOVER DE LOS GIFS EN MIS GIFOS
-
-                    //hover nuevo gif en mis gifos
-                    let hoverNuevoGif = document.createElement('div');
-                    hoverNuevoGif.classList.add('nuevo-gif-div');
-
-                    let hoverInter = document.createElement('div');
-                    hoverInter.classList.add('div-inter');
-
-                    hoverNuevoGif.appendChild(hoverInter);
-
-                    hoverInter.appendChild(nuevoGif);
-
-                    //nuevoGif.src = keyUrl;
-                    nuevoGif.classList.add('nuevo-gif-img');
-                    
-                });
         });
+    } catch(error){}
+}
 
+function setGifToStorge(dataId){
+    fetch("https://api.giphy.com/v1/gifs/" + dataId + "?&" + ApiKey)
+    .then(response => {
+        return response.json();
+    }).then(obj => {
+        console.log(obj);
+        urlGif = obj.data.images.original.url;
+        user = obj.data.user.username;
+        console.log(urlGif);
+        let arrayPrevioMisGifos = JSON.parse(sessionStorage['MisGifos']);
+
+        let arrayInfoGif = [];
+        arrayInfoGif.push(urlGif);
+        arrayInfoGif.push(user);
+        arrayPrevioMisGifos.push(arrayInfoGif);
+
+        let nuevoArrayMisGifos = JSON.stringify(arrayPrevioMisGifos);
+        
+        sessionStorage.setItem('MisGifos', nuevoArrayMisGifos);
+
+    });
 }
 
 //Funcion Cronometro
