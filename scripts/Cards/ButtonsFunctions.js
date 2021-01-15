@@ -1,7 +1,7 @@
 //Eventos click
 main.addEventListener('click', e =>{
     donwloadFunction(e);
-    heartFunctions(e);
+    heartTrashFunctions(e);
     expandFunction(e);
     verMasGifs(e);
 })
@@ -44,16 +44,54 @@ const donwloadFunction = (e) => {
         }
     }
 }
-const heartFunctions = (e) =>{
+
+const heartTrashFunctions = (e) =>{
+
     if(e.target.getAttribute('src') === corazonNormal|| e.target.getAttribute('src') === corazonActive  || e.target.getAttribute('src') === corazonHover){
-        //e.target.setAttribute('src', corazonActive);
+        
         let gif = e.target.parentElement.parentElement.parentElement.previousElementSibling;
         let user = gif.parentElement.lastChild.lastChild.firstChild.innerText;
-        corazonActiveFunction(e.target)
-        guardarEnSssionStorage(e.target, gif, user)
         
-    } 
+        corazonActiveFunction(e.target)
+        guardarEnSssionStorage(e.target, gif, user, 'arrayGifs')
+        
+    } else if(e.target.getAttribute('src') === trashHover) {
+
+        let gif = e.target.parentElement.parentElement.parentElement.previousElementSibling;
+        let user = gif.parentElement.lastChild.lastChild.firstChild.innerText;
+        guardarEnSssionStorage(e.target, gif, user, 'MisGifos')
+    }
 }
+
+function guardarEnSssionStorage(button, gif, user, key) {
+
+    if (button.getAttribute('src') === corazonActive) {
+
+        let arrayPrevioEnStorage = JSON.parse(sessionStorage[key]);
+        
+        let arrayInfoGif = [];
+        arrayInfoGif.push(gif.getAttribute('src'));
+        arrayInfoGif.push(user);
+        arrayPrevioEnStorage.push(arrayInfoGif);
+
+        let nuevoArrayFavoritos = JSON.stringify(arrayPrevioEnStorage);
+        sessionStorage.setItem(key, nuevoArrayFavoritos);
+
+    } else if(button.getAttribute('src') === corazonHover || trashHover){
+        
+        let arrayPrevioEnStorage = JSON.parse(sessionStorage[key]);
+        for(i=0; i < arrayPrevioEnStorage.length; i++){
+            if(arrayPrevioEnStorage[i][0].indexOf(gif.getAttribute('src')) >= 0){
+                arrayPrevioEnStorage.splice([i], 1)
+            }
+        }
+
+        let nuevoArrayFavoritos = JSON.stringify(arrayPrevioEnStorage);
+        sessionStorage.setItem(key, nuevoArrayFavoritos);
+
+    }
+}
+
 
 function corazonActiveFunction(heartFav) {
     if (heartFav.getAttribute('src') === corazonActive) {
@@ -86,34 +124,7 @@ if(arrayMisGifosEnStorage === null){
     sessionStorage.setItem('MisGifos', arrayMisGifosEnStorage);
 }
 
-function guardarEnSssionStorage(heartFav, gif, user) {
 
-    if (heartFav.getAttribute('src') === corazonActive) {
-
-        let arrayPrevioFavoritos = JSON.parse(sessionStorage['arrayGifs']);
-        
-        let arrayInfoGif = [];
-        arrayInfoGif.push(gif.getAttribute('src'));
-        arrayInfoGif.push(user);
-        arrayPrevioFavoritos.push(arrayInfoGif);
-
-        let nuevoArrayFavoritos = JSON.stringify(arrayPrevioFavoritos);
-        sessionStorage.setItem('arrayGifs', nuevoArrayFavoritos);
-
-    } else {
-        
-        let arrayPrevioFavoritos = JSON.parse(sessionStorage['arrayGifs']);
-        for(i=0; i < arrayPrevioFavoritos.length; i++){
-            if(arrayPrevioFavoritos[i][0].indexOf(gif.getAttribute('src')) >= 0){
-                arrayPrevioFavoritos.splice([i], 1)
-            }
-        }
-
-        let nuevoArrayFavoritos = JSON.stringify(arrayPrevioFavoritos);
-        sessionStorage.setItem('arrayGifs', nuevoArrayFavoritos);
-
-    }
-}
 const expandFunction = (e) => {
     if(e.target.getAttribute('src') === expandImgHover){
         let buttonFav = e.target.parentElement.previousElementSibling.previousElementSibling;
@@ -164,6 +175,14 @@ const buttonsImghover = (e) => {
             break;
         case expandImgHover:
             e.target.setAttribute('src', expandImg)        
+            buttonsOpacity(e)
+            break;
+        case trash:
+                e.target.setAttribute('src', trashHover)        
+                buttonsOpacity(e)
+                break;
+        case trashHover:
+            e.target.setAttribute('src', trash)        
             buttonsOpacity(e)
             break;
     }

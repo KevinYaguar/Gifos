@@ -126,9 +126,7 @@ var urlGif = '';
 
 let claseDisplayNone = 'clase-display-none';
 
-
-
-
-
-
 main.appendChild(seccionMax);
+
+let trash = './img/icon-trash-normal.svg';
+let trashHover = './img/icon-trash-hover.svg';

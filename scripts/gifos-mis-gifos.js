@@ -26,15 +26,19 @@ cajaSinContenidoMisGifos.appendChild(sinContenidoTextoMisGifos);
 
 seccionMisGifos.appendChild(caritaMisGifos);
 seccionMisGifos.appendChild(tituloMisGifos);
+seccionMisGifos.appendChild(cajaMisGifos);
+
 seccionMisGifos.appendChild(cajaSinContenidoMisGifos);
 
 main.appendChild(seccionMisGifos);
+
+
 
 misGifos.addEventListener('click', () => {
 
     showHide(seccionMisGifos, 'seccion-favoritos', seccionOne, seccionFavoritos, seccionCrearGif);
 
-    showTrending(seccionTwo, 'two');
+    seccionTwo.setAttribute('class', 'two')
     
     showHide(contenedorCentralCrearGifInner, 'contenedor-central-crear-gif-Inner', contenedorCentralCrearGifInnerUno, contenedorCentralCrearGifInnerDos);
 
@@ -47,4 +51,11 @@ misGifos.addEventListener('click', () => {
     if (masGifosImg.getAttribute('src') === masGifosImgActive) {
         masGifosImg.setAttribute('src', masGifosImgSRC);
     }
+
+    let misGifosEnStorage = JSON.parse(sessionStorage['MisGifos'])
+
+
+    printStorageGifsOnBox(0, misGifosEnStorage, cajaMisGifos, cajaSinContenidoMisGifos, trash);
+
+
 }, false);

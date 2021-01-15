@@ -10,11 +10,11 @@ let contenedorDeBotonMisGifos = document.createElement('div');
 let botonVerMisGifos = document.createElement('button');
 
 
-const cajaMisFavoritos = document.createElement('div'); //con esto hago que mi Gif recien grabado y subido al locasStorage
-cajaMisFavoritos.id = 'CajaMisGifos';
+//const cajaMisGifos = document.createElement('div'); //con esto hago que mi Gif recien grabado y subido al locasStorage
+cajaMisGifos.id = 'CajaMisGifos';
 
 
-main.appendChild(cajaFavoritos);
+
 
 let bloqueSubiendoGif = document.createElement('div');
 bloqueSubiendoGif.classList.add('clase-display-none');
@@ -54,8 +54,7 @@ contenedorCentralCrearGifInnerDos.appendChild(botonDescargarMiGifo);
 contenedorCentralCrearGifInnerDos.appendChild(botonCopiarLinkMiGifo);
 
 
-let arrayGifsMisGifosId = [];
+//let arrayGifsMisGifosId = [];
 
 var dataId = '';
 
-let gifCreado = sessionStorage.getItem('keykey');

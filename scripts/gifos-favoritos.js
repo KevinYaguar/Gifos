@@ -36,7 +36,7 @@ favoritos.addEventListener('click', () => {
 
     showHide(seccionFavoritos, 'seccion-favoritos', seccionOne, seccionMisGifos, seccionCrearGif);
 
-    showTrending(seccionTwo, 'two');
+    seccionTwo.setAttribute('class', 'two')
 
     favoritos.classList.toggle('favoritos-activado');
 
@@ -52,47 +52,39 @@ favoritos.addEventListener('click', () => {
     
     gifsGuardadosSinRepeticion.filter(onlyUnique);
 
-    console.log(gifsGuardadosSinRepeticion)
+    printStorageGifsOnBox(0, gifsGuardadosSinRepeticion, cajaFavoritos, cajaSinContenido, corazonActive);
 
-    if (gifsGuardadosSinRepeticion.length == 0) {
-
-        cajaFavoritos.setAttribute('class', claseDisplayNone);
-        cajaSinContenido.setAttribute('class', 'caja-sin-contenido');
-
-    } 
-    favorites(gifsGuardadosSinRepeticion)
-    
 }, false)
 
-function favorites(arrayFavoritos){
-    if(arrayFavoritos.length >= 1) {
-        cajaSinContenido.setAttribute('class', claseDisplayNone);
-        cajaFavoritos.setAttribute('class', 'caja-de-favoritos');
-        
-        eliminarHijos(cajaFavoritos);
 
-        imprimirFavoritosEnCaja(0, arrayFavoritos);
-    }
-}
+function printStorageGifsOnBox(num, arrayStorage, box, emptyBox, button) {
 
-function imprimirFavoritosEnCaja(num, arrayFavoritos) {
+    if(arrayStorage.length === 0){
+        box.setAttribute('class', claseDisplayNone);
+        emptyBox.setAttribute('class', 'caja-sin-contenido');
+    } else {
+        emptyBox.setAttribute('class', claseDisplayNone);
+        box.setAttribute('class', 'caja-de-favoritos');
     
-    num = num + 12;
-
-    // Recorrido del array e impresion de los gifs en la caja de favortios
-    for (i = 0; i <= arrayFavoritos.length -1 && i < num; i++) {
-
-        let gifsFavGuardados = document.createElement('img');
-        gifsFavGuardados.setAttribute('src', arrayFavoritos[i][0]);
-        gifsFavGuardados.classList.add('gifs-guardados-favoritos');
-
-        cards(gifsFavGuardados, cajaFavoritos, 'father-box-searcher', 'cuadro', corazonActive, arrayFavoritos[i][1])
-
+        eliminarHijos(box);
+        
+        num = num + 12;
+    
+        // Recorrido del array e impresion de los gifs en la caja de favortios
+        for (i = 0; i <= arrayStorage.length -1 && i < num; i++) {
+    
+            let gifsFavGuardados = document.createElement('img');
+            gifsFavGuardados.setAttribute('src', arrayStorage[i][0]);
+            gifsFavGuardados.classList.add('gifs-guardados-favoritos');
+    
+            cards(gifsFavGuardados, box, 'father-box-searcher', 'cuadro', button, arrayStorage[i][1])
+    
+        }
+        if(arrayStorage.length > num){
+            let botonVerMasFavortos = insertarBotonVerMas();
+            box.appendChild(botonVerMasFavortos);
+        };
     }
-    if(arrayFavoritos.length > num){
-        let botonVerMasFavortos = insertarBotonVerMas();
-        cajaFavoritos.appendChild(botonVerMasFavortos);
-    };
 }
 
 function activarFavoritos(){

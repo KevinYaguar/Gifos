@@ -67,6 +67,6 @@ const close = (e, fatherClass) => {
         showHide(seccionFavoritos, 'seccion-favoritos', seccionMax)
     } else{
         showHide(seccionOne, 'one', seccionMax)
-        showTrending(seccionTwo, 'two');
+        seccionTwo.setAttribute('class', 'two');
     }
 }

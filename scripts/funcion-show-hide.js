@@ -19,23 +19,14 @@ function showHide(show, clase, hideOne, hideTwo, hideThree, hideFour) {
     };
 }
 
-//FUNCION PARA DESPLEGAR Y ESCONDER SECCION TWO(CARROUSEL)
-function showTrending(show, clase) {
-    show.setAttribute('class', clase);
-}
+gifos.setAttribute('class', 'pointer');
 
-//Evento show hide con gifos
-gifos.addEventListener('mouseover', ()=>{
-    gifos.classList.toggle('pointer');
-}, false);
-gifos.addEventListener('mouseout', ()=>{
-    gifos.classList.toggle('pointer');
-}, false);
+
 
 gifos.addEventListener('click', ()=>{
 
     showHide(seccionOne, 'one', seccionFavoritos, seccionCrearGif, seccionMisGifos)
-    showTrending(seccionTwo, 'two');
+    seccionTwo.setAttribute('class', 'two');
 
     showHide(contenedorCentralCrearGifInner, 'contenedor-central-crear-gif-Inner', contenedorCentralCrearGifInnerUno, contenedorCentralCrearGifInnerDos);
     showHide(botonComenzar, 'boton-comenzar', botonFinalizar, botonGrabar, botonSubirGifo);

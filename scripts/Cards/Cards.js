@@ -102,5 +102,12 @@ const hoverFunction = (e) => {
                 }
             } catch(e){}
         }
+        for (i = 0; i < cajaMisGifos.children.length; i++) {
+            try{
+                if (cajaMisGifos.children[i].lastChild.classList.contains('botonVerMas')) {} else {
+                    cajaMisGifos.children[i].lastChild.setAttribute('class', claseDisplayNone)
+                }
+            } catch(e){}
+        }
     }
 }
