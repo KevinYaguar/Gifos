@@ -238,83 +238,47 @@ function getStreamAndRecord() {
 
         recorder.stream = stream;
 
-        botonFinalizar.addEventListener('click', detenerGrabacion, false);
+        botonFinalizar.addEventListener('click', ()=>{
+            detenerGrabacion(recorder)
+        }, false);
 
-        function detenerGrabacion() {
-
-            recorder.stopRecording(function () {
-                recorder.stream.stop();
-                gifprevio.src = URL.createObjectURL(recorder.getBlob());
-
-
-                
-                botonSubirGifo.addEventListener('click', () => {
-                    bloqueSubiendoGif.setAttribute('class', 'subiendo-gif');
-                    bloqueSubiendoGifTexto.setAttribute('class', 'subiendo-gif-texto');
-                    bloqueSubiendoGifImg.setAttribute('class', 'subiendo-gif-img');
-
-                    subirGif(recorder);
-
-                    bloqueSubiendoGifImg.setAttribute('src', './img/check.svg');
-                    bloqueSubiendoGifTexto.innerText = 'GIFO subido con éxito';
-
-                    botonDescargarMiGifo.setAttribute('class', 'boton-descargar-mi-gifo')
-                    botonCopiarLinkMiGifo.setAttribute('class', 'boton-link-mi-gifo')
-
-                    botonSubirGifo.setAttribute('class', claseDisplayNone);
-                    repetirCaptura.setAttribute('class', claseDisplayNone);
-                    contenedorDeNumero2.classList.toggle('background-color');
-                    contenedorDeNumero3.classList.toggle('background-color');
-                }, false);
-                
-            });
-        }
+        
     });
 };
 
-function subirGif(recorder) {
-    
-    let form = new FormData();
-    form.set('file', recorder.getBlob(), 'myGif.gif');
-    try{
-        fetch(`https://upload.giphy.com/v1/gifs?${ApiKey}`, {
-            method: "POST",
-            body: form
-        })
-        .then(response => {
-            return response.json();
-        }).then(data => {
+function detenerGrabacion(recorder) {
 
-            dataId = data.data.id;
-            console.log(dataId)
-            
-            setGifToStorge(dataId)
+    recorder.stopRecording(function () {
+        recorder.stream.stop();
+        gifprevio.src = URL.createObjectURL(recorder.getBlob());
+        
+        botonSubirGifo.addEventListener('click', () => {
+            bloqueSubiendoGif.setAttribute('class', 'subiendo-gif');
+            bloqueSubiendoGifTexto.setAttribute('class', 'subiendo-gif-texto');
+            bloqueSubiendoGifImg.setAttribute('class', 'subiendo-gif-img');
 
-        });
-    } catch(error){}
+            subirGif(recorder);
+
+        }, false);
+        
+    });
 }
 
-function setGifToStorge(dataId){
-    fetch("https://api.giphy.com/v1/gifs/" + dataId + "?&" + ApiKey)
-    .then(response => {
-        return response.json();
-    }).then(obj => {
-        console.log(obj);
-        urlGif = obj.data.images.original.url;
-        user = obj.data.user.username;
-        console.log(urlGif);
-        let arrayPrevioMisGifos = JSON.parse(sessionStorage['MisGifos']);
+const eventoSubir = (e) =>{
 
-        let arrayInfoGif = [];
-        arrayInfoGif.push(urlGif);
-        arrayInfoGif.push(user);
-        arrayPrevioMisGifos.push(arrayInfoGif);
+}
 
-        let nuevoArrayMisGifos = JSON.stringify(arrayPrevioMisGifos);
-        
-        sessionStorage.setItem('MisGifos', nuevoArrayMisGifos);
+const gifUploaded = () => {
+    bloqueSubiendoGifImg.setAttribute('src', './img/check.svg');
+    bloqueSubiendoGifTexto.innerText = 'GIFO subido con éxito';
 
-    });
+    botonDescargarMiGifo.setAttribute('class', 'boton-descargar-mi-gifo')
+    botonCopiarLinkMiGifo.setAttribute('class', 'boton-link-mi-gifo')
+
+    botonSubirGifo.setAttribute('class', claseDisplayNone);
+    repetirCaptura.setAttribute('class', claseDisplayNone);
+    contenedorDeNumero2.classList.toggle('background-color');
+    contenedorDeNumero3.classList.toggle('background-color');
 }
 
 //Funcion Cronometro

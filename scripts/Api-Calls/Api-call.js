@@ -43,3 +43,51 @@ async function obetenerSugerencias(busquedaIngresada) {
         
     })
 }
+
+
+function subirGif(recorder) {
+    
+    let form = new FormData();
+    form.set('file', recorder.getBlob(), 'myGif.gif');
+    try{
+        fetch(`https://upload.giphy.com/v1/gifs?${ApiKey}`, {
+            method: "POST",
+            body: form
+        })
+        .then(response => {
+            return response.json();
+        }).then(data => {
+
+            dataId = data.data.id;
+            console.log(dataId)
+            
+            setGifToStorge(dataId)
+
+        });
+    } catch(error){}
+}
+
+function setGifToStorge(dataId){
+    fetch("https://api.giphy.com/v1/gifs/" + dataId + "?&" + ApiKey)
+    .then(response => {
+        return response.json();
+    }).then(obj => {
+        console.log(obj);
+        urlGif = obj.data.images.original.url;
+        user = obj.data.user.username;
+        console.log(urlGif);
+        let arrayPrevioMisGifos = JSON.parse(sessionStorage['MisGifos']);
+
+        let arrayInfoGif = [];
+        arrayInfoGif.push(urlGif);
+        arrayInfoGif.push(user);
+        arrayPrevioMisGifos.push(arrayInfoGif);
+
+        let nuevoArrayMisGifos = JSON.stringify(arrayPrevioMisGifos);
+        
+        sessionStorage.setItem('MisGifos', nuevoArrayMisGifos);
+
+        gifUploaded();
+
+    });
+}

@@ -49,8 +49,6 @@ favoritos.addEventListener('click', () => {
     }
 
     let gifsGuardadosSinRepeticion  = JSON.parse(sessionStorage['arrayGifs']);
-    
-    gifsGuardadosSinRepeticion.filter(onlyUnique);
 
     printStorageGifsOnBox(0, gifsGuardadosSinRepeticion, cajaFavoritos, cajaSinContenido, corazonActive);
 
