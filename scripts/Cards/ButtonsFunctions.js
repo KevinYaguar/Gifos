@@ -8,14 +8,11 @@ main.addEventListener('click', e =>{
 //Eventos mouserover y mouseout
 
 main.addEventListener('mouseover', e =>{
-    heartHover(e);
-    downloadHover(e);
-    expandHover(e);
+    buttonsImghover(e);
+
 })
 main.addEventListener('mouseout', e =>{
-    heartHover(e)
-    downloadHover(e);
-    expandHover(e);
+    buttonsImghover(e);
 })
 
 const verMasGifs = (e) => {
@@ -38,8 +35,13 @@ const verMasGifs = (e) => {
 
 const donwloadFunction = (e) => {
     if(e.target.getAttribute('src') === downloadImgHover){
-        let gif = e.target.parentElement.parentElement.parentElement.previousElementSibling;
-        return donwloadGif(gif)
+        if(masGifosImg.getAttribute('src') === './img/CTA-crear-gifo-active.svg'){
+            let gif = e.target.parentElement.nextSibling.nextSibling.nextSibling;
+            return donwloadGif(gif)
+        }else {
+            let gif = e.target.parentElement.parentElement.parentElement.previousElementSibling;
+            return donwloadGif(gif)
+        }
     }
 }
 const heartFunctions = (e) =>{
@@ -72,6 +74,16 @@ if(arrayFavoritosEnStorage === null){
     let array = []; //Array donde se acumularas los gifs guardados en favoritos
     let arrayFavoritosEnStorage = JSON.stringify(array);
     sessionStorage.setItem('arrayGifs', arrayFavoritosEnStorage);
+}
+
+
+let arrayMisGifosEnStorage = sessionStorage.getItem('MisGifos');
+
+if(arrayMisGifosEnStorage === null){ 
+
+    let array = []; //Array donde se acumularas los gifs guardados en favoritos
+    let arrayMisGifosEnStorage = JSON.stringify(array);
+    sessionStorage.setItem('MisGifos', arrayMisGifosEnStorage);
 }
 
 function guardarEnSssionStorage(heartFav, gif, user) {
@@ -117,40 +129,43 @@ const expandFunction = (e) => {
     }
 }
 
-const heartHover = (e) =>{
-    if(e.target.getAttribute('src') === corazonNormal){
-        e.target.setAttribute('src', corazonHover)        
+const buttonsOpacity = (e) => {
+    if(e.target.parentElement.style.opacity === '' || e.target.parentElement.style.opacity === '0.7'){
         e.target.parentElement.style.opacity = '1';
-    } else if(e.target.getAttribute('src') === corazonHover){
-        e.target.setAttribute('src', corazonNormal)        
+    } else{
         e.target.parentElement.style.opacity = '0.7';
-    } else if(e.target.getAttribute('src') === corazonActive){      
-        
-        if(e.target.parentElement.style.opacity === '' || e.target.parentElement.style.opacity === '0.7'){
-            e.target.parentElement.style.opacity = '1';
-        } else{
-            e.target.parentElement.style.opacity = '0.7';
-        }
-    }  
+    }
 }
 
-const downloadHover = (e) => {
-    if(e.target.getAttribute('src') === downloadImg){
-        e.target.setAttribute('src', downloadImgHover)        
-        e.target.parentElement.style.opacity = '1';
-    } else if(e.target.getAttribute('src') === downloadImgHover){
-        e.target.setAttribute('src', downloadImg)        
-        e.target.parentElement.style.opacity = '0.7';
-    }    
-}
-
-const expandHover = (e) => {
-    if(e.target.getAttribute('src') === expandImg){
-        e.target.setAttribute('src', expandImgHover)
-        e.target.parentElement.style.opacity = '1';
-    } else if(e.target.getAttribute('src') === expandImgHover){
-        e.target.setAttribute('src', expandImg)
-        e.target.parentElement.style.opacity = '0.7';
+const buttonsImghover = (e) => {
+    switch (e.target.getAttribute('src')){
+        case corazonNormal:
+            e.target.setAttribute('src', corazonHover) 
+            buttonsOpacity(e)
+            break;
+        case corazonHover:
+            e.target.setAttribute('src', corazonNormal); 
+            buttonsOpacity(e)
+            break;
+        case corazonActive:
+            buttonsOpacity(e)
+            break;
+        case downloadImg:
+            e.target.setAttribute('src', downloadImgHover)        
+            buttonsOpacity(e)
+            break;
+        case downloadImgHover:
+            e.target.setAttribute('src', downloadImg)        
+            buttonsOpacity(e)
+            break;
+        case expandImg:
+            e.target.setAttribute('src', expandImgHover)        
+            buttonsOpacity(e)
+            break;
+        case expandImgHover:
+            e.target.setAttribute('src', expandImg)        
+            buttonsOpacity(e)
+            break;
     }
 }
 

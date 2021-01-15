@@ -94,3 +94,19 @@ function imprimirFavoritosEnCaja(num, arrayFavoritos) {
         cajaFavoritos.appendChild(botonVerMasFavortos);
     };
 }
+
+function activarFavoritos(){
+    let gifsImpresos = document.getElementsByTagName('img');
+
+        for(i = 0; i < gifsImpresos.length; i++){
+            let arrayPrevioFavoritos = JSON.parse(sessionStorage['arrayGifs']);
+
+            for(k = 0; k < arrayPrevioFavoritos.length; k++){
+                if(arrayPrevioFavoritos[k][0] === gifsImpresos[i].src){
+                    let corazon = gifsImpresos[i].nextElementSibling.firstChild.firstChild.firstChild;
+                    corazon.setAttribute('src', corazonActive)
+                    corazon.style.padding = '7px';
+                }
+            }
+        }
+}

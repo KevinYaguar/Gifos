@@ -1,14 +1,5 @@
 function cards(gif, padre, fatherClass, claseDeImg, corazon, title) {
 
-    /*let arrayPrevioFavoritos = JSON.parse(sessionStorage['arrayGifs']);
-    for(i = 0; i < arrayPrevioFavoritos.length; i++){
-       if(gif.src === arrayPrevioFavoritos[i][0]) {
-        console.log(gif)
-       }
-    }*/
-    
-        
-
     let divPadre = createbloquePadre(padre, gif);
     let buttonsBox = createButtonsBox(corazon);
     let titleBox = createTitleBox(title);
