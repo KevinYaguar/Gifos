@@ -24,11 +24,18 @@ const verMasGifs = (e) => {
         pagOffset = pagOffset + 12;
         printGifsSearched(inputBusqueda.value, pagOffset);
 
-    } else if(origin.classList.contains('caja-de-favoritos')){
+    } else if(origin.id = "SeccionFavoritos"){
 
-        eliminarHijos(cajaFavoritos);
         num = num + 12;
-        imprimirFavoritosEnCaja(num);
+        let gifsGuardadosSinRepeticion  = JSON.parse(sessionStorage['arrayGifs']);
+        printStorageGifsOnBox(num, gifsGuardadosSinRepeticion, cajaFavoritos, cajaSinContenido, corazonActive);
+
+    }
+    else if(origin.id = "seccion-Mis-Gifos"){
+
+        num = num + 12;
+        let misGifosEnStorage = JSON.parse(sessionStorage['MisGifos'])
+        printStorageGifsOnBox(num, misGifosEnStorage, cajaFavoritos, cajaSinContenido, corazonActive);
 
     }
 }

@@ -68,7 +68,7 @@ function printStorageGifsOnBox(num, arrayStorage, box, emptyBox, button) {
         
         num = num + 12;
     
-        // Recorrido del array e impresion de los gifs en la caja de favortios
+        // Recorrido del array e impresion de los gifs en la caja 
         for (i = 0; i <= arrayStorage.length -1 && i < num; i++) {
     
             let gifsFavGuardados = document.createElement('img');

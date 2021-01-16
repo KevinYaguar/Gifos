@@ -46,10 +46,10 @@ async function obetenerSugerencias(busquedaIngresada) {
 
 
 function subirGif(recorder) {
-    
+
     let form = new FormData();
     form.set('file', recorder.getBlob(), 'myGif.gif');
-    try{
+    
         fetch(`https://upload.giphy.com/v1/gifs?${ApiKey}`, {
             method: "POST",
             body: form
@@ -64,7 +64,6 @@ function subirGif(recorder) {
             setGifToStorge(dataId)
 
         });
-    } catch(error){}
 }
 
 function setGifToStorge(dataId){
@@ -72,10 +71,10 @@ function setGifToStorge(dataId){
     .then(response => {
         return response.json();
     }).then(obj => {
-        console.log(obj);
+       // console.log(obj);
         urlGif = obj.data.images.original.url;
         user = obj.data.user.username;
-        console.log(urlGif);
+        //console.log(urlGif);
         let arrayPrevioMisGifos = JSON.parse(sessionStorage['MisGifos']);
 
         let arrayInfoGif = [];

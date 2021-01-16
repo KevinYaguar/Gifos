@@ -142,8 +142,10 @@ function activarCamara() {
         if (videoGif.srcObject = stream) {
             contenedorCentralCrearGifInnerUno.classList.toggle('clase-display-none');
             contenedorCentralCrearGifInnerUno.classList.toggle('contenedor-central-crear-gif-Inner');
+
             contenedorCentralCrearGifInnerDos.classList.toggle('clase-display-none');
             contenedorCentralCrearGifInnerDos.classList.toggle('contenedor-central-crear-gif-Inner');
+            
             videoGif.classList.toggle('clase-display-none');
             videoGif.classList.toggle('tamaño-video');
 
@@ -213,6 +215,7 @@ function updateClipboard(urlGif) {
 
 
 function getStreamAndRecord() {
+    
     navigator.mediaDevices.getUserMedia({
         video: true,
 
@@ -238,8 +241,13 @@ function getStreamAndRecord() {
 
         recorder.stream = stream;
 
+        //console.log(recorder);
+
         botonFinalizar.addEventListener('click', ()=>{
-            detenerGrabacion(recorder)
+            
+            console.log(recorder);
+            detenerGrabacion(recorder)                  
+       
         }, false);
 
         
@@ -247,7 +255,7 @@ function getStreamAndRecord() {
 };
 
 function detenerGrabacion(recorder) {
-
+   
     recorder.stopRecording(function () {
         recorder.stream.stop();
         gifprevio.src = URL.createObjectURL(recorder.getBlob());
@@ -256,16 +264,12 @@ function detenerGrabacion(recorder) {
             bloqueSubiendoGif.setAttribute('class', 'subiendo-gif');
             bloqueSubiendoGifTexto.setAttribute('class', 'subiendo-gif-texto');
             bloqueSubiendoGifImg.setAttribute('class', 'subiendo-gif-img');
-
+            
             subirGif(recorder);
-
+            
         }, false);
         
     });
-}
-
-const eventoSubir = (e) =>{
-
 }
 
 const gifUploaded = () => {
