@@ -22,11 +22,10 @@ function showHide(show, clase, hideOne, hideTwo, hideThree, hideFour) {
 gifos.setAttribute('class', 'pointer');
 
 
-
 gifos.addEventListener('click', ()=>{
 
     showHide(seccionOne, 'one', seccionFavoritos, seccionCrearGif, seccionMisGifos)
-    seccionTwo.setAttribute('class', 'two');
+    //seccionTwo.setAttribute('class', 'two');
 
     showHide(contenedorCentralCrearGifInner, 'contenedor-central-crear-gif-Inner', contenedorCentralCrearGifInnerUno, contenedorCentralCrearGifInnerDos);
     showHide(botonComenzar, 'boton-comenzar', botonFinalizar, botonGrabar, botonSubirGifo);
@@ -37,10 +36,10 @@ gifos.addEventListener('click', ()=>{
     if (favoritos.classList.value == 'favoritos-activado') {
         favoritos.classList.toggle('favoritos-activado');
     }
-    if (masGifosImg.getAttribute('src') == masGifosImgActive) {
-        if(modoOscuro.firstChild.innerText == 'MODO NOCTURNO'){
+    if (masGifosImg.getAttribute('src') === masGifosImgActive) {
+        if(cuerpoWeb.classList.value === ''){
             masGifosImg.setAttribute('src', masGifosImgSRC);
-        } else {
+        } else if(cuerpoWeb.classList.value === 'oscuro'){
             masGifosImg.setAttribute('src', masGifosImgModoNocturno);
         }
     }

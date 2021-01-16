@@ -2,7 +2,12 @@ misGifos.addEventListener('click', () => {
 
     showHide(seccionMisGifos, 'seccion-favoritos', seccionOne, seccionFavoritos, seccionCrearGif);
 
-    seccionTwo.setAttribute('class', 'two')
+    if(cuerpoWeb.classList.value === ''){
+        seccionTwo.setAttribute('class', 'two')
+    } else if(cuerpoWeb.classList.value === 'oscuro'){
+        seccionTwo.setAttribute('class', 'two oscuro2')
+    }
+    
     
     showHide(contenedorCentralCrearGifInner, 'contenedor-central-crear-gif-Inner', contenedorCentralCrearGifInnerUno, contenedorCentralCrearGifInnerDos);
 
@@ -13,7 +18,11 @@ misGifos.addEventListener('click', () => {
     }
     
     if (masGifosImg.getAttribute('src') === masGifosImgActive) {
-        masGifosImg.setAttribute('src', masGifosImgSRC);
+        if(cuerpoWeb.classList.value === ''){
+            masGifosImg.setAttribute('src', masGifosImgSRC);
+        } else if(cuerpoWeb.classList.value === 'oscuro'){
+            masGifosImg.setAttribute('src', masGifosImgModoNocturno);
+        }
     }
 
     let misGifosEnStorage = JSON.parse(sessionStorage['MisGifos'])

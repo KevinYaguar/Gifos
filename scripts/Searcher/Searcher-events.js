@@ -43,7 +43,7 @@ inputBusqueda.addEventListener('keyup', (event) => {
 }, false);
 
 trending.addEventListener('click', (e) =>{
-    if(e.target.id === 'trending-text-link'){
+    if(e.target.classList.value === 'trending-text-link'){
 
         eliminarHijos(bloqueDeRespuestas);
         

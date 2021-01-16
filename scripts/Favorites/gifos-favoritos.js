@@ -36,7 +36,7 @@ favoritos.addEventListener('click', () => {
 
     showHide(seccionFavoritos, 'seccion-favoritos', seccionOne, seccionMisGifos, seccionCrearGif);
 
-    seccionTwo.setAttribute('class', 'two')
+    //seccionTwo.setAttribute('class', 'two')
 
     favoritos.classList.toggle('favoritos-activado');
 
@@ -45,7 +45,11 @@ favoritos.addEventListener('click', () => {
     }
 
     if (masGifosImg.getAttribute('src') === masGifosImgActive) {
-        masGifosImg.setAttribute('src', masGifosImgSRC);
+        if(cuerpoWeb.classList.value === ''){
+            masGifosImg.setAttribute('src', masGifosImgSRC);
+        } else if(cuerpoWeb.classList.value === 'oscuro'){
+            masGifosImg.setAttribute('src', masGifosImgModoNocturno);
+        }
     }
 
     let gifsGuardadosSinRepeticion  = JSON.parse(sessionStorage['arrayGifs']);

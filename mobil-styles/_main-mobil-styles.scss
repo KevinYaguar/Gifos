@@ -21,10 +21,15 @@ main {
                 font-size: 25px;
                 line-height: 33px;
                 color: #7555e7;
-
-                .gifos-word {
-                    color: #5ED7C6;
-                }
+            }
+            h2{
+                font-weight: 700;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 25px;
+                line-height: 33px;
+                color: #5ED7C6;
+                display: inline;
+                text-align: center;
             }
         }
 
@@ -192,4 +197,23 @@ main {
     opacity: 0.7;
     float: left;
     margin-right: 10px;
+}
+
+.hover-box{
+    position: absolute;
+    top: 0;
+    width: 91.7%;
+    height: 68%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    opacity: 0.7;
+    background-color: #572EE5;
 }
