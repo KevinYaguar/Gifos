@@ -1,61 +1,3 @@
-//Inserciones
-main.appendChild(seccionCrearGif);
-seccionCrearGif.appendChild(camara);
-seccionCrearGif.appendChild(luzCamara);
-seccionCrearGif.appendChild(rollo);
-
-seccionCrearGif.appendChild(contenedorCentralCrearGif);
-
-seccionCrearGif.appendChild(contenedorDeNumeros);
-seccionCrearGif.appendChild(lineaSeparatoria);
-
-seccionCrearGif.appendChild(botonComenzar);
-seccionCrearGif.appendChild(botonGrabar);
-seccionCrearGif.appendChild(botonFinalizar);
-seccionCrearGif.appendChild(botonSubirGifo);
-
-
-//Cronometro
-cronometro.appendChild(minutos);
-cronometro.appendChild(separador);
-cronometro.appendChild(segundos);
-contenedorDeCronometro.appendChild(cronometro);
-
-//Contenedor Central Gif
-contenedorCentralCrearGif.appendChild(cuadradoEzquina1);
-contenedorCentralCrearGif.appendChild(cuadradoEzquina2);
-contenedorCentralCrearGif.appendChild(cuadradoEzquina3);
-contenedorCentralCrearGif.appendChild(cuadradoEzquina4);
-
-contenedorCentralCrearGif.appendChild(contenedorCentralCrearGifInner);
-contenedorCentralCrearGif.appendChild(contenedorCentralCrearGifInnerUno);
-
-//Contenedor Central Inner
-contenedorCentralCrearGifInner.appendChild(crearGifBloqueUp);
-contenedorCentralCrearGifInner.appendChild(crearGifBloqueDown);
-crearGifBloqueUp.appendChild(crearGifBloqueUpFrase);
-crearGifBloqueDown.appendChild(crearGifBloqueDownFrase);
-
-//Contenedor central inner UNO
-contenedorCentralCrearGifInnerUno.appendChild(crearGifBloqueUpUno);
-contenedorCentralCrearGifInnerUno.appendChild(crearGifBloqueDownUno);
-crearGifBloqueUpUno.appendChild(crearGifBloqueUpFraseUno);
-crearGifBloqueDownUno.appendChild(crearGifBloqueDownFraseUno);
-
-// Contenedor central inner DOS
-contenedorCentralCrearGif.appendChild(contenedorCentralCrearGifInnerDos);
-
-contenedorCentralCrearGifInnerDos.appendChild(videoGif); //Video online.
-
-contenedorCentralCrearGifInnerDos.appendChild(gifprevio); //Video Gif vista previa o final.
-
-//Contenedor de numeros
-contenedorDeNumeros.appendChild(contenedorDeNumero1);
-contenedorDeNumeros.appendChild(contenedorDeNumero2);
-contenedorDeNumeros.appendChild(contenedorDeNumero3);
-contenedorDeNumeros.appendChild(contenedorDeCronometro);
-
-
 masGifosImg.addEventListener('mouseover', () => {
 
         switch (masGifosImg.getAttribute('src')) {
@@ -77,7 +19,7 @@ masGifosImg.addEventListener('mouseout', () => {
             case 'seccion-crear-gif':
                 masGifosImg.setAttribute('src', masGifosImgActive);
                 break;
-            case 'clase-display-none':
+            case claseDisplayNone:
                 masGifosImg.setAttribute('src', masGifosImgModoNocturno);
                 break;
         }
@@ -86,7 +28,7 @@ masGifosImg.addEventListener('mouseout', () => {
             case 'seccion-crear-gif':
                 masGifosImg.setAttribute('src', masGifosImgActive);
                 break;
-            case 'clase-display-none':
+            case claseDisplayNone:
                 masGifosImg.setAttribute('src', masGifosImgSRC);
                 break;
         }
@@ -113,19 +55,6 @@ masGifosImg.addEventListener('click', () => {
 
 }, false);
 
-//DESCARGAR GIF
-async function descargarMiGifo(gifprevio) {
-
-    let a = document.createElement('a');
-    let response = await fetch(gifprevio.src);
-    let file = await response.blob();
-    a.download = 'MiNuevoGif.gif';
-    a.href = window.URL.createObjectURL(file);
-    a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
-    a.click();
-
-};
-
 //Crear gifos
 
 function activarCamara() {
@@ -140,63 +69,65 @@ function activarCamara() {
         };
 
         if (videoGif.srcObject = stream) {
-            contenedorCentralCrearGifInnerUno.classList.toggle('clase-display-none');
-            contenedorCentralCrearGifInnerUno.classList.toggle('contenedor-central-crear-gif-Inner');
 
-            contenedorCentralCrearGifInnerDos.classList.toggle('clase-display-none');
-            contenedorCentralCrearGifInnerDos.classList.toggle('contenedor-central-crear-gif-Inner');
-            
-            videoGif.classList.toggle('clase-display-none');
-            videoGif.classList.toggle('tamaño-video');
+            contenedorCentralCrearGifInnerUno.setAttribute('class', 'contenedor-central-crear-gif-Inner');
 
-            botonComenzar.classList.toggle('boton-comenzar');
-            botonComenzar.classList.toggle('clase-display-none');
-            botonGrabar.classList.toggle('clase-display-none');
-            botonGrabar.classList.toggle('boton-comenzar');
+            contenedorCentralCrearGifInnerDos.setAttribute('class', 'contenedor-central-crear-gif-Inner');
+
+            videoGif.setAttribute('class', 'tamaño-video');
+
+            botonComenzar.setAttribute('class', claseDisplayNone);
+
+            botonGrabar.setAttribute('class', 'boton-comenzar');
+
             contenedorDeNumero1.classList.toggle('background-color');
+
             contenedorDeNumero2.classList.toggle('background-color');
         }
     });
 }
 
 botonComenzar.addEventListener('click', () => {
-    contenedorCentralCrearGifInner.classList.toggle('contenedor-central-crear-gif-Inner');
-    contenedorCentralCrearGifInner.classList.toggle('clase-display-none');
-    contenedorCentralCrearGifInnerUno.classList.toggle('clase-display-none');
-    contenedorCentralCrearGifInnerUno.classList.toggle('contenedor-central-crear-gif-Inner');
+    //contenedorCentralCrearGifInner.classList.toggle('contenedor-central-crear-gif-Inner');
+    contenedorCentralCrearGifInner.setAttribute('class', claseDisplayNone);
+    
+    //contenedorCentralCrearGifInnerUno.classList.toggle(claseDisplayNone);
+    contenedorCentralCrearGifInnerUno.setAttribute('class', 'contenedor-central-crear-gif-Inner');
 
     contenedorDeNumero1.setAttribute('class', 'contenedores-de-numeros background-color');
     contenedorDeNumero2.setAttribute('class', 'contenedores-de-numeros');
     contenedorDeNumero3.setAttribute('class', 'contenedores-de-numeros');
 
     activarCamara();
+
     gifprevio.setAttribute('class', claseDisplayNone);
     gifprevio.setAttribute('src', '');
+
     bloqueSubiendoGif.setAttribute('class', claseDisplayNone);
+
     bloqueSubiendoGifImg.setAttribute('class', claseDisplayNone);
     bloqueSubiendoGifImg.setAttribute('src', './img/loader.svg');
+
     bloqueSubiendoGifTexto.innerText = 'Estamos subiendo tu GIFO';
     bloqueSubiendoGifTexto.setAttribute('class', claseDisplayNone);
+
     botonDescargarMiGifo.setAttribute('class', claseDisplayNone);
     botonCopiarLinkMiGifo.setAttribute('class', claseDisplayNone);
-    //dataId = '';
-
-    bloqueSubiendoGif.setAttribute('class', claseDisplayNone);
-    bloqueSubiendoGifTexto.setAttribute('class', claseDisplayNone);
-    bloqueSubiendoGifImg.setAttribute('class', claseDisplayNone);
-
 
 
 }, false);
 
 
 botonGrabar.addEventListener('click', () => {
+
     getStreamAndRecord();
-    botonGrabar.classList.toggle('clase-display-none');
-    botonGrabar.classList.toggle('boton-comenzar');
-    botonFinalizar.classList.toggle('clase-display-none');
-    botonFinalizar.classList.toggle('boton-comenzar');
+
+    botonGrabar.setAttribute('class', claseDisplayNone);
+    
+    botonFinalizar.setAttribute('class', 'boton-comenzar');
+
     repetirCaptura.setAttribute('class', claseDisplayNone);
+
     cronometro.setAttribute('class', 'contenedor-cronometro');
     carga();
 }, false);
@@ -210,8 +141,6 @@ function updateClipboard(urlGif) {
         alert('no se a podido copiar');
     });
 }
-
-
 
 
 function getStreamAndRecord() {
@@ -274,14 +203,19 @@ function detenerGrabacion(recorder) {
 
 const gifUploaded = () => {
     bloqueSubiendoGifImg.setAttribute('src', './img/check.svg');
+
     bloqueSubiendoGifTexto.innerText = 'GIFO subido con éxito';
 
     botonDescargarMiGifo.setAttribute('class', 'boton-descargar-mi-gifo')
+
     botonCopiarLinkMiGifo.setAttribute('class', 'boton-link-mi-gifo')
 
     botonSubirGifo.setAttribute('class', claseDisplayNone);
+
     repetirCaptura.setAttribute('class', claseDisplayNone);
+
     contenedorDeNumero2.classList.toggle('background-color');
+
     contenedorDeNumero3.classList.toggle('background-color');
 }
 
@@ -315,40 +249,44 @@ function carga() {
 
 
 botonFinalizar.addEventListener('click', () => {
+
     detenerse();
-    cronometro.classList.toggle('clase-display-none');
+
+    cronometro.classList.toggle(claseDisplayNone);
+
     repetirCaptura.setAttribute('class', '');
-    contenedorDeNumeros.classList.toggle('contenedor-de-numeros-general');
-    contenedorDeNumeros.classList.toggle('contenedor-de-numeros-general-repetir');
-    botonFinalizar.classList.toggle('boton-comenzar');
-    botonFinalizar.classList.toggle('clase-display-none');
-    botonSubirGifo.classList.toggle('boton-comenzar');
-    botonSubirGifo.classList.toggle('clase-display-none');
 
-    videoGif.classList.toggle('clase-display-none');
-    videoGif.classList.toggle('tamaño-video');
-    gifprevio.classList.toggle('clase-display-none');
+    contenedorDeNumeros.setAttribute('class', 'contenedor-de-numeros-general-repetir');
 
-    //
+    botonFinalizar.setAttribute('class', claseDisplayNone);
+
+    botonSubirGifo.setAttribute('class', 'boton-comenzar');
+
+    videoGif.setAttribute('class', claseDisplayNone);
+
+    gifprevio.classList.toggle(claseDisplayNone);
+
+
 }, false);
 
 
 //La funcion vuelve a mostrar el video online. El Gif se reescribe  en el evento Finalizar
 repetirCaptura.addEventListener('click', () => {
-    videoGif.classList.toggle('clase-display-none');
-    videoGif.classList.toggle('tamaño-video');
-    gifprevio.classList.toggle('clase-display-none');
+    
+    videoGif.setAttribute('class', 'tamaño-video');
 
-    botonSubirGifo.classList.toggle('boton-comenzar');
-    botonSubirGifo.classList.toggle('clase-display-none');
+    gifprevio.classList.toggle(claseDisplayNone);
 
-    botonGrabar.classList.toggle('clase-display-none');
-    botonGrabar.classList.toggle('boton-comenzar');
+    
+    botonSubirGifo.setAttribute('class', claseDisplayNone);
+    
+    botonGrabar.setAttribute('class', 'boton-comenzar');
 
-    repetirCaptura.classList.toggle('clase-display-none');
-    cronometro.classList.toggle('clase-display-none');
+    repetirCaptura.classList.toggle(claseDisplayNone);
 
-    contenedorDeNumeros.classList.toggle('contenedor-de-numeros-general');
-    contenedorDeNumeros.classList.toggle('contenedor-de-numeros-general-repetir');
+    cronometro.classList.toggle(claseDisplayNone);
+
+    contenedorDeNumeros.setAttribute('class', 'contenedor-de-numeros-general');
+    
     activarCamara();
 }, false);

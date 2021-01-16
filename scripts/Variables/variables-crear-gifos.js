@@ -6,12 +6,10 @@ camara.classList.add('camara');
 let contenedorCentralCrearGif = document.createElement('div');
 contenedorCentralCrearGif.classList.add('contenedor-central-crear-gif');
 
-
 let cuadradoEzquina1 = document.createElement('div');
 cuadradoEzquina1.classList.add('cuadrado-ezquina');
 cuadradoEzquina1.classList.add('border-top');
 cuadradoEzquina1.classList.add('border-left');
-
 
 let cuadradoEzquina2 = document.createElement('div');
 cuadradoEzquina2.classList.add('cuadrado-ezquina');
@@ -22,7 +20,6 @@ let cuadradoEzquina3 = document.createElement('div');
 cuadradoEzquina3.classList.add('cuadrado-ezquina');
 cuadradoEzquina3.classList.add('border-bottom');
 cuadradoEzquina3.classList.add('border-left');
-
 
 let cuadradoEzquina4 = document.createElement('div');
 cuadradoEzquina4.classList.add('cuadrado-ezquina');
@@ -48,7 +45,6 @@ contenedorDeNumero3.appendChild(spanNumero3);
 spanNumero3.innerText = '3';
 
 let lineaSeparatoria = document.createElement('div');
-
 
 // Botones COMENZAR - GRABAR - FINALIZAR - SUBIR GIFO
 let botonComenzar = document.createElement('button');
@@ -80,7 +76,6 @@ segundos.innerText = 00;
 separador.innerText = ':';
 minutos.innerText = 00;
 contenedorDeCronometro.classList.add('contenedor-cronometro');
-
 
 // REPETIR CAPTURA
 let repetirCaptura = document.createElement('p');
@@ -118,7 +113,6 @@ let crearGifBloqueDownFrase = document.createElement('span');
 
 crearGifBloqueUpFrase.innerHTML = '<p>Aquí podrás</p> <p>crear tus propios <span class="gifos-word">GIFOS</span></p>';
 crearGifBloqueDownFrase.innerHTML = '<p>¡Crea tu GIFO en sólo 3 pasos!</p> <p>(sólo necesitas una cámara para grabar un video)</p>';
-
 
 contenedorDeNumero1.classList.add('contenedores-de-numeros');
 contenedorDeNumero1.style.gridArea = '1 / 2';
@@ -169,3 +163,60 @@ videoGif.classList.add('clase-display-none');
 
 gifprevio = document.createElement('img');
 gifprevio.classList.toggle('clase-display-none');
+
+//Inserciones
+main.appendChild(seccionCrearGif);
+seccionCrearGif.appendChild(camara);
+seccionCrearGif.appendChild(luzCamara);
+seccionCrearGif.appendChild(rollo);
+
+seccionCrearGif.appendChild(contenedorCentralCrearGif);
+
+seccionCrearGif.appendChild(contenedorDeNumeros);
+seccionCrearGif.appendChild(lineaSeparatoria);
+
+seccionCrearGif.appendChild(botonComenzar);
+seccionCrearGif.appendChild(botonGrabar);
+seccionCrearGif.appendChild(botonFinalizar);
+seccionCrearGif.appendChild(botonSubirGifo);
+
+
+//Cronometro
+cronometro.appendChild(minutos);
+cronometro.appendChild(separador);
+cronometro.appendChild(segundos);
+contenedorDeCronometro.appendChild(cronometro);
+
+//Contenedor Central Gif
+contenedorCentralCrearGif.appendChild(cuadradoEzquina1);
+contenedorCentralCrearGif.appendChild(cuadradoEzquina2);
+contenedorCentralCrearGif.appendChild(cuadradoEzquina3);
+contenedorCentralCrearGif.appendChild(cuadradoEzquina4);
+
+contenedorCentralCrearGif.appendChild(contenedorCentralCrearGifInner);
+contenedorCentralCrearGif.appendChild(contenedorCentralCrearGifInnerUno);
+
+//Contenedor Central Inner
+contenedorCentralCrearGifInner.appendChild(crearGifBloqueUp);
+contenedorCentralCrearGifInner.appendChild(crearGifBloqueDown);
+crearGifBloqueUp.appendChild(crearGifBloqueUpFrase);
+crearGifBloqueDown.appendChild(crearGifBloqueDownFrase);
+
+//Contenedor central inner UNO
+contenedorCentralCrearGifInnerUno.appendChild(crearGifBloqueUpUno);
+contenedorCentralCrearGifInnerUno.appendChild(crearGifBloqueDownUno);
+crearGifBloqueUpUno.appendChild(crearGifBloqueUpFraseUno);
+crearGifBloqueDownUno.appendChild(crearGifBloqueDownFraseUno);
+
+// Contenedor central inner DOS
+contenedorCentralCrearGif.appendChild(contenedorCentralCrearGifInnerDos);
+
+contenedorCentralCrearGifInnerDos.appendChild(videoGif); //Video online.
+
+contenedorCentralCrearGifInnerDos.appendChild(gifprevio); //Video Gif vista previa o final.
+
+//Contenedor de numeros
+contenedorDeNumeros.appendChild(contenedorDeNumero1);
+contenedorDeNumeros.appendChild(contenedorDeNumero2);
+contenedorDeNumeros.appendChild(contenedorDeNumero3);
+contenedorDeNumeros.appendChild(contenedorDeCronometro);
