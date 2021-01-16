@@ -42,3 +42,11 @@ inputBusqueda.addEventListener('keyup', (event) => {
     }
 }, false);
 
+trending.addEventListener('click', (e) =>{
+    if(e.target.id === 'trending-text-link'){
+
+        eliminarHijos(bloqueDeRespuestas);
+        
+        printGifsSearched(e.target.innerText, 0);
+    }
+})

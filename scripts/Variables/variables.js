@@ -62,6 +62,8 @@ let seccionTwo = document.getElementById('seccionTwo'); //Seccion dos del main
 let tendringGifosTittle = document.getElementById('tendring-gifos-tittle'); // Titulo de la seccion dos (Trending)
 let tendringGifosSubtt = document.getElementById('tendring-gifos-subtt'); //Subtitulo de la seccion dos (Trending)
 
+let trending = document.getElementById('trending');
+
 let busquedaSinResultadoSRC = './img/icon-busqueda-sin-resultado.svg';
 let resultadoTitulo = document.getElementById('trending-tt');
 let subtitulo = document.getElementById('trending-text');
