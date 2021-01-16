@@ -317,9 +317,10 @@ align-self: center;
     
 }
 .contenedor-de-numeros-general{
+    width: 688px;
     grid-area: 2 / 3;
     display: grid;
-    grid-template: 1fr / 1fr 1fr 1fr 1fr 1fr;
+    grid-template: 1fr / 1fr 1fr 1fr 1fr;
 }
 .contenedor-de-numeros-general-repetir{
     grid-area: 2 / 3;
@@ -401,6 +402,9 @@ align-self: center;
     justify-self: end;
     align-self: center;
     margin-right: 10px;
+    width: 158px;
+    display: flex;
+    justify-content: flex-end;
     p{
         color: #572EE5;
         font-family: 'Montserrat', sans-serif;

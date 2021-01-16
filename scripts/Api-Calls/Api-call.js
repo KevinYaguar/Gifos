@@ -86,7 +86,7 @@ function setGifToStorge(dataId){
         
         sessionStorage.setItem('MisGifos', nuevoArrayMisGifos);
 
-        gifUploaded();
+        gifUploaded(urlGif);
 
     });
 }
