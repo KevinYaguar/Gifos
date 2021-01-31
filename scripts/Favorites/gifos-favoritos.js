@@ -7,6 +7,7 @@ tituloFavoritos.classList.add('titulo-favoritos');
 
 //corazon de la seccion favoritos
 corazonFavoritos.setAttribute('src', './img/icon-favoritos.svg');
+corazonFavoritos.classList.add('mini-icon')
 
 //Caja de favoritos
 cajaFavoritos.classList.add('caja-de-favoritos');

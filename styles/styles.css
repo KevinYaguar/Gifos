@@ -687,6 +687,10 @@
   opacity: 0.6;
 }
 
+.mini-icon {
+  height: 21px;
+}
+
 @media (max-width: 800px) {
   footer {
     display: -webkit-box;

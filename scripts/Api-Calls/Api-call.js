@@ -46,9 +46,10 @@ async function obetenerSugerencias(busquedaIngresada) {
 
 
 function subirGif(recorder) {
-
+    console.log(recorder)
     let form = new FormData();
     form.set('file', recorder.getBlob(), 'myGif.gif');
+    console.log(form)
     
         fetch(`https://upload.giphy.com/v1/gifs?${ApiKey}`, {
             method: "POST",

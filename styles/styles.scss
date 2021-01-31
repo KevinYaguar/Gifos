@@ -165,7 +165,6 @@
     img{
         width: 32px;
         height: 32px;
-        //padding: 6px;
     }
 }
 
@@ -430,7 +429,7 @@ align-self: center;
     width: 480px;
     position: absolute;
     opacity: 0.6;
-    //top: 21px;
+
 }
 .subiendo-gif-texto{
     color: #FFFFFF;
@@ -471,23 +470,19 @@ align-self: center;
 .nuevo-gif-div{
     width: 260px;
     height: 200px;
-  //  position: relative;
-  //  z-index: 1;
+
 }
 .nuevo-gif-img{
     width: 260px;
     height: 200px;
-   // position: relative;
-    //right: 289px;
-    //z-index: 0;
+
 }
 
 
 .nuevo-gif-hover{
     background-color: #572EE5;
-    //opacity: 0.6;
-    //position: relative;
-    //right: 289px;
+
+
 }
 
 .boton-trash{
@@ -529,6 +524,10 @@ align-self: center;
     :hover{
         opacity: 0.6;
     }
+}
+
+.mini-icon{
+    height: 21px;
 }
 @media (max-width: 800px){
     @import "../mobil-styles/_footer-mobil-styles";

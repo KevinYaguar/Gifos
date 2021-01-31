@@ -64,6 +64,7 @@ seccionMisGifos.id = 'seccion-Mis-Gifos';
 
 //Carita
 caritaMisGifos.setAttribute('src', './img/icon-mis-gifos.svg');
+caritaMisGifos.classList.add('mini-icon')
 
 //titulo
 tituloMisGifos.innerHTML = 'Mis GIFOS';
